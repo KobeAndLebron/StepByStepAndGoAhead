@@ -6,7 +6,8 @@
 bin/
 target/
 #忽略各个项目下的.gitignore但是不忽略根目录的.gitignore
-.gitignore !/.gitignore
+.gitignore 
+!/.gitignore
 #这几个为eclipse的配置文件
 /.metadata/
 .settings/
