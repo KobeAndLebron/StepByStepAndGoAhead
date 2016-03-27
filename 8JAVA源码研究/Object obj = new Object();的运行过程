@@ -1,0 +1,6 @@
+Object obj = new Object();
+1、首先执行Object obj 检查是否存在Object这个class文件
+2、new Object()，先加载类Object到内存，然后连接，初始化
+3、调用new为Object分配内存
+4、调用构造器来对obj的变量进行赋值
+5、new把内存的地址返回，并赋给obj
