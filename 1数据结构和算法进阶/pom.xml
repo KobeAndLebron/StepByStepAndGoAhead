@@ -21,10 +21,19 @@
 			<!-- 只在测试编译testCompile(testCompile不一定运行test)和测试运行test的时候添加此classPath，其余的时候都不添加，也不进行打包 -->
 			<scope>test</scope>
 		</dependency>
+		<!-- Json依赖 -->
+		<!-- <dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20151123</version>
+		</dependency> -->
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.4</version>
+		</dependency>
 	</dependencies>
 	<build>
-		<!-- 编译的时候源代码的位置 -->
-		<sourceDirectory>src/main/java</sourceDirectory>
 		<!-- 配置插件,插件都是为了构建项目，所以这个节点应该位于build节点下 -->
 		<plugins>
 			<!-- 配置编译插件 -->
