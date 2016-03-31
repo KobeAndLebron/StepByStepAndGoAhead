@@ -19,6 +19,7 @@ public class ThreadId {
 	
 	// Return the current thread's unique ID , assigning it if necessary
 	public static int get(){
+		// System.out.println(Thread.currentThread().getName());
 		return threadId.get();
 	}
 	
