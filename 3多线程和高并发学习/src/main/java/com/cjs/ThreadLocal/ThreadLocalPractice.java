@@ -57,7 +57,7 @@ public class ThreadLocalPractice {
 
 class Thread1 extends Thread{
 	public void run(){
-		ThreadLocalPractice.setContext(new Integer(1));
+		ThreadLocalPractice.setContext(new Integer(5));
 		System.out.println(ThreadLocalPractice.getContext());
 	}
 }
@@ -65,7 +65,7 @@ class Thread1 extends Thread{
 
 class Thread2 extends Thread{
 	public void run(){
-		ThreadLocalPractice.setContext(new Integer(2));
+		ThreadLocalPractice.setContext(new Integer(4));
 		System.out.println(ThreadLocalPractice.getContext());
 	}
 }

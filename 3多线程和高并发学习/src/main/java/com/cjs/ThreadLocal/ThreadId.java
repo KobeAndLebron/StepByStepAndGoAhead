@@ -18,8 +18,8 @@ public class ThreadId {
 	};
 	
 	// Return the current thread's unique ID , assigning it if necessary
-	public static int get(){
-		// System.out.println(Thread.currentThread().getName());
+	public static Integer get(){
+		System.out.println(Thread.currentThread().getName());
 		return threadId.get();
 	}
 	
@@ -27,17 +27,17 @@ public class ThreadId {
 		Thread thread1 = new Thread(){
 			public void run(){
 				Integer d = ThreadId.get();
-				System.out.println(d);
+				System.out.println(Thread.currentThread().getName() + d);
 			}
 		};
 		Thread thread2 = new Thread(){
 			public void run(){
 				Integer d = ThreadId.get();
-				System.out.println(d);
+				System.out.println(Thread.currentThread().getName() + d);
 			}
 		};
 		thread1.start();
 		thread2.start();
-		System.out.println(ThreadId.get());
+		System.out.println(Thread.currentThread().getName() + ThreadId.get());
 	}
 }

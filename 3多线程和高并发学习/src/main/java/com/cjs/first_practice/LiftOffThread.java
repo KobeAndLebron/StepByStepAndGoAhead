@@ -6,7 +6,7 @@ public class LiftOffThread extends Thread{
 	private int countDown = 10;
 	private Integer threadId;
 	
-	// 成员变量的初始化还有构造器还有非静态代码块最后被组合为<init>()方法，所以对象的赋值操作都是在主线程中调用
+	// 成员变量的初始化还有构造器还有非静态代码块最后被组合为<init>()方法，所以对象变量的赋值操作都是在主线程中调用
 	 // 所以这个threadId1里面的ThreadLocal对象一直在主线程中，不会被放在其他线程中
 	private Integer threadId1 = ThreadId.get();
 	
