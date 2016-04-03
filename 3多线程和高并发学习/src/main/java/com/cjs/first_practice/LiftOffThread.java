@@ -14,6 +14,9 @@ public class LiftOffThread extends Thread{
 		threadId = ThreadId.get();
 		while(countDown-- >0){
 			System.out.println(status());
+			/**********************************************/
+			// 使得CPU对各个线程的时间片分配更加均匀
+			/**********************************************/
 		    Thread.yield();
 			/*try{
 				Thread.sleep(100);
