@@ -9,6 +9,9 @@ package com.cjs.sell_ticket;
  */
 // 每一个Runnable对象都代表一个进程-即窗口,可以对方法区里或者堆区的对象操作
 public class TicketWindowFinal implements Runnable{
+	/**
+	 * 可以自己窗口的一些特定属性而{@linkplain TicketWindow1}不可以，因为所有线程共用的是一个Runnable对象
+	 */
 	public void run(){
 		while(true){
 			if(Resource.ticketNum > 0){

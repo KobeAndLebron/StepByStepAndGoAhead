@@ -14,6 +14,7 @@ package com.cjs.sell_ticket;
  */
 public class TicketWindow implements Runnable{
 	int ticketNum = 10;
+	
 	public void run(){
 		while(true){
 			if(ticketNum > 0){

@@ -40,6 +40,7 @@ public class TicketWindow1 implements Runnable{
 		Thread t2 = new Thread(tw1 ,"window 2");
 		Thread t3 = new Thread(tw1 ,"window 3");
 		Thread t4 = new Thread(tw1 ,"window 4");
+		
 		t1.start();
 		t2.start();
 		t4.start();
