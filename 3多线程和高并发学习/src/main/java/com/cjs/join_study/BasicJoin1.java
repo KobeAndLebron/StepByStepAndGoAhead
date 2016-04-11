@@ -2,8 +2,14 @@ package com.cjs.join_study;
 
 public class BasicJoin1 {
 	public static void main(String[] args) {
-		Sleeper sleepy = new Sleeper("sleepy", 1500);
+		/*Sleeper sleepy = new Sleeper("sleepy", 1500);
 		Sleeper grumpy = new Sleeper("grumpy", 1500);
+		Joiner dopey = new Joiner("dopey", sleepy);
+		Joiner doc = new Joiner("grumpy", grumpy);
+		grumpy.interrupt();*/
+		
+		Sleeper grumpy = new Sleeper("grumpy", 0);
+		Sleeper sleepy = new Sleeper("sleepy", 0);
 		Joiner dopey = new Joiner("dopey", sleepy);
 		Joiner doc = new Joiner("grumpy", grumpy);
 		grumpy.interrupt();
@@ -42,7 +48,7 @@ class Sleeper extends Thread{
 		try{
 			Thread.sleep(duration);
 		}catch(InterruptedException e){
-			System.out.println(getName() + "was interrupted. " + "isInterrupted?" + isInterrupted());
+			System.out.println(getName() + " was interrupted. " + "isInterrupted?" + isInterrupted());
 		}
 		System.out.println(getName() + " has awakened");
 	}

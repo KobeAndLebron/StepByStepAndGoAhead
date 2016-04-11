@@ -1,7 +1,14 @@
 package com.cjs.sell_ticket;
 
 /**
- * 线程安全的_最合理的版本
+ * 线程安全的_最合理的版本<br/>
+ * 
+ * 可以拥有自己的一些特定属性而{@linkplain TicketWindow1}不可以，因为所有线程共用的是一个Runnable对象
+ * 
+ * <ol>
+ * 	<li>基本上所有的并发模式在解决线程冲突问题的时候，都是采用序列化访问共享资源的方案，这就意味着在给定时刻只允许有一个任务访问 共享资源。 </li>
+ * 	<li>通常情况下是通过加锁来实现的，即Mutual Exclusion，使用MUTEX互斥量的方法，Java中是用synchronized关键字实现的</li>
+ * </ol>
  * 
  * @author ChenJingShuai
  *
@@ -9,9 +16,7 @@ package com.cjs.sell_ticket;
  */
 // 每一个Runnable对象都代表一个进程-即窗口,可以对方法区里或者堆区的对象操作
 public class TicketWindowFinal implements Runnable{
-	/**
-	 * 可以自己窗口的一些特定属性而{@linkplain TicketWindow1}不可以，因为所有线程共用的是一个Runnable对象
-	 */
+	// 或者通过依赖的方式将资源的引用放到这-后面的生产者消费者就是这样做的~~~
 	public void run(){
 		while(true){
 			if(Resource.ticketNum > 0){
