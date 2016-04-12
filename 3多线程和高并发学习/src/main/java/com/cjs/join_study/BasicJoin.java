@@ -1,7 +1,7 @@
 package com.cjs.join_study;
 
 /**
- * 使得线程进入阻塞状态直到被join的进程执行完毕-即dead或者在超时的情况下-use join with time out，才进入可执行状态
+ * 使得线程进入阻塞状态直到被join的进程执行完毕-即dead或者在超时的情况下-the case using join with time out，才进入可执行状态
  * 
  * @author ChenJingShuai
  *
@@ -21,9 +21,10 @@ public class BasicJoin extends Thread{
 		bj.start();
 		try {
 			/**
-			 * calling join() with timeout will cause the current thread into TIMED_WAITING,如果timeout到时被join的进程
-			 * 还没执行完，那么当前线程变为阻塞状态(in JVM not in operating system，in operating system TIMED_WAITING is also
-			 * belong to Blocked state)，等待进入Runnable状态分配CPU.
+			 * Calling join() with timeout will cause the current thread into the state called TIMED_WAITING,
+			 * 如果timeout到时被join的进程还没执行完，那么当前线程变为阻塞状态
+			 * (in JVM not in operating system，in operating system TIMED_WAITING is also
+			 * belong to Blocked state)，等待进入Runnable状态然后分配CPU执行.
 			 */
 			bj.join(1);
 		} catch (InterruptedException e) {

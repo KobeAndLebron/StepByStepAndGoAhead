@@ -4,8 +4,7 @@
  * Test if state for threads in Entry Set and not in the monitor region monitored by object/class are blocked?
  * 
  * The answer is yes.and you can also look {@linkplain com.cjs.wait_notify.ProducerAndCustomer },there are 
- * some explanation about Entry Set,monitor and so on
- * 
+ * some explanation about Entry Set,monitor and ExplanationForConceptOfMonitor.jpg
  * 
  * Thread state for a thread blocked waiting for a monitor lock.
  * A thread in the blocked state is waiting for a monitor lock
