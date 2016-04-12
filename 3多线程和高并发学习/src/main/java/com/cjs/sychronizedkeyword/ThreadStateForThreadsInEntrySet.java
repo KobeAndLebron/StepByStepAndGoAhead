@@ -1,29 +1,30 @@
 ﻿package com.cjs.sychronizedkeyword;
 
 /**
- * Test if state for threads in Entry Set and not in the monitor region monitored by object/class are blocked?
+ * Test if state for threads in Entry Set and not in the monitor region monitored by object/class is blocked?
  * 
- * The answer is yes.and you can also look {@linkplain com.cjs.wait_notify.ProducerAndCustomer },there are 
- * some explanation about Entry Set,monitor and ExplanationForConceptOfMonitor.jpg
+ * The answer is yes.and you can also look {@linkplain com.cjs.wait_notify.ProducerAndCustomer }  and ExplanationForConceptOfMonitor.jpg
+ * ,there are some explanation about Entry Set,monitor.
  * 
  * Thread state for a thread blocked waiting for a monitor lock.
  * A thread in the blocked state is waiting for a monitor lock
  * to enter a synchronized block/method or
  * reenter a synchronized block/method after calling
  * {@link Object#wait() Object.wait}.
-	BLOCKED,
-
+ *	BLOCKED,
+ *	
+ * You can run this application to understand the several states of thread-{@linkplain java.lang.Thread$State}.
  * @author ChenJingShuai
  *
  * 每天进步一点-2016年4月6日-下午5:14:47
  */
-public class Test1 extends Thread{
-	public Test1(String name){
+public class ThreadStateForThreadsInEntrySet extends Thread{
+	public ThreadStateForThreadsInEntrySet(String name){
 		super(name);
 	}
 	
 	public void run(){
-		if(currentThread().getName().equals("Be Blocked")){
+		if(currentThread().getName().equals("Firstly Enter")){
 			try {
 				Thread.sleep(5);
 			} catch (InterruptedException e) {
@@ -43,7 +44,7 @@ public class Test1 extends Thread{
 			System.out.println(getName() + " has waken");
 		}*/
 		
-		synchronized(Test1.class){
+		synchronized(ThreadStateForThreadsInEntrySet.class){
 			System.out.println(Thread.currentThread().getName() + " is monitoring by Test.class Object");
 			long sleepMills = 10;
 			System.out.println(getName() + " will sleep " + sleepMills);
@@ -54,7 +55,7 @@ public class Test1 extends Thread{
 				e.printStackTrace();
 			}
 			try {
-				Test1.class.wait(2);
+				ThreadStateForThreadsInEntrySet.class.wait(2);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -63,8 +64,8 @@ public class Test1 extends Thread{
 	}
 	
 	public static void main(String[] args) {
-		Thread t1 = new Test1("Firstly Enter");
-		Thread t2 = new Test1("Secnodly Enter");
+		Thread t1 = new ThreadStateForThreadsInEntrySet("Firstly Enter");
+		Thread t2 = new ThreadStateForThreadsInEntrySet("Secnodly Enter");
 		t1.start();
 		t2.start();
 		while(true){

@@ -1,0 +1,3 @@
+	There have some detail to notice:
+
+First:When a thread terminates,it will execute it's notifyAll method~

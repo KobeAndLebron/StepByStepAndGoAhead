@@ -45,12 +45,12 @@ class CustomerThread1 implements Runnable{
 	}
 	
 	public void run() {
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}// -------------------------------------this
 		while(true){
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}// -------------------------------------this
 			synchronized (Object.class) {
 				if(list.size() == 0){
 					System.out.println(this.name + " have runed out all resource");
@@ -80,12 +80,12 @@ class ProduceThread1 implements Runnable{
 	}
 	
 	public void run() {
+		/*try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}*/ //--------------------------------------------or this
 		while(true){
-			/*try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}*/ //--------------------------------------------or this
 			synchronized (Object.class) {
 				if(list.size() == 10){
 					System.out.println(this.name + " have produce what list can load");

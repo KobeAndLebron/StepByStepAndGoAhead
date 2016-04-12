@@ -1,5 +1,7 @@
 package com.cjs.join_study;
 
+import com.cjs.TimerThread;
+
 /**
  * {@linkplain java.lang.Thread#join()}的实现原理-涉及到wait的实现原理
  * 
@@ -8,10 +10,20 @@ package com.cjs.join_study;
  * 每天进步一点-2016年4月11日-下午2:25:07
  */
 public class ImplementationPrincipleOfJoin extends Thread{
+	private static int t1 = 2000;
+	private static int t2 = 10000;
 	public void run(){
+		try {
+			/**
+			 * 保障先执行线程的join方法，而且睡的时间不能比join长，长的话这个测试就失效了。。。
+			 */
+			Thread.sleep(t1);
+		} catch (InterruptedException e1) {
+			e1.printStackTrace();
+		}
 		synchronized (this) {
 			try {
-				Thread.sleep(10000);
+				Thread.sleep(t2);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -27,6 +39,9 @@ public class ImplementationPrincipleOfJoin extends Thread{
 	}
 	
 	public static void main(String[] args) {
+		// 计时器：大概估计线程的睡眠时间
+		TimerThread t = new TimerThread(t1 + t2);
+		t.start();
 		ImplementationPrincipleOfJoin bj = new ImplementationPrincipleOfJoin();
 		bj.start();
 		try {
@@ -42,8 +57,8 @@ public class ImplementationPrincipleOfJoin extends Thread{
 			 	concurrently executing a monitor region of the same monitor. 
 				A monitor enforces this one-thread-at-a-time execution of its monitor regions
 			 */
-			
-			bj.join(1);
+			// As a thread terminates the this.notifyAll method is invoked
+			bj.join(5000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
