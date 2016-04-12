@@ -10,6 +10,9 @@ import java.util.List;
  *
  *	因为这种情况生产者和消费者没有sleep，所以导致了临界情况很快被触碰了
  *	可能1ms就执行生产者或消费者好多次了。。。。
+ *
+ *	总之只有wait没有notify是不行的
+ *
  * @author ChenJingShuai
  *
  * 每天进步一点-2016年4月6日-下午8:23:59
