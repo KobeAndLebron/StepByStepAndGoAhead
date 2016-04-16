@@ -9,6 +9,7 @@ package com.cjs;
  */
 public class TimerThread extends Thread{
 	private long timer = 0;
+	private boolean isFinish = false;
 	
 	public TimerThread(long timer){
 		this.timer = timer;
@@ -38,6 +39,15 @@ public class TimerThread extends Thread{
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+		this.isFinish = true;
 		System.out.println("计时结束：" + timer + "ms");
+	}
+	
+	/**
+	 * 计时是否结束
+	 * @return
+	 */
+	public boolean isFinished(){
+		return this.isFinish;
 	}
 }
