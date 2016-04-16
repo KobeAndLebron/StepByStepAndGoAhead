@@ -4,6 +4,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * 为每一个线 程分配ID
+ * 将对象的作用域变为线程所有的,而不是普通的范围：方法/类/对象
+ * 
  * @author ChenJingShuai
  *
  */

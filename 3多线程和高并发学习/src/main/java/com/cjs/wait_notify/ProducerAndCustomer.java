@@ -38,7 +38,7 @@ class CustomerThread implements Runnable{
 	public void run() {
 		while(true){
 			synchronized (Object.class) {
-				if(list.size() == 0){
+				while(list.size() == 0){
 					System.out.println(this.name + " have runed out all resource");
 					try {
 						Object.class.notifyAll();
@@ -46,11 +46,10 @@ class CustomerThread implements Runnable{
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
-				}else{
-					System.out.println(this.name + " is running out " + list.size() + " resource");
-					list.remove(list.size() - 1);
-					System.out.println(this.name + " has runed out " + (list.size() + 1) + " resource");
 				}
+				System.out.println(this.name + " is running out " + list.size() + " resource");
+				list.remove(list.size() - 1);
+				System.out.println(this.name + " has runed out " + (list.size() + 1) + " resource");
 			}
 			try {
 				Thread.sleep(1000);
@@ -79,7 +78,7 @@ class ProduceThread implements Runnable{
 			// if there is a thread in the monitor region,the current thread will be blocked(this 
 			// result have a proof at Test1.java)
 			synchronized (Object.class) {
-				if(list.size() == 10){
+				while(list.size() == 10){
 					System.out.println(this.name + " have produce what list can load");
 					try {
 						/**
@@ -96,11 +95,10 @@ class ProduceThread implements Runnable{
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
-				}else{
-					System.out.println(this.name + " is producing " + (list.size() + 1) + " resource");
-					list.add("resource" + list.size());
-					System.out.println(this.name + " has produced " + list.size() + " resource");
 				}
+				System.out.println(this.name + " is producing " + (list.size() + 1) + " resource");
+				list.add("resource" + list.size());
+				System.out.println(this.name + " has produced " + list.size() + " resource");
 			}// Exit the monitor region and release the monitor
 			try {
 				Thread.sleep(1000);

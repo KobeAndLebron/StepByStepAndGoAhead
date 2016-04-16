@@ -1,3 +1,6 @@
 	There have some detail to notice:
 
 First:When a thread terminates,it will execute it's notifyAll method~
+
+Secnod:It is recommended that applications not use wait, notify, or notifyAll on Thread instances because of the 
+first notice.

@@ -1,4 +1,4 @@
-package com.cjs.notSafeThreadExamples;
+package com.cjs.notSafeThreadExamples.first;
 
 public class ThreadSafeEvenGenerator extends IntGenerator {
 	private int currentEvenValue = 0;

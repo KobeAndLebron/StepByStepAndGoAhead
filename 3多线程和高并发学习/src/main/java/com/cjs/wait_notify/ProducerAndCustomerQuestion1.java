@@ -18,8 +18,8 @@ import java.util.List;
  * waiting thread. But because the notifying thread continued, it may have altered the state after the notify such 
  * that the waiting thread still can't do useful work. Alternatively, a third thread may have acquired the monitor 
  * after the notifying thread released it but before the waiting thread acquired it, and the third thread may have 
- * changed the state of the protected data. As a result, a notify must often be considered by waiting threads merely 
- * as a hint that the desired state may exist. Each time a waiting thread is resurrected, it may need to check the
+ * changed the state of the protected data.   As a result, a notify must often be considered by waiting threads merely 
+ * as a hint that the desired state may exist.   Each time a waiting thread is resurrected, it may need to check the
  * state again to determine whether it can move forward and do useful work. If it finds the data still isn't in the 
  * desired state, the thread could execute another wait or give up and exit the monitor. 
  * 	so we should use while instead of if~~~
@@ -57,7 +57,7 @@ public class ProducerAndCustomerQuestion1 {
 			t.start();
 		}
 	}
-}
+} 
 
 class CustomerThread3 implements Runnable{
 	private String name;
@@ -71,7 +71,7 @@ class CustomerThread3 implements Runnable{
 	public void run() {
 		while(true){
 			synchronized (Object.class) {
-				while(list.size() <= 0){
+				if(list.size() <= 0){
 					System.out.println(this.name + " have runed out all resource");
 					try {
 						Object.class.notifyAll();
@@ -111,7 +111,7 @@ class ProduceThread3 implements Runnable{
 			// if there is a thread in the monitor region,the current thread will be blocked(this 
 			// result have a proof at Test1.java)
 			synchronized (Object.class) {
-				while(list.size() >= 10){
+				if(list.size() >= 10){
 					System.out.println(this.name + " have produce what list can load");
 					try {
 						/**

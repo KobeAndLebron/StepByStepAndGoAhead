@@ -1,4 +1,4 @@
-package com.cjs.notSafeThreadExamples;
+package com.cjs.notSafeThreadExamples.first;
 
 public abstract class IntGenerator {
 	/**

@@ -8,6 +8,8 @@ package com.cjs.sell_ticket;
  * 
  * 类比事务的话，单线程对应事务的隔离级别为序列化，大大影响 了程序的并发度；
  *
+ *
+ *	这个类在内存中是单例的，并且涉及到读写交叉执行，所以需要考虑线程安全问题+++++++
  * @author ChenJingShuai
  *
  * 每天进步一点-2016年4月3日-下午3:28:29
@@ -15,6 +17,7 @@ package com.cjs.sell_ticket;
 public class TicketWindow implements Runnable{
 	int ticketNum = 10;
 	
+	// +++++++
 	public void run(){
 		while(true){
 			if(ticketNum > 0){

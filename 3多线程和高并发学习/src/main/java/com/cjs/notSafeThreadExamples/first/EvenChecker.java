@@ -1,4 +1,4 @@
-package com.cjs.notSafeThreadExamples;
+package com.cjs.notSafeThreadExamples.first;
 
 /**
  * 	跟{@linkplain com.cjs.sell_ticket.TicketWindowFinal}一样，每一个线程都是对应一个对象，然后每个线程对象都持有共同的资源，由于Ticket里面

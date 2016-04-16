@@ -59,7 +59,7 @@ public class TicketWindowFinal implements Runnable{
 }
 
 /**
- * 资源类，初始化后位于内存的方法区，可以被线程共享
+ * 资源类，初始化后位于内存的方法区，可以被线程共享,且只有一份，所以对他的静态变量访问时，存在线程安全的问题-读写交叉-就需要进行同步+++++++
  * @author ChenJingShuai
  *
  * 每天进步一点-2016年4月3日-下午4:15:57
