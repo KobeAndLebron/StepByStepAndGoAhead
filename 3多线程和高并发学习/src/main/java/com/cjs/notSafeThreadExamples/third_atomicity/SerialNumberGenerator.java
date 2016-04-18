@@ -1,4 +1,4 @@
-package com.cjs.notSafeThreadExamples.third;
+package com.cjs.notSafeThreadExamples.third_atomicity;
 
 /**
  * 序列化数字产生器
@@ -18,6 +18,7 @@ public class SerialNumberGenerator {
 	 * four: putfield <br/>
 	 * <br/>
 	 * 因此在获取和放置之间，另一个任务可能修改这个域即存在读写交叉执行的问题，所以这个操作不是原子性的;
+	 * 并且由于serialNumber是static的，所以需要考虑线程安全问题+++++++
 	 *
 	 * @return the next serialNumber
 	 */

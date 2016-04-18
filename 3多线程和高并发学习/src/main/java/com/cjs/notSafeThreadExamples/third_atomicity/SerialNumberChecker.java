@@ -1,4 +1,4 @@
-package com.cjs.notSafeThreadExamples.third;
+package com.cjs.notSafeThreadExamples.third_atomicity;
 
 /**
  * 用以证明++i的非原子性
@@ -21,7 +21,7 @@ public class SerialNumberChecker {
 		public void run(){
 			while(true){
 				/**
-				 * 需要保证nextSerialNumber这个方法的线程安全
+				 * 需要保证nextSerialNumber这个方法的线程安全，即serial的不重复性+++++++
 				 */
 				int serial = SerialNumberGenerator.nextSerialNumber();
 				if(serials.contains(serial)){

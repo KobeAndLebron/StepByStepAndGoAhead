@@ -1,4 +1,4 @@
-package com.cjs.notSafeThreadExamples.third;
+package com.cjs.notSafeThreadExamples.third_atomicity;
 
 /**
  * Reuses storage so we do not run out of memory.
@@ -8,8 +8,11 @@ package com.cjs.notSafeThreadExamples.third;
  * 每天进步一点-2016年4月16日-下午8:57:59
  */
 public class CircularSet {
+	// This array is used for integer storage
 	private int[] array;
+	// This array's length
 	private int len;
+	// The key of reusing storage
 	private int index = 0;
 	
 	public CircularSet(int size){
@@ -22,7 +25,8 @@ public class CircularSet {
 	}
 	
 	/**
-	 * add为写，contains为读，CircularSet为单例模式在内存，所以array也只有一份在内存，所以需要考虑线程安全
+	 * add为写，contains为读，CircularSet为单例模式在内存，所以array也只有一份在内存，所以需要考虑线程安全+++++++
+	 * 读的过程中可能进行写如果不同步的话
 	 * 
 	 * @param i added number
 	 */
