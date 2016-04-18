@@ -1,5 +1,7 @@
 package com.cjs.join_study;
 
+import com.cjs.TimerThread;
+
 /**
  * 自己实现的join方法
  * 
@@ -8,11 +10,12 @@ package com.cjs.join_study;
  * 每天进步一点-2016年4月12日-下午9:17:17
  */
 public class MyImplementataionOfJoin {
+	private static final int mills = 3000;
 	private static final Thread t = new Thread(new Runnable() {
 		public void run() {
 			try {
 				synchronized (t) {
-					Thread.sleep(3000);
+					Thread.sleep(mills);
 				}
 			} catch (InterruptedException e) {
 				e.printStackTrace();
@@ -49,6 +52,9 @@ public class MyImplementataionOfJoin {
 	}
 	
 	public static void main(String[] args) throws InterruptedException {
+		TimerThread th = new TimerThread(mills);
+		th.start();
+		
 		t.start();
 		MyImplementataionOfJoin.join(t, 0);
 		System.out.println("I wanted CPU!!! but bj Thread is " + (t.isAlive() ? "alive" : "dead"));

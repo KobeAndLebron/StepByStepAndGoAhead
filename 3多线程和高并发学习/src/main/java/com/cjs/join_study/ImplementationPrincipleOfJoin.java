@@ -15,7 +15,7 @@ public class ImplementationPrincipleOfJoin extends Thread{
 	public void run(){
 		try {
 			/**
-			 * 保障先执行线程的join方法，而且睡的时间不能比join长，长的话这个测试就失效了。。。
+			 * 保障先执行主线程的join方法，而且睡的时间不能比join长，长的话这个测试就失效了。。。
 			 */
 			Thread.sleep(t1);
 		} catch (InterruptedException e1) {

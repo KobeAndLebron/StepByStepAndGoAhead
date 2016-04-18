@@ -23,6 +23,11 @@ public class MyImplementataionOfJoinTest2 {
 				Thread.sleep(t1);
 				synchronized (t) {
 					System.out.println("Sencond");
+					/**
+					 *  This thread will notify all threads in waiting set which waiting this monitor and continue 
+					 * executing the monitor region.When it release the monitor,all threads in the waiting set and 
+					 * the entry set will compete the monitor;So it is also called Signal and Continue monitor;
+					 */
 					t.notifyAll();
 					// without timeout 将会造成程序停不下来。。。。。。
 					t.wait(t2);

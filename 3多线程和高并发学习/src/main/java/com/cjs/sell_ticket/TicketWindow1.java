@@ -2,7 +2,8 @@ package com.cjs.sell_ticket;
 
 /**
  * 线程安全的
- * 
+ *
+ * 内存中 TicketWindow1使用的是单例，所以需要考虑多线程安全问题+++++++
  * @author ChenJingShuai
  *
  * 每天进步一点-2016年4月3日-下午3:28:29

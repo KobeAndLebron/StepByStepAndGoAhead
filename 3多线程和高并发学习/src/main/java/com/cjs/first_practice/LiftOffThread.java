@@ -5,6 +5,8 @@ import com.cjs.ThreadLocal.ThreadId;
 /**
  * 涉及到{@linkplain com.cjs.ThreadLocal.ThreadId}以及线程的作用域
  * 
+ * 在内存中为非单例并且无载体-载体就是本身因为继承了Thread类，所以不需要考虑线程安全问题+++++++
+ * 
  * @author ChenJingShuai
  *
  * 每天进步一点-2016年4月15日-下午12:35:48

@@ -2,17 +2,18 @@ package com.cjs.join_study;
 
 public class BasicJoin1 {
 	public static void main(String[] args) {
-		/*Sleeper sleepy = new Sleeper("sleepy", 1500);
+		Sleeper sleepy = new Sleeper("sleepy", 1500);
 		Sleeper grumpy = new Sleeper("grumpy", 1500);
 		Joiner dopey = new Joiner("dopey", sleepy);
 		Joiner doc = new Joiner("grumpy", grumpy);
-		grumpy.interrupt();*/
+		/*grumpy.interrupt();
+		doc.interrupt();*/
 		
-		Sleeper grumpy = new Sleeper("grumpy", 0);
+		/*Sleeper grumpy = new Sleeper("grumpy", 0);
 		Sleeper sleepy = new Sleeper("sleepy", 0);
 		Joiner dopey = new Joiner("dopey", sleepy);
 		Joiner doc = new Joiner("grumpy", grumpy);
-		grumpy.interrupt();
+		grumpy.interrupt();*/
 	}
 }
 
@@ -27,9 +28,10 @@ class Joiner extends Thread{
 	
 	public void run(){
 		try{
+			// 进入WAITING状态
 			sleeper.join();
 		}catch(InterruptedException e){
-			System.out.println(getName() + "was interrupted. ");
+			System.out.println(getName() + " was interrupted,but my state is " + Thread.currentThread().getState());
 		}
 		System.out.println(getName() + " join completed");
 	}
@@ -46,9 +48,10 @@ class Sleeper extends Thread{
 	
 	public void run(){
 		try{
+			// 进入TIMED_WAITING状态
 			Thread.sleep(duration);
 		}catch(InterruptedException e){
-			System.out.println(getName() + " was interrupted. " + "isInterrupted?" + isInterrupted());
+			System.out.println(getName() + " was interrupted,but my state is " + Thread.currentThread().getState());
 		}
 		System.out.println(getName() + " has awakened");
 	}

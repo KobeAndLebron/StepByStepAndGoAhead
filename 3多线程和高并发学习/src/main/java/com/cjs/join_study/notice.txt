@@ -1,4 +1,4 @@
-	There have some detail to notice:
+	There is some detail for you to notice:
 
 First:When a thread terminates,it will execute it's notifyAll method~
 

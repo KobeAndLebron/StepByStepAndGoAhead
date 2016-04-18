@@ -1,7 +1,7 @@
 package com.cjs.notSafeThreadExamples.first;
 
 /**
- * 这个类在内存的使用是单例，所以需要考虑多线程安全问题+++++++
+ * 这个类在内存的使用是单例,不管载体Runnable是不是单例-实际为非单例,所以需要考虑多线程安全问题+++++++
  * 
  * @author ChenJingShuai
  *
@@ -17,7 +17,8 @@ public class EvenGenerator extends IntGenerator {
 	@Override
 	public int next() {
 		/**
-		 *  ++操作不是原子性的，线程不安全的???
+		 *  ++操作不是原子性的，线程不安全的;There is a solution on 
+		 *  {@linkplain com.cjs.notSafeThreadExamples.third.SerialNumberGenerator} for this question.
 		 */
 		++currentEvenValue; // Danger point here~
 		Thread.yield();

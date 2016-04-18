@@ -21,7 +21,7 @@ public class TimerThread extends Thread{
 	}
 	
 	public void run(){
-		System.out.println("计时开始：");
+		System.out.println("计时开始(" + this.timer + "ms" + ")：");
 		// 将时间分隔开来降低精确度，因为分割的话会导致线程的切换次数增多，切换也是需要时间的
 		// 即使直接进行sleep也会实际计时时间偏大，因为线程切换也是需要时间的-虽然非常短。。。。。
 		/*while(left > 0){
