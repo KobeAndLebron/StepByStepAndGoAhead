@@ -5,6 +5,10 @@ import com.cjs.TimerThread;
 /**
  * {@linkplain java.lang.Thread#join()}的实现原理-涉及到wait的实现原理
  * 
+ * 效果：让join with timeout失效
+ * 
+ * @see MyImplementataionOfJoinTest1
+ * 
  * @author ChenJingShuai
  *
  * 每天进步一点-2016年4月11日-下午2:25:07
@@ -46,18 +50,22 @@ public class ImplementationPrincipleOfJoin extends Thread{
 		bj.start();
 		try {
 			/**
-			 * 由于Thread的join方法是同步的，那么调用join会首先获取this的锁,然后进入this的wait set
-			 * 如果是join with timeout，那么就是调用wait with timeout，如果到指定时间this代表的线程还没死，那么就直接跳出循环
-			 * 如果是join without timeout，那么就是调用wait without timeout,然后就是等直到this代表的线程dead，isAlive（）返回false
+			 * 由于Thread的join方法是同步的，那么调用join会首先获取this的锁,然后进入this即调用join方法的thread对象的Monitor的Wait Set
+			 *  如果是join with timeout，那么就是调用wait with timeout，如果到指定时间this代表的线程还没死，那么join失效，当前线程和this代表
+			 * 的线程并发运行(在this这个Monitor没被占用的情况下)
+			 *  如果是join without timeout，那么就是调用wait without timeout,然后就是等直到this代表的线程terminated,即API里面锁定所说的:
+			 * Waiting for this thread to die.
 			 * 
-			 * 当然在wait之后要想重新调用wait之后的方法，那么就要重新获取this的锁，如果在this代表的线程里获取this的锁之后sleep一段时间
-			 * -比join的时间长，因为sleep不会释放锁，所以join里面的代码得不到执行。。。。那么就会使join的timeout失效。。。。
+			 * As a thread terminates the notifyAll method is called 
+			 * 
+			 *  在wait之后要想重新调用wait之后(timeout expires)的方法，那么就要重新获取this的锁，如果在this代表的线程里获取this的锁之后sleep
+			 *  一段时间且这个时间比join的时间长，因为sleep不会释放锁，所以join里面的代码得不到执行。。。。那么就会使join的timeout失效。。。。
 			 
 			 	one thread must be able to execute a monitor region from beginning to end without another thread 
 			 	concurrently executing a monitor region of the same monitor. 
 				A monitor enforces this one-thread-at-a-time execution of its monitor regions
 			 */
-			// As a thread terminates the this.notifyAll method is invoked
+			// 如果join时间大于线程运行的时间，那么以线程运行的时间为准否则以join的时间为准,时间过后the current thread开始运行
 			bj.join(5000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();

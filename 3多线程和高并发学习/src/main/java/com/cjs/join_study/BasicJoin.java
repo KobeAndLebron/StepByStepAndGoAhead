@@ -1,7 +1,13 @@
 package com.cjs.join_study;
 
 /**
- * 使得线程进入阻塞状态直到被join的进程执行完毕-即dead或者在超时的情况下-the case using join with time out，才进入可执行状态
+ *  Purpose of Join:<br/>
+ *  &nbsp;&nbsp;&nbsp;使得当前线程进入{@linkplain Thread.State#WAITING Waiting}/
+ *  {@linkplain Thread.State#TIMED_WAITING TIMED_WAITING}直到被join的进程Dead或者超时-the case using join with time out,
+ *  才进入可执行状态
+ * 
+ * @see Thread#join()
+ * @see Thread#join(long)
  * 
  * @author ChenJingShuai
  *

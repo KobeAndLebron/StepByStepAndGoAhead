@@ -7,6 +7,8 @@ import com.cjs.TimerThread;
  * 	当线程sleep（并且拿着自己的锁）的时间大于join的时间的时候，join的时间就会失效；因为join和run方法公用的是一把锁:线程对象
  * 
  * 	让join的timeout失效的方法
+ * 
+ * @see ImplementationPrincipleOfJoin
  * @author ChenJingShuai
  *
  * 每天进步一点-2016年4月12日-下午9:17:17

@@ -5,6 +5,9 @@ import com.cjs.TimerThread;
 /**
  * 自己实现的join方法
  * 
+ * @see MyImplementataionOfJoinTest1 
+ * @see	MyImplementataionOfJoinTest2
+ * 
  * @author ChenJingShuai
  *
  * 每天进步一点-2016年4月12日-下午9:17:17
