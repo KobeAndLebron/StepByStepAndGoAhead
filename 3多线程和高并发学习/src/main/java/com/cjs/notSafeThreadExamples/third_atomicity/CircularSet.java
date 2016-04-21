@@ -25,8 +25,11 @@ public class CircularSet {
 	}
 	
 	/**
-	 * add为写，contains为读，CircularSet为单例模式在内存，所以array也只有一份在内存，所以需要考虑线程安全+++++++
+	 *  add为写,contains为读,array的载体CircularSet为单例模式在内存因此不用管他的载体(${@linkplain SerialNumberChecker})是不是单例,
+	 *  所以需要考虑线程安全在读contain和写add交叉执行的执行下(由于线程的并发性和异步性)+++++++
 	 * 读的过程中可能进行写如果不同步的话
+	 * 
+	 * 单例给方法加上Synchronize的关键字即可
 	 * 
 	 * @param i added number
 	 */

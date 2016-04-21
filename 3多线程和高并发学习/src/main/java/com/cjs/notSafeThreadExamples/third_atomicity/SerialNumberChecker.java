@@ -24,6 +24,9 @@ public class SerialNumberChecker {
 				 * 需要保证nextSerialNumber这个方法的线程安全，即serial的不重复性+++++++
 				 */
 				int serial = SerialNumberGenerator.nextSerialNumber();
+				/**
+				 * 保证contain和add组合线程安全+++++++
+				 */
 				if(serials.contains(serial)){
 					System.out.println("Duplicate: " + serial);
 					System.exit(0);

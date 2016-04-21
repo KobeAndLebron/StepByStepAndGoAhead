@@ -27,6 +27,7 @@ public class TicketWindowFinal1 implements Runnable{
 	public void run(){
 		while(true){
 			if(!this.resource.isEmpty()){
+				// 保证此方法的线程安全+++++++
 				this.resource.consume();
 			}else{
 				break;
@@ -34,10 +35,6 @@ public class TicketWindowFinal1 implements Runnable{
 		}
 	}
 	
-	/**
-	 * 载体为非单例而Resource1为单例 +++++++
-	 * @param args
-	 */
 	public static void main(String[] args) {
 		Resource1 r = new Resource1();
 		/**
@@ -60,7 +57,7 @@ public class TicketWindowFinal1 implements Runnable{
 }
 
 /**
- * 这个类是单例-不管载体是不是单例-实际是非单例，所以当存在读写交叉的问题时需要考虑线程安全问题+++++++
+ * ticketNum的载体是单例-所以不管载体的载体${@linkplain TicketWindowFinal1}是不是单例-实际是非单例,并且还存在读写交叉的问题时,所以需要考虑线程安全问题+++++++
  * 
  * @author ChenJingShuai
  *
@@ -91,7 +88,6 @@ class Resource1{
 		}else{
 			System.out.println(Thread.currentThread().getName() +
 					" is sold out");
-			return;
 		}
 	}
 }

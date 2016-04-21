@@ -4,8 +4,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * 这个类在内存是单例，但是存在读写交叉问题/方法的配套使用情况下，所以需要考虑线程安全问题+++++++
- * 
+ * ${@code i}的载体在内存是单例,并且存在读写交叉问题(在方法的配套使用情况下),所以需要考虑线程安全问题+++++++
+ *  
  * 不能盲目地利用原子性的特性
  * 
  * @author ChenJingShuai

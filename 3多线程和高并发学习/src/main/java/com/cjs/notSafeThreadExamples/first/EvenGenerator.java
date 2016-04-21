@@ -1,7 +1,8 @@
-package com.cjs.notSafeThreadExamples.first;
+ package com.cjs.notSafeThreadExamples.first;
 
 /**
- * 这个类在内存的使用是单例,不管载体Runnable是不是单例-实际为非单例,所以需要考虑多线程安全问题+++++++
+ * 因为currentEvenValue的载体这个类在内存的使用是单例,所以调用它的类在(这里是${@linkplain EvenChecker})是不是单例,并且存在读写交叉问题,
+ * 所以需要考虑多线程安全问题+++++++
  * 
  * @author ChenJingShuai
  *
@@ -11,8 +12,10 @@ public class EvenGenerator extends IntGenerator {
 	private int currentEvenValue = 0;
 	
 	/**
+	 * 此函数的作用是产生下一个偶数，下面的读写问题是基于他的作用产生的
 	 * 一个任务有可能在另一个任务执行第一个对++操作但是没有执行第二步的时候，调用next方法，这时候就生成了一个奇数，导致错误
 	 * 一个任务写的过程中被另一个写的任务所干扰	+++++++
+	   并且由于这个类是单例的,所以只需在方法加上synchronized关键字即可,他会获取this代表的Monitor
 	 */
 	@Override
 	public int next() {

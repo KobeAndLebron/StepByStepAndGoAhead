@@ -5,7 +5,7 @@ import com.cjs.ThreadLocal.ThreadId;
 /**
  * 涉及到{@linkplain com.cjs.ThreadLocal.ThreadId}以及线程的作用域
  * 
- * 在内存中为非单例并且无载体-载体就是本身因为继承了Thread类，所以不需要考虑线程安全问题+++++++
+ * 因为{@code countDown}的载体LiftOffThread在内存中为非单例并且本身就是Thread对象,所以即使存在读写交叉的问题,也不需要考虑线程安全问题+++++++
  * 
  * @author ChenJingShuai
  *
