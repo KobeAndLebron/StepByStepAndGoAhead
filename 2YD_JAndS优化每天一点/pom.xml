@@ -21,6 +21,12 @@
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
+		<!-- 对多线程项目的依赖 -->
+		<dependency>
+			<groupId>com.cjs.goHead</groupId>
+			<artifactId>3ThreadPoolAndHighConcurrencyStudy</artifactId>
+			<version>1.0-SNOAPSHOT</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
