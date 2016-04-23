@@ -17,7 +17,7 @@ public class SerialNumberGenerator {
 	 * third: iadd <br/>
 	 * four: putfield <br/>
 	 * <br/>
-	 * 因此在get和put之间另一个任务可能修改这个域即存在读写交叉执行的问题，所以这个操作不是原子性的;
+	 * 在get和put之间是两个操作，所以这个操作不是原子性的，可能产生两个一样的值;
 	 * 并且由于serialNumber是static的，所以需要考虑线程安全问题+++++++
 	 *
 	 * @return the next serialNumber

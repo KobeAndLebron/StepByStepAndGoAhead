@@ -25,6 +25,7 @@ public class SerialNumberChecker {
 				 */
 				int serial = SerialNumberGenerator.nextSerialNumber();
 				/**
+				 * 所有线程产生的serialNumber都存进Heap堆内存
 				 * 保证contain和add组合线程安全+++++++
 				 */
 				if(serials.contains(serial)){
@@ -37,8 +38,9 @@ public class SerialNumberChecker {
 	}
 	
 	public static void main(String[] args) throws NumberFormatException, InterruptedException {
+		SerialChecker s = new SerialChecker();
 		for(int i = 0; i < SIZE; i++){
-			Thread t = new Thread(new SerialChecker());
+			Thread t = new Thread(s);
 			t.setDaemon(true);
 			t.start();
 		}
