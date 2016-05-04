@@ -1,3 +1,4 @@
+package java;
 /**
  * 当要在HashSet或者HashMap中add/put之前判断是否存在key时，可以直接使用add/put方法然后根据返回值来判断，因为put/add方法会将以前节点的value返回
  * （对于Set来说会将Object对象返回，涉及到HashSet的实现方式：用HashMap实现，然后每一个节点的value放的都是同一个Object对象）
