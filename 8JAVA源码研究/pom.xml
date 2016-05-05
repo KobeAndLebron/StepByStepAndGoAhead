@@ -5,11 +5,19 @@
 	<artifactId>8JAVASourceCodeStudy</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>8JAVASourceCodeStudy</name>
-	
+
 	<!-- 设置build项目的时候源文件的编码格式,否则maven编译插件将使用平台默认编码 -->
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>	
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.cjs.goHead</groupId>
+			<artifactId>2YD_JavaAndSqlOptimizeStudyDayByDay</artifactId>
+			<version>1.0-SNOAPSHOT</version>
+		</dependency>
+	</dependencies>
 	<build>
 		<plugins>
 			<plugin>
@@ -38,6 +46,7 @@
 								<source>src/main/java</source>
 								<source>Annotation</source>
 								<source>Enum</source>
+								<source>Thread</source>
 							</sources>
 						</configuration>
 					</execution>
