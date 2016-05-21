@@ -1,26 +1,115 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<!-- All of the elements is directly under the POM's project element -->
+<project 
+	xmlns="http://maven.apache.org/POM/4.0.0" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<!--
+		What is the pom? 
+			Pom stands for "Project Object Model",it is an xml representation of Maven project held in a file 
+		named pom.xml .
+			When in the presence of Maven folks,speaking of a project is speaking in the philosophical sense,
+		beyond a mere collection of files containing code.	
+			A project contains configuration files,as well as the developers involved and the roles the play,
+		the organization and licenses,the URL of where the project lives,the project's dependencies,and all
+		of the other little pieces that come into play to give code life.
+			In fact,in the Maven world,a project need not contain any code at all,merely a pom.xml.
+	-->
+	
+	<!-- 
+			The element named modelVersion is currently the only supported version for both Maven 2&3,and is always
+		required.
+	 -->
 	<modelVersion>4.0.0</modelVersion>
 
+	<!-- It tends to stands for conversational names for the project-->
+	<name>Thunder</name>
+	
+	<!-- The Basics -->
+	<!-- Maven Coordinates -->
 	<groupId>com.goHead</groupId>
 	<artifactId>SuperPom</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
-	<name>SuperPom</name>
-
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
-	<dependencies>
-		<dependency>
-			<!-- junit依赖 -->
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.10</version>
-			<!-- 只在测试编译testCompile(testCompile不一定运行test)和测试运行test的时候添加此classPath，其余的时候都不添加，也不进行打包 -->
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
+	<!-- 
+			Maven Relationships(A powerful aspect of Maven is in its handling of projects relationships):
+		includes dependencies(and transitive dependencies),inheritance and aggregation(multi-module projects) 
+			 The cornerstone of the POM is its dependency list.Most every project depends upon others to 
+		build and run correctly,and if Maven does for you is that manage this list for you,you have gained 
+		a lot.Maven downloads and links the dependencies for you on compilation and other goals that require
+		them.As an added bonus,Maven brings in the dependencies of the those dependencies(transitive dependencies),
+		allowing you list to focus solely on the dependencies you project requires. 
+	-->
+	<!-- It is used by POMs to help manage dependency information across all of its children -->
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<!-- junit依赖 -->
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.10</version>
+				<!-- 只在测试编译testCompile(testCompile不一定运行test)和测试运行test的时候添加此classPath，其余的时候都不添加，也不进行打包 -->
+				<!-- 
+						The element refers to the classpath of the task at hand(compiling,runtime and testing,etc.)as well as
+					how to limit the transitivity of dependency.There are five scopes available:
+						compile:this is the default scope,used if none is specified.Compile dependencies are available in all 
+					classpaths.Futhermore,those dependencies are propagated to dependent projects.for example,spring-core.
+						provided:this is much like compile,but indicates that you expect the JDK or a container(eg:tomcat) to
+					provide it at runtime.it is only available on the compilation and test classpath,and is not transitive.
+						eg:servlet-api
+						runtime:this scope indicates that the dependency is not required for compilation,but is for execution.
+					it is in the runtime and test classpaths,but not the compile classpath.
+						eg:mysql-jdbc
+						test:this scope indicates that the dependency is not required for normal use of the application,and is
+					only available for the test compilation and execution phases.
+						eg:junit
+						system:this scope is similar to provided expect that you have to provide the JAR which contains it 
+					explicitly.The artifact is always available and is not looked up in a repository.
+						some examples:a depend upon c and its scope is test,c depend upon d and its scope is compile,
+					the result is a depend upon d and its scope is test.因为test为小集合，compile为大集合，取交集为小集合
+				 -->
+				<scope>test</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	<!-- The Basics -->
+	<description>自己学习JavaWeb的过程</description>
+	<inceptionYear>2016</inceptionYear>
+	
+	<build>
+		<pluginManagement>
+			<plugins>
+				<!-- 将编译的版本提升至1.7支持注解菱形语法等等 -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.3</version>
+					<configuration>
+						<source>1.7</source>
+						<target>1.7</target>
+					</configuration>
+				</plugin>
+			<!-- Add several folders whose type is source folder for the project inherited from the "SuperPom"-->
+			<!-- 依赖范围(scope)为test的classpath不会添加到此类插件的classpath,因为此类插件的范围为compile,eg:junit -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>1.7</version>
+				<executions>
+					<execution>
+						<id>add-source</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
 </project>
