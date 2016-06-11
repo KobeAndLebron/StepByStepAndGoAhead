@@ -21,6 +21,7 @@ public class Singeton3 {
     public static Singeton3 getInstance(){     
         if(instance == null){ 
         	try {
+        		// 提高线程不安全问题发生的几率
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();

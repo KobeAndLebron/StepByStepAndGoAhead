@@ -12,6 +12,7 @@ public class RemoveKeyValueOfValueIsNullTest {
 	
 	@Test
 	public void ifKeyValueOfValueIsNullIsRemoved() throws JsonGenerationException, JsonMappingException, IOException{
+		System.out.println(System.getProperty("java.class.path"));
 		DataStream dataStream1 = new DataStream();
 		dataStream1.setDevice("device1");
 		dataStream1.setDataPointsCount(-1);
