@@ -12,4 +12,5 @@ target/
 /.metadata/
 .settings/
 .classPath
+.classpath
 .project
