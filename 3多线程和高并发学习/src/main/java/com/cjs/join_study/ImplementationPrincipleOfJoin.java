@@ -20,6 +20,7 @@ public class ImplementationPrincipleOfJoin extends Thread{
 		try {
 			/**
 			 * 保障先执行主线程的join方法，而且睡的时间不能比join长，长的话这个测试就失效了。。。
+			 * eg: join(500)就会使得sleep不放锁失效...
 			 */
 			Thread.sleep(t1);
 		} catch (InterruptedException e1) {
@@ -50,18 +51,18 @@ public class ImplementationPrincipleOfJoin extends Thread{
 		bj.start();
 		try {
 			/**
-			 * 由于Thread的join方法是同步的，那么调用join会首先获取this的锁,然后进入this即调用join方法的thread对象的Monitor的Wait Set
-			 *  如果是join with timeout，那么就是调用wait with timeout，如果到指定时间this代表的线程还没死，那么join失效，当前线程和this代表
-			 * 的线程并发运行(在this这个Monitor没被占用的情况下)
+			 * 由于Thread的join方法是同步的,那么调用join会首先获取this的锁,然后进入this即 调用join方法的thread对象 的Monitor Region.
+			 *  如果是join with timeout,那么就是调用wait with timeout,如果到指定时间this代表的线程还没dead,那么wait失效,join方法会
+			 * 尝试获取this代表的锁继续与this代表的线程并发运行(如果this线程没有释放锁,那么join方法就不能继续往下运行)
 			 *  如果是join without timeout，那么就是调用wait without timeout,然后就是等直到this代表的线程terminated,即API里面锁定所说的:
 			 * Waiting for this thread to die.
 			 * 
 			 * As a thread terminates the notifyAll method is called 
 			 * 
-			 *  在wait之后要想重新调用wait之后(timeout expires)的方法，那么就要重新获取this的锁，如果在this代表的线程里获取this的锁之后sleep
+			 *   在wait之后要想重新调用wait之后(timeout expires)的方法，那么就要重新获取this的锁，如果在this代表的线程里获取this的锁之后sleep
 			 *  一段时间且这个时间比join的时间长，因为sleep不会释放锁，所以join里面的代码得不到执行。。。。那么就会使join的timeout失效。。。。
 			 
-			 	one thread must be able to execute a monitor region from beginning to end without another thread 
+			 	 one thread must be able to execute a monitor region from beginning to end without another thread 
 			 	concurrently executing a monitor region of the same monitor. 
 				A monitor enforces this one-thread-at-a-time execution of its monitor regions
 			 */
