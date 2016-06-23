@@ -35,7 +35,7 @@
 		The dots are replaced by OS specific directory separators (such as '/' in Unix) which becomes a relative
 		directory structure from the base repository. In the example given, the org.codehaus.mojo group lives 
 		within the directory $M2_REPO/org/codehaus/mojo. -->
-	<groupId>com.goHead</groupId>
+	<groupId>com.cjs.goHead</groupId>
 	<artifactId>SuperPom</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
@@ -102,9 +102,12 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
+					<!-- 有默认版本,命令行里面会警告warning -->
 					<version>3.3</version>
 					<configuration>
+						<!-- 使用jdk1.7的编译功能，因为1.5不支持<>运算符 -->
 						<source>1.7</source>
+						<!-- 所使用的jre版本 -->
 						<target>1.7</target>
 					</configuration>
 				</plugin>

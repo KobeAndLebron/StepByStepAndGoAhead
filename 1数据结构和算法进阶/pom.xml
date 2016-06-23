@@ -3,17 +3,16 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<parent>
-		<groupId>com.goHead</groupId>
+		<groupId>com.cjs.goHead</groupId>
   		<artifactId>SuperPom</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	
-	<groupId>com.cjs.goHead</groupId>
 	<artifactId>1DataStructureAndAlgorithmStudy</artifactId>
 	<version>1.0-SNAPSHOT</version>
 
-	<name>1数据结构和算法进阶</name>
+	<name>数据结构和算法进阶-Thunder</name>
 	
 	<properties>
 		<!-- javac -encoding指定的编码格式 -->
@@ -43,16 +42,10 @@
 	<build>
 		<!-- 配置插件,插件都是为了构建项目，所以这个节点应该位于build节点下 -->
 		<plugins>
-			<!-- 配置编译插件 -->
+			<!-- 配置编译插件，从父类继承 -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<!-- 有默认版本,命令行里面会警告warning -->
-				<configuration>
-					<!-- 使用jdk1.7的编译功能，因为1.5不支持<>运算符 -->
-					<source>1.7</source>
-					<target>1.7</target>
-				</configuration>
 			</plugin>
 			<!-- 为此项目配置 多个sourceFolder -->
 			<plugin>
@@ -61,7 +54,6 @@
 				<configuration>
 					<sources>
 						<!-- 我们可以通过在这里添加多个source节点，来添加任意多个源文件夹 -->
-						<source>src/main/java</source>
 					</sources>
 				</configuration>
 			</plugin>

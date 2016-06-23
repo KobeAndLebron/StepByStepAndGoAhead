@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	
 	<parent>
-		<groupId>com.goHead</groupId>
+		<groupId>com.cjs.goHead</groupId>
 		<artifactId>SuperPom</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
