@@ -7,12 +7,10 @@
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.cjs.goHead</groupId>
 	<artifactId>7JavaDesignPatternStudy</artifactId>
-	<version>1.0-SNOAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>7JavaDesignPatternStudy</name>
+	<name>设计模式学习-HEATS</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -38,7 +36,6 @@
 						<!-- 我们可以通过在这里添加多个source节点，来添加任意多个源文件夹 -->
 						<source>适配器模式</source>
 						<source>单例模式</source>
-						<source>迭代器模式</source>
 					</sources>
 				</configuration>
  			</plugin>

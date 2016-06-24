@@ -25,9 +25,9 @@ public class SingleNumberTest {
 		System.out.println(Arrays.toString(new SingleNumber().singleNumber(array)));
 		
 		try{
-			assertArrayEquals(new int[]{-1895772685, -967931676}, new SingleNumber().singleNumber(array));
+			assertArrayEquals(new int[]{0, 1}, new SingleNumber().singleNumber(array));
 		}catch(AssertionError e){
-			assertArrayEquals(new int[]{-967931676, -1895772685}, new SingleNumber().singleNumber(array));
+			assertArrayEquals(new int[]{1, 0}, new SingleNumber().singleNumber(array));
 		}
 	}
 }
