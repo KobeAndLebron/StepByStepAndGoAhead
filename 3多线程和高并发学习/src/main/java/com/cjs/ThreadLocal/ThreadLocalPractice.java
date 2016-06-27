@@ -4,7 +4,7 @@ package com.cjs.ThreadLocal;
  * 	线程局部变量，每个线程都为该线程局部变量保存相对应的值-具体保存在{@linkplain ThreadLocal}的内部类ThreadLocalMap里的Entry[]数组里面,
  * 数组的索引由对应的ThreadLocal对象里的threadLocalHashCode映射所得到（具体生成策略见源码），所以不会发生冲突（具体结合有道云笔记来学习）
  * 
- * 将变量的作用域变为线程所有，不是多个线程共享。
+ * ********Benefit:将变量的作用域变为线程所有，不是多个线程共享。
  * 
  * 原理:
  * ThreadLocal里面get方法：
@@ -15,7 +15,8 @@ package com.cjs.ThreadLocal;
  * 	ThreadLocal values pertaining to this thread. This map is maintained
  * 		by the ThreadLocal class. 
  *  ThreadLocal.ThreadLocalMap threadLocals = null;
- *  3、根据当前的线程局部变量(ThreadLocal的threadLocalHashCode)来获取线程局部变量所对应的值
+ *  3、根据当前的线程局部变量(ThreadLocal的threadLocalHashCode)和Entry数组长度(index = key.threadLocalHashCode & 
+ *  	(table.length - 1))来获取线程局部变量所对应的值
  *  
  *  set相同
  *  特殊的是第二步-不会调用initialValue方法，如果map为空的话，则根据当前线程和set的值还有当前ThreadLocal来设置/创建map

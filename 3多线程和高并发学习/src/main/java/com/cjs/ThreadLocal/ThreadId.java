@@ -15,6 +15,7 @@ public class ThreadId {
 	// Thread local variable containing each thread's ID
 	private static final ThreadLocal<Integer> threadId = new ThreadLocal<Integer>(){
 		public Integer initialValue(){
+			// return 0; // try it can understand that initialValue method of ThreadLocal
 			return nextId.getAndIncrement();
 		}
 	};
@@ -29,17 +30,17 @@ public class ThreadId {
 		Thread thread1 = new Thread(){
 			public void run(){
 				Integer d = ThreadId.get();
-				System.out.println(Thread.currentThread().getName() + d);
+				System.out.println(Thread.currentThread().getName() + " " + d);
 			}
 		};
 		Thread thread2 = new Thread(){
 			public void run(){
 				Integer d = ThreadId.get();
-				System.out.println(Thread.currentThread().getName() + d);
+				System.out.println(Thread.currentThread().getName() + " " + d);
 			}
 		};
 		thread1.start();
 		thread2.start();
-		System.out.println(Thread.currentThread().getName() + ThreadId.get());
+		System.out.println(Thread.currentThread().getName() + " " + ThreadId.get());
 	}
 }
