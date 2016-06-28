@@ -1,14 +1,18 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
-	<groupId>com.cjs.goHead</groupId>
+	
+	<parent>
+		<groupId>com.cjs.goHead</groupId>
+		<artifactId>SuperPom</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	
 	<artifactId>9OpenSourceStudy</artifactId>
-	<version>1.0-SNOAPSHOT</version>
 
 	<packaging>jar</packaging>
 
-	<name>9开源框架研究</name>
+	<name>开源框架研究</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
@@ -19,18 +23,24 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
 	</dependencies>
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
 			<!-- 为此项目配置 多个sourceFolder -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
-				<version>1.7</version>
 				<executions>
 					<execution>
 						<id>add-source</id>
@@ -43,6 +53,7 @@
 								<!-- 我们可以通过在这里添加多个source节点，来添加任意多个源文件夹 -->
 								<source>过滤器的实现</source>
 								<source>Excel解析</source>
+								<source>sqlDriver</source>
 							</sources>
 						</configuration>
 					</execution>
