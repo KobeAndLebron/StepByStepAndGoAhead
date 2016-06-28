@@ -5,7 +5,7 @@ import com.cjs.synchronizedBlockVsMethod.PairManager2;
 /**
  * 造成线程安全的根本原因：由于线程的并发性和异步性,导致线程执行顺序的不确定性,进而导致线程对共享对象/数据(单例)的"不正确"操作和访问(线程间的读写交叉执行);
  * 	读：list.add(p)也叫读操作,因为从内存里面拿出了p的值{@linkplain PairManager2#increment1()}
- *  写：通过方法对对象操作也是写操作
+ *  写：通过方法对对象操作是写操作
  * 
  * 解决线程安全的方法：使用序列化的方式来访问共享资源，这种机制叫做Mutual Exclusion，在Java中通过Synchronized关键字来实现
  * 
@@ -16,7 +16,7 @@ import com.cjs.synchronizedBlockVsMethod.PairManager2;
  *  class variables,which are stored in the method area
  *  Programs never need to coordinate access to local variables,which reside on the java stacks,because data on the java 
  * stack is private to the thread to which the java stacks belong. 
- * 	对于方法来说,每个线程都可以有此方法的方法栈,并且类的方法只在方法区存一份(调用方法的时候会传入this)
+ * 	对于方法来说,每个线程都可以有此方法的方法栈,并且类的方法 只 在方法区存一份(调用方法的时候会传入this)
  * 所以涉及到变量的访问和修改都是根据this来修改的,在方法中使用的成员变量可能是多个对象的,也可能是一个对象的,即下面所说的单例非单例
  * 
  * 	对于成员变量-基本数据类型-来说，主要看载体在heap area是否是单例，如果是单例，那么对此成员变量就必须进行同步控制在有线程安全的问题
