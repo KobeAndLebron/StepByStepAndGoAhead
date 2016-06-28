@@ -89,6 +89,13 @@
 				 -->
 				<scope>test</scope>
 			</dependency>
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>6.0.2</version>
+				<!-- 运行时有效，编译和测试编译时无效，与provided相对应 -->
+				<scope>runtime</scope>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<!--End of the Basics -->
