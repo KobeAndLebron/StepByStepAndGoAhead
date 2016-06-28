@@ -7,9 +7,7 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.cjs.goHead</groupId>
   <artifactId>3ThreadPoolAndHighConcurrencyStudy</artifactId>
-  <version>1.0-SNOAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>3ThreadPoolAndHighConcurrencyStudy</name>

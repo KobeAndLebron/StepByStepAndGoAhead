@@ -21,7 +21,7 @@
 		<dependency>
 			<groupId>com.cjs.goHead</groupId>
 			<artifactId>2YD_JavaAndSqlOptimizeStudyDayByDay</artifactId>
-			<version>1.0-SNOAPSHOT</version>
+			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
 	<build>
