@@ -36,6 +36,7 @@
 						<!-- 我们可以通过在这里添加多个source节点，来添加任意多个源文件夹 -->
 						<source>适配器模式</source>
 						<source>单例模式</source>
+						<source>监听器模式</source>
 					</sources>
 				</configuration>
  			</plugin>
