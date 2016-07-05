@@ -14,11 +14,16 @@ import static java.lang.Math.*;
  *	    Your algorithm should run in linear runtime complexity. Could you implement it using only constant space complexity?
  *
  * 
+ * 	异或：位相同为0，不相同为1
+ * 	两个相同的数异或为0，一个数异或0还为其本身
+ *
  * 	关键：
  * 		1 异或所有数找得到不同的那俩数的异或
  * 		2 找出1所得到的结果中位数为1的位（目前用了3种方法）
  * 		3 利用2的结果将数组分为differentNumber1 others 和 differentNumber2 others
  * 		4 分别将differentNumber1 others 和 differentNumber2 others进行异或，得到不同的两个数
+ * 
+ * 	
  * @author ChenJingShuai 21 Jun 2016
  *
  */
