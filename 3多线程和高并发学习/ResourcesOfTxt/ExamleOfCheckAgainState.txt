@@ -1,0 +1,18 @@
+	As an example, consider once again the scenario  that involves a buffer, a read thread, and a write thread. Assume
+ the buffer is protected by a monitor. When a read thread enters 
+ the monitor that protects the buffer, it checks to see if the
+buffer is empty. If the buffer is not empty, the read thread 
+reads (and removes) some data from the buffer. Satisfied, it 
+exits the monitor. On the other hand, if the buffer is empty, 
+the read thread executes a wait command. As soon as it executes
+the wait, the read thread is suspended and placed into the
+monitor's wait set. In the process, the read thread releases
+the monitor, which becomes available to other threads. At 
+some later time, the write thread enters the monitor, writes 
+some data into the buffer, executes a notify, and exits the
+ monitor. When the write thread executes the notify, the read thread is marked for eventual resurrection. 
+ After the write thread has exited the monitor, the read thread is resurrected as the owner of the monitor. 
+ If there is any chance that some other thread has come along and consumed the data left by the write thread, 
+ the read thread must explicitly check to make sure the buffer is not empty. If there is no chance that any other 
+ thread has consumed the data, then the read thread can just assume the data exists. The read thread reads some 
+ data from the buffer and exits the monitor. 

@@ -20,7 +20,7 @@
  * wait set will be chosen for resurrection by the notify command, you should use notify
  * (as opposed to notify all) only when you are absolutely certain there will only be one
  * thread suspended({@linkplain java.lang.Thread$State.WAITING}/TIMED_WAITING) in the wait set.
- * If there is a chance more than one thread will be 
+ * 	If there is a chance more than one thread will be 
  * suspended in the wait set at any one time, you should probably use notify all. 
  * Otherwise, on some Java virtual machine implementations a particular thread may be stuck 
  * in the wait set for a very long time. If a notify always selects the most recent arrival 
