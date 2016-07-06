@@ -87,7 +87,7 @@ public class SingleNumber {
 	public int getThePositionOfFirst1(int number){
 		/** 
 		 *  int占4个字节，1个字节8位，一共32位，又有一位代表符号位，所以仅含1个1的最大的数为2的30次方
-			如果超出int的限制，那么按照溢出处理，即(2 ^ 31 - 1)处理
+			如果超出int的限制(eg: 2^31)，那么按照溢出处理，即(2 ^ 31 - 1)处理
 			
 			只能使用最大值，理由同上个方法
 		**/
