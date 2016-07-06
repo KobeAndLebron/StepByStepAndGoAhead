@@ -13,6 +13,6 @@ git merge dell 1>/dev/null
 echo "2 Merge finish\n"
 message_push1=`git push | grep '-'`
 echo "$message_push1\n"
-echo "\n3 $pushed_branch is pushed to remote respority\n"
+echo "3 $pushed_branch is pushed to remote respority\n"
 git checkout $current_branch_name 1>/dev/null 2>/dev/null
 echo "4 switch $current_branch_name\n" 
