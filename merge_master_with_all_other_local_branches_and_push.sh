@@ -3,8 +3,9 @@ current_branch_name=`git branch -l | grep '^* [0-9a-zA-Z]*$' | grep -o '[0-9a-zA
 #the branch which will be pushed
 pushed_branch="master"
 echo "The current branch is $current_branch_name\n"
-message_push=`git push | grep '-'`
-echo "$message_push"
+message_push=`git push`
+grep_message=`echo $message_push | grep '-'`
+echo "$grep_message"
 git checkout $pushed_branch  1>/dev/null 2>/dev/null
 echo "1 Switch $pushed_branch\n"
 git merge 450 1>/dev/null
