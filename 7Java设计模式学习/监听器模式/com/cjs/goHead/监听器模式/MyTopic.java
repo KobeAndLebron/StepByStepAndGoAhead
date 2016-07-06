@@ -53,13 +53,16 @@ public class MyTopic implements Subject{
 			observersLocal = new ArrayList<>(this.observers);
 			this.changed=false;
 		for (Observer obj : observersLocal) {
+			/**
+			 * There can generate a event which contain itSelf.For servlet it is servletEvent.
+			 */
 			obj.update();
 		}
 
 	}
 
 	@Override
-	public Object getUpdate(Observer obj) {
+	public Object getUpdate() {
 		return this.message;
 	}
 	

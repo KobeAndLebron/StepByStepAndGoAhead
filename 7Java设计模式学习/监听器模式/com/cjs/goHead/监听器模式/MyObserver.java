@@ -8,9 +8,10 @@ public class MyObserver implements Observer{
 		this.name=nm;
 	}
 	@Override
-	public void update() {
+	public void update(// ServletEvent servletEvent
+			) {
 		// get the message of subject update
-		String msg = (String) topic.getUpdate(this);
+		String msg = (String) topic.getUpdate();
 		if(msg == null){
 			System.out.println(name+":: No new message");
 		}else

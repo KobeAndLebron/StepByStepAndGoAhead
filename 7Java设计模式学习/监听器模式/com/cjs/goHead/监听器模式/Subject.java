@@ -21,6 +21,6 @@ public interface Subject {
 	public void notifyObservers();
 	
 	//method to get updates from subject
-	public Object getUpdate(Observer obj);
+	public Object getUpdate();
 	
 }
