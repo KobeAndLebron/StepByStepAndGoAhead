@@ -10,6 +10,6 @@ git merge 480 1>/dev/null
 git merge dell 1>/dev/null
 echo "2 Merge finish\n"
 git push 1>/dev/null
-echo "3 $pushed_branch is pushed to remote respority\n"
-git checkout $current_branch_name 1>/dev/null
-echo "4 switch $current_branch_name\n" 
+echo "\n3 $pushed_branch is pushed to remote respority\n"
+git checkout $current_branch_name 1>/dev/null 2>/dev/null
+echo "\n4 switch $current_branch_name\n" 
