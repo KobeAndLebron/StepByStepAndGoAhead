@@ -1,10 +1,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-
-  <groupId>com.cjs.goHead</groupId>
+	
+  <parent>
+  	<groupId>com.cjs.goHead</groupId>
+	<artifactId>SuperPom</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+  </parent>
+  
   <artifactId>6LinuxStudyDayByDay</artifactId>
-  <version>1.0-SNOAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>6Linux学习每天一点</name>
@@ -18,8 +22,23 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
+  <build>
+  	<plugins>
+  		<!-- 为此项目配置 多个sourceFolder -->
+		<plugin>
+			<groupId>org.codehaus.mojo</groupId>
+			<artifactId>build-helper-maven-plugin</artifactId>
+			<configuration>
+				<sources>
+					<!-- 我们可以通过在这里添加多个source节点，来添加任意多个源文件夹 -->
+					<source>DayLog</source>
+				</sources>
+			</configuration>
+		</plugin>
+  	</plugins>
+  </build>
+  
 </project>
