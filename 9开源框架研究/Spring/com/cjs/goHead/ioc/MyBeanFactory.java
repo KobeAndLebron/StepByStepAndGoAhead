@@ -1,7 +1,7 @@
 package com.cjs.goHead.ioc;
 
 /**
- *  BeanFactory And ApplicationContext:
+ *  BeanFactory(resides in spring-beans) And ApplicationContext(resides in spring-context):
  *  The org.springframework.beans and org.springframework.context packages are the basis for Spring Framework’s IoC 
  * container. The BeanFactory interface provides an advanced configuration mechanism capable of managing any type 
  * of object. ApplicationContext is a sub-interface of BeanFactory. It adds easier integration with Spring’s AOP 
