@@ -34,7 +34,7 @@ public class Client {
 		// 容器1
 		PairManager p1 = new PairManager1();
 		// 容器2
-		PairManager p2 = new PairManager1();
+		PairManager p2 = new PairManager2();
 		testApproaches(p1, p2);
 	}
 }

@@ -1,7 +1,7 @@
 package com.cjs.synchronizedBlockVsMethod;
 
 /**
- * 生产者进程
+ * 操作{@link Pair}的进程
  * @author ChenJingShuai
  *
  * 每天进步一点-2016年4月22日-下午9:37:00

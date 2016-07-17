@@ -28,7 +28,7 @@ public abstract class PairManager {
 	}
 
 	public synchronized Pair getPair(){
-		// Make a copy to 
+		// Make a copy to variable called storage
 		return new Pair(p.getX(), p.getY());
 	}
 	
