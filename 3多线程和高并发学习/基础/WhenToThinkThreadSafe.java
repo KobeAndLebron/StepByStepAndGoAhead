@@ -3,7 +3,8 @@ import com.cjs.synchronizedBlockVsMethod.PairManager;
 import com.cjs.synchronizedBlockVsMethod.PairManager2;
 
 /**
- * 造成线程安全的根本原因：由于线程的并发性和异步性,导致线程执行顺序的不确定性,进而导致线程对共享对象/数据(单例)的"不正确"操作和访问(线程间的读写交叉执行);
+ * 造成线程安全的根本原因：由于线程的并发性/调度算法的随机性和异步性,导致线程执行顺序的不确定性,
+ *进而导致线程对共享对象/数据(单例)的"不正确"操作和访问(线程间的读写交叉执行);
  * 	读：list.add(p)也叫读操作,因为从内存里面拿出了p的值{@linkplain PairManager2#increment1()}
  *  写：通过方法对对象操作是写操作
  * 

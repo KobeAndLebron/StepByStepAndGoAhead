@@ -15,6 +15,7 @@ public class PairChecker implements Runnable{
 	}
 	public void run() {
 		while(true){
+			// 检查的次数
 			pm.at.incrementAndGet();
 			pm.getPair().checkState();
 		}
