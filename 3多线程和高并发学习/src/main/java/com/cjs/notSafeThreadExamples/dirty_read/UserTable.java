@@ -17,7 +17,7 @@ public class UserTable {
 	
 	/**
 	 * Synchronized 防止了多个ModifyThread同时对UserTable进行修改
-	 * @param userName
+	 * @param userName  
 	 * @param userPwd
 	 */
 	public void updateUser(String userName, String userPwd){

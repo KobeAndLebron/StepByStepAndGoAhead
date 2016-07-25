@@ -19,6 +19,8 @@
  * called "exiting the monitor."
  *  The graphical depiction of monitor is in Figure GraphicalDepictionOfMonitor-1.jpg and 
  * GraphicalDepictionOfMonitor-2.jpg  
+ *  A monitor can have several monitor regions,In a word, one thread must be able to execute a monitor region from beginning to end without 
+ * another thread concurrently executing a monitor region of the same monitor. 
  *
  * 	 在Java中，所有的对象都自动含有单一的锁-也成为监视器，当在对象上调用其任意Synchronized方法的时候，此对象都会被枷锁；其他的synchronized方法只有等到
  * 前一个方法调用完毕的时候才能被调用.
