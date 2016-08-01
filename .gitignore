@@ -14,5 +14,5 @@ target/
 .classPath
 .classpath
 .project
-.iml
+*.iml
 #change encoding from gb18030 to utf-8
