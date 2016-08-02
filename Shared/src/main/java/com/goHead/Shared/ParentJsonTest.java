@@ -28,7 +28,7 @@ public class ParentJsonTest<T> {
 	public void after(){
 		if(debugNum == -1 && caseId == debugNum){
 			if(expectedObj.getClass() == Array.class){
-				assertArrayEquals(generatedObj, generatedObj);
+				// assertArrayEquals( generatedObj, generatedObj);
 			}
 		}
 		System.out.println("Case: " + caseId + " end...");
