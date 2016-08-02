@@ -3,34 +3,34 @@ package lettcode;
 import java.util.Arrays;
 import java.util.Collection;
 
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
+import com.goHead.Shared.ParentTest;
 
 @RunWith(Parameterized.class)
-public class EvaluateValueOfRPNTest {
+public class EvaluateValueOfRPNTest extends ParentTest<Integer>{
 	private String[] input;
-	private int expectedNum;
-	
-	 public EvaluateValueOfRPNTest(String[] input, int expectedNum){
-		 this.input = input;
-		 this.expectedNum = expectedNum;
-     }
+
+	public EvaluateValueOfRPNTest(int caseId, Integer expectedObj, String[] inputArr) {
+		super(caseId, expectedObj);
+		this.input = inputArr;
+	}
 	
 	@Parameters
 	public static Collection<Object[]> generateData(){
 		return Arrays.asList(new Object[][] {
-			            { new String[]{"2", "1", "+", "3", "*"}, 9 },
-			            { new String[]{"4", "13", "5", "/", "+"}, 6 },
-			           /* { new String[]{"10","6","9","3","+","-11","","/","","17","+","5","+"}, 12 },*/
+			            new Object[]{1, 9,  new String[]{"2", "1", "+", "3", "*"}},
+			            new Object[]{2, 6, new String[]{"4", "13", "5", "/", "+"}},
 			       });
 	}
 	@Test
 	public void test1(){
-		Assert.assertEquals(expectedNum, new EvaluateValueOfRPN().evalRPN(input));
-		System.out.println(new EvaluateValueOfRPN().evalRPN(input));
+		setDebug(-1);
+		if(!isIgnored){
+			generatedObj = new EvaluateValueOfRPN().evalRPN(input);
+		}
 	}
 }

@@ -1,33 +1,38 @@
 package lettcode;
 
 import java.util.Arrays;
+import java.util.Collection;
 
 import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.runners.Parameterized.Parameters;
 
-public class SingleNumberTest {
+import com.goHead.Shared.ParentTest;
+
+public class SingleNumberTest extends ParentTest<int[]>{
+	private int[] inputArray; 
+	public SingleNumberTest(int caseId, int[] expectedObj, int[] inputArray) {
+		super(caseId, expectedObj);
+		this.inputArray = inputArray;
+	}
+
+	@Parameters
+	public static Collection<Object[]> generateParameteres(){
+		return Arrays.asList(new Object[][]{
+			new Object[]{1, new int[]{-1895772685, -967931676}, 
+					new int[]{1403617094,-490450406,-1756388866,-967931676,1878401007,1878401007,-74743538,1403617094,-1756388866,
+							-74743538,-490450406,-1895772685}},
+			new Object[]{2, new int[]{0,1}, new int[]{0, 1}}
+		});
+	}
+	
 	@Test
 	public void test1(){
-		int[] array = new int[]{1403617094,-490450406,-1756388866,-967931676,1878401007,1878401007,-74743538,1403617094,-1756388866,-74743538,-490450406,-1895772685};
-		System.out.println(Arrays.toString(new SingleNumber().singleNumber(array)));
-		
-		try{
-			assertArrayEquals(new int[]{-1895772685, -967931676}, new SingleNumber().singleNumber(array));
-		}catch(AssertionError e){
-			assertArrayEquals(new int[]{-967931676, -1895772685}, new SingleNumber().singleNumber(array));
+		setDebug(-1);
+		if(!isIgnored){
+			Arrays.sort(expectedObj);
+			generatedObj = new SingleNumber().singleNumber(inputArray);
+			Arrays.sort(generatedObj);
 		}
 	}
 	
-	
-	@Test
-	public void test2(){
-		int[] array = new int[]{0,1};
-		System.out.println(Arrays.toString(new SingleNumber().singleNumber(array)));
-		
-		try{
-			assertArrayEquals(new int[]{0, 1}, new SingleNumber().singleNumber(array));
-		}catch(AssertionError e){
-			assertArrayEquals(new int[]{1, 0}, new SingleNumber().singleNumber(array));
-		}
-	}
 }

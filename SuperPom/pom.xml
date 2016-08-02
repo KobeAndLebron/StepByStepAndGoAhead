@@ -66,7 +66,7 @@
 				<!-- dependency of junit -->
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
-				<version>4.10</version>
+				<version>4.12</version>
 				<!-- 只在测试编译testCompile(testCompile不一定运行test)和测试运行test的时候添加此classPath，其余的时候都不添加，也不进行打包 -->
 				<!-- 
 						The element refers to the **classpath of the task** at hand(compiling,runtime and testing,etc.)as well as

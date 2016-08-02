@@ -8,25 +8,28 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
+import com.goHead.Shared.ParentTest;
+
 @RunWith(Parameterized.class)
-public class ReverseStringTest {
-	private String str;
+public class ReverseStringTest extends ParentTest<String>{
+	protected String inputArr;
 	
-    public ReverseStringTest(String str) {
-		this.str = str;
+	public ReverseStringTest(int caseId, String expectedObj, String intputArr) {
+		super(caseId, expectedObj);
+		this.inputArr = intputArr;
 	}
-	
+
 	@Parameters
 	public static Collection<Object[]> generateParameters(){
-		/*return Arrays.asList(new Object[][]{
-			new Object[]{"aaaaaabbbbbbbbbbbcccccccccccccdddddddddd"},
-		});*/
-		return Arrays.asList(new Object[]{"a"},new Object[]{"ab"},new Object[]{null});
+		return Arrays.asList(new Object[]{1, "a", "a"},new Object[]{2, "ba", "ab"});
 	}
 	
 	@Test
 	public void testTime(){
-		System.out.println(new ReverseString().reverseString(this.str));
+		setDebug(-1);
+		if(!isIgnored){
+			generatedObj = new ReverseString().reverseString1(inputArr);
+		}
 	}
 }
 

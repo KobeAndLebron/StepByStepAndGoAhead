@@ -27,7 +27,7 @@ public class EvaluateValueOfRPN {
 	 * \+ ....          +
 	 */
 	private static final Pattern DIGITS = Pattern.compile("^\\-*[0-9]+$");
-	private static final Pattern operand = Pattern.compile("^[\\+\\-\\*\\/]{1}$");
+	private static final Pattern OPERAND = Pattern.compile("^[\\+\\-\\*\\/]{1}$");
 	
 	public int evalRPN(String[] tokens) {
 		Stack<Integer> stack = new Stack<>();
@@ -38,7 +38,7 @@ public class EvaluateValueOfRPN {
         for(String token : tokens){
         	if(DIGITS.matcher(token).matches()){
         		stack.push(Integer.parseInt(token));
-        	}else if(operand.matcher(token).matches()){
+        	}else if(OPERAND.matcher(token).matches()){
         		Integer o1 = null;
         		Integer o2 = null;
         		try{
@@ -63,7 +63,7 @@ public class EvaluateValueOfRPN {
         return returnI;
     }
 	
-	public int getValue(int o1, int o2, String operand){
+	private int getValue(int o1, int o2, String operand){
 		switch(operand){
 			case "+":
 				return o1 + o2;
