@@ -1,4 +1,4 @@
-package com.cjs.goHead.监听器模式;
+package com.cjs.goHead.observer;
 
 public class MyObserver implements Observer{
 	private String name;

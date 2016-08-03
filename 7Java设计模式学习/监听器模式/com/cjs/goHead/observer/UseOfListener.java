@@ -1,4 +1,4 @@
-package com.cjs.goHead.监听器模式;
+package com.cjs.goHead.observer;
 
 /**
  * 	Observer design pattern is useful when you are interested 

@@ -2,6 +2,10 @@ package com.cjs.goHead.监听器模式;
 
 import org.junit.Test;
 
+import com.cjs.goHead.observer.MyObserver;
+import com.cjs.goHead.observer.MyTopic;
+import com.cjs.goHead.observer.Observer;
+
 public class MultiThreadTest {
 	//create subject
 	final MyTopic topic = new MyTopic();

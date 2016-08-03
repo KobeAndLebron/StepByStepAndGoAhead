@@ -1,4 +1,4 @@
-package com.cjs.goHead.监听器模式;
+package com.cjs.goHead.observer;
 
 /**
  * 	Contain a list of Observers to notify of any changes in its state,so it should provide methods methods using 
