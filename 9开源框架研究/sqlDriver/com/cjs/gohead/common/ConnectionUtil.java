@@ -15,7 +15,7 @@ public class ConnectionUtil {
 	static{
 		// register table
 		try {
-			Driver d = new Driver();\
+			Driver d = new Driver();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
