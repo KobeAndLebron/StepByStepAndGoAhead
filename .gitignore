@@ -1,4 +1,4 @@
-#整个项目是用maven管理的，由于maven的约定优于配置的原则-每个项目都有相同的结构、生命周期等等，所以关于编辑器的配置文件都
+#整个项目是用maven管理的，由于maven的约定优于配置的原则-每个项目都有相同的结构、 生命周期等等，所以关于编辑器的配置文件都
 #不会被上传，这样每个编辑器只需要对maven有统一的管理即可，屏蔽了编译器的差异；相当于JVM屏蔽了操作系统的差异性；
 /.idea
 /.recommenders/
@@ -14,5 +14,4 @@ target/
 .classPath
 .classpath
 .project
-*.iml
 #change encoding from gb18030 to utf-8

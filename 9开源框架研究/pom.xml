@@ -23,11 +23,6 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -40,6 +35,11 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 		    <artifactId>spring-core</artifactId>
+		</dependency>
+		<!-- Struts2 framework,added to study interceptor. -->
+		<dependency>
+			<groupId>org.apache.struts</groupId>
+		    <artifactId>struts2-core</artifactId>
 		</dependency>
 	</dependencies>
 
@@ -64,8 +64,10 @@
 							<sources>
 								<!-- 我们可以通过在这里添加多个source节点，来添加任意多个源文件夹 -->
 								<source>过滤器的实现</source>
-								<source>Excel解析</source>
-								<source>sqlDriver</source>
+								<source>拦截器的实现</source>
+								<source>Spring</source>
+								<source>src/main/java</source>
+								<source>src/test/java</source>
 							</sources>
 						</configuration>
 					</execution>

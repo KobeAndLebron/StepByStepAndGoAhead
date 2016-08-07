@@ -28,13 +28,13 @@ public class CompareVersionNumbersTest extends ParentTest<Integer>{
 			new Object[]{5, -1, "121.22.1", "121.23.1"},
 			new Object[]{6, -1, "121.0022.1", "121.0023.1"},
 			new Object[]{7, 0, "", ""},
-			new Object[]{8, -1, "1", "1.1"}
+			new Object[]{8, -1, "1.1.1", "1.1.1.1"}
 		});
 	}
 	
 	@Test
 	public void commenTest(){
-		setDebug(8);
+		setDebug(-1);
 		if(!isIgnored){
 			this.generatedObj = new CompareVersionNumbers().compareVersion(version1, version2);
 		}

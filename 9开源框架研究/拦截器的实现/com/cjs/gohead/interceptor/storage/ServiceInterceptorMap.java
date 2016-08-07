@@ -3,7 +3,6 @@ package com.cjs.gohead.interceptor.storage;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.cjs.gohead.Service;
 import com.cjs.gohead.interceptor.inter.Interceptor;
 import com.cjs.gohead.interceptor.inter.InterceptorChain;
 
@@ -17,7 +16,8 @@ public class ServiceInterceptorMap {
 	 * 加载注解并存储
 	 */
 	public static void initServiceAndInterceptors(){
-		
+		serviceInterceptors.put("com.cjs.gohead.interceptor.SimpleServiceImpl", 
+				new Class<?>[]{com.cjs.gohead.interceptor.examples.TimerInterceptor.class});
 	}
 	
 	/**
@@ -25,8 +25,8 @@ public class ServiceInterceptorMap {
 	 * @param service
 	 * @return
 	 */
-	public static InterceptorChain getInterceptor(String service){
-		Class<?>[] interceptorClazzs = serviceInterceptors.get(service);
+	public static InterceptorChain getInterceptorChain(String serviceClassName){
+		Class<?>[] interceptorClazzs = serviceInterceptors.get(serviceClassName);
 		InterceptorChain interceptorChain = new InterceptorChain();
 		for(Class<?> interceptorClazz : interceptorClazzs){
 			Interceptor interceptor = null;
@@ -39,19 +39,6 @@ public class ServiceInterceptorMap {
 			}
 			interceptorChain.addInterceptor(interceptor);
 		}
-		Service serviceObj = null;
-		try {
-			serviceObj = (Service) Class.forName(service).newInstance();
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			System.out.println("Unknown class");
-		} catch (ClassCastException e) {
-			System.out.println("Unknown service");
-		}
-		interceptorChain.setSercice(serviceObj);
 		return interceptorChain;
 	}
 }

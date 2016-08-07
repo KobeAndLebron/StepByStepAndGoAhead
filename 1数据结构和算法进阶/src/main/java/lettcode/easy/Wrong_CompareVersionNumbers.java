@@ -1,17 +1,18 @@
 package lettcode.easy;
 
 /**
- * 		Compare two version numbers version1 and version2.
- *		If version1 > version2 return 1, if version1 < version2 return -1, otherwise return 0.
+ * 
+ * 错误的解法
+ * 	1. 没有考虑0为前缀的时候,eg: 00012 < 13,但是按照此解法是错误的,因为它只算位数了.
+ *  2. 当输入为""的时候,Integer.parseInt("")会报错,应该将其转化为0.
+ *  3. 没考虑version1和version2为null的情况.
+ * 
+ * @see {@linkplain CompareVersionNumbers true solution}
+ * 
+ * @author ChenJingShuai  
  *
- *		You may assume that the version strings are non-empty and contain only digits and the . character.
- *	The . character does not represent a decimal point and is used to separate number sequences.
- *		For instance, 2.5 is not "two and a half" or "half way to version three", it is the fifth second-level 
- *	revision of the second first-level revision.
+ * Make a bit of progress every day. 2016年8月6日-上午11:04:17
  *
- *		Here is an example of version numbers ordering:
- *
- *		0.1 < 1.1 < 1.2 < 13.37
  */
 public class Wrong_CompareVersionNumbers {
 	public int compareVersion(String version1, String version2) {
