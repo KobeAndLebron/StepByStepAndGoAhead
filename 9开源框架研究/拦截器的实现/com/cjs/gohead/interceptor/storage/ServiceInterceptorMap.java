@@ -15,7 +15,7 @@ public class ServiceInterceptorMap {
 	/**
 	 * 加载注解并存储
 	 */
-	public static void initServiceAndInterceptors(){
+	static {
 		serviceInterceptors.put("com.cjs.gohead.interceptor.SimpleServiceImpl", 
 				new Class<?>[]{com.cjs.gohead.interceptor.examples.TimerInterceptor.class});
 	}

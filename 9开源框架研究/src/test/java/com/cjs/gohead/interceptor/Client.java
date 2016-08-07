@@ -14,5 +14,6 @@ public class Client {
 		ServiceProxy serviceProxy = ServiceProxyFactory.generateService(serviceInvocation, 
 						"com.cjs.gohead.interceptor.SimpleServiceImpl", "service");
 		serviceProxy.execute();
+		serviceProxy.execute();
 	}
 }
