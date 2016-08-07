@@ -7,6 +7,6 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Interceptor {
+public @interface InterceptorName {
 	public abstract String[] interceptorNames();
 }

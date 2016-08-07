@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import com.cjs.gohead.interceptor.annotation.Interceptor;
+import com.cjs.gohead.interceptor.annotation.InterceptorName;
 
 
 
@@ -16,13 +16,13 @@ import com.cjs.gohead.interceptor.annotation.Interceptor;
  *
  */
 public class InterceptorChain {
-	private List<Interceptor> interceptors = new ArrayList<>(10);
+	private List<InterceptorName> interceptors = new ArrayList<>(10);
 	
-	public void addInterceptor(Interceptor interceptor){
+	public void addInterceptor(InterceptorName interceptor){
 		interceptors.add(interceptor);
 	}
 	
-	public Iterator<Interceptor> getInterceptorsIterator(){
+	public Iterator<InterceptorName> getInterceptorsIterator(){
 		return this.interceptors.iterator();
 	}
 	
