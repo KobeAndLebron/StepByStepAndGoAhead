@@ -6,7 +6,7 @@ import java.util.Collection;
 import org.junit.Test;
 import org.junit.runners.Parameterized.Parameters;
 
-import com.goHead.Shared.ParentTest;
+import com.gohead.shared.test.ParentTest;
 
 public class CompareVersionNumbersTest extends ParentTest<Integer>{
 	private String version1;

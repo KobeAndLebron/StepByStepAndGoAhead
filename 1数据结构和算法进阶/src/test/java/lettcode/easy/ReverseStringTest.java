@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import com.goHead.Shared.ParentTest;
+import com.gohead.shared.test.ParentTest;
 
 @RunWith(Parameterized.class)
 public class ReverseStringTest extends ParentTest<String>{

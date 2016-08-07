@@ -7,7 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized.Parameters;
 
-import com.goHead.Shared.ParentTest;
+import com.gohead.shared.test.ParentTest;
 
 @RunWith(value=org.junit.runners.Parameterized.class)
 public class ConstructBinaryTreeFromInOrderAndPostOrderTest extends ParentTest<Object>{

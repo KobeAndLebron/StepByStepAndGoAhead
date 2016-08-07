@@ -1,4 +1,4 @@
-package com.goHead.Shared;
+package com.gohead.shared.test;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
