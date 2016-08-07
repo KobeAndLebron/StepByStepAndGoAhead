@@ -4,6 +4,9 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.runner.RunWith;
@@ -47,10 +50,18 @@ public class ParentTest<T> {
 	 */
 	protected boolean isIgnored = true;
 	
+	protected List<Object> parameters = new ArrayList<>(5);
+	
 	public ParentTest(int caseId, boolean expectedResult, T expectedObj){
 		this.caseId = caseId;
 		this.expectedResult = expectedResult;
 		this.expectedObj = expectedObj;
+	}
+	
+
+	public ParentTest(int caseId, boolean isIgnored, boolean expectedResult, T expectedObj){
+		this(caseId, expectedResult, expectedObj);
+		this.isIgnored = isIgnored;
 	}
 	
 	/**
@@ -62,6 +73,50 @@ public class ParentTest<T> {
 		this.caseId = caseId;
 		this.expectedResult = true;
 		this.expectedObj = expectedObj;
+	}
+	
+	public ParentTest(){
+		
+	}
+	
+	public boolean isExpectedResult() {
+		return expectedResult;
+	}
+
+	public void setExpectedResult(boolean expectedResult) {
+		this.expectedResult = expectedResult;
+	}
+
+	public T getExpectedObj() {
+		return expectedObj;
+	}
+
+	public void setExpectedObj(T expectedObj) {
+		this.expectedObj = expectedObj;
+	}
+
+	public int getCaseId() {
+		return caseId;
+	}
+
+	public void setCaseId(int caseId) {
+		this.caseId = caseId;
+	}
+
+	public boolean isIgnored() {
+		return isIgnored;
+	}
+
+	public void setIgnored(boolean isIgnored) {
+		this.isIgnored = isIgnored;
+	}
+
+	public List<Object> getParameters() {
+		return parameters;
+	}
+
+	public void setParameters(List<Object> parameters) {
+		this.parameters = parameters;
 	}
 	
 	/**
