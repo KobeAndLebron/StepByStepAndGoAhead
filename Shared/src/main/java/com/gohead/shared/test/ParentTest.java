@@ -17,15 +17,15 @@ import org.junit.runners.Parameterized;
  * 
  * @author ChenJingShuai 2 Aug 2016
  *
- * @param <T> 期望结果/真是结果的类型
+ * @param <T> 期望结果/真实结果的类型
  */
 @RunWith(Parameterized.class)
 public class ParentTest<T> {
 	protected static final Object OBJ = new Object();
 	/**
-	 * 期望的结果: true or false.
+	 * 期望的结果: true or false. null represents true
 	 */
-	protected boolean expectedResult;
+	protected Boolean expectedResult;
 	
 	/**
 	 * 产生的Object
@@ -46,10 +46,13 @@ public class ParentTest<T> {
 	protected static int debugNum = -1;
 	
 	/**
-	 * If ignored?
+	 * Is ignored?
 	 */
 	protected boolean isIgnored = true;
 	
+	/**
+	 * Inputed parameters
+	 */
 	protected List<Object> parameters = new ArrayList<>(5);
 	
 	public ParentTest(int caseId, boolean expectedResult, T expectedObj){
@@ -58,6 +61,12 @@ public class ParentTest<T> {
 		this.expectedObj = expectedObj;
 	}
 	
+	public ParentTest(int caseId, T expectedObj, boolean isIgnored){
+		this.caseId = caseId;
+		this.isIgnored = isIgnored;
+		this.expectedObj = expectedObj;
+		this.expectedResult = true;
+	}
 
 	public ParentTest(int caseId, boolean isIgnored, boolean expectedResult, T expectedObj){
 		this(caseId, expectedResult, expectedObj);
@@ -73,13 +82,14 @@ public class ParentTest<T> {
 		this.caseId = caseId;
 		this.expectedResult = true;
 		this.expectedObj = expectedObj;
+		this.expectedResult = true;
 	}
 	
 	public ParentTest(){
 		
 	}
 	
-	public boolean isExpectedResult() {
+	public Boolean isExpectedResult() {
 		return expectedResult;
 	}
 
@@ -125,7 +135,7 @@ public class ParentTest<T> {
 	 */
 	public void setDebug(int debugNum){
 		ParentTest.debugNum = debugNum;
-		if(debugNum == -1 || caseId == debugNum){
+		if(!isIgnored && (debugNum == -1 || caseId == debugNum)){
 			isIgnored = false;
 		}
 	}
@@ -175,6 +185,8 @@ public class ParentTest<T> {
 					System.out.println("Expected result is true and result is true...");
 				}
 			}
+		}else{
+			System.out.println("Case " + caseId + " is ignored!"); 
 		}
 		System.out.println("Case: " + caseId + " end...");
 	}

@@ -8,20 +8,21 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
+import com.gohead.shared.test.CaseManager;
 import com.gohead.shared.test.ParentTest;
 
 @RunWith(Parameterized.class)
 public class ReverseStringTest extends ParentTest<String>{
 	protected String inputArr;
 	
-	public ReverseStringTest(int caseId, String expectedObj, String intputArr) {
-		super(caseId, expectedObj);
+	public ReverseStringTest(int caseId, boolean isIgnored, String expectedObj, String intputArr) {
+		super(caseId, expectedObj, isIgnored);
 		this.inputArr = intputArr;
 	}
 
 	@Parameters
 	public static Collection<Object[]> generateParameters(){
-		return Arrays.asList(new Object[]{1, "a", "a"},new Object[]{2, "ba", "ab"});
+		return Arrays.asList(CaseManager.getParameterArray("testReverseString.html"));
 	}
 	
 	@Test
