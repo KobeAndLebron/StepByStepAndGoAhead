@@ -7,7 +7,7 @@
 	<version>1.0-SNOAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>5JVMStudy</name>
+	<name>5JVM学习</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>

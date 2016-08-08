@@ -10,7 +10,7 @@
 	
 	<artifactId>8JAVASourceCodeStudy</artifactId>
 		
-	<name>8JAVASourceCodeStudy</name>
+	<name>8JAVA源码研究</name>
 
 	<!-- 设置build项目的时候源文件的编码格式,否则maven编译插件将使用平台默认编码 -->
 	<properties>

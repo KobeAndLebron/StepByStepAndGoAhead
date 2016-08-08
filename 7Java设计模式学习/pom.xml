@@ -10,7 +10,7 @@
 	<artifactId>7JavaDesignPatternStudy</artifactId>
 	<packaging>jar</packaging>
 
-	<name>设计模式学习-HEATS</name>
+	<name>7Java设计模式学习</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

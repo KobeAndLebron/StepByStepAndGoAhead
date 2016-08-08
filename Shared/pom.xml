@@ -10,7 +10,7 @@
   <artifactId>Shared</artifactId>
   <packaging>jar</packaging>
 
-  <name>Shared</name>
+  <name>10Shared-Utils</name>
   <url>http://maven.apache.org</url>
 
   <properties>

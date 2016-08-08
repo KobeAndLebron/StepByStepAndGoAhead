@@ -22,7 +22,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	
 	<!-- It tends to stands for conversational names for the project-->
-	<name>Thunder</name>
+	<name>Parent</name>
 	
 	<!-- The Basics -->
 	<!-- Maven Coordinates -->

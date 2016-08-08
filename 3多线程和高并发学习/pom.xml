@@ -10,7 +10,7 @@
   <artifactId>3ThreadPoolAndHighConcurrencyStudy</artifactId>
   <packaging>jar</packaging>
 
-  <name>3ThreadPoolAndHighConcurrencyStudy</name>
+  <name>3多线程和高并发学习</name>
   <url>http://maven.apache.org</url>
 
   <properties>

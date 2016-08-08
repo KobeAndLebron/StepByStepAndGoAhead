@@ -7,7 +7,7 @@
 	<version>1.0-SNOAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>Socket</name>
+	<name>4Socket学习</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>

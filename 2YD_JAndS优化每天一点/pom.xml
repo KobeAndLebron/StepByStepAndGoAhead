@@ -11,8 +11,7 @@
 	<artifactId>2YD_JavaAndSqlOptimizeStudyDayByDay</artifactId>
 	<packaging>jar</packaging>
 
-	<name>2YD_JavaAndSqlOptimizeStudyDayByDay</name>
-	<url>http://maven.apache.org</url>
+	<name>2YD_JAndS优化每天一点</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
