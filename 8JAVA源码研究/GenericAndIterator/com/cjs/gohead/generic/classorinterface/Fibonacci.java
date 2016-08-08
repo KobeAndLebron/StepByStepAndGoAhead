@@ -11,17 +11,13 @@ import java.util.Iterator;
  * 2016年5月21日
  *
  */
-public class FibonacciGenerator implements Generator<Integer>, Iterable<Integer>{
+public class Fibonacci implements Iterable<Integer>{
 	private int size = 0;
 	
-	public FibonacciGenerator(int size){
+	public Fibonacci(int size){
 		this.size = size;
 	}
 	
-	public Integer next() {
-		return null;
-	}
-
 	private int computeFin(int n){
 		if(n == 1){
 			return 1;
@@ -31,12 +27,13 @@ public class FibonacciGenerator implements Generator<Integer>, Iterable<Integer>
 			return 0;
 		}
 	}
+	
 	public Iterator<Integer> iterator() {
 		return new FinIterator();
 	}
 
 	class FinIterator implements Iterator<Integer>{
-		private int n = FibonacciGenerator.this.size;
+		private int n = Fibonacci.this.size;
 		private final int JUDGE_THREAD_SAFE = n;
 		
 		@Override
@@ -46,10 +43,10 @@ public class FibonacciGenerator implements Generator<Integer>, Iterable<Integer>
 
 		@Override
 		public Integer next() {
-			if (JUDGE_THREAD_SAFE != FibonacciGenerator.this.size) {
+			if (JUDGE_THREAD_SAFE != Fibonacci.this.size) {
  				throw new ConcurrentModificationException();
 			}
-			return FibonacciGenerator.this.computeFin(n);
+			return Fibonacci.this.computeFin(n);
 		}
 
 		@Override
@@ -58,7 +55,7 @@ public class FibonacciGenerator implements Generator<Integer>, Iterable<Integer>
 		}
 		
 	}
-	private static final FibonacciGenerator fin = new FibonacciGenerator(10);
+	private static final Fibonacci fin = new Fibonacci(10);
 	public static void main(String[] args) {
 		singleThread();
 		multiThread();

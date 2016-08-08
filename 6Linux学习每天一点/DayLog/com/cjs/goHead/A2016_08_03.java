@@ -12,7 +12,7 @@ package com.cjs.goHead;
  *  HAVE DONE ThreadLocal的基本原理和基本使用已经回顾
  *  		  
  * 	TODO 
- * 		1   拦截器的实现.
+ * 		1   拦截器的实现. -have simple implementation and no ActionContext
  * 		2 ThreadLocal.ThreadLocalMap的实现.
  *      3 Observer pattern基本例子的创建和学习,使用的例子是Servlet,顺便可以学习一下Servlet-API.
  *      
