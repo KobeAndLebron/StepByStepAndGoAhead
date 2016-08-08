@@ -48,6 +48,7 @@
 								<source>Annotation</source>
 								<source>Enum</source>
 								<source>Thread</source>
+								<source>GenericAndIterator</source>
 							</sources>
 						</configuration>
 					</execution>
