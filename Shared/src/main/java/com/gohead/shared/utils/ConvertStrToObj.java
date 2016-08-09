@@ -1,6 +1,5 @@
 package com.gohead.shared.utils;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -9,20 +8,20 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.codehaus.jackson.JsonParseException;
-import org.codehaus.jackson.map.JsonMappingException;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.gohead.shared.collection.CollectionUtil;
+import com.gohead.shared.json.JsonObjectConverter;
 import com.gohead.shared.regular.RegularMatcher;
 
 /**
  * Convert string to object.
  * 	Examples :
- * 		1. Basic types : ["a", 1, 2l, 2.2f, 3d] {@linkplain #generateParameterList(String)}
- * 		2. Collection : [<1, 2, 3>, [1, 2, 3], {"a" : 1, "b" : 2}] {@linkplain #generateParameterList(String)}
- * 		3. Object : ClassName : {"propertyName" : "propertyValue"},  {...} is a JSON string. {@linkplain #convertStrToObj(String)}
+ * 		1. Basic types : ["a", 1, 2l, 2.2f, 3d] 基本数据类型产生的都是包装类
+ * 		2. Collection : [<1, 2, 3>, [1, 2, 3], {"a" : 1, "b" : 2}] [] list <> set {} map
+ * 		3. Object : ClassName : {"propertyName" : "propertyValue"},  {...} is a JSON string. 
+ * 		4. Array : float[1, 2, 3] 数组也是包装类数组  Data[{}, {}] 会调用空的构造器
  * 
  * @author ChenJingShuai 8 Aug 2016
  *
@@ -35,96 +34,148 @@ public class ConvertStrToObj {
 	 */
 	private static final char VARIABLE_SEPARATOR = ',';
 	
-	public static List<Object> generateParameterList(String str) {
-		List<Object> parameters = new ArrayList<>();
+	private static final char START_LIST_NOTATION = '[';
+	private static final char END_LIST_NOTATION = ']';
+	private static final char START_SET_NOTATION = '<';
+	private static final char END_SET_NOTATION = '>';
+	private static final char START_MAP_NOTATION = '{';
+	private static final char END_MAP_NOTATION = '}';
+	
+	public static <T> List<T> generateParameterList(String str, Class<T> componentType) {
+		List<T> parameters = new ArrayList<>();
 		if (str != null && !str.isEmpty()) {
-			str = str.substring(str.indexOf("[") + 1, str.lastIndexOf("]"));
+			str = str.substring(str.indexOf(START_LIST_NOTATION) + 1, str.lastIndexOf(END_LIST_NOTATION));
 			for (String parameterStr : new Str(str)) {
 				parameterStr = parameterStr.trim();
-				Object obj = convertStrToObj(parameterStr);
+				T obj = convertStrToObj(parameterStr, componentType);
 				parameters.add(obj);
 			}
 		}
 		return parameters;
 	}
 	
-	public static Set<Object> generateParameterSet(String str) {
-		Set<Object> parameters = new HashSet<>();
+	public static <T> Set<T> generateParameterSet(String str, Class<T> componentType) {
+		Set<T> parameters = new HashSet<>();
 		if (str != null && !str.isEmpty()) {
-			str = str.substring(str.indexOf("<") + 1, str.lastIndexOf(">"));
+			str = str.substring(str.indexOf(START_SET_NOTATION) + 1, str.lastIndexOf(END_SET_NOTATION));
 			for (String parameterStr : new Str(str)) {
 				parameterStr = parameterStr.trim();
-				Object obj = convertStrToObj(parameterStr);
+				T obj = convertStrToObj(parameterStr, componentType);
 				parameters.add(obj);
 			}
 		}
 		return parameters;
 	}
 	
-	public static Map<Object, Object> generateParameterMap(String str) {
-		Map<Object, Object> parameters = new HashMap<>();
+	public static <K, V> Map<K, V> generateParameterMap(String str, Class<K> keyType, Class<V> valueType) {
+		Map<K, V> parameters = new HashMap<>();
 		if (str != null && !str.isEmpty()) {
-			str = str.substring(str.indexOf("{") + 1, str.lastIndexOf("}"));
+			str = str.substring(str.indexOf(START_MAP_NOTATION) + 1, str.lastIndexOf(END_MAP_NOTATION));
 			for (String parameterStr : new Str(str)) {
 				parameterStr = parameterStr.trim();
 				String[] entry = str.split(":");
 				String key = entry[0].trim();
 				String value = entry[1].trim();
-				parameters.put(convertStrToObj(key), convertStrToObj(value));
+				parameters.put(convertStrToObj(key, keyType), convertStrToObj(value, valueType));
 			}
 		}
 		return parameters;
 	}
-
-	public static Object convertStrToObj(String str) {
+	
+	/**
+	 * int  [ 1, 2, 3, 4]  
+	 * @param str
+	 * @param componentType
+	 * @return
+	 */
+	public static <T> T[] generateParameterArray(String str, Class<T> componentType) {
+		// All of elements type is T for this method,so next operation do not throw ClassCastException.
+		List<T> list = (List<T>) generateParameterList(str, componentType);  
+		T[] arrT = CollectionUtil.convertCollectionToArray(list, componentType);
+		return arrT;
+	}
+	
+	private static Class<?> getClassByAlias(String alias){
+		Map<String, Class<?>> aliasClassMap = new HashMap<>();
+		aliasClassMap.put("int", Integer.class);
+		aliasClassMap.put("float", Float.class);
+		aliasClassMap.put("double", Double.class);
+		aliasClassMap.put("long", Long.class);
+		aliasClassMap.put("boolean", Boolean.class);
+		Class<?> clazz = aliasClassMap.get(alias);
+		try {
+			clazz = Class.forName(alias);
+		} catch (ClassNotFoundException e) {
+			LOGGER.debug("Non-exist class for " + alias);
+		}
+		return clazz;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T> T convertStrToObj(String str, Class<T> classType) {
 		Object obj = null;
 		if (str != null) {
-			if (str.startsWith("\"") && str.endsWith("\"")) { // String
+			if (classType == String.class || str.startsWith("\"") && str.endsWith("\"")) { // String
 				obj = str;
-			} else if (str.toLowerCase().endsWith("l")) { // long
+			} else if (classType == Long.class || str.toLowerCase().endsWith("l")) { // long
 				str = str.replace("l", "");
 				obj = Long.parseLong(str);
-			} else if (str.toLowerCase().endsWith("f")) { // float
+			} else if (classType == Float.class || str.toLowerCase().endsWith("f")) { // float
 				str = str.replace("f", "");
 				obj = Float.parseFloat(str);
-			} else if (str.toLowerCase().endsWith("d")) { // double
+			} else if (classType == Double.class || str.toLowerCase().endsWith("d")) { // double
 				str = str.replace("d", "");
 				obj = Double.parseDouble(str);
-			} else if (RegularMatcher.isInt(str)) { // int
+			} else if (classType == Integer.class || RegularMatcher.isInt(str)) { // int
 				obj = Integer.parseInt(str);
-			} else if (RegularMatcher.isBoolean(str)) { // boolean
+			} else if (classType == Boolean.class || RegularMatcher.isBoolean(str)) { // boolean
 				obj = Boolean.parseBoolean(str);
-			} else if (str.startsWith("[") && str.endsWith("]")){ // list
-				obj = generateParameterList(str);
-			} else if (str.startsWith("<") && str.endsWith(">")){ // set
-				obj = generateParameterSet(str);
-			} else if (str.startsWith("{") && str.endsWith("}")){ // map
-				obj = generateParameterMap(str);
-			}else{ // object
+			} else if (judgeType(str, START_LIST_NOTATION, END_LIST_NOTATION)){ // list
+				obj = generateParameterList(str, Object.class);
+			} else if (judgeType(str, START_SET_NOTATION, END_SET_NOTATION)){ // set
+				obj = generateParameterSet(str, Object.class);
+			} else if (judgeType(str, START_MAP_NOTATION, END_MAP_NOTATION)){ // map
+				if(classType == Object.class){ // general map
+					obj = generateParameterMap(str, Object.class, Object.class);
+				}else{ // jsonObject {}
+					obj = JsonObjectConverter.getObjByJsonStrAndClass(str, classType);
+				}
+			}else if (RegularMatcher.isArray(str)){
+				String classAlias = str.substring(0, str.indexOf("[")).trim();
+				String eleStr = str.substring(str.indexOf("[")).trim();
+				obj = generateParameterArray(eleStr, getClassByAlias(classAlias));
+			} else { // object java.lang.Object : {}
 				int separatorIndex = str.indexOf(":");
 				String className = str.substring(0, separatorIndex).trim();
 				String jsonMap = str.substring(separatorIndex + 1).trim();
-				try {
-					ObjectMapper jsonMapper = new ObjectMapper();
-					Class<?> clazz = Class.forName(className);
-					try {
-						obj = jsonMapper.readValue(jsonMap, clazz);
-					} catch (JsonParseException e) {
-						e.printStackTrace();
-					} catch (JsonMappingException e) {
-						e.printStackTrace();
-					} catch (IOException e) {
-						e.printStackTrace();
-					} finally {
-						// 没有需要关闭的资源
-					}
-				} catch (ClassNotFoundException e) {
-					LOGGER.debug("Non-exist class for " + className);
-					e.printStackTrace();
-				}
+				obj = JsonObjectConverter.getObjByJsonStrAndClassName(jsonMap, className);
 			}
 		}
-		return obj;
+		T t = null;
+		try{
+			if(classType != Object.class && classType != obj.getClass()){
+				throw new ClassCastException();
+			}
+			t = (T) obj;
+		}catch (ClassCastException e){
+			throw new RuntimeException("Wrong type : " + obj.getClass().getName() + " for " + classType.getName());
+		}
+		return t;
+	}
+	
+	private static boolean judgeType(String str, char startChar, char endChar){
+		StringBuilder sb = new StringBuilder();
+		StringBuilder sb1 = new StringBuilder();
+		sb.append(startChar);
+		sb1.append(endChar);
+		return judgeType(str, sb.toString(), sb1.toString());
+	}
+	
+	private static boolean judgeType(String str, String startStr, String endStr){
+		if(str != null){
+			return (str.indexOf(startStr) == 0 && str.lastIndexOf(endStr) == str.length() - 1);
+		}
+		return false;
 	}
 	
 	static class Str implements Iterable<String>{
@@ -158,18 +209,23 @@ public class ConvertStrToObj {
 				StringBuilder sb = new StringBuilder();
 				int i = 0;
 				boolean isFlag = false;
+				boolean isString = false;
+				int temp = index;
 				for(;index < str.length(); index++){
 					char character = str.charAt(index);
-					if(character == '[' || character == '<' || character == '{'){
+					if(index == temp){
+						isString = character == '"' ? true : false;
+					}
+					if(!isString && (character == '[' || character == '<' || character == '{')){
 						i++;
 						isFlag = true;
 					}
 					
-					if(character == ']' || character == '>' || character == '}'){
+					if(!isString && (character == ']' || character == '>' || character == '}')){
 						i--;
 					}
 					if(!isFlag){
-						if(character != VARIABLE_SEPARATOR){
+						if(isString || character != VARIABLE_SEPARATOR){
 							sb.append(character);
 						}else{
 							index++;
@@ -177,7 +233,7 @@ public class ConvertStrToObj {
 						}
 					}else{
 						sb.append(character);
-						if(i == 0){ // ], or ]] or ]> or ]}
+						if(i == 0){ // ], or ]] or ]> or ]} or }, 1
 							index++;
 							index++;
 							break;

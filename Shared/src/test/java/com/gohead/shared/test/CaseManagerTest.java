@@ -14,11 +14,14 @@ public class CaseManagerTest extends ParentTest<List<Object>>{
 	private int inte;
 	private boolean flag;
 	private List<Object> list;
-	private Map<Object, Object> map;
+	private List<Integer> intList;
+	private Map<String, Integer> map;
 	private List<Data> data;
+	private Data[] dataArray;
+	private Float[] floatArray;
 	
 	public CaseManagerTest(int caseId, boolean isIgnored, List<Object> expectedObj, String str, int inte, boolean flag, 
-			List<Object> list, Map<Object, Object> map, List<Data> data){
+			List<Object> list, List<Integer> intList, Map<String, Integer> map, List<Data> data, Data[] dataArray, Float[] floatArray){
 		super(caseId, expectedObj, isIgnored);
 		this.str = str;
 		this.inte = inte;
@@ -26,6 +29,9 @@ public class CaseManagerTest extends ParentTest<List<Object>>{
 		this.list = list;
 		this.map = map;
 		this.data = data;
+		this.intList = intList;
+		this.dataArray = dataArray;
+		this.floatArray = floatArray;
 	}
 	
 	@Parameters
@@ -42,8 +48,11 @@ public class CaseManagerTest extends ParentTest<List<Object>>{
 			this.generatedObj.add(inte);
 			this.generatedObj.add(flag);
 			this.generatedObj.add(list);
+			generatedObj.add(intList);
 			this.generatedObj.add(map);
 			this.generatedObj.add(data);
+			this.generatedObj.add(dataArray[0]);
+			this.generatedObj.add(floatArray[0]);
 		}
 	}
 }

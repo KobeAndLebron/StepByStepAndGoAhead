@@ -24,6 +24,12 @@ public class CaseManager {
 	 * 测试Case的id,自动生成,与html页面的caseId(由js生成)一致.
 	 */
 	public static int caseId = 1;
+	
+	private static final String ATTRIBUTE = "attribute";
+	private static final String PARAMETERS_ATTRIBUTE = "parameters";
+	private static final String IGNORED_ATTRIBUTE = "ignored";
+	private static final String EXPECTED_RESULT_ATTRIBUTE = "expectedResult";
+	private static final String EXPECTED_OBJ_ATTRIBUTE = "expectedObj";
 	/**
 	 * 变量名的标签
 	 *//*
@@ -57,7 +63,7 @@ public class CaseManager {
 			// 参数列表
 			for (Element eleTd : td) {
 				// 单元格的属性名
-				String attributeName = eleTd.attr("attribute");
+				String attributeName = eleTd.attr(ATTRIBUTE);
 				// 单元格的文本内容
 				String innerHtml = eleTd.text();
 
@@ -68,14 +74,14 @@ public class CaseManager {
 				 * innerHtml = innerHtml.replace(variableName,
 				 * getValueByClassAndVarible(variableName).toString()); }
 				 */
-				if ("expectedResult".equals(attributeName)) { // 期望的结果
+				if (EXPECTED_RESULT_ATTRIBUTE.equals(attributeName)) { // 期望的结果
 					itCase.setExpectedResult(Boolean.parseBoolean(innerHtml));
-				} else if ("parameters".equals(attributeName)) { // 查询参数
-					itCase.setParameters(ConvertStrToObj.generateParameterList(innerHtml));
-				} else if ("ignored".equals(attributeName)) { // 此测试是否被忽略
+				} else if (PARAMETERS_ATTRIBUTE.equals(attributeName)) { // 查询参数
+					itCase.setParameters(ConvertStrToObj.generateParameterList(innerHtml, Object.class));
+				} else if (IGNORED_ATTRIBUTE.equals(attributeName)) { // 此测试是否被忽略
 					itCase.setIgnored(Boolean.parseBoolean(innerHtml));
-				} else if ("expectedObj".equals(attributeName)) {
-					itCase.setExpectedObj(ConvertStrToObj.convertStrToObj(innerHtml));
+				} else if (EXPECTED_OBJ_ATTRIBUTE.equals(attributeName)) {
+					itCase.setExpectedObj(ConvertStrToObj.convertStrToObj(innerHtml, Object.class));
 				}
 			}
 			ParentTests.add(itCase);
@@ -90,10 +96,10 @@ public class CaseManager {
 			ArrayList<Object> list = new ArrayList<>();
 			// 按照构造器的参数顺序来创建每一个case,顺序不能错
 			list.add(parentTests.get(i).getCaseId());
-			if(parentTests.get(i).isIgnored() != null){
+			if(parentTests.get(i).isIgnored() != null){ // 没有此元素,取默认
 				list.add(parentTests.get(i).isIgnored());
 			}
-			if(parentTests.get(i).isExpectedResult() != null){
+			if(parentTests.get(i).isExpectedResult() != null){ // 没有此元素,取默认
 				list.add(parentTests.get(i).isExpectedResult());
 			}
 			list.add(parentTests.get(i).getExpectedObj());

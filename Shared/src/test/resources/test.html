@@ -16,13 +16,15 @@
 			<td attribute="caseId"></td>
 			<td attribute="ignored">false</td>
 			<td attribute="expectedObj">
-				["aaa", 1, true, [1, 2, 2l, < 1, 2, 3>], {"a" : 1}, [com.gohead.shared.test.Data : {"name":"test"}]]
+				["aaa", 1, true, [1, 2, 2l, < 1, 3, 3, [1, 2, 4, 4]>], [1], {"a" : 1}, [com.gohead.shared.test.Data : {"name": "test"}], 
+					com.gohead.shared.test.Data : {"name": "test1"}, 1f]
 			</td>
 			<td attribute="parameters">
-				["aaa", 1, true, [1, 2, 2l, < 1, 2, 3>], {"a" : 1}, [com.gohead.shared.test.Data : {"name": "test"}]]
+				["aaa", 1, true, [1, 2, 2l, < 1, 3, 3, [1, 2, 4, 4]>], [1], {"a" : 1}, [com.gohead.shared.test.Data : {"name": "test"}], 
+					com.gohead.shared.test.Data[{"name": "test1"}, {"name": "test2"}], float[1, 2f]]
 			</td>
 			<td attribute="comment">
-				数组形式,基本数据类型
+				String, Integer, Boolean, List[Object], List[Integer], Map{String, Integer}, List[com.gohead.shared.test.Data]
 			</td>
 		</tr>
 	</table>
