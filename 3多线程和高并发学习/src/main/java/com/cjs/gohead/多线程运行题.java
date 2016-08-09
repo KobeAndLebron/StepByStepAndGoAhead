@@ -1,4 +1,4 @@
-package com.cjs.goHead;
+package com.cjs.gohead;
 public class 多线程运行题 {
 	private static int index;
 	

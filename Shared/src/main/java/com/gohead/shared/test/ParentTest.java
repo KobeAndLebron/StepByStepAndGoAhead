@@ -48,7 +48,7 @@ public class ParentTest<T> {
 	/**
 	 * Is ignored?
 	 */
-	protected boolean isIgnored = true;
+	protected Boolean isIgnored = true;
 	
 	/**
 	 * Inputed parameters
@@ -59,6 +59,7 @@ public class ParentTest<T> {
 		this.caseId = caseId;
 		this.expectedResult = expectedResult;
 		this.expectedObj = expectedObj;
+		this.isIgnored = false;
 	}
 	
 	public ParentTest(int caseId, T expectedObj, boolean isIgnored){
@@ -80,9 +81,9 @@ public class ParentTest<T> {
 	 */
 	public ParentTest(int caseId, T expectedObj){
 		this.caseId = caseId;
-		this.expectedResult = true;
 		this.expectedObj = expectedObj;
 		this.expectedResult = true;
+		this.isIgnored = false;
 	}
 	
 	public ParentTest(){
@@ -113,7 +114,7 @@ public class ParentTest<T> {
 		this.caseId = caseId;
 	}
 
-	public boolean isIgnored() {
+	public Boolean isIgnored() {
 		return isIgnored;
 	}
 

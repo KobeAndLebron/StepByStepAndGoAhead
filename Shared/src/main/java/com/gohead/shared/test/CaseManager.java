@@ -90,7 +90,9 @@ public class CaseManager {
 			ArrayList<Object> list = new ArrayList<>();
 			// 按照构造器的参数顺序来创建每一个case,顺序不能错
 			list.add(parentTests.get(i).getCaseId());
-			list.add(parentTests.get(i).isIgnored());
+			if(parentTests.get(i).isIgnored() != null){
+				list.add(parentTests.get(i).isIgnored());
+			}
 			if(parentTests.get(i).isExpectedResult() != null){
 				list.add(parentTests.get(i).isExpectedResult());
 			}

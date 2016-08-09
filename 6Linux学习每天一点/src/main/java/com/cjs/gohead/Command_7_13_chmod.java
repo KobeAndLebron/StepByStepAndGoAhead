@@ -1,4 +1,4 @@
-package com.cjs.goHead;
+package com.cjs.gohead;
 
 /**
  * 	The permission in the command line is displayed as:_rwxrwxrwx 1 owner:group
