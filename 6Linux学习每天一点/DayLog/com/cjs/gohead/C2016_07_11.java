@@ -1,4 +1,4 @@
-package com.cjs.goHead;
+package com.cjs.gohead;
 
 /**
  * 	1 做IT(Integrated Test)的时候,要把主代码检查无误之后在进行IT,因为IT比较耗时间,  测完不对后又要改主代码又要跑IT  ,如果检查无误后在进行IT,

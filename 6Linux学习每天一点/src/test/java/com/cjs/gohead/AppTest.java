@@ -1,4 +1,4 @@
-package com.cjs.goHead;
+package com.cjs.gohead;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
