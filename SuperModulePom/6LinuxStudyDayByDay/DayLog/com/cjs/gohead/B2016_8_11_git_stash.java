@@ -20,7 +20,7 @@ package com.cjs.gohead;
  *   If the --include-untracked option is used,all untracked files are also stashed and then cleaned up with git clean,leaving the working directory in a 
  *  very clean state.
  * 	
- * 	show [-p|-stat] [<stash>] 
+ * 	show [<stash>] [-p|-stat] 
  *   Default behaviour is --stat
  *   
  *  apply [--index] [<stash>]
@@ -40,6 +40,6 @@ package com.cjs.gohead;
  * @author ChenJingShuai 11 Aug 2016
  *
  */
-public class B_2016_8_11_git_stash {
+public class B2016_8_11_git_stash {
 
 }
