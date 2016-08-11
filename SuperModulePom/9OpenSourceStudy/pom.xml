@@ -43,7 +43,7 @@
 		</dependency>
 		<dependency>
 			<groupId>com.cjs.gohead</groupId>
-			<artifactId>Shared</artifactId>
+			<artifactId>Shared-Utils</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
