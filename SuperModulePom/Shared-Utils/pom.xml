@@ -2,12 +2,12 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-  	<groupId>com.cjs.goHead</groupId>
-	<artifactId>SuperPom</artifactId>
+  	<groupId>com.cjs.gohead</groupId>
+	<artifactId>SuperModulePom</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
   </parent>
 	
-  <artifactId>Shared</artifactId>
+  <artifactId>Shared-Utils</artifactId>
   <packaging>jar</packaging>
 
   <name>10Shared-Utils</name>

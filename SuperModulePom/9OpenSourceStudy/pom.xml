@@ -3,15 +3,17 @@
 	<modelVersion>4.0.0</modelVersion>
 	
 	<parent>
-		<groupId>com.cjs.goHead</groupId>
-		<artifactId>SuperPom</artifactId>
+		<groupId>com.cjs.gohead</groupId>
+		<artifactId>SuperModulePom</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	
-	<artifactId>2YD_JavaAndSqlOptimizeStudyDayByDay</artifactId>
+	<artifactId>9OpenSourceStudy</artifactId>
+
 	<packaging>jar</packaging>
 
-	<name>2YD_JAndS优化每天一点</name>
+	<name>9开源框架研究</name>
+	<url>http://maven.apache.org</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -21,17 +23,37 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<scope>test</scope>
 		</dependency>
-		<!-- 对多线程项目的依赖 -->
 		<dependency>
-			<groupId>com.cjs.goHead</groupId>
-			<artifactId>3ThreadPoolAndHighConcurrencyStudy</artifactId>
+			<groupId>org.springframework</groupId>
+		    <artifactId>spring-beans</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+		    <artifactId>spring-context</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+		    <artifactId>spring-core</artifactId>
+		</dependency>
+		<!-- Struts2 framework,added to study interceptor. -->
+		<dependency>
+			<groupId>org.apache.struts</groupId>
+		    <artifactId>struts2-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.cjs.gohead</groupId>
+			<artifactId>Shared</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
+
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
 			<!-- 为此项目配置 多个sourceFolder -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -46,7 +68,11 @@
 						<configuration>
 							<sources>
 								<!-- 我们可以通过在这里添加多个source节点，来添加任意多个源文件夹 -->
+								<source>过滤器的实现</source>
+								<source>拦截器的实现</source>
+								<source>Spring</source>
 								<source>src/main/java</source>
+								<source>src/test/java</source>
 							</sources>
 						</configuration>
 					</execution>

@@ -3,9 +3,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<parent>
-		<groupId>com.cjs.goHead</groupId>
-  		<artifactId>SuperPom</artifactId>
-  		<version>0.0.1-SNAPSHOT</version>
+		<groupId>com.cjs.gohead</groupId>
+		<artifactId>SuperModulePom</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	
@@ -34,10 +34,9 @@
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-mapper-asl</artifactId>
-			<version>1.9.4</version>
 		</dependency>
 		<dependency>
-			<groupId>com.cjs.goHead</groupId>
+			<groupId>com.cjs.gohead</groupId>
 			<artifactId>Shared</artifactId>
 			<version>${project.version}</version>
 		</dependency>

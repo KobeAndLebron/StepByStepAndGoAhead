@@ -2,6 +2,8 @@ package com.cjs.wait;
 
 import com.cjs.join_study.ImplementationPrincipleOfJoin;
 import com.cjs.join_study.MyImplementataionOfJoin;
+import com.cjs.join_study.MyImplementataionOfJoinTest1;
+import com.cjs.join_study.MyImplementataionOfJoinTest2;
 
 /**
  * @see ImplementationPrincipleOfJoin

@@ -3,8 +3,8 @@
   <modelVersion>4.0.0</modelVersion>
 	
   <parent>
-  	<groupId>com.cjs.goHead</groupId>
-	<artifactId>SuperPom</artifactId>
+  	<groupId>com.cjs.gohead</groupId>
+	<artifactId>SuperModulePom</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
   </parent>
   
@@ -25,7 +25,7 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-		<groupId>com.cjs.goHead</groupId>
+		<groupId>com.cjs.gohead</groupId>
 		<artifactId>8JAVASourceCodeStudy</artifactId>
 		<version>${project.version}</version>
     </dependency>

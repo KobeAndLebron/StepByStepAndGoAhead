@@ -21,9 +21,6 @@
 	 -->
 	<modelVersion>4.0.0</modelVersion>
 	
-	<!-- It tends to stands for conversational names for the project-->
-	<name>Parent</name>
-	
 	<!-- The Basics -->
 	<!-- Maven Coordinates -->
 	<!-- The trinity(groupId:artifactId:version) act much like an address and timestamp in a project. -->
@@ -35,11 +32,27 @@
 		The dots are replaced by OS specific directory separators (such as '/' in Unix) which becomes a relative
 		directory structure from the base repository. In the example given, the org.codehaus.mojo group lives 
 		within the directory $M2_REPO/org/codehaus/mojo. -->
-	<groupId>com.cjs.goHead</groupId>
-	<artifactId>SuperPom</artifactId>
+	<groupId>com.cjs.gohead</groupId>
+	<artifactId>SuperModulePom</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
-
+	
+	<!-- It tends to stands for conversational names for the project-->
+	<name>SuperModulePom</name>
+	
+	<modules>
+		<module>1DataStructureAndAlgorithmStudy</module>
+		<module>2YD_JavaAndSqlOptimizeStudyDayByDay</module>
+		<module>3ThreadPoolAndHighConcurrencyStudy</module>
+		<module>4SocketStudy</module>
+		<module>5JVMStudy</module>
+		<module>6LinuxStudyDayByDay</module>
+		<module>7JavaDesignPatternStudy</module>
+		<module>8JAVASourceCodeStudy</module>
+		<module>9OpenSourceStudy</module>
+		<module>Shared-Utils</module>
+	</modules>
+	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring.version>4.3.1.RELEASE</spring.version>
