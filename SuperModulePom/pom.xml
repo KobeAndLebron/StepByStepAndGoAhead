@@ -127,6 +127,11 @@
 			    <artifactId>spring-core</artifactId>
 			    <version>${spring.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+			    <artifactId>spring-test</artifactId>
+			    <version>${spring.version}</version>
+			</dependency>
 			<!-- Just for Study of Servlet-API,Do not Use in project. -->
 			<dependency>
 				<groupId>javax.servlet</groupId>

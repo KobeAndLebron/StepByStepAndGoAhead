@@ -36,6 +36,10 @@
 			<groupId>org.springframework</groupId>
 		    <artifactId>spring-core</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+		    <artifactId>spring-test</artifactId>
+		</dependency>
 		<!-- Struts2 framework,added to study interceptor. -->
 		<dependency>
 			<groupId>org.apache.struts</groupId>

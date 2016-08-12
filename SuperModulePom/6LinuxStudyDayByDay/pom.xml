@@ -29,6 +29,11 @@
 		<artifactId>8JAVASourceCodeStudy</artifactId>
 		<version>${project.version}</version>
     </dependency>
+    <dependency>
+		<groupId>com.cjs.gohead</groupId>
+		<artifactId>9OpenSourceStudy</artifactId>
+		<version>${project.version}</version>
+    </dependency>
   </dependencies>
   <build>
   	<plugins>

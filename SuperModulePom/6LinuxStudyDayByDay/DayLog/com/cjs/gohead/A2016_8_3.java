@@ -20,6 +20,6 @@ package com.cjs.gohead;
  *
  * 每天进步一点-2016年8月3日-下午10:11:22
  */
-public class A2016_08_03 {
+public class A2016_8_3 {
 	
 }

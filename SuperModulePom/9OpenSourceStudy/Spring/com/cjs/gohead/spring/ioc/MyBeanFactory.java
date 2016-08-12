@@ -1,4 +1,4 @@
-package com.cjs.gohead.ioc;
+package com.cjs.gohead.spring.ioc;
 
 /**
  *  BeanFactory(resides in spring-beans) And ApplicationContext(resides in spring-context):

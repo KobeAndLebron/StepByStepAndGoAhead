@@ -1,4 +1,4 @@
-package com.cjs.gohead;
+package com.cjs.gohead.spring;
 
 public class BasicConcepts {
 
