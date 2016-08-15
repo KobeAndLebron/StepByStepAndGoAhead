@@ -13,6 +13,7 @@ public class Client {
 		
 		sc.addListener(mcl);
 		
+		System.out.println(System.getProperty("aaaaaa"));
 		sc.initServletContext();
 		sc.destoryServletContext();
 	}
