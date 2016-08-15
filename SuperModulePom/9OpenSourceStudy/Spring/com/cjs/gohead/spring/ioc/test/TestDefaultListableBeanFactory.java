@@ -1,4 +1,4 @@
-package com.cjs.gohead.ioc.test;
+package com.cjs.gohead.spring.ioc.test;
 
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;

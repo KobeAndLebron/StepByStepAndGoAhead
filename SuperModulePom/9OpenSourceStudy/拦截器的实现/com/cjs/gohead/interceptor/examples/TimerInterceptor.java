@@ -6,7 +6,7 @@ public class TimerInterceptor extends AbstractInterceptor{
 	
 	/**
 	 * Must be public and is called by 
-	 * {@linkplain com.cjs.gohead.interceptor.storage.ServiceInterceptorMap#getInterceptorChain(String) 生成拦截器对象的方法}
+	 * {@linkplain com.cjs.gohead.spring.interceptor.storage.ServiceInterceptorMap#getInterceptorChain(String) 生成拦截器对象的方法}
 	 */
 	public TimerInterceptor() {
 	}
