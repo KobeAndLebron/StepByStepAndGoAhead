@@ -10,6 +10,7 @@ import org.junit.Test;
 public class RemoveKeyValueOfValueIsNullTest {
 	ObjectMapper objectMapper = new ObjectMapper();
 	
+	
 	@Test
 	public void ifKeyValueOfValueIsNullIsRemoved() throws JsonGenerationException, JsonMappingException, IOException{
 		System.out.println(System.getProperty("java.class.path"));

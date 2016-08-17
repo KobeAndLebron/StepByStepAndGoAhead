@@ -1,0 +1,826 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<breakpoints>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="19379" lineNumber="513" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="enabled" value="true"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-context\/4.3.1.RELEASE\/spring-context-4.3.1.RELEASE.jar&lt;org.springframework.context.support(AbstractApplicationContext.class[AbstractApplicationContext"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="1"/>
+<attrib name="type" value="org.eclipse.jdt.debug.javaLineBreakpointMarker"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-context\/4.3.1.RELEASE\/spring-context-4.3.1.RELEASE.jar&lt;org.springframework.context.support(AbstractApplicationContext.class"/>
+<attrib name="persistant" value="true"/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+<attrib name="message" value="Line breakpoint:AbstractApplicationContext [line: 513] - refresh()"/>
+<attrib name="registered" value="true"/>
+<attrib name="charStart" value="19379"/>
+<attrib name="path" value="/"/>
+<attrib name="charEnd" value="19453"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="org.springframework.context.support.AbstractApplicationContext"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="22421" lineNumber="612" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="enabled" value="true"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-context\/4.3.1.RELEASE\/spring-context-4.3.1.RELEASE.jar&lt;org.springframework.context.support(AbstractApplicationContext.class[AbstractApplicationContext"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="1"/>
+<attrib name="type" value="org.eclipse.jdt.debug.javaLineBreakpointMarker"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-context\/4.3.1.RELEASE\/spring-context-4.3.1.RELEASE.jar&lt;org.springframework.context.support(AbstractApplicationContext.class"/>
+<attrib name="persistant" value="true"/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+<attrib name="message" value="Line breakpoint:AbstractApplicationContext [line: 612] - obtainFreshBeanFactory()"/>
+<attrib name="registered" value="true"/>
+<attrib name="charStart" value="22421"/>
+<attrib name="path" value="/"/>
+<attrib name="charEnd" value="22444"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="org.springframework.context.support.AbstractApplicationContext"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="3335" lineNumber="82" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="message" value="Line breakpoint:AbstractBeanDefinitionReader [line: 82] - AbstractBeanDefinitionReader(BeanDefinitionRegistry)"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.support(AbstractBeanDefinitionReader.class[AbstractBeanDefinitionReader"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="charStart" value="3335"/>
+<attrib name="charEnd" value="3362"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.support(AbstractBeanDefinitionReader.class"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="3"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="org.springframework.beans.factory.support.AbstractBeanDefinitionReader"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="6421" lineNumber="181" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="enabled" value="true"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.support(AbstractBeanDefinitionReader.class[AbstractBeanDefinitionReader"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="3"/>
+<attrib name="type" value="org.eclipse.jdt.debug.javaLineBreakpointMarker"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.support(AbstractBeanDefinitionReader.class"/>
+<attrib name="persistant" value="true"/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+<attrib name="message" value="Line breakpoint:AbstractBeanDefinitionReader [line: 181] - loadBeanDefinitions(Resource...)"/>
+<attrib name="registered" value="true"/>
+<attrib name="charStart" value="6421"/>
+<attrib name="path" value="/"/>
+<attrib name="charEnd" value="6465"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="org.springframework.beans.factory.support.AbstractBeanDefinitionReader"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="8001" lineNumber="216" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="enabled" value="true"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.support(AbstractBeanDefinitionReader.class[AbstractBeanDefinitionReader"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="3"/>
+<attrib name="type" value="org.eclipse.jdt.debug.javaLineBreakpointMarker"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.support(AbstractBeanDefinitionReader.class"/>
+<attrib name="persistant" value="true"/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+<attrib name="message" value="Line breakpoint:AbstractBeanDefinitionReader [line: 216] - loadBeanDefinitions(String, Set&lt;Resource&gt;)"/>
+<attrib name="registered" value="true"/>
+<attrib name="charStart" value="8001"/>
+<attrib name="path" value="/"/>
+<attrib name="charEnd" value="8094"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="org.springframework.beans.factory.support.AbstractBeanDefinitionReader"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="8095" lineNumber="217" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="enabled" value="true"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.support(AbstractBeanDefinitionReader.class[AbstractBeanDefinitionReader"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="3"/>
+<attrib name="type" value="org.eclipse.jdt.debug.javaLineBreakpointMarker"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.support(AbstractBeanDefinitionReader.class"/>
+<attrib name="persistant" value="true"/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+<attrib name="message" value="Line breakpoint:AbstractBeanDefinitionReader [line: 217] - loadBeanDefinitions(String, Set&lt;Resource&gt;)"/>
+<attrib name="registered" value="true"/>
+<attrib name="charStart" value="8095"/>
+<attrib name="path" value="/"/>
+<attrib name="charEnd" value="8146"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="org.springframework.beans.factory.support.AbstractBeanDefinitionReader"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="9248" lineNumber="252" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="enabled" value="true"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.support(AbstractBeanDefinitionReader.class[AbstractBeanDefinitionReader"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="3"/>
+<attrib name="type" value="org.eclipse.jdt.debug.javaLineBreakpointMarker"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.support(AbstractBeanDefinitionReader.class"/>
+<attrib name="persistant" value="true"/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+<attrib name="message" value="Line breakpoint:AbstractBeanDefinitionReader [line: 252] - loadBeanDefinitions(String...)"/>
+<attrib name="registered" value="true"/>
+<attrib name="charStart" value="9248"/>
+<attrib name="path" value="/"/>
+<attrib name="charEnd" value="9292"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="org.springframework.beans.factory.support.AbstractBeanDefinitionReader"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="5216" lineNumber="126" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="enabled" value="true"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-context\/4.3.1.RELEASE\/spring-context-4.3.1.RELEASE.jar&lt;org.springframework.context.support(AbstractRefreshableApplicationContext.class[AbstractRefreshableApplicationContext"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="3"/>
+<attrib name="type" value="org.eclipse.jdt.debug.javaLineBreakpointMarker"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-context\/4.3.1.RELEASE\/spring-context-4.3.1.RELEASE.jar&lt;org.springframework.context.support(AbstractRefreshableApplicationContext.class"/>
+<attrib name="persistant" value="true"/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+<attrib name="message" value="Line breakpoint:AbstractRefreshableApplicationContext [line: 126] - refreshBeanFactory()"/>
+<attrib name="registered" value="true"/>
+<attrib name="charStart" value="5216"/>
+<attrib name="path" value="/"/>
+<attrib name="charEnd" value="5280"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="org.springframework.context.support.AbstractRefreshableApplicationContext"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="5363" lineNumber="129" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="enabled" value="true"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-context\/4.3.1.RELEASE\/spring-context-4.3.1.RELEASE.jar&lt;org.springframework.context.support(AbstractRefreshableApplicationContext.class[AbstractRefreshableApplicationContext"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="3"/>
+<attrib name="type" value="org.eclipse.jdt.debug.javaLineBreakpointMarker"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-context\/4.3.1.RELEASE\/spring-context-4.3.1.RELEASE.jar&lt;org.springframework.context.support(AbstractRefreshableApplicationContext.class"/>
+<attrib name="persistant" value="true"/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+<attrib name="message" value="Line breakpoint:AbstractRefreshableApplicationContext [line: 129] - refreshBeanFactory()"/>
+<attrib name="registered" value="true"/>
+<attrib name="charStart" value="5363"/>
+<attrib name="path" value="/"/>
+<attrib name="charEnd" value="5399"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="org.springframework.context.support.AbstractRefreshableApplicationContext"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="5444" lineNumber="131" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="enabled" value="true"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-context\/4.3.1.RELEASE\/spring-context-4.3.1.RELEASE.jar&lt;org.springframework.context.support(AbstractRefreshableApplicationContext.class[AbstractRefreshableApplicationContext"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="3"/>
+<attrib name="type" value="org.eclipse.jdt.debug.javaLineBreakpointMarker"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-context\/4.3.1.RELEASE\/spring-context-4.3.1.RELEASE.jar&lt;org.springframework.context.support(AbstractRefreshableApplicationContext.class"/>
+<attrib name="persistant" value="true"/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+<attrib name="message" value="Line breakpoint:AbstractRefreshableApplicationContext [line: 131] - refreshBeanFactory()"/>
+<attrib name="registered" value="true"/>
+<attrib name="charStart" value="5444"/>
+<attrib name="path" value="/"/>
+<attrib name="charEnd" value="5479"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="org.springframework.context.support.AbstractRefreshableApplicationContext"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="2897" lineNumber="82" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="message" value="Line breakpoint:AbstractXmlApplicationContext [line: 82] - loadBeanDefinitions(DefaultListableBeanFactory)"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-context\/4.3.1.RELEASE\/spring-context-4.3.1.RELEASE.jar&lt;org.springframework.context.support(AbstractXmlApplicationContext.class[AbstractXmlApplicationContext"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="charStart" value="2897"/>
+<attrib name="charEnd" value="2987"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-context\/4.3.1.RELEASE\/spring-context-4.3.1.RELEASE.jar&lt;org.springframework.context.support(AbstractXmlApplicationContext.class"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="0"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="org.springframework.context.support.AbstractXmlApplicationContext"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="3148" lineNumber="87" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="message" value="Line breakpoint:AbstractXmlApplicationContext [line: 87] - loadBeanDefinitions(DefaultListableBeanFactory)"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-context\/4.3.1.RELEASE\/spring-context-4.3.1.RELEASE.jar&lt;org.springframework.context.support(AbstractXmlApplicationContext.class[AbstractXmlApplicationContext"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="charStart" value="3148"/>
+<attrib name="charEnd" value="3195"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-context\/4.3.1.RELEASE\/spring-context-4.3.1.RELEASE.jar&lt;org.springframework.context.support(AbstractXmlApplicationContext.class"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="0"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="org.springframework.context.support.AbstractXmlApplicationContext"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="3455" lineNumber="93" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="message" value="Line breakpoint:AbstractXmlApplicationContext [line: 93] - loadBeanDefinitions(DefaultListableBeanFactory)"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-context\/4.3.1.RELEASE\/spring-context-4.3.1.RELEASE.jar&lt;org.springframework.context.support(AbstractXmlApplicationContext.class[AbstractXmlApplicationContext"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="charStart" value="3455"/>
+<attrib name="charEnd" value="3499"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-context\/4.3.1.RELEASE\/spring-context-4.3.1.RELEASE.jar&lt;org.springframework.context.support(AbstractXmlApplicationContext.class"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="0"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="org.springframework.context.support.AbstractXmlApplicationContext"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="4951" lineNumber="127" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="message" value="Line breakpoint:AbstractXmlApplicationContext [line: 127] - loadBeanDefinitions(XmlBeanDefinitionReader)"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-context\/4.3.1.RELEASE\/spring-context-4.3.1.RELEASE.jar&lt;org.springframework.context.support(AbstractXmlApplicationContext.class[AbstractXmlApplicationContext"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="charStart" value="4951"/>
+<attrib name="charEnd" value="4998"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-context\/4.3.1.RELEASE\/spring-context-4.3.1.RELEASE.jar&lt;org.springframework.context.support(AbstractXmlApplicationContext.class"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="0"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="org.springframework.context.support.AbstractXmlApplicationContext"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="16118" lineNumber="438" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="enabled" value="true"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.xml(BeanDefinitionParserDelegate.class[BeanDefinitionParserDelegate"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="3"/>
+<attrib name="type" value="org.eclipse.jdt.debug.javaLineBreakpointMarker"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.xml(BeanDefinitionParserDelegate.class"/>
+<attrib name="persistant" value="true"/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+<attrib name="message" value="Line breakpoint:BeanDefinitionParserDelegate [line: 438] - parseBeanDefinitionElement(Element, BeanDefinition)"/>
+<attrib name="registered" value="true"/>
+<attrib name="charStart" value="16118"/>
+<attrib name="path" value="/"/>
+<attrib name="charEnd" value="16163"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="org.springframework.beans.factory.xml.BeanDefinitionParserDelegate"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="19192" lineNumber="525" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="enabled" value="true"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.xml(BeanDefinitionParserDelegate.class[BeanDefinitionParserDelegate"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="3"/>
+<attrib name="type" value="org.eclipse.jdt.debug.javaLineBreakpointMarker"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.xml(BeanDefinitionParserDelegate.class"/>
+<attrib name="persistant" value="true"/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+<attrib name="message" value="Line breakpoint:BeanDefinitionParserDelegate [line: 525] - parseBeanDefinitionElement(Element, String, BeanDefinition)"/>
+<attrib name="registered" value="true"/>
+<attrib name="charStart" value="19192"/>
+<attrib name="path" value="/"/>
+<attrib name="charEnd" value="19240"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="org.springframework.beans.factory.xml.BeanDefinitionParserDelegate"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="19940" lineNumber="547" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="enabled" value="true"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.xml(BeanDefinitionParserDelegate.class[BeanDefinitionParserDelegate"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="3"/>
+<attrib name="type" value="org.eclipse.jdt.debug.javaLineBreakpointMarker"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.xml(BeanDefinitionParserDelegate.class"/>
+<attrib name="persistant" value="true"/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+<attrib name="message" value="Line breakpoint:BeanDefinitionParserDelegate [line: 547] - parseBeanDefinitionElement(Element, String, BeanDefinition)"/>
+<attrib name="registered" value="true"/>
+<attrib name="charStart" value="19940"/>
+<attrib name="path" value="/"/>
+<attrib name="charEnd" value="19974"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="org.springframework.beans.factory.xml.BeanDefinitionParserDelegate"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="20103" lineNumber="553" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="enabled" value="true"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.xml(BeanDefinitionParserDelegate.class[BeanDefinitionParserDelegate"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="3"/>
+<attrib name="type" value="org.eclipse.jdt.debug.javaLineBreakpointMarker"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.xml(BeanDefinitionParserDelegate.class"/>
+<attrib name="persistant" value="true"/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+<attrib name="message" value="Line breakpoint:BeanDefinitionParserDelegate [line: 553] - parseBeanDefinitionElement(Element, String, BeanDefinition)"/>
+<attrib name="registered" value="true"/>
+<attrib name="charStart" value="20103"/>
+<attrib name="path" value="/"/>
+<attrib name="charEnd" value="20116"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="org.springframework.beans.factory.xml.BeanDefinitionParserDelegate"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="26886" lineNumber="751" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="enabled" value="true"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.xml(BeanDefinitionParserDelegate.class[BeanDefinitionParserDelegate"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="3"/>
+<attrib name="type" value="org.eclipse.jdt.debug.javaLineBreakpointMarker"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.xml(BeanDefinitionParserDelegate.class"/>
+<attrib name="persistant" value="true"/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+<attrib name="message" value="Line breakpoint:BeanDefinitionParserDelegate [line: 751] - parsePropertyElements(Element, BeanDefinition)"/>
+<attrib name="registered" value="true"/>
+<attrib name="charStart" value="26886"/>
+<attrib name="path" value="/"/>
+<attrib name="charEnd" value="26926"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="org.springframework.beans.factory.xml.BeanDefinitionParserDelegate"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="31913" lineNumber="894" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="enabled" value="true"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.xml(BeanDefinitionParserDelegate.class[BeanDefinitionParserDelegate"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="3"/>
+<attrib name="type" value="org.eclipse.jdt.debug.javaLineBreakpointMarker"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.xml(BeanDefinitionParserDelegate.class"/>
+<attrib name="persistant" value="true"/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+<attrib name="message" value="Line breakpoint:BeanDefinitionParserDelegate [line: 894] - parsePropertyElement(Element, BeanDefinition)"/>
+<attrib name="registered" value="true"/>
+<attrib name="charStart" value="31913"/>
+<attrib name="path" value="/"/>
+<attrib name="charEnd" value="31971"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="org.springframework.beans.factory.xml.BeanDefinitionParserDelegate"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="36327" lineNumber="1017" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="enabled" value="true"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.xml(BeanDefinitionParserDelegate.class[BeanDefinitionParserDelegate"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="3"/>
+<attrib name="type" value="org.eclipse.jdt.debug.javaLineBreakpointMarker"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.xml(BeanDefinitionParserDelegate.class"/>
+<attrib name="persistant" value="true"/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+<attrib name="message" value="Line breakpoint:BeanDefinitionParserDelegate [line: 1017] - parsePropertySubElement(Element, BeanDefinition, String)"/>
+<attrib name="registered" value="true"/>
+<attrib name="charStart" value="36327"/>
+<attrib name="path" value="/"/>
+<attrib name="charEnd" value="36360"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="org.springframework.beans.factory.xml.BeanDefinitionParserDelegate"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="41556" lineNumber="1172" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="enabled" value="true"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.xml(BeanDefinitionParserDelegate.class[BeanDefinitionParserDelegate"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="3"/>
+<attrib name="type" value="org.eclipse.jdt.debug.javaLineBreakpointMarker"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.xml(BeanDefinitionParserDelegate.class"/>
+<attrib name="persistant" value="true"/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+<attrib name="message" value="Line breakpoint:BeanDefinitionParserDelegate [line: 1172] - parseListElement(Element, BeanDefinition)"/>
+<attrib name="registered" value="true"/>
+<attrib name="charStart" value="41556"/>
+<attrib name="path" value="/"/>
+<attrib name="charEnd" value="41635"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="org.springframework.beans.factory.xml.BeanDefinitionParserDelegate"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="5710" lineNumber="147" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="enabled" value="true"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.support(BeanDefinitionReaderUtils.class[BeanDefinitionReaderUtils"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="3"/>
+<attrib name="type" value="org.eclipse.jdt.debug.javaLineBreakpointMarker"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.support(BeanDefinitionReaderUtils.class"/>
+<attrib name="persistant" value="true"/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+<attrib name="message" value="Line breakpoint:BeanDefinitionReaderUtils [line: 147] - registerBeanDefinition(BeanDefinitionHolder, BeanDefinitionRegistry)"/>
+<attrib name="registered" value="true"/>
+<attrib name="charStart" value="5710"/>
+<attrib name="path" value="/"/>
+<attrib name="charEnd" value="5761"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="org.springframework.beans.factory.support.BeanDefinitionReaderUtils"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="3436" lineNumber="94" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="message" value="Line breakpoint:DefaultBeanDefinitionDocumentReader [line: 94] - registerBeanDefinitions(Document, XmlReaderContext)"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.xml(DefaultBeanDefinitionDocumentReader.class[DefaultBeanDefinitionDocumentReader"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="charStart" value="3436"/>
+<attrib name="charEnd" value="3470"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.xml(DefaultBeanDefinitionDocumentReader.class"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="3"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="4532" lineNumber="123" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="enabled" value="true"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.xml(DefaultBeanDefinitionDocumentReader.class[DefaultBeanDefinitionDocumentReader"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="3"/>
+<attrib name="type" value="org.eclipse.jdt.debug.javaLineBreakpointMarker"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.xml(DefaultBeanDefinitionDocumentReader.class"/>
+<attrib name="persistant" value="true"/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+<attrib name="message" value="Line breakpoint:DefaultBeanDefinitionDocumentReader [line: 123] - doRegisterBeanDefinitions(Element)"/>
+<attrib name="registered" value="true"/>
+<attrib name="charStart" value="4532"/>
+<attrib name="path" value="/"/>
+<attrib name="charEnd" value="4586"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="5298" lineNumber="142" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="enabled" value="true"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.xml(DefaultBeanDefinitionDocumentReader.class[DefaultBeanDefinitionDocumentReader"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="3"/>
+<attrib name="type" value="org.eclipse.jdt.debug.javaLineBreakpointMarker"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.xml(DefaultBeanDefinitionDocumentReader.class"/>
+<attrib name="persistant" value="true"/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+<attrib name="message" value="Line breakpoint:DefaultBeanDefinitionDocumentReader [line: 142] - doRegisterBeanDefinitions(Element)"/>
+<attrib name="registered" value="true"/>
+<attrib name="charStart" value="5298"/>
+<attrib name="path" value="/"/>
+<attrib name="charEnd" value="5342"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="5956" lineNumber="162" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="enabled" value="true"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.xml(DefaultBeanDefinitionDocumentReader.class[DefaultBeanDefinitionDocumentReader"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="3"/>
+<attrib name="type" value="org.eclipse.jdt.debug.javaLineBreakpointMarker"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.xml(DefaultBeanDefinitionDocumentReader.class"/>
+<attrib name="persistant" value="true"/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+<attrib name="message" value="Line breakpoint:DefaultBeanDefinitionDocumentReader [line: 162] - parseBeanDefinitions(Element, BeanDefinitionParserDelegate)"/>
+<attrib name="registered" value="true"/>
+<attrib name="charStart" value="5956"/>
+<attrib name="path" value="/"/>
+<attrib name="charEnd" value="5998"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="6493" lineNumber="183" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="enabled" value="true"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.xml(DefaultBeanDefinitionDocumentReader.class[DefaultBeanDefinitionDocumentReader"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="3"/>
+<attrib name="type" value="org.eclipse.jdt.debug.javaLineBreakpointMarker"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.xml(DefaultBeanDefinitionDocumentReader.class"/>
+<attrib name="persistant" value="true"/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+<attrib name="message" value="Line breakpoint:DefaultBeanDefinitionDocumentReader [line: 183] - parseDefaultElement(Element, BeanDefinitionParserDelegate)"/>
+<attrib name="registered" value="true"/>
+<attrib name="charStart" value="6493"/>
+<attrib name="path" value="/"/>
+<attrib name="charEnd" value="6546"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="6742" lineNumber="190" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="enabled" value="true"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.xml(DefaultBeanDefinitionDocumentReader.class[DefaultBeanDefinitionDocumentReader"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="3"/>
+<attrib name="type" value="org.eclipse.jdt.debug.javaLineBreakpointMarker"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.xml(DefaultBeanDefinitionDocumentReader.class"/>
+<attrib name="persistant" value="true"/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+<attrib name="message" value="Line breakpoint:DefaultBeanDefinitionDocumentReader [line: 190] - parseDefaultElement(Element, BeanDefinitionParserDelegate)"/>
+<attrib name="registered" value="true"/>
+<attrib name="charStart" value="6742"/>
+<attrib name="path" value="/"/>
+<attrib name="charEnd" value="6782"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="10673" lineNumber="299" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="enabled" value="true"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.xml(DefaultBeanDefinitionDocumentReader.class[DefaultBeanDefinitionDocumentReader"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="1"/>
+<attrib name="type" value="org.eclipse.jdt.debug.javaLineBreakpointMarker"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.xml(DefaultBeanDefinitionDocumentReader.class"/>
+<attrib name="persistant" value="true"/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+<attrib name="message" value="Line breakpoint:DefaultBeanDefinitionDocumentReader [line: 299] - processBeanDefinition(Element, BeanDefinitionParserDelegate)"/>
+<attrib name="registered" value="true"/>
+<attrib name="charStart" value="10673"/>
+<attrib name="path" value="/"/>
+<attrib name="charEnd" value="10748"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="10902" lineNumber="304" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="enabled" value="true"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.xml(DefaultBeanDefinitionDocumentReader.class[DefaultBeanDefinitionDocumentReader"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="3"/>
+<attrib name="type" value="org.eclipse.jdt.debug.javaLineBreakpointMarker"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.xml(DefaultBeanDefinitionDocumentReader.class"/>
+<attrib name="persistant" value="true"/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+<attrib name="message" value="Line breakpoint:DefaultBeanDefinitionDocumentReader [line: 304] - processBeanDefinition(Element, BeanDefinitionParserDelegate)"/>
+<attrib name="registered" value="true"/>
+<attrib name="charStart" value="10902"/>
+<attrib name="path" value="/"/>
+<attrib name="charEnd" value="10999"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="31059" lineNumber="810" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="enabled" value="true"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.support(DefaultListableBeanFactory.class[DefaultListableBeanFactory"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="3"/>
+<attrib name="type" value="org.eclipse.jdt.debug.javaLineBreakpointMarker"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.support(DefaultListableBeanFactory.class"/>
+<attrib name="persistant" value="true"/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+<attrib name="message" value="Line breakpoint:DefaultListableBeanFactory [line: 810] - registerBeanDefinition(String, BeanDefinition)"/>
+<attrib name="registered" value="true"/>
+<attrib name="charStart" value="31059"/>
+<attrib name="path" value="/"/>
+<attrib name="charEnd" value="31117"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="org.springframework.beans.factory.support.DefaultListableBeanFactory"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="6067" lineNumber="156" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="enabled" value="true"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-context\/4.3.1.RELEASE\/spring-context-4.3.1.RELEASE.jar&lt;org.springframework.context.support(FileSystemXmlApplicationContext.class[FileSystemXmlApplicationContext"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="0"/>
+<attrib name="type" value="org.eclipse.jdt.debug.javaLineBreakpointMarker"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-context\/4.3.1.RELEASE\/spring-context-4.3.1.RELEASE.jar&lt;org.springframework.context.support(FileSystemXmlApplicationContext.class"/>
+<attrib name="persistant" value="true"/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+<attrib name="message" value="Line breakpoint:FileSystemXmlApplicationContext [line: 156] - getResourceByPath(String)"/>
+<attrib name="registered" value="true"/>
+<attrib name="charStart" value="6067"/>
+<attrib name="path" value="/"/>
+<attrib name="charEnd" value="6112"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="org.springframework.context.support.FileSystemXmlApplicationContext"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="11807" lineNumber="275" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="enabled" value="true"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-core\/4.3.1.RELEASE\/spring-core-4.3.1.RELEASE.jar&lt;org.springframework.core.io.support(PathMatchingResourcePatternResolver.class[PathMatchingResourcePatternResolver"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="1"/>
+<attrib name="type" value="org.eclipse.jdt.debug.javaLineBreakpointMarker"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-core\/4.3.1.RELEASE\/spring-core-4.3.1.RELEASE.jar&lt;org.springframework.core.io.support(PathMatchingResourcePatternResolver.class"/>
+<attrib name="persistant" value="true"/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+<attrib name="message" value="Line breakpoint:PathMatchingResourcePatternResolver [line: 275] - getResources(String)"/>
+<attrib name="registered" value="true"/>
+<attrib name="charStart" value="11807"/>
+<attrib name="path" value="/"/>
+<attrib name="charEnd" value="11868"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="org.springframework.core.io.support.PathMatchingResourcePatternResolver"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="12699" lineNumber="296" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="enabled" value="true"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-core\/4.3.1.RELEASE\/spring-core-4.3.1.RELEASE.jar&lt;org.springframework.core.io.support(PathMatchingResourcePatternResolver.class[PathMatchingResourcePatternResolver"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="1"/>
+<attrib name="type" value="org.eclipse.jdt.debug.javaLineBreakpointMarker"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-core\/4.3.1.RELEASE\/spring-core-4.3.1.RELEASE.jar&lt;org.springframework.core.io.support(PathMatchingResourcePatternResolver.class"/>
+<attrib name="persistant" value="true"/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+<attrib name="message" value="Line breakpoint:PathMatchingResourcePatternResolver [line: 296] - getResources(String)"/>
+<attrib name="registered" value="true"/>
+<attrib name="charStart" value="12699"/>
+<attrib name="path" value="/"/>
+<attrib name="charEnd" value="12776"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="org.springframework.core.io.support.PathMatchingResourcePatternResolver"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="12351" lineNumber="320" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="enabled" value="true"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.xml(XmlBeanDefinitionReader.class[XmlBeanDefinitionReader"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="3"/>
+<attrib name="type" value="org.eclipse.jdt.debug.javaLineBreakpointMarker"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.xml(XmlBeanDefinitionReader.class"/>
+<attrib name="persistant" value="true"/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+<attrib name="message" value="Line breakpoint:XmlBeanDefinitionReader [line: 320] - loadBeanDefinitions(EncodedResource)"/>
+<attrib name="registered" value="true"/>
+<attrib name="charStart" value="12351"/>
+<attrib name="path" value="/"/>
+<attrib name="charEnd" value="12434"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="org.springframework.beans.factory.xml.XmlBeanDefinitionReader"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="13047" lineNumber="336" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="enabled" value="true"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.xml(XmlBeanDefinitionReader.class[XmlBeanDefinitionReader"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="3"/>
+<attrib name="type" value="org.eclipse.jdt.debug.javaLineBreakpointMarker"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.xml(XmlBeanDefinitionReader.class"/>
+<attrib name="persistant" value="true"/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+<attrib name="message" value="Line breakpoint:XmlBeanDefinitionReader [line: 336] - loadBeanDefinitions(EncodedResource)"/>
+<attrib name="registered" value="true"/>
+<attrib name="charStart" value="13047"/>
+<attrib name="path" value="/"/>
+<attrib name="charEnd" value="13124"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="org.springframework.beans.factory.xml.XmlBeanDefinitionReader"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="14998" lineNumber="391" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="enabled" value="true"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.xml(XmlBeanDefinitionReader.class[XmlBeanDefinitionReader"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="3"/>
+<attrib name="type" value="org.eclipse.jdt.debug.javaLineBreakpointMarker"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.xml(XmlBeanDefinitionReader.class"/>
+<attrib name="persistant" value="true"/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+<attrib name="message" value="Line breakpoint:XmlBeanDefinitionReader [line: 391] - doLoadBeanDefinitions(InputSource, Resource)"/>
+<attrib name="registered" value="true"/>
+<attrib name="charStart" value="14998"/>
+<attrib name="path" value="/"/>
+<attrib name="charEnd" value="15054"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="org.springframework.beans.factory.xml.XmlBeanDefinitionReader"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="19886" lineNumber="508" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="message" value="Line breakpoint:XmlBeanDefinitionReader [line: 508] - registerBeanDefinitions(Document, Resource)"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.xml(XmlBeanDefinitionReader.class[XmlBeanDefinitionReader"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="charStart" value="19886"/>
+<attrib name="charEnd" value="19963"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=6LinuxStudyDayByDay/\/home\/chenjingshuai\/.m2\/repository\/org\/springframework\/spring-beans\/4.3.1.RELEASE\/spring-beans-4.3.1.RELEASE.jar&lt;org.springframework.beans.factory.xml(XmlBeanDefinitionReader.class"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="3"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="org.springframework.beans.factory.xml.XmlBeanDefinitionReader"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+</marker>
+</breakpoint>
+</breakpoints>

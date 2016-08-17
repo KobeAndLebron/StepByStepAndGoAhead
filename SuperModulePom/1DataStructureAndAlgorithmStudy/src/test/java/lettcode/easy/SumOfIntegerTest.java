@@ -23,7 +23,7 @@ public class SumOfIntegerTest extends ParentTest<Integer>{
 		return Arrays.asList(new Object[][]{
 			new Object[]{1, 110, 10, 100},
 			new Object[]{2, 11, 10, 1},
-			new Object[]{3, 0, 1, -1}
+			// new Object[]{3, 0, 1, -1}
 		});
 	}
 	
