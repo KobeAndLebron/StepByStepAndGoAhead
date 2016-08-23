@@ -1,7 +1,7 @@
-#script of linux
-#purpose:Check mysql state and use heartbeat to failover when mysql is down,it refers to Mysql ha and heartbeat
+# script of linux
+# purpose:Check mysql state and use heartbeat to failover when mysql is down,it refers to Mysql ha and heartbeat
 #!/bin/bash
-#set -ex
+# set -ex
 
 # export MYSQL_HOME=/mysql
 # export PATH=$MYSQL_HOME/bin:$PATH
@@ -18,11 +18,11 @@ master_nodeName1= 反斜杠hostname反斜杠
 
 while((1 > 0));do
   echo "check start..."
-  #used to check heart status
+  # used to check heart status
         heart_ps=ps -A | grep -o heartbeat
   $mysql -u$master_uname -p$master_pwd -h$master_ip -P$master_port -connect_timeout=3 --execute="select version();" 1>/dev/null 2>/dev/null
         
-  if [ $? -ne 0 ]; then #mysql service down
+  if [ $? -ne 0 ]; then # mysql service down
     echo "mysql service down"
 
     sleep 1
@@ -35,7 +35,7 @@ while((1 > 0));do
     sleep 1
   elif [ "" == "$heart_ps" ];then
     echo "recovery start..."
-    service heartbeat start 1>/dev/null #heartbeat is closed
+    service heartbeat start 1>/dev/null # heartbeat is closed
     echo "recovery stop..."
   fi
   echo "check stop..."
