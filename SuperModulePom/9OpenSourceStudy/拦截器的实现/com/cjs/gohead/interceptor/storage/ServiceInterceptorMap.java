@@ -10,8 +10,8 @@ public class ServiceInterceptorMap {
 	 * 加载注解并存储
 	 */
 	static {
-		System.out.println(AnnotationUtils.findAnnotation(com.cjs.gohead.interceptor.SimpleServiceImpl.class, 
-				com.cjs.gohead.interceptor.annotation.InterceptorName.class));
+		/*System.out.println(AnnotationUtils.findAnnotation(com.cjs.gohead.interceptor.SimpleServiceImpl.class,
+				com.cjs.gohead.interceptor.annotation.InterceptorName.class));*/
 		
 	}
 	
