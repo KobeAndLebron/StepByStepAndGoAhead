@@ -11,6 +11,9 @@ import com.cjs.gohead.interceptor.inter.ServiceInvocation;
 import com.cjs.gohead.interceptor.inter.ServiceProxy;
 import com.gohead.shared.test.ParentTest;
 
+/**
+ * 发那倒是发大水
+ */
 public class Client extends ParentTest<String>{
 	private Class<?> serviceClass;
 	
