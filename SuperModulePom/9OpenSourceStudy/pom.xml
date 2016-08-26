@@ -50,6 +50,10 @@
 			<artifactId>Shared-Utils</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -76,7 +80,8 @@
 								<source>拦截器的实现</source>
 								<source>Spring</source>
 								<source>src/main/java</source>
-								<source>src/test/java</source>
+								<!--Remove it,Add source just add main source folder-->
+								<!--<source>src/test/java</source>-->
 							</sources>
 						</configuration>
 					</execution>
