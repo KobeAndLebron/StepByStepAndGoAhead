@@ -2,14 +2,13 @@ package com.cjs.wait;
 
 import com.cjs.join_study.ImplementationPrincipleOfJoin;
 import com.cjs.join_study.MyImplementataionOfJoin;
-import com.cjs.join_study.MyImplementataionOfJoinTest1;
-import com.cjs.join_study.MyImplementataionOfJoinTest2;
 
 /**
  * @see ImplementationPrincipleOfJoin
  * @see MyImplementataionOfJoin
- * @see MyImplementataionOfJoinTest1
- * @see MyImplementataionOfJoinTest2
+ * ############ Search the following classes(Since main cannot depend on test)
+ * MyImplementataionOfJoinTest1
+ * MyImplementataionOfJoinTest2
  * 
  * @author ChenJingShuai
  *
