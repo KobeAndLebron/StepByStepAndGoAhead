@@ -3,7 +3,7 @@
 
 echo "Enter the file: "
 read FILENAME
-echo "Printing the head of ${FILENAME}.sh..."
+echo "Printing the head of ${FILENAME}.sh..." 
 head -n 1 ${FILENAME}.sh
 echo ""
 

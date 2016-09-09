@@ -14,7 +14,7 @@ public class BenChi implements Car{
 	
 	/**
 	 *  Even if constructor is not annotated with AutoWired,tire is also injected by Spring DI facilities.
-	 *  
+
 	 * @param tire
 	 */
 	//@Autowired
