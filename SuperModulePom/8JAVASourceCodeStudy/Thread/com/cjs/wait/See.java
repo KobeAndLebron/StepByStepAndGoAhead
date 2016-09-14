@@ -6,9 +6,10 @@ import com.cjs.join_study.MyImplementataionOfJoin;
 /**
  * @see ImplementationPrincipleOfJoin
  * @see MyImplementataionOfJoin
+ *
  * ############ Search the following classes(Since main cannot depend on test)
  * MyImplementataionOfJoinTest1
- * fdsafdsaMyImplementataionOfJoinTest2
+ * MyImplementataionOfJoinTest2
  *
  * @author ChenJingShuai
  *

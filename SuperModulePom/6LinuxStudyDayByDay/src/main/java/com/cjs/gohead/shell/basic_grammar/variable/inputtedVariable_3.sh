@@ -8,5 +8,5 @@ head -n 1 ${FILENAME}.sh
 echo ""
 
 echo "Printing the tail of ${FILENAME}.sh..."
-tail -n 1 ${FILENAME}.sh
+tail -n 1 $FILENAME.sh
 echo ""
