@@ -11,5 +11,5 @@ public interface ServletContext {
 	public <T extends ServletContextListener> void addListener(T t);
 	public String getName();
 	public void initServletContext();
-	public void destoryServletContext();
+	public void destroyServletContext();
 }

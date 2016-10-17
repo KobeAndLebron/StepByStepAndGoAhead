@@ -30,7 +30,7 @@ public class MyServletContext implements ServletContext {
 		}
 	}
 	
-	public void destoryServletContext(){
+	public void destroyServletContext(){
 		ServletContextEvent sce = new ServletContextEvent(this);
 		for(ServletContextListener listener : listeners){
 			listener.contextDestroyed(sce);

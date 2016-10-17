@@ -39,7 +39,7 @@ public class ContainsDuplicate2ByHashMapTest {
     public void init(){
     	c = new ContainsDuplicate2HashMap();
     }
-    
+
     @Test
     public void test(){
     	assertEquals(this.ifExists, c.containsNearbyDuplicate(nums, k));
