@@ -1,6 +1,7 @@
 package lettcode.medium;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -23,10 +24,10 @@ import java.util.List;
  */
 public class SpiralMatrix {
 	public List<Integer> spiralOrder(int[][] matrix) {
-		if(matrix.length == 0){
+		if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
 			return null;
 		}
-        return matrix == null ? null : getList(matrix, 0, matrix.length - 1, 0, matrix[0].length - 1);
+		return getList(matrix, 0, matrix.length - 1, 0, matrix[0].length - 1);
     }
 	
 	/**
@@ -36,55 +37,41 @@ public class SpiralMatrix {
 	 */
 	private List<Integer> getList(int[][] matrix, int up, int down, int left, int right){
 		List<Integer> outPutList = new ArrayList<>();
-		
-		if(matrix != null && up <= matrix.length - 1 && down >=0 && right >= 0 && left <= matrix[0].length - 1
-				&& up >=0 && down <= matrix.length - 1 && right <= matrix[0].length - 1 && 
-				left >= 0){
-			outPutList = getList(matrix, up + 1, down - 1, left + 1, right - 1);
-			List<Integer> upList = new ArrayList<>();
-			List<Integer> downList = new ArrayList<>();
-			List<Integer> leftList = new ArrayList<>();
-			List<Integer> rightList = new ArrayList<>();
-			if(up <= down){
-				for(int i = left; i <= right - 1; i++ ){ // 上
+
+		if (down > up || right >= left) {
+			List<Integer> upList = new LinkedList<>();
+			List<Integer> downList = new LinkedList<>();
+			if (left <= right) { // return left and right list.
+				for(int i = left; i <= right; i++) {
 					upList.add(matrix[up][i]);
 				}
-				if(up != down){
-					upList.remove(upList.size() - 1);
-					for(int i = right; i >= left; i-- ){ // 下
-						downList.add(matrix[down][i]);
-					}
-				}
-				if(downList.size() > 0){
-					downList.remove(downList.size() - 1);
+				for(int i = right; i <= left; i--) {
+					downList.add(matrix[down][i]);
 				}
 			}
-			if(left <= right){
-				if(downList.size() > 0){
-					downList.remove(downList.size() - 1);
+
+			int temp = up + 1;
+			List<Integer> leftList = new LinkedList<>();
+			List<Integer> rightList = new LinkedList<>();
+			if (up < down) { // return up and down list.
+				down--;
+				for(int i = up; i <= down; i++) {
+					leftList.add(matrix[i][right]);
 				}
-				for(int i = down; i >= up; i-- ){ // 左
-					leftList.add(matrix[i][left]);
+				for(int i = down; i <= up; i--) {
+					rightList.add(matrix[i][left]);
 				}
-				if(left != right){
-					
-					for(int i = up; i <= down; i++ ){ // 右
-						rightList.add(matrix[i][right]);
-					}
-				}
-				if(rightList.size() > 0){
-					rightList.remove(rightList.size() - 1);
-				}
-				if(leftList.size() > 0){
-					leftList.remove(leftList.size() - 1);
-				}
+
 			}
+
+			outPutList = getList(matrix, up + 1, down - 1, left + 1, right - 1);
 			outPutList.addAll(upList);
 			outPutList.addAll(rightList);
 			outPutList.addAll(downList);
 			outPutList.addAll(leftList);
 		}
-		
+
+		// The List which contains up right down is a spiral.
 		return outPutList;
 	}
 	
