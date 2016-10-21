@@ -19,7 +19,7 @@ public class CompareVersionNumbersTest extends ParentTest<Integer>{
 	}
 
 	@Parameters
-	public static Collection<Object[]> genergateParameters(){
+	public static Collection<Object[]> generateParameters(){
 		return Arrays.asList(new Object[][]{
 			new Object[]{1, 1, "2.0", "1.1"},
 			new Object[]{2, -1, "1.2", "2.1"},
