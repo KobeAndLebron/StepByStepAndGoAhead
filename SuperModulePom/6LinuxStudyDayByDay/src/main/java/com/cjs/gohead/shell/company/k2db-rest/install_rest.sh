@@ -7,7 +7,7 @@ directory_rest=""
 
 for directory in ${directoryContainsK2db_rest}; do
     cd ${directory} # temporarily enter the directory to execute mvn command.
-    trueContent=`git status 2>/dev/null`
+    trueContent=`git status 2>/dev/null` # ignore error output stream.
     if [ "$trueContent" != "" ]; then
         directory_rest=${directory}
         break
@@ -18,9 +18,11 @@ echo "The directory on which k2db-rest resides is ${directory_rest}, whether or 
 read IF_CONTINUE
 
 if [ "${IF_CONTINUE}" == "y" ] || [ "${IF_CONTINUE}" == "Y" ]; then
-    echo "Please if skip unit tests(true/false): "
+    echo "Whether skip integration tests(true/false): "
+    read IF_SKIP_IT
+    echo "Whether skip unit tests(true/false): "
     read IF_SKIP_UT
-    mvn -f ../pom.xml -pl k2platform-k2db-rest -am clean install  -Dmaven.test.skip=${IF_SKIP_UT}
+    mvn -f ../pom.xml -pl k2platform-k2db-rest -am clean install  -DskipITs=${IF_SKIP_IT} -Dmaven.test.skip=${IF_SKIP_UT}
 else
     echo "You does not execute mvn install command in directory named ${directory_rest}."
 fi
