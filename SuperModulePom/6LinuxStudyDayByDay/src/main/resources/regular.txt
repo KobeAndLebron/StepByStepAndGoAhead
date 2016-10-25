@@ -5,4 +5,4 @@ Some special character :
     \. = the actual dot character
     .? = .{0,1} = match any char zero or one times
     .* = .{0,} = match any char zero or more times
-    .+ = .{1,} = match any char one or more times
+    .+ = .{1,} = match any char one or more timescls
