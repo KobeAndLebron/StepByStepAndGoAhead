@@ -23,17 +23,17 @@ import java.util.List;
  *
  */
 public class SpiralMatrix {
-	public List<Integer> spiralOrder(int[][] matrix) {
-		if (matrix == null) {
-			return null;
-		}
-		if (matrix.length == 0 || matrix[0].length == 0) {
-			return Collections.EMPTY_LIST;
-		}
-		return getList(matrix, 0, matrix.length - 1, 0, matrix[0].length - 1);
+    public List<Integer> spiralOrder(int[][] matrix) {
+        if (matrix == null) {
+            return null;
+        }
+        if (matrix.length == 0 || matrix[0].length == 0) {
+            return Collections.EMPTY_LIST;
+        }
+        return getList(matrix, 0, matrix.length - 1, 0, matrix[0].length - 1);
     }
-	
-	/**
+
+    /**
 	 * 分别从上/下 左/右取数据然后组装成spiral,每一次递归产生一个螺旋
 	 * @param matrix 矩阵
 	 * @return 螺旋状数组

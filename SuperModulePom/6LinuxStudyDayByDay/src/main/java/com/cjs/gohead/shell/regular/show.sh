@@ -12,6 +12,7 @@ echo "Users: "
 
 # traversal users and get how many files each of them accessed.
 for user in ${users}; do
+    # ^ means that strings matched start with $user.
     count=`grep -c "^${user}" ${file}`
     echo " - ${user}: ${count} file(s) accessed."
 done
