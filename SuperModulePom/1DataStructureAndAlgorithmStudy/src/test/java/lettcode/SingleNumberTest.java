@@ -16,7 +16,7 @@ public class SingleNumberTest extends ParentTest<int[]>{
 	}
 
 	@Parameters
-	public static Collection<Object[]> generateParameteres(){
+	public static Collection<Object[]> generateParameters(){
 		return Arrays.asList(new Object[][]{
 			new Object[]{1, new int[]{-1895772685, -967931676}, 
 					new int[]{1403617094,-490450406,-1756388866,-967931676,1878401007,1878401007,-74743538,1403617094,-1756388866,

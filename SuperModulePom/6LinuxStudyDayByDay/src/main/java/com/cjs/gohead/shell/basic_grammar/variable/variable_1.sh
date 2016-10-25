@@ -10,3 +10,5 @@ var_2="world"
 
 echo "${var_1}and{$var_2}and$var_1" #${} just outputs value of variable and {$va} outputs {value of variable}
 #Helloand{world}andHello
+
+### How to output ${Hello}? use ${$var_1}?  TODO

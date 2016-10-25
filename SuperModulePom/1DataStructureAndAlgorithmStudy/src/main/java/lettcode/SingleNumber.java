@@ -62,7 +62,7 @@ public class SingleNumber {
 	 * 常规方法从右边找出1
 	 * 
 	 * @see SingleNumberTest#test2()
-	 * @param nums
+	 * @param number
 	 * @return
 	 */
 	public int getThePositionOfLast1(int number){
@@ -81,7 +81,7 @@ public class SingleNumber {
 	
 	/**
 	 * 常规方法从左边找出1
-	 * @param nums
+	 * @param number
 	 * @return
 	 */
 	public int getThePositionOfFirst1(int number){
@@ -102,7 +102,7 @@ public class SingleNumber {
 	
 	/**
 	 * 快速方法从右边找出1
-	 * @param nums
+	 * @param number
 	 * @return
 	 */
 	public int getThePositionOfLast1_2(int number){
