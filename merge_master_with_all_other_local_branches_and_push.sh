@@ -11,18 +11,19 @@ git push
 git checkout $pushed_branch  1>/dev/null 2>/dev/null
 echo "1 Switch $pushed_branch\n"
 
-allLocalBranches=`git branch`
-echo ${allLocalBranches}  # fixme wrong results.
+allLocalBranches=`git branch -l | gawk '{print $1}' | grep -v "*"`
+echo ${allLocalBranches}
 for branch in ${allLocalBranches}; do
-    if [ "${branch}" !=  "${current_branch_name}" ]; then
-        echo "merge ${branch}"
+    if [ "${branch}" !=  "${pushed_branch}" ]; then
+        echo "${branch} is merged to ${pushed_branch}"
         git merge ${branch} 1>/dev/null
     fi
 done
+
 echo "2 Merge finish\n"
 #message_push1=`git push | grep '-'`
 #echo "$message_push1\n"
 git push -u ${respositoryName} $pushed_branch:$pushed_branch
-echo "3 $pushed_branch is pushed to remote respority\n"
+echo "3 $puqshed_branch is pushed to remote respority\n"
 git checkout $current_branch_name 1>/dev/null 2>/dev/null
 echo "4 switch $current_branch_name\n" 
