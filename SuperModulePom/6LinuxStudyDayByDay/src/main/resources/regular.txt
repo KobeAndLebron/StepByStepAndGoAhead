@@ -1,0 +1,8 @@
+The regular expression character ^ means "start with", and '\^' means the actual character '^'. End symbol '$' is same with start symbol.
+
+Some special character :
+    . = any char
+    \. = the actual dot character
+    .? = .{0,1} = match any char zero or one times
+    .* = .{0,} = match any char zero or more times
+    .+ = .{1,} = match any char one or more timescls
