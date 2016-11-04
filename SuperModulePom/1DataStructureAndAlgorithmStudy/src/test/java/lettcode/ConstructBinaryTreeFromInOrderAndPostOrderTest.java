@@ -35,8 +35,7 @@ public class ConstructBinaryTreeFromInOrderAndPostOrderTest extends ParentTest<O
     
 	@Test
 	public void test(){
-		setDebug(-1);
-		if(!isIgnored){
+		if(!isIgnored()){
 			generatedObj = cbt.buildTree(inorder, postorder);
 		}
 	}

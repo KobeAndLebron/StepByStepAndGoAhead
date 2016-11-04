@@ -5,4 +5,18 @@ Some special character :
     \. = the actual dot character
     .? = .{0,1} = match any char zero or one times
     .* = .{0,} = match any char zero or more times
-    .+ = .{1,} = match any char one or more timescls
+    .+ = .{1,} = match any char one or more times
+
+
+
+Some examples :
+###
+ .*? means "match zero or more characters but as little as possible". It is called a non-greedy match.
+
+ .* means almost the same except that as much as possible is matched (greedy match).
+
+ Examples:
+
+ Using f.*?a to match foo bar baz results in foo ba (stops after first a)
+ Using f.*a to match foo bar baz results in foo bar ba (stops after last a)
+

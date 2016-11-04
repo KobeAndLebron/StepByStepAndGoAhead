@@ -6,9 +6,11 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.Parameterized.Parameters;
 
+@Ignore
 public class CaseManagerTest extends ParentTest<List<Object>>{
 	private String str;
 	private int inte;
@@ -41,8 +43,7 @@ public class CaseManagerTest extends ParentTest<List<Object>>{
 	
 	@Test
 	public void test(){
-		setDebug(-1);
-		if(!isIgnored){
+		if(!isIgnored()){
 			this.generatedObj = new ArrayList<>();
 			this.generatedObj.add(str);
 			this.generatedObj.add(inte);

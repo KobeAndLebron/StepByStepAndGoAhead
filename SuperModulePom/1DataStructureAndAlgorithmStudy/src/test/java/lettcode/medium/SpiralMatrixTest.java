@@ -32,7 +32,7 @@ public class SpiralMatrixTest extends ParentTest<List<Integer>> {
     }
 
     @Test
-    public void commonTest() {
+    public void test() {
         this.generatedObj = new SpiralMatrix().spiralOrder(matrix);
     }
 }

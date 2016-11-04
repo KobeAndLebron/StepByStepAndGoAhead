@@ -25,10 +25,8 @@ public class SingleNumberTest extends ParentTest<int[]>{
 		});
 	}
 	
-	@Test
-	public void test1(){
-		setDebug(-1);
-		if(!isIgnored){
+	public void test(){
+		if(!isIgnored()){
 			Arrays.sort(expectedObj);
 			generatedObj = new SingleNumber().singleNumber(inputArray);
 			Arrays.sort(generatedObj);

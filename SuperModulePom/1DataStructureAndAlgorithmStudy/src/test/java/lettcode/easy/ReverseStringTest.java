@@ -13,7 +13,7 @@ import com.gohead.shared.test.ParentTest;
 
 @RunWith(Parameterized.class)
 public class ReverseStringTest extends ParentTest<String>{
-	protected String inputArr;
+	private String inputArr;
 	
 	public ReverseStringTest(int caseId, boolean isIgnored, String expectedObj, String intputArr) {
 		super(caseId, expectedObj, isIgnored);
@@ -26,11 +26,15 @@ public class ReverseStringTest extends ParentTest<String>{
 	}
 	
 	@Test
-	public void testTime(){
-		setDebug(-1);
-		if(!isIgnored){
+	public void test(){
+		if(!isIgnored()){
 			generatedObj = new ReverseString().reverseString1(inputArr);
 		}
 	}
+
+    @Override
+    protected void setSelfJudged() {
+        judgeBySelf();
+    }
 }
 

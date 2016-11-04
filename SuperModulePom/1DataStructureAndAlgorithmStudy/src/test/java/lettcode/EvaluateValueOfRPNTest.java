@@ -10,7 +10,6 @@ import org.junit.runners.Parameterized.Parameters;
 
 import com.gohead.shared.test.ParentTest;
 
-@RunWith(Parameterized.class)
 public class EvaluateValueOfRPNTest extends ParentTest<Integer>{
 	private String[] input;
 
@@ -26,11 +25,11 @@ public class EvaluateValueOfRPNTest extends ParentTest<Integer>{
 			            new Object[]{2, 6, new String[]{"4", "13", "5", "/", "+"}},
 			       });
 	}
-	@Test
-	public void test1(){
-		setDebug(-1);
-		if(!isIgnored){
-			generatedObj = new EvaluateValueOfRPN().evalRPN(input);
-		}
-	}
+
+    @Test
+    public void test() {
+        if (!isIgnored()) {
+            generatedObj = new EvaluateValueOfRPN().evalRPN(input);
+        }
+    }
 }

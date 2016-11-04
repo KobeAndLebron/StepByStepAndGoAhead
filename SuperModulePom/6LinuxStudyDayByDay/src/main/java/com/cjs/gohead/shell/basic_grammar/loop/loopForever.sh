@@ -10,4 +10,4 @@ do
     sleep 1
     COUNTER=`expr ${COUNTER} + 1` # The expr command is used to evaluate a mathematical expression.
     echo "Program has been running for $COUNTER seconds..."
-done!
+done
