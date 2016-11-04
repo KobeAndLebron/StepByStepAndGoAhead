@@ -17,7 +17,11 @@ done
 echo "The directory on which k2db-rest resides is ${directory_rest}, whether or not to continue(Y/N/y/n)? "
 read IF_CONTINUE
 
-if [ "${IF_CONTINUE}" == "y" ] || [ "${IF_CONTINUE}" == "Y" ]; then
+### `echo ${IF_CONTINUE} | grep -i y`
+### `echo ${IF_CONTINUE} | grep -i --regexp=y`
+### The two commands above is equivalent to the command below.
+match_continue=`echo ${IF_CONTINUE} | grep -i -e y`
+if [ "${match_continue}" != "" ]; then # || [ "${IF_CONTINUE}" == "Y" ];
     echo "Whether skip integration tests(true/false): "
     read IF_SKIP_IT
     echo "Whether skip unit tests(true/false): "

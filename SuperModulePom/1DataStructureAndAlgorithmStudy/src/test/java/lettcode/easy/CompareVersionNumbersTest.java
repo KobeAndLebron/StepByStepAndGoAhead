@@ -33,13 +33,12 @@ public class CompareVersionNumbersTest extends ParentTest<Integer>{
 	}
 	
 	@Test
-	public void commenTest(){
-		setDebug(-1);
-		if(!isIgnored){
+	public void test(){
+		if(!isIgnored()){
 			this.generatedObj = new CompareVersionNumbers().compareVersion(version1, version2);
 		}
 	}
-	
+
 	/*@Test
 	public void testEmptyStr(){
 		Integer i = Integer.parseInt("");

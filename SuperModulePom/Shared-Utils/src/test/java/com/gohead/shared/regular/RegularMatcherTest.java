@@ -31,9 +31,8 @@ public class RegularMatcherTest extends ParentTest<Boolean>{
 	}
 	
 	@Test
-	public void commonTest(){
-		setDebug(-1);
-		if(!isIgnored){
+	public void test(){
+		if(!isIgnored()){
 			this.generatedObj = RegularMatcher.isArray(inputStr);
 		}
 	}
