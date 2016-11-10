@@ -230,6 +230,9 @@ public abstract class ParentTest<T> {
 
     protected abstract void test();
 
+    /**
+     * Empty test for CaseManager.
+     */
     public static final class EmptyParentTest extends ParentTest{
         @Override
         protected void test() {
