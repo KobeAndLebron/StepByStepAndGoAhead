@@ -1,34 +1,10 @@
-/*
- * Copyright 1999-2005 The Apache Software Foundation.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-
-
-package com.cjs.gohead.log;
+package org.apache.log4j;
 
 import java.io.IOException;
 import java.io.File;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Calendar;
-import java.util.TimeZone;
-import java.util.Locale;
+import java.util.*;
 
-import org.apache.log4j.DailyRollingFileAppender;
-import org.apache.log4j.FileAppender;
-import org.apache.log4j.Layout;
 import org.apache.log4j.helpers.LogLog;
 import org.apache.log4j.spi.LoggingEvent;
 
@@ -415,57 +391,21 @@ public class DailyMaxRollingFileAppender extends FileAppender
      * time to do a rollover. If it is, it will schedule the next
      * rollover time and then rollover.
      * */
-    protected void subAppend(LoggingEvent event)
-    {
+    protected void subAppend(LoggingEvent event) {
         long n = System.currentTimeMillis();
 
-        if (n >= nextCheck)
-        {
+        if (n >= nextCheck) {
             now.setTime(n);
             nextCheck = rpc.getNextCheckMillis(now);
 
-            try
-            {
+            try {
                 rollOver();
-            }
-            catch(IOException ioe)
-            {
+            } catch (IOException ioe) {
                 LogLog.error("rollOver() failed.", ioe);
             }
         }
 
         super.subAppend(event);
-    }
-
-    /*
-     * DEBUG
-    */
-    public static void main(String args[])
-    {
-        DailyMaxRollingFileAppender dmrfa = new DailyMaxRollingFileAppender();
-
-        dmrfa.setDatePattern("'.'yyyy-MM-dd-HH-mm");
-
-        dmrfa.setFile("prova");
-
-        System.out.println("dmrfa.getMaxBackupIndex():" + dmrfa.getMaxBackupIndex());
-
-        dmrfa.activateOptions();
-
-        for(int i = 0; i < 5; i++)
-        {
-            dmrfa.subAppend(null);
-
-            try
-            {
-                Thread.sleep(60000);
-            }
-            catch (InterruptedException ex)
-            {
-            }
-
-            System.out.println("Fine attesa");
-        }
     }
 }
 
@@ -474,8 +414,9 @@ public class DailyMaxRollingFileAppender extends FileAppender
  *  Given a periodicity type and the current time, it computes the
  *  past maxBackupIndex date.
  * */
-class RollingPastCalendar extends RollingCalendar
+class RollingPastCalendar extends GregorianCalendar
 {
+    private int type;
     RollingPastCalendar() {
         super();
     }
@@ -487,6 +428,10 @@ class RollingPastCalendar extends RollingCalendar
     public long getPastCheckMillis(Date now, int maxBackupIndex)
     {
         return getPastDate(now, maxBackupIndex).getTime();
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 
     public Date getPastDate(Date now, int maxBackupIndex)
@@ -555,6 +500,65 @@ class RollingPastCalendar extends RollingCalendar
                 throw new IllegalStateException("Unknown periodicity type.");
         }
 
+        return getTime();
+    }
+    public long getNextCheckMillis(Date now) {
+        return getNextCheckDate(now).getTime();
+    }
+
+    public Date getNextCheckDate(Date now) {
+        this.setTime(now);
+
+        switch(type) {
+            case DailyRollingFileAppender.TOP_OF_MINUTE:
+                this.set(Calendar.SECOND, 0);
+                this.set(Calendar.MILLISECOND, 0);
+                this.add(Calendar.MINUTE, 1);
+                break;
+            case DailyRollingFileAppender.TOP_OF_HOUR:
+                this.set(Calendar.MINUTE, 0);
+                this.set(Calendar.SECOND, 0);
+                this.set(Calendar.MILLISECOND, 0);
+                this.add(Calendar.HOUR_OF_DAY, 1);
+                break;
+            case DailyRollingFileAppender.HALF_DAY:
+                this.set(Calendar.MINUTE, 0);
+                this.set(Calendar.SECOND, 0);
+                this.set(Calendar.MILLISECOND, 0);
+                int hour = get(Calendar.HOUR_OF_DAY);
+                if(hour < 12) {
+                    this.set(Calendar.HOUR_OF_DAY, 12);
+                } else {
+                    this.set(Calendar.HOUR_OF_DAY, 0);
+                    this.add(Calendar.DAY_OF_MONTH, 1);
+                }
+                break;
+            case DailyRollingFileAppender.TOP_OF_DAY:
+                this.set(Calendar.HOUR_OF_DAY, 0);
+                this.set(Calendar.MINUTE, 0);
+                this.set(Calendar.SECOND, 0);
+                this.set(Calendar.MILLISECOND, 0);
+                this.add(Calendar.DATE, 1);
+                break;
+            case DailyRollingFileAppender.TOP_OF_WEEK:
+                this.set(Calendar.DAY_OF_WEEK, getFirstDayOfWeek());
+                this.set(Calendar.HOUR_OF_DAY, 0);
+                this.set(Calendar.MINUTE, 0);
+                this.set(Calendar.SECOND, 0);
+                this.set(Calendar.MILLISECOND, 0);
+                this.add(Calendar.WEEK_OF_YEAR, 1);
+                break;
+            case DailyRollingFileAppender.TOP_OF_MONTH:
+                this.set(Calendar.DATE, 1);
+                this.set(Calendar.HOUR_OF_DAY, 0);
+                this.set(Calendar.MINUTE, 0);
+                this.set(Calendar.SECOND, 0);
+                this.set(Calendar.MILLISECOND, 0);
+                this.add(Calendar.MONTH, 1);
+                break;
+            default:
+                throw new IllegalStateException("Unknown periodicity type.");
+        }
         return getTime();
     }
 }
