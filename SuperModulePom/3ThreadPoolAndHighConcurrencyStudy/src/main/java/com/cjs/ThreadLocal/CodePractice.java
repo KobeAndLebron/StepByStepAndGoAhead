@@ -1,5 +1,7 @@
 package com.cjs.ThreadLocal;
 
+import com.sun.org.apache.bcel.internal.classfile.Code;
+
 import java.util.Stack;
 
 /**
@@ -30,52 +32,93 @@ import java.util.Stack;
  *
  */
 public class CodePractice {
-    private static final ThreadLocal<Stack<Integer>> integerThreadLocal = new ThreadLocal<Stack<Integer>>(){
+    private static final ThreadLocal<Stack<Integer>> integerThreadLocal1 = new ThreadLocal<Stack<Integer>>(){
         @Override
         protected Stack<Integer> initialValue() {
             return new Stack<>();
         }
     };
 
-    public static void main(String[] args) {
+    private static final InheritableThreadLocal<Stack<Integer>> integerThreadLocal = new InheritableThreadLocal<Stack<Integer>>(){
+        @Override
+        protected Stack<Integer> initialValue() {
+            return new Stack<>();
+        }
+
+        /*@Override
+        protected Stack<Integer> childValue(Stack<Integer> parentValue) {
+            return null;
+        }*/
+    };
+
+    public static void main(String[] args) throws InterruptedException {
         System.out.println(CodePractice.getCodeStack());
-        CodePractice.pushCode(1);
+        /*CodePractice.pushCode(1);*/
         QueryThread1 t1 = new QueryThread1();
         t1.setName("queryThread1");
         QueryThread2 t2 = new QueryThread2();
         t2.setName("queryThread2");
         t1.start();
         t2.start();
-        System.out.println(CodePractice.getCodeStack());
+        Thread.sleep(1000);
+        System.out.println(Thread.currentThread().getName() + CodePractice.getCodeStack() + CodePractice.getCodeStack().hashCode());
     }
 
     public static void pushCode(Integer value){
         integerThreadLocal.get().push(value);
     }
 
+    public static void pushCode(Stack<Integer> stack){
+        for (Integer i : stack) {
+            integerThreadLocal.get().push(i);
+        }
+    }
+
+    public static void setNewStack(Stack<Integer> value){
+        integerThreadLocal.set(value);
+    }
+
     @SuppressWarnings("unchecked")
     public static <T> T getCodeStack(){
         return (T) integerThreadLocal.get();
     }
+
+    public static void pushCodeInSingleThread(Integer value){
+        integerThreadLocal1.get().push(value);
+    }
+
+    @SuppressWarnings("unchecked")
+    public static <T> T getCodeStackInSingleThread(){
+        return (T) integerThreadLocal1.get();
+    }
+
 }
 
-class QueryThread1 extends Thread{
-    public void run(){
-        CodePractice.pushCode(1);
-        CodePractice.pushCode(2);
-        CodePractice.pushCode(3);
+class QueryThread1 extends Thread {
+    public void run() {
 
-        System.out.println(Thread.currentThread() + "" + CodePractice.getCodeStack());
+        CodePractice.pushCodeInSingleThread(1);
+        CodePractice.pushCodeInSingleThread(2);
+        CodePractice.pushCodeInSingleThread(3);
+
+        Stack<Integer> s = CodePractice.getCodeStackInSingleThread();
+        CodePractice.pushCode(s);
+
+        System.out.println(Thread.currentThread() + "" + CodePractice.getCodeStack() + CodePractice.getCodeStack().hashCode());
     }
 }
 
 
-class QueryThread2 extends Thread{
-    public void run(){
-        CodePractice.pushCode(2);
-        CodePractice.pushCode(3);
-        CodePractice.pushCode(4);
+class QueryThread2 extends Thread {
+    public void run() {
 
-        System.out.println(Thread.currentThread() + "" + CodePractice.getCodeStack());
+        CodePractice.pushCodeInSingleThread(3);
+        CodePractice.pushCodeInSingleThread(4);
+        CodePractice.pushCodeInSingleThread(5);
+
+        Stack<Integer> s = CodePractice.getCodeStackInSingleThread();
+        CodePractice.pushCode(s);
+
+        System.out.println(Thread.currentThread() + "" + CodePractice.getCodeStack() + CodePractice.getCodeStack().hashCode());
     }
 }
