@@ -10,15 +10,15 @@ import java.util.Arrays;
  * 每天进步一点——2016年2月26日
  *
  */
-public class Singeton3 {
-	private Singeton3(){     
+public class Singleton3 {
+	private Singleton3(){
 	    
     }     
     
-    private static Singeton3 instance;
+    private static Singleton3 instance;
     
     // 非线程安全
-    public static Singeton3 getInstance(){     
+    public static Singleton3 getSingleton(){
         if(instance == null){ 
         	try {
         		// 提高线程不安全问题发生的几率
@@ -26,27 +26,27 @@ public class Singeton3 {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-        	return instance = new Singeton3();     
+        	return instance = new Singleton3();
         }else{     
             return instance;     
         }  
     }
     
     // 线程安全但是效率低下
-    public static synchronized Singeton3 getInstance1(){     
+    public static synchronized Singleton3 getInstance1(){
         if(instance == null){     
-        	return instance = new Singeton3();     
+        	return instance = new Singleton3();
         }else{     
             return instance;     
         }  
     }
     
     // 通过双检索机制来提高效率
-    public static Singeton3 getInstance2(){     
+    public static Singleton3 getInstance2(){
         if(instance == null){ 
-        	synchronized(Singeton3.class){
+        	synchronized(Singleton3.class){
         		if(instance == null){ 
-        			return instance = new Singeton3();
+        			return instance = new Singleton3();
         		}
         	}
         }
@@ -65,7 +65,7 @@ public class Singeton3 {
 
 class SingletonChecker{
 	private static final int LENGTH = 1000;
-	private Singeton3[] array = new Singeton3[LENGTH];
+	private Singleton3[] array = new Singleton3[LENGTH];
 	private int index = 0;
 	
 	public SingletonChecker(){
@@ -77,7 +77,7 @@ class SingletonChecker{
 	 * @param s
 	 * @return
 	 */
-	public synchronized boolean check(Singeton3 s){
+	public synchronized boolean check(Singleton3 s){
 		boolean flag = false;
 		if(array[0] == null){
 			flag = true;
@@ -98,14 +98,14 @@ class SingletonChecker{
 	 * 2、他的载体类{@linkplain SingletonChecker}使用也是单例的
 	 * 3、存在读写交叉问题-------
 	 * 
-	 * 测试步骤此方法: 1、注释到{@linkplain SingletonChecker#check(Singeton3)}方法
+	 * 测试步骤此方法: 1、注释到{@linkplain SingletonChecker#check(Singleton3)}方法
 	 * 		    2、然后将此方法的名字的1去掉,
 	 * 		    3、最后运行${@linkplain TestSingleton3}
 	 * 
 	 * @param s
 	 * @return
 	 */
-	public boolean check1(Singeton3 s){
+	public boolean check1(Singleton3 s){
 		boolean flag = false;
 		if(array[0] == null){
 			/**
