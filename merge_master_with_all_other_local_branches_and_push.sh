@@ -7,23 +7,29 @@ echo "The current branch is ${current_branch_name}\n"
 #message_push=`git push` qq
 #grep_message=`echo $message_push | grep -o '[0-9a-zA-Z]*...[0-9a-zA-Z]**'`
 #echo "$grep_message"
-git push 
-git checkout $pushed_branch  1>/dev/null 2>/dev/null
-echo "1 Switch $pushed_branch\n"
+git push
+# Cannot ignore error output.
+git checkout ${pushed_branch}  1>/dev/null
+echo "1 Switch to $pushed_branch\n"
 
-allLocalBranches=`git branch -l | gawk '{print $1}' | grep -v "*"`
-echo ${allLocalBranches}
-for branch in ${allLocalBranches}; do
-    if [ "${branch}" !=  "${pushed_branch}" ]; then
-        echo "${branch} is merged to ${pushed_branch}"
-        git merge ${branch} 1>/dev/null
-    fi
-done
+# Temporarily remove.
+#allLocalBranches=`git branch -l | awk '{print $1}' | grep -v "*"`
+#echo ${allLocalBranches}
+#
+#for branch in ${allLocalBranches}; do
+#    if [ "${branch}" !=  "${pushed_branch}" ]; then
+#        git merge ${branch} 1>/dev/null
+#        echo "${branch} is merged to ${pushed_branch}"
+#    fi
+#done
+
+git merge ${current_branch_name} 1>/dev/null
+echo "${current_branch_name} is merged to ${pushed_branch}"
 
 echo "2 Merge finish\n"
 #message_push1=`git push | grep '-'`
 #echo "$message_push1\n"
 git push -u ${respositoryName} $pushed_branch:$pushed_branch
-echo "3 $puqshed_branch is pushed to remote respority\n"
+echo "3 $pushed_branch is pushed to remote respority\n"
 git checkout $current_branch_name 1>/dev/null 2>/dev/null
 echo "4 switch $current_branch_name\n" 

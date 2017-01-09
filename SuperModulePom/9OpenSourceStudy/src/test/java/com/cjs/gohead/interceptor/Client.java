@@ -19,18 +19,17 @@ public class Client extends ParentTest<String>{
 		this.serviceClass = serviceClass;
 	}
 
-	@Parameters
-	public static Collection<Object[]> generateParameters(){
-		return Arrays.asList(new Object[][]{
-			new Object[]{1, "Success", com.cjs.gohead.interceptor.SimpleServiceImpl.class},
-			new Object[]{2, "Fail", com.cjs.gohead.interceptor.SimpleServiceImpl1.class},
-		});
-	}
-	
-	@Test
+    @Parameters
+    public static Collection<Object[]> generateParameters() {
+        return Arrays.asList(new Object[][]{
+                new Object[]{1, "Success", com.cjs.gohead.interceptor.SimpleServiceImpl.class},
+                new Object[]{2, "Fail", com.cjs.gohead.interceptor.SimpleServiceImpl1.class},
+        });
+    }
+
+    @Test
 	public void test(){
-		setDebug(-1);
-		if(!isIgnored){
+		if(!isIgnored()){
 			ServiceInvocation serviceInvocation = ServiceProxyFactory.getServiceInvocation();
 			ServiceProxy serviceProxy = ServiceProxyFactory.generateService(serviceInvocation, 
 					serviceClass.getName(), "service");

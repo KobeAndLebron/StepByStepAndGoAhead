@@ -29,8 +29,7 @@ public class SumOfIntegerTest extends ParentTest<Integer>{
 	
 	@Test
 	public void test(){
-		setDebug(-1);
-		if(!isIgnored){
+		if(!isIgnored()){
 			generatedObj = new SumOfIntegers().getSum(i, j);
 		}
 	}

@@ -57,8 +57,8 @@ public class CaseManager {
 		for (Element eleCase : cases) {
 			// 每一行的所有单元格
 			Elements td = eleCase.getElementsByTag("td");
-			ParentTest<Object> itCase = new ParentTest<>();
-			// 单线程环境,不需要同步
+            ParentTest<Object> itCase = new ParentTest.EmptyParentTest();
+            // 单线程环境,不需要同步
 			itCase.setCaseId(caseId++);
 			// 参数列表
 			for (Element eleTd : td) {

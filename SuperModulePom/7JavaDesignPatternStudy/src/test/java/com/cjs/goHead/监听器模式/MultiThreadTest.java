@@ -53,7 +53,7 @@ public class MultiThreadTest {
 		thread1.start();
 		thread2.start();
 		try {
-			Thread.sleep(100000);
+			Thread.sleep(100);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
