@@ -44,6 +44,8 @@ public class BitManipulation {
         // 1111 1111 1111 .... 1111 原码
         Assert.assertEquals(Integer.MIN_VALUE + 1, Integer.MAX_VALUE + 2);
 
+        Assert.assertEquals(Integer.MIN_VALUE, Integer.MAX_VALUE + 1);
+
 
         // (-1) + (-3)
         // 原码　　反码    补码        补码      反码    原码

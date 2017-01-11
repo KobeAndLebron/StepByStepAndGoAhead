@@ -6,7 +6,7 @@ package lettcode.easy;
 public class Number1Bits {
 
     // you need to treat n as an unsigned value
-    public int hammingWeight(int n) {
+    int hammingWeight(int n) {
         int numOf1Bits = 0;
         long mask = 1;
         while (mask <= ((long)Math.pow(2, 31))) {
@@ -19,7 +19,7 @@ public class Number1Bits {
     }
 
     // you need to treat n as an unsigned value
-    public int hammingWeight1(int n) {
+    int hammingWeight1(int n) {
         int numOf1Bits = 0;
         int initialValue = 1;
         while (initialValue != 0) {
@@ -27,6 +27,16 @@ public class Number1Bits {
                 numOf1Bits++;
             }
             initialValue <<= 1;
+        }
+        return numOf1Bits;
+    }
+
+    // you need to treat n as an unsigned value
+    int hammingWeight2(int n) {
+        int numOf1Bits = 0;
+        while (n != 0) {
+            numOf1Bits++;
+            n &= (n - 1);
         }
         return numOf1Bits;
     }

@@ -44,11 +44,15 @@ public class Number1BitsTest extends ParentTest<Integer> {
 
     @Override
     protected void test() {
+        generatedObj = new Number1Bits().hammingWeight(unsignedInteger);
+        judgeBySys();
         generatedObj = new Number1Bits().hammingWeight1(unsignedInteger);
+        judgeBySys();
+        generatedObj = new Number1Bits().hammingWeight2(unsignedInteger);
     }
 
     @Override
     protected void setSelfJudged() {
-        specifyCase(4);
+        specifyCase(-1);
     }
 }
