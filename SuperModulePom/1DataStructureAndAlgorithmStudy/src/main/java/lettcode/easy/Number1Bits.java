@@ -31,7 +31,12 @@ public class Number1Bits {
         return numOf1Bits;
     }
 
-    // you need to treat n as an unsigned value
+    /**
+     * The key idea here is to realize that for any number nn, doing a bit-wise AND of n and n − 1 flips the least-significant 1-bit in n to 0.
+     *
+     * @param n
+     * @return
+     */
     int hammingWeight2(int n) {
         int numOf1Bits = 0;
         while (n != 0) {
