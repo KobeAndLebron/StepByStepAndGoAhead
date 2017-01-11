@@ -3,6 +3,7 @@ package com.gohead.shared.test;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.junit.After;
@@ -53,10 +54,10 @@ public abstract class ParentTest<T> {
 	 */
 	private Boolean isIgnored = true;
 
-	/**
-	 * Inputed parameters
-	 */
-	protected List<Object> parameters = new ArrayList<>(5);
+    /**
+     * Inputted parameters
+     */
+    protected List<Object> parameters = new LinkedList<>();
 
     private boolean isSelfJudged = false;
 
@@ -85,13 +86,10 @@ public abstract class ParentTest<T> {
 	 * @param expectedObj
 	 */
 	public ParentTest(int caseId, T expectedObj){
-		this.caseId = caseId;
-		this.expectedObj = expectedObj;
-		this.expectedResult = true;
-		this.isIgnored = false;
-	}
+        this(caseId, false, true, expectedObj);
+    }
 
-    public ParentTest(T expectedObj){
+    public ParentTest(T expectedObj) {
         this(numberOfCase++, false, true, expectedObj);
     }
 
@@ -181,6 +179,8 @@ public abstract class ParentTest<T> {
                         assertArrayEquals((boolean[]) expectedObj, (boolean[]) generatedObj);
                     } else if (componentClazz == float.class) {
                         assertArrayEquals((float[]) expectedObj, (float[]) generatedObj, 0);
+                    } else if (componentClazz == char.class) {
+                        assertArrayEquals((char[]) expectedObj, (char[]) generatedObj);
                     } else {
                         assertArrayEquals((Object[]) expectedObj, (Object[]) generatedObj);
                     }
@@ -188,14 +188,14 @@ public abstract class ParentTest<T> {
                 } else {
                     if (!expectedResult) {
                         if (null == expectedObj) { // 只需要判断生成的对象为空即可
-                            assertEquals(null, generatedObj);
+                            assertNull(generatedObj);
                         } else {
                             assertNotEquals(expectedObj, generatedObj);
                         }
                         System.out.println("Expected result is false and result is false...");
                     } else {
                         if (OBJ == expectedObj) { // 只需要判断生成的对象不为空即可
-                            assertNotEquals(null, generatedObj);
+                            assertNotNull(generatedObj);
                         } else {
                             assertEquals(expectedObj, generatedObj);
                         }
@@ -203,7 +203,7 @@ public abstract class ParentTest<T> {
                     }
                 }
             } else {
-                System.out.println("Case " + caseId + " is judged by self!");
+                System.out.println("Case " + caseId + " is judged by yourself...");
             }
         } else {
             System.out.println("Case " + caseId + " is ignored!");
@@ -228,6 +228,9 @@ public abstract class ParentTest<T> {
 
     }
 
+    /**
+     * The real test.
+     */
     protected abstract void test();
 
     /**

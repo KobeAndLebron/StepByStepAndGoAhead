@@ -27,11 +27,11 @@ public class TestSingleton3 {
 	final SingletonChecker checker = new SingletonChecker();
 	Runnable run1 = new Runnable(){
 		public void run() {
-			// Singeton3 s = Singeton3.getInstance();
+			// Singleton3 s = Singleton3.getInstance();
 			/**
 			 * 会将每一个产生的Sinleton3实例都放入到栈内存中,所以每个task所使用的是不同的实例
 			 */
-			if(!checker.check(Singeton3.getInstance())){
+			if(!checker.check(Singleton3.getSingleton())){
 				synchronized (this) {
 					ExecuteResult.setFalseResult();
 					System.out.println("Not Thread-Safe!!!");
@@ -44,7 +44,7 @@ public class TestSingleton3 {
 	final SingletonChecker checker1 = new SingletonChecker();
 	Runnable run2 = new Runnable(){
 		public void run() {
-			if(!checker1.check(Singeton3.getInstance1())){
+			if(!checker1.check(Singleton3.getInstance1())){
 				synchronized (this) {
 					ExecuteResult.setFalseResult();
 					System.out.println("Not Thread-Safe!!!");
@@ -57,7 +57,7 @@ public class TestSingleton3 {
 	final SingletonChecker checker2 = new SingletonChecker();
 	Runnable run3 = new Runnable(){
 		public void run() {
-			if(!checker2.check(Singeton3.getInstance2())){
+			if(!checker2.check(Singleton3.getInstance2())){
 				synchronized (this) {
 					System.out.println("Not Thread-Safe!!!");
 					System.out.println(checker2);
@@ -68,7 +68,7 @@ public class TestSingleton3 {
 	};
 	/**
 	 * @throws InterruptedException 
-	 * @see Singeton3#getInstance1()
+	 * @see Singleton3#getInstance1()
 	 */
 	@Test
 	public void testGetInstance1() throws InterruptedException{
@@ -89,11 +89,11 @@ public class TestSingleton3 {
 		}else{
 			Assert.assertEquals(true, false);
 		}
-		Singeton3.init();
+		Singleton3.init();
 	}
 	
 	/**
-	 * @see Singeton3#getInstance2()
+	 * @see Singleton3#getInstance2()
 	 */
 	@Test
 	public void testGetInstance2(){
@@ -111,12 +111,12 @@ public class TestSingleton3 {
 				e.printStackTrace();
 			}
 		}
-		Singeton3.init();
+		Singleton3.init();
 	}
 	
 	/**
 	 * @throws InterruptedException 
-	 * @see Singeton3#getInstance()
+	 * @see Singleton3#getSingleton()
 	 */
 	@Test
 	public void testGetInstance() throws InterruptedException{
@@ -136,6 +136,6 @@ public class TestSingleton3 {
 		}else{
 			Assert.assertEquals(true, false);
 		}
-		Singeton3.init();
+		Singleton3.init();
 	}
 }
