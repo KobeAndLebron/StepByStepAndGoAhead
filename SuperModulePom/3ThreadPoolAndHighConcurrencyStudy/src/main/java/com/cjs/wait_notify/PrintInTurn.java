@@ -39,7 +39,7 @@ class PrintInTurnThreadTarget implements Runnable{
 					 * an automatic notify from JVM.After the timeout expires,the waiting thread will be 
 					 * resurrected even if no other thread has executed an explicit notify.
 					 */
-					// wait(2);
+					// wait(2);~~~
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
