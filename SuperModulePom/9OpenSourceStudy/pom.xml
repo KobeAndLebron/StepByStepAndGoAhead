@@ -58,6 +58,15 @@
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.6</version>
+        </dependency>
 	</dependencies>
 
 	<build>
@@ -83,6 +92,7 @@
 								<source>过滤器的实现</source>
 								<source>拦截器的实现</source>
 								<source>Spring</source>
+                                <source>MyBatis</source>
 								<source>src/main/java</source>
 								<!--Remove it,Add source just add main source folder-->
 								<!--<source>src/test/java</source>-->
