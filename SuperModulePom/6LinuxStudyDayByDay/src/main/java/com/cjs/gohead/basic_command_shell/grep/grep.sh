@@ -81,6 +81,7 @@ echo "LICENSE" | grep -lv "LICENSE" ${grepFile} -  # result: grep.txt
 ## 列出不包含LICENSE的行的数量.
 grep -vc "LICENSE" greped.txt # result:674
 
+
 ## ------------------------------------------------------------- ##
 
 
