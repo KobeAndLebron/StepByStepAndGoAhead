@@ -78,7 +78,8 @@ echo "LICENSE" | grep -lv "LICENSE" ${grepFile} -  # result: grep.txt
 ##     Suppress  normal  output;  instead  print  a  count of matching lines for each input file.
 #     With the -v, --invert-match option (see below), count non-matching lines.  (-c is specified by
 ##    POSIX.)
-
+## 列出不包含LICENSE的行的数量.
+grep -vc "LICENSE" greped.txt # result:674
 
 ## ------------------------------------------------------------- ##
 
