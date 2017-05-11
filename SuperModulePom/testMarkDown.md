@@ -1,6 +1,6 @@
 1. first-level numbered lists.
 2. 
-    1. second-level numbered lists.
+    1. second-level numbered lists.  
     2.
     3.
     4.
@@ -47,4 +47,19 @@ class Main{
 firstHead               |  SecondHead  
 ------------            | -------------        
 content from cell 1     |  content from cell2     
+
+
+
+**bold**  
+
+<br/>
+<br/>
+<br/>
+
+__also bold__  
+*italic*  
+_also italic_
+
+a&nbsp;&nbsp;&nbsp;&nbsp;b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c
+
 
