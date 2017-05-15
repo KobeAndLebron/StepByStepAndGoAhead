@@ -43,6 +43,7 @@
 						<source>适配器模式</source>
 						<source>单例模式</source>
 						<source>监听器模式</source>
+                        <source>iterator</source>
 					</sources>
 				</configuration>
  			</plugin>
