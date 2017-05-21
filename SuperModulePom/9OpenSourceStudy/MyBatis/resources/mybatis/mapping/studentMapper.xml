@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="Student">
+    <insert id="insert" parameterType="Student" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO start.student(sId, sName, sSex)
+        VALUES (#{id}, #{name}, #{sex})
+    </insert>
+
+    <insert id="insertStudent_Course" parameterType="Map">
+        INSERT INTO start.student_course(cId, sId)
+        VALUES (#{cId}, #{sId})
+    </insert>
+
+    <select id="select" parameterType="Student" resultMap="StudentMap">
+        SELECT S.sId as studnt_id, S.sName AS student_name, S.sSex AS student_sex, C.cId as course_id, C.cName AS course_name
+        FROM start.student S
+        LEFT JOIN start.student_course SC ON S.sId = SC.sId
+        LEFT JOIN start.course C ON SC.cId = C.cId
+        WHERE S.sName = #{name}
+    </select>
+
+    <resultMap id="StudentMap" type="Student">
+        <result column="student_name" property="name"/>
+        <result column="student_sex"  property="sex" typeHandler="EnumHandler"/>
+        <collection property="courses" javaType="ArrayList" ofType="Course"
+                    column="course_id" resultMap="Course.CourseMap"/>
+    </resultMap>
+</mapper>

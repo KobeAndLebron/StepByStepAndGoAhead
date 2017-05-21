@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="Course">
+    <insert id="insert" parameterType="Course" useGeneratedKeys="true" keyProperty="id" keyColumn="cId">
+        INSERT INTO start.course(cName)
+        VALUES (#{name})
+    </insert>
+
+    <resultMap id="CourseMap" type="Course">
+        <result column="course_name" javaType="STRING" property="name"/>
+        <!--<collection property="students" javaType="ArrayList" ofType="Student"-->
+                    <!--column="student_id" resultMap="Student.StudentMap"/>-->
+    </resultMap>
+</mapper>

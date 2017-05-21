@@ -1,7 +1,7 @@
 package javax.servlet;
 
 /**
- * 	Define an object to provide client request information to a servlet.The servlet container create a ServletRequest and pass it as 
+ * 	Define an object to provide com.cjs.gohead.mybatis.client request information to a servlet.The servlet container create a ServletRequest and pass it as
  * an argument to Servlet's service method.
  *  
  *  Interfaces that extend ServletRequest can provide additional protocol-specific data(for example , HTTP data is provided by 

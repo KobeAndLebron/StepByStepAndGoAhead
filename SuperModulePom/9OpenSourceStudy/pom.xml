@@ -92,7 +92,7 @@
 								<source>过滤器的实现</source>
 								<source>拦截器的实现</source>
 								<source>Spring</source>
-                                <source>MyBatis</source>
+                                <source>MyBatis/java</source>
 								<source>src/main/java</source>
 								<!--Remove it,Add source just add main source folder-->
 								<!--<source>src/test/java</source>-->
@@ -101,6 +101,34 @@
 					</execution>
 				</executions>
 			</plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/classes</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>MyBatis/resources</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
 		</plugins>
+        <resources>
+            <resource>
+                <directory>MyBatis/resources</directory>
+            </resource>
+        </resources>
 	</build>
 </project>

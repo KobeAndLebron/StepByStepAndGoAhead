@@ -1,7 +1,7 @@
 package javax.servlet;
 
 /**
- * Define an object to assist a servlet in sending a response to client.The servlet container create a ServletResponse object and passes
+ * Define an object to assist a servlet in sending a response to com.cjs.gohead.mybatis.client.The servlet container create a ServletResponse object and passes
  * it to the servlet's service method.  
  *
  * To send binary data in a MIME body response,use the ServletOutputStream returned by getOutPutStream();
