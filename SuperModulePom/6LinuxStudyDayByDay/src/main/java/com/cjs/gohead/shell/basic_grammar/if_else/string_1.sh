@@ -16,7 +16,7 @@ else
     echo "ACCESS DENIED!"
 fi
 
-if [ "$VALID_PASSWORD" != "$INPUTTED_PASSWORD" ]; then
+if [ ${VALID_PASSWORD} != "$INPUTTED_PASSWORD" ]; then
     echo ACCESS DENIED!
 else
     echo You have access!
