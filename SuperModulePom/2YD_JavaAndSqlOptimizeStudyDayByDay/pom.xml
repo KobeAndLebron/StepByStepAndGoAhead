@@ -30,28 +30,4 @@
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
-	<build>
-		<plugins>
-			<!-- 为此项目配置 多个sourceFolder -->
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>build-helper-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>add-source</id>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>add-source</goal>
-						</goals>
-						<configuration>
-							<sources>
-								<!-- 我们可以通过在这里添加多个source节点，来添加任意多个源文件夹 -->
-								<source>src/main/java</source>
-							</sources>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
 </project>

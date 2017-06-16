@@ -50,10 +50,6 @@
 			<artifactId>Shared-Utils</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-		</dependency>
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
@@ -71,10 +67,6 @@
 
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-			</plugin>
 			<!-- 为此项目配置 多个sourceFolder -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -94,8 +86,6 @@
 								<source>Spring</source>
                                 <source>MyBatis</source>
 								<source>src/main/java</source>
-								<!--Remove it,Add source just add main source folder-->
-								<!--<source>src/test/java</source>-->
 							</sources>
 						</configuration>
 					</execution>
