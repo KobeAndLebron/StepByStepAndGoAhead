@@ -13,7 +13,7 @@ read IF_USE_SPEC_PATTERN
 #  Quiet; do not write anything to standard output.  Exit immediately with zero status if any match is found,
 #  even if an error was detected.  Also see the -s or --no-messages  option.   (-q
 #  is specified by POSIX.)
-$(echo "${IF_USE_SPEC_PATTERN}" | grep -Eiq  "^[y|Y|n|N]{1}$" -)
+$(echo "${IF_USE_SPEC_PATTERN}" | grep -Eiq  "^[y|Y]{1}$" -)
 
 if [ $? -eq 0 ]; then
     echo "Use pattern."
