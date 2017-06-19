@@ -183,9 +183,12 @@
 	
 	<build>
 		<pluginManagement>
+            <!-- Maven默认绑定的plugin不需要在子pom显示声明, 未默认绑定的plugin需要在子pom中显示声明才能起作用. -->
+            <!-- https://stackoverflow.com/questions/36572018/maven-default-life-cycle-and-plugins-section -->
 			<plugins>
                 <!-- Add several folders whose type is source folder for the project"-->
                 <!-- 依赖范围(scope)为test的classpath不会添加到此类插件的classpath,因为此类插件的范围为compile,eg:junit -->
+                <!-- NOTE:　需要显示在子pom中声明才能起作用-->
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>build-helper-maven-plugin</artifactId>
@@ -249,7 +252,7 @@
                                     <!-- 被编译但是不被执行, 执行看maven-surefire-plugin的配置. -->
                                     <testInclude>**/App.java</testInclude>
                                 </testIncludes>
-                                <outputDirectory>${project.build.directory}/test-classes</outputDirectory>
+                                <outputDirectory>${project.build.testOutputDirectory}</outputDirectory>
                             </configuration>
                         </execution>
                         <!-- Compile *IT.java and write class file to outputDirectory -->
@@ -262,7 +265,7 @@
                             </goals>
                             <configuration>
                                 <testIncludes>
-                                    <testInclude>**/*IT.java</testInclude>
+                                    <testInclude>**/*.java</testInclude>
                                 </testIncludes>
                                 <outputDirectory>${project.build.directory}/it-classes</outputDirectory>
                             </configuration>
@@ -304,7 +307,7 @@
                                         <filtering>true</filtering>
                                     </resource>
                                 </resources>
-                                <outputDirectory>${project.build.directory}/test-classes</outputDirectory>
+                                <outputDirectory>${project.build.testOutputDirectory}</outputDirectory>
                             </configuration>
                         </execution>
                     </executions>
@@ -324,7 +327,7 @@
                         <excludes>
                             <exclude>**/*IT.java</exclude>
                         </excludes>
-                        <testClassesDirectory>${project.build.directory}/test-classes</testClassesDirectory>
+                        <testClassesDirectory>${project.build.testOutputDirectory}</testClassesDirectory>
                     </configuration>
                     <executions>
                         <execution>
@@ -336,7 +339,8 @@
                     </executions>
                 </plugin>
 
-                <!-- Added for integration tests.-->
+                <!-- Added for integration tests. -->
+                <!-- NOTE:　需要显示在子pom中声明才能起作用-->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-failsafe-plugin</artifactId>
@@ -357,6 +361,7 @@
                                 <!-- 可以配置俩goal, 必须指明, 否则在执行mvn verify(包括integration-test goal)
                                     的时候不会执行it-classes下的*IT.-->
                                 <goal>integration-test</goal>
+                                <goal>verify</goal>
                             </goals>
                         </execution>
                     </executions>
