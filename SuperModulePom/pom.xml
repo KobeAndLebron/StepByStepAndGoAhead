@@ -60,6 +60,8 @@
 		<slf4j.version>1.7.12</slf4j.version>
         <log4j.version>1.2.17</log4j.version>
         <mybatis.version>3.3.0</mybatis.version>
+        <skip.ut>false</skip.ut>
+        <skip.it>false</skip.it>
 	</properties>
 
 	<!-- 
@@ -181,7 +183,48 @@
 	
 	<build>
 		<pluginManagement>
+            <!-- Maven默认绑定的plugin不需要在子pom显示声明, 未默认绑定的plugin需要在子pom中显示声明才能起作用. -->
+            <!-- https://stackoverflow.com/questions/36572018/maven-default-life-cycle-and-plugins-section -->
 			<plugins>
+                <!-- Add several folders whose type is source folder for the project"-->
+                <!-- 依赖范围(scope)为test的classpath不会添加到此类插件的classpath,因为此类插件的范围为compile,eg:junit -->
+                <!-- NOTE:　需要显示在子pom中声明才能起作用-->
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>build-helper-maven-plugin</artifactId>
+                    <version>1.7</version>
+                    <inherited>true</inherited>
+                    <executions>
+                        <!-- add src/it/{java, resources} into source folder list -->
+                        <execution>
+                            <id>add-integration-test-sources</id>
+                            <phase>pre-integration-test</phase>
+                            <goals>
+                                <goal>add-test-source</goal>
+                            </goals>
+                            <configuration>
+                                <sources>
+                                    <source>src/it/java</source>
+                                </sources>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>add-integration-test-resources</id>
+                            <phase>pre-integration-test</phase>
+                            <goals>
+                                <goal>add-test-resource</goal>
+                            </goals>
+                            <configuration>
+                                <resources>
+                                    <resource>
+                                        <directory>src/it/resources</directory>
+                                        <filtering>true</filtering>
+                                    </resource>
+                                </resources>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
 				<!-- 将编译的版本提升至1.7支持注解菱形语法等等 -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -194,23 +237,135 @@
 						<!-- 所使用的jre版本 -->
 						<target>1.7</target>
 					</configuration>
+                    <executions>
+                        <!-- Compile *Test.java and write class file to outputDirectory -->
+                        <!-- 此配置项是默认的, 不配置的话默认编译 **/*Test.java-->
+                        <execution>
+                            <id>compile-unit-test</id>
+                            <phase>test-compile</phase>
+                            <goals>
+                                <goal>testCompile</goal>
+                            </goals>
+                            <configuration>
+                                <testIncludes>
+                                    <testInclude>**/*Test.java</testInclude>
+                                    <!-- 被编译但是不被执行, 执行看maven-surefire-plugin的配置. -->
+                                    <testInclude>**/App.java</testInclude>
+                                </testIncludes>
+                                <outputDirectory>${project.build.testOutputDirectory}</outputDirectory>
+                            </configuration>
+                        </execution>
+                        <!-- Compile *IT.java and write class file to outputDirectory -->
+                        <!-- 此配置项不是默认的, 必须添加此配置项如果有集成测试的话-->
+                        <execution>
+                            <id>compile-integration-test</id>
+                            <phase>pre-integration-test</phase>
+                            <goals>
+                                <goal>testCompile</goal>
+                            </goals>
+                            <configuration>
+                                <testIncludes>
+                                    <testInclude>**/*.java</testInclude>
+                                </testIncludes>
+                                <outputDirectory>${project.build.directory}/it-classes</outputDirectory>
+                            </configuration>
+                        </execution>
+                    </executions>
 				</plugin>
-			<!-- Add several folders whose type is source folder for the project inherited from the "SuperPom"-->
-			<!-- 依赖范围(scope)为test的classpath不会添加到此类插件的classpath,因为此类插件的范围为compile,eg:junit -->
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>build-helper-maven-plugin</artifactId>
-				<version>1.7</version>
-				<executions>
-					<execution>
-						<id>add-source</id>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>add-source</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>3.0.1</version>
+                    <executions>
+                        <execution>
+                            <id>copy-integration-test-resources</id>
+                            <phase>pre-integration-test</phase>
+                            <goals>
+                                <goal>copy-resources</goal>
+                            </goals>
+                            <configuration>
+                                <resources>
+                                    <resource>
+                                        <directory>src/it/resources</directory>
+                                        <filtering>true</filtering>
+                                    </resource>
+                                </resources>
+                                <outputDirectory>${project.build.directory}/it-classes</outputDirectory>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>copy-unit-test-resources</id>
+                            <phase>process-test-resources</phase>
+                            <goals>
+                                <goal>copy-resources</goal>
+                            </goals>
+                            <configuration>
+                                <resources>
+                                    <resource>
+                                        <directory>src/test/resources</directory>
+                                        <filtering>true</filtering>
+                                    </resource>
+                                </resources>
+                                <outputDirectory>${project.build.testOutputDirectory}</outputDirectory>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <!-- Added for unit tests.-->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.18.1</version>
+                    <inherited>true</inherited>
+                    <configuration>
+                        <skip>${skip.ut}</skip>
+                        <includes>
+                            <include>**/*Test.java</include>
+                        </includes>
+                        <excludes>
+                            <exclude>**/*IT.java</exclude>
+                        </excludes>
+                        <testClassesDirectory>${project.build.testOutputDirectory}</testClassesDirectory>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <!-- 只可以指定这一个值, 所以这个goal不指定执行mvn test, test-classes下的*Test也能执行.-->
+                                <goal>test</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <!-- Added for integration tests. -->
+                <!-- NOTE:　需要显示在子pom中声明才能起作用-->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-failsafe-plugin</artifactId>
+                    <version>2.18.1</version>
+                    <configuration>
+                        <skip>${skip.it}</skip>
+                        <includes>
+                            <include>**/*IT.java</include>
+                        </includes>
+                        <excludes>
+                            <exclude>**/*Test.java</exclude>
+                        </excludes>
+                        <testClassesDirectory>${project.build.directory}/it-classes</testClassesDirectory>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <!-- 可以配置俩goal, 必须指明, 否则在执行mvn verify(包括integration-test goal)
+                                    的时候不会执行it-classes下的*IT.-->
+                                <goal>integration-test</goal>
+                                <goal>verify</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
 			</plugins>
 		</pluginManagement>
 	</build>

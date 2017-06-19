@@ -8,7 +8,9 @@ var_2="world"
 
 # To use the variable,we simply put a dollar sign "$" before the name of the variable in our script.
 
-echo "${var_1}and{$var_2}and$var_1" #${} just outputs value of variable and {$va} outputs {value of variable}
+echo "${var_1}and{$var_2}and$var_1" # ${} just outputs value of variable and {$va} outputs {value of variable}
 #Helloand{world}andHello
 
-### How to output ${Hello}? use ${$var_1}?  TODO
+### How to output ${Hello}? use ${$var_1}? If use ${$var_1}, there will be 'bad substitution' error message.
+echo "\${${var_1}}"
+echo "\$\${${var_1}}"

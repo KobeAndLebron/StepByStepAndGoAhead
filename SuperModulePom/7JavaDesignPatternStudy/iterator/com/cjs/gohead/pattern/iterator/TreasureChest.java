@@ -5,6 +5,7 @@ import java.util.*;
 /**
  *  TreasureChest, the collection class.
  *
+ * HarvestOfSource:
  *  ArrayList's DOC:<br/>
  *  <strong>Note that this implementation is not synchronized.</strong>
  *  If multiple threads access an <tt>ArrayList</tt> instance concurrently,
@@ -21,6 +22,10 @@ import java.util.*;
  */
 public class TreasureChest {
     private List<Item> items;
+    /**
+     * HarvestOfSource:
+     * Look at java.util.AbstractList#modCount(Use Ctrl+N to search)
+     */
     private int modCount;
 
     public TreasureChest() {

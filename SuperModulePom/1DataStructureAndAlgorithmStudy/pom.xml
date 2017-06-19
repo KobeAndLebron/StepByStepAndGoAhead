@@ -15,9 +15,7 @@
 	
 	<properties>
 		<!-- javac -encoding指定的编码格式 -->
-		<project.build.sourceEncoding>
-			UTF-8
-		</project.build.sourceEncoding>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	
 	<dependencies>
@@ -25,12 +23,6 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 	  	</dependency>
-		<!-- Json依赖 -->
-		<!-- <dependency>
-			<groupId>org.json</groupId>
-			<artifactId>json</artifactId>
-			<version>20151123</version>
-		</dependency> -->
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-mapper-asl</artifactId>
@@ -46,26 +38,5 @@
 	   		<artifactId>jsoup</artifactId>
 		</dependency>
 	</dependencies>
-	
-	<build>
-		<!-- 配置插件,插件都是为了构建项目，所以这个节点应该位于build节点下 -->
-		<plugins>
-			<!-- 配置编译插件，从父类继承 -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-			</plugin>
-			<!-- 为此项目配置 多个sourceFolder -->
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>build-helper-maven-plugin</artifactId>
-				<configuration>
-					<sources>
-						<!-- 我们可以通过在这里添加多个source节点，来添加任意多个源文件夹 -->
-					</sources>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
 </project>
 	

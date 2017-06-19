@@ -11,11 +11,14 @@
 ### x(execute)：具有被系统执行的权限。注意：在Linux中, 文件是否能否被执行是由文件是否具有x权限决定的, 与文件名的扩展名无关。
 # 2、权限对目录的重要性
 #
-### r(read contents in directory)：具有读取目录结构列表的权限(即ls), 与用户能否进入该目录无关(不能进入则显示乱码)。
-### w(modify contents of directory)：具有更改该目录结构列表的权限, 包括新建文件或目录、删除文件和目录（不论该文件权限如何）
-###  、对文件或目录进行重命名、转移文件或目录位置(必须有x权限才能工作). e.g. cp的时候既要有源文件的r权限, 也要有此目录的w权限. 才能成功.
-### x(execute directory)：具有进入该目录的权限, 使该目录成为工作目录, 即目前所在的目录。
-### 如果没有x权限, 即使有r权限, 也无法切换到该目录执行该目录下的命令。
+### r(read file list in directory)：具有读取目录结构列表的权限(即ls, 能提示文件名), 与用户能否进入该目录(x)
+### 无关(不能进入则显示乱码)。
+### w(modify contents of directory)：具有更改该目录结构列表的权限, 包括新建文件或目录 删除文件和目录（不论该文件权限如何）
+###   对文件或目录进行重命名 转移文件或目录位置(必须有x权限才能工作).
+###  e.g. 在同一目录cp的时候既要有源文件的r权限, 也要有此目录的w权限(create file), 才能成功.
+### x(execute directory)：具有进入该目录的权限(r和ｗ都需要进入此目录), 使该目录成为工作目录(能够stat文件的基本信息), 即目前所在的目录。
+### 如果没有x权限, 即使有r权限, 也无法切换到该目录执行该目录下的命令,即ls会乱码(没有ｘ权限不能够stat文件的基本信息)
+
 lsWithSudo='sudo ls -al /root'
 lsWithoutSudo='ls -al /root'
 echo '将/root的others权限设置为空...'
@@ -25,6 +28,7 @@ echo "执行${lsWithSudo}"
 ${lsWithSudo}
 
 echo "执行${lsWithoutSudo}, 由于没有r权限所以Permission denied."
+## ls: cannot open directory /root: Permission denied
 ${lsWithoutSudo}
 
 i=1
@@ -37,7 +41,7 @@ done
 
 echo '设置/root的others权限为r...'
 sudo chmod o=r /root
-ls -al /root #由于没有x权限所以不能进入, 显示的文件目录乱码
+ls -al /root #由于没有x权限所以不能让此目录成为工作目录, 即不能统计目录里的一些基本文件信息(大小　创建时间等等), 显示的文件目录乱码
 cd /root # Permission denied.
 
 echo '设置/root的others权限为x...'

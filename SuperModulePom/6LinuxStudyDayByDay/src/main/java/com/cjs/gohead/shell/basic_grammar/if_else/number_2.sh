@@ -13,7 +13,7 @@ else
     echo "How old are you?"
     read AGE
 
-    if [ "${AGE}" -le 2 ]; then
+    if [ ${AGE} -le 2 ]; then
         echo "You are too young!"
     else
         if [ "${AGE}" -ge 100 ]; then

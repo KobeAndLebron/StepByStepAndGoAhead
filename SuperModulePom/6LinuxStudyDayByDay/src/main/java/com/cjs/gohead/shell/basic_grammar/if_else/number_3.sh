@@ -5,7 +5,7 @@
 echo "Please input your age: "
 read AGE
 
-if [ "$AGE" -lt 20 ] || [ "$AGE" -ge 40 ]; then
+if ( ( [ "$AGE" -lt 20 ] ) || ( [ "$AGE" -ge 40 ] ) ); then
     echo "Sorry, you are out of the age range( (20, 40] )."
 elif [ "$AGE" -ge 20 ] && [ "$AGE" -lt 30 ]; then # [20, 30)
     echo "You are in your 20s."
