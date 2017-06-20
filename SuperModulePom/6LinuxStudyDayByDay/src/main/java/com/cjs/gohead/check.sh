@@ -14,7 +14,7 @@ master_ip=192.168.130.59
 master_port=3306
 master_pwd=111111
 master_uname=root
-master_nodeName1= 反斜杠hostname反斜杠
+master_nodeName1=$(hostname)
 
 while((1 > 0));do
   echo "check start..."
