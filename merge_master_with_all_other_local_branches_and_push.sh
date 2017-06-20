@@ -14,9 +14,9 @@ echo "The current branch is ${current_branch_name}\n"
 #message_push=`git push` qq
 #grep_message=`echo $message_push | grep -o '[0-9a-zA-Z]*...[0-9a-zA-Z]**'`
 #echo "$grep_message"
-git push
+git push  || exit 1
 # Cannot ignore error output.
-git checkout ${pushed_branch}  1>/dev/null
+git checkout ${pushed_branch}  1>/dev/null  || exit 1
 echo "1 Switch to $pushed_branch\n"
 
 # Temporarily remove.
@@ -30,13 +30,13 @@ echo "1 Switch to $pushed_branch\n"
 #    fi
 #done
 
-git merge ${current_branch_name} 1>/dev/null
-echo "${current_branch_name} is merged to ${pushed_branch}"
+git merge ${current_branch_name} 1>/dev/null || exit 1 || exit 1
+echo "${current_branch_name} is merged to ${pushed_branch}"  
 
 echo "2 Merge finish\n"
 #message_push1=`git push | grep '-'`
 #echo "$message_push1\n"
-git push -u ${repositoryName} ${pushed_branch}:${pushed_branch}
+git push ${repositoryName} ${pushed_branch}  || exit 1
 echo "3 $pushed_branch is pushed to remote respority\n"
 git checkout ${current_branch_name} 1>/dev/null 2>/dev/null
-echo "4 switch to the previous branch: $current_branch_name\n"
+echo "4 Switch to the previous branch: $current_branch_name\n"
