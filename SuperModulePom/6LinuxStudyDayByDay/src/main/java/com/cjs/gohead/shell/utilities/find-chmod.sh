@@ -16,7 +16,7 @@ echo "The operation: ${operation}"
 # Without the quotes(single or double), the shell will interpret *.sh as a glob pattern and expands it to any
 # file names matching the glob before passing it to find command.
 # This way, if you had, say, foo.java in the current directory, find's actual command line would be:
-# find . -name foo.java
+# find . -name foo.java(sh脚本执行之前也会对输入参数进行这样的处理)
 ###
 directories=`find ${directory} -type f -name "${filePattern}"`
 
