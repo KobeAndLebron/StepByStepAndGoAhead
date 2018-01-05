@@ -10,11 +10,11 @@ current_branch_name=`git branch -l | grep '^* [0-9a-zA-Z_]*$' | grep -o '[0-9a-z
 #the branch which will be pushed
 pushed_branch="master"
 repositoryName=`git remote`
-echo "The current branch is ${current_branch_name}\n"
+echo "The current branch is ${current_branch_name}"
 #message_push=`git push` qq
 #grep_message=`echo $message_push | grep -o '[0-9a-zA-Z]*...[0-9a-zA-Z]**'`
 #echo "$grep_message"
-git push  || exit 1
+git push || exit 1
 # Cannot ignore error output.
 git checkout ${pushed_branch}  1>/dev/null  || exit 1
 echo "1 Switch to $pushed_branch\n"
@@ -30,7 +30,7 @@ echo "1 Switch to $pushed_branch\n"
 #    fi
 #done
 
-git merge ${current_branch_name} 1>/dev/null || exit 1 || exit 1
+git merge ${current_branch_name} 1>/dev/null || exit 1
 echo "${current_branch_name} is merged to ${pushed_branch}"  
 
 echo "2 Merge finish\n"
