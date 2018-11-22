@@ -20,6 +20,7 @@ contains() {
 TENANT_URI="/tenants/init" # 创建租户的URI.
 TENANT_TOKENS_URI="/tokens" # 获取租户认证信息的URI.
 TENANT_USERNAME_PREFIX="tadmin_" # KMX租户管理员用户名前缀.
+OPERATOR_EMAIL="operator@lnhl.com"
 
 SCRIPT_DIR=$(dirname $(readlink -e $0))
 
@@ -45,6 +46,11 @@ for (( i=0; i<${#EMAIL_ARRAY[@]}; i++))
 do
     echo "总数:${#EMAIL_ARRAY[@]}, 当前处理到第${i}个(从0开始)."
     email=${EMAIL_ARRAY[$i]}
+
+    if [ "$email" == "$OPERATOR_EMAIL" ];then
+        echo "不对${OPERATOR_EMAIL}进行处理..."
+        continue
+    fi
 
     # 由于kmx2.0的用户名不支持'@'和'.', 所以将email中的'@'和'.'替换为'_'.
     replaceEmail=$(echo ${email} | sed -e "s/@/_/g" | sed -e "s/\./_/g")
