@@ -4,6 +4,7 @@
 ## 1. Push the current branch to remote repository.
 ## 2. Merge the current branch to master.
 ## 3. Push the master branch to remote repository.
+## 4. Switch the previous branch.
 
 current_branch_name=`git branch -l | grep '^* [0-9a-zA-Z_]*$' | grep -o '[0-9a-zA-Z_]*$'`
 
