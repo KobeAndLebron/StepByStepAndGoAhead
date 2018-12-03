@@ -229,11 +229,6 @@
                             <goals>
                                 <goal>add-source</goal>
                             </goals>
-                            <configuration>
-                                <sources>
-                                    <source>DayLog</source>
-                                </sources>
-                            </configuration>
                         </execution>
                     </executions>
                 </plugin>
