@@ -41,12 +41,16 @@
 		<plugin>
 			<groupId>org.codehaus.mojo</groupId>
 			<artifactId>build-helper-maven-plugin</artifactId>
-			<configuration>
-				<sources>
-					<!-- 我们可以通过在这里添加多个source节点，来添加任意多个源文件夹 -->
-					<source>DayLog</source>
-				</sources>
-			</configuration>
+            <executions>
+                <execution>
+                    <id>add-other-sources</id>
+                    <configuration>
+                        <sources>
+                            <source>DayLog</source>
+                        </sources>
+                    </configuration>
+                </execution>
+            </executions>
 		</plugin>
   	</plugins>
   </build>

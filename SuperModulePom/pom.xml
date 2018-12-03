@@ -223,6 +223,18 @@
                                 </resources>
                             </configuration>
                         </execution>
+                        <execution>
+                            <id>add-other-sources</id>
+                            <phase>generate-sources</phase>
+                            <goals>
+                                <goal>add-source</goal>
+                            </goals>
+                            <configuration>
+                                <sources>
+                                    <source>DayLog</source>
+                                </sources>
+                            </configuration>
+                        </execution>
                     </executions>
                 </plugin>
 				<!-- 将编译的版本提升至1.7支持注解菱形语法等等 -->
