@@ -8,9 +8,9 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	
-	<artifactId>8JAVASourceCodeStudy</artifactId>
+	<artifactId>8JAVASourceCode</artifactId>
 		
-	<name>8JAVA源码研究</name>
+	<name>8JAVA源代码</name>
 
 	<!-- 设置build项目的时候源文件的编码格式,否则maven编译插件将使用平台默认编码 -->
 	<properties>
@@ -20,7 +20,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.cjs.gohead</groupId>
-			<artifactId>2YD_JavaAndSqlOptimizeStudyDayByDay</artifactId>
+			<artifactId>2YD_JavaAndSqlOptimize</artifactId>
 			<version>${project.version}</version>
 			<scope>compile</scope>
 		</dependency>

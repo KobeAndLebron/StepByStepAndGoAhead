@@ -8,10 +8,10 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	
-	<artifactId>2YD_JavaAndSqlOptimizeStudyDayByDay</artifactId>
+	<artifactId>2YD_JavaAndSqlOptimize</artifactId>
 	<packaging>jar</packaging>
 
-	<name>2YD_JAndS优化每天一点</name>
+	<name>2有道-JAVA和SQL优化</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -26,7 +26,7 @@
 		<!-- 对多线程项目的依赖 -->
 		<dependency>
 			<groupId>com.cjs.gohead</groupId>
-			<artifactId>3ThreadPoolAndHighConcurrencyStudy</artifactId>
+			<artifactId>3ThreadPoolAndHighConcurrency</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>

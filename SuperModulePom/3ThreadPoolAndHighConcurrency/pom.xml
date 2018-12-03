@@ -7,11 +7,10 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>3ThreadPoolAndHighConcurrencyStudy</artifactId>
+  <artifactId>3ThreadPoolAndHighConcurrency</artifactId>
   <packaging>jar</packaging>
 
-  <name>3多线程和高并发学习</name>
-  <url>http://maven.apache.org</url>
+  <name>3多线程和高并发</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

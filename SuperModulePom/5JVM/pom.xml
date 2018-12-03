@@ -8,11 +8,10 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>5JVMStudy</artifactId>
+	<artifactId>5JVM</artifactId>
 	<packaging>jar</packaging>
 
-	<name>5JVM学习</name>
-	<url>http://maven.apache.org</url>
+	<name>5JVM</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

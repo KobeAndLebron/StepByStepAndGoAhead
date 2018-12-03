@@ -9,9 +9,9 @@
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	
-	<artifactId>1DataStructureAndAlgorithmStudy</artifactId>
+    <artifactId>1DataStructureAndAlgorithm</artifactId>
 
-	<name>1数据结构和算法学习</name>
+	<name>1数据结构和算法</name>
 	
 	<properties>
 		<!-- javac -encoding指定的编码格式 -->
