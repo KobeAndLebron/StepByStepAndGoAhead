@@ -41,15 +41,15 @@
 	<name>SuperModulePom</name>
 	
 	<modules>
-		<module>1DataStructureAndAlgorithmStudy</module>
-		<module>2YD_JavaAndSqlOptimizeStudyDayByDay</module>
-		<module>3ThreadPoolAndHighConcurrencyStudy</module>
-		<module>4SocketStudy</module>
-		<module>5JVMStudy</module>
-		<module>6LinuxStudyDayByDay</module>
-		<module>7JavaDesignPatternStudy</module>
-		<module>8JAVASourceCodeStudy</module>
-		<module>9OpenSourceStudy</module>
+		<module>1DataStructureAndAlgorithm</module>
+		<module>2YD_JavaAndSqlOptimize</module>
+		<module>3ThreadPoolAndHighConcurrency</module>
+		<module>4Socket</module>
+		<module>5JVM</module>
+		<module>6Linux</module>
+		<module>7JavaDesignPattern</module>
+		<module>8JAVASourceCode</module>
+		<module>9OpenSourceFramework</module>
 		<module>Shared-Utils</module>
 	</modules>
 	

@@ -8,11 +8,10 @@
 	<version>0.0.1-SNAPSHOT</version>
   </parent>
   
-  <artifactId>6LinuxStudyDayByDay</artifactId>
+  <artifactId>6Linux</artifactId>
   <packaging>jar</packaging>
 
-  <name>6Linux学习每天一点</name>
-  <url>http://maven.apache.org</url>
+  <name>6Linux</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -26,12 +25,12 @@
     </dependency>
     <dependency>
 		<groupId>com.cjs.gohead</groupId>
-		<artifactId>8JAVASourceCodeStudy</artifactId>
+		<artifactId>8JAVASourceCode</artifactId>
 		<version>${project.version}</version>
     </dependency>
     <dependency>
 		<groupId>com.cjs.gohead</groupId>
-		<artifactId>9OpenSourceStudy</artifactId>
+		<artifactId>9OpenSourceFramework</artifactId>
 		<version>${project.version}</version>
     </dependency>
   </dependencies>

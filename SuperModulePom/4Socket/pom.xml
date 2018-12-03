@@ -8,11 +8,10 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>4SocketStudy</artifactId>
+	<artifactId>4Socket</artifactId>
 	<packaging>jar</packaging>
 
-	<name>4Socket学习</name>
-	<url>http://maven.apache.org</url>
+	<name>4Socket</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

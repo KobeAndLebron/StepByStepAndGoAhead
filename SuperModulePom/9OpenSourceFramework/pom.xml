@@ -8,12 +8,11 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	
-	<artifactId>9OpenSourceStudy</artifactId>
+	<artifactId>9OpenSourceFramework</artifactId>
 
 	<packaging>jar</packaging>
 
-	<name>9开源框架研究</name>
-	<url>http://maven.apache.org</url>
+	<name>9开源框架</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
