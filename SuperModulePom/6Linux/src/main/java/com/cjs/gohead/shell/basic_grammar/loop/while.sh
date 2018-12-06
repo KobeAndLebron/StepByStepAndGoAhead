@@ -2,7 +2,7 @@
 
 # loop by [ ]
 var=1
-while [ "${var}" -ne 10 ];
+while [ "${var}" -ne 10 ]; # 等价于 while (("${var}" < 10));
 do
     echo -n "$var "
     var=$(expr ${var} + 1)
