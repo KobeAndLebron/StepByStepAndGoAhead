@@ -1,5 +1,18 @@
 #!/bin/bash
 
+# foreach predefine variables.
+echo -n "Predefine variables: "
+# '$#'表示预定于变量的长度, 类比数组'${array[@]}'是foreach数组的每一个元素, '${!array[@]}'是foreach by array index,
+# '${#array[@]}'为数组的长度.
+for i in "$@";
+do
+    echo -n "$i "
+done
+echo
+
+######################
+
+# foreach array.
 array=("1" "2" 3 5)
 
 # 与java中的foreach相似
@@ -17,14 +30,14 @@ done
 
 ########################
 
-# for循环
-for (( i=0; i<${#array[@]}; i++))
+# fori循环
+for ((i=0; i<${#array[@]}; i++))
 do
     echo ${array[$i]}
 done
 
 
-# for嵌套循环
+# fori嵌套循环
 for (( i=0; i<${#array[@]}; i++));
 do
     for (( j=0; j<${#array[@]}; j++));
