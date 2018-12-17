@@ -1,10 +1,10 @@
 首先，脚本必须以 #!/bin/sh 开始
 #！用来告诉系统要用它后面的参数来执行即将书写的程序。shell脚本用/bin/sh命令执行。
 
-当编写完程序时，要使用chmod() u+x filename，使其成为可执行文件。
+当编写完程序时，要使用chmod u+x filename，使其成为可执行文件。
 #为注释
 eg:
 	num = 2 echo "$numnd" 将不会打印2，因为shell会搜索numnd的变量，但是这个变量没有值，应当使用 echo "{$num}nd" 的方式来打印
-基本的while和if语法可以查看 check.sh文件
-将一个命令的执行结果赋给一个变量：将命令用反斜杠包住 eg:executeResult=反斜杠ls反斜杠
+基本的while和if语法可以查看"6Linux/src/main/java/com/cjs/gohead/shell/basic_grammar/"文件夹.
+将一个命令的执行结果赋给一个变量：将命令用反斜杠包住 eg:executeResult=反斜杠ls反斜杠 or executeResult=$(ls)
 	
