@@ -224,6 +224,7 @@
                             </configuration>
                         </execution>
                         <execution>
+                            <inherited>true</inherited>
                             <id>add-other-sources</id>
                             <phase>generate-sources</phase>
                             <goals>
