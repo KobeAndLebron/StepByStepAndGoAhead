@@ -2,6 +2,7 @@ package lettcode.easy;
 
 import com.gohead.shared.test.ParentTest;
 import lettcode.ListNode;
+import org.junit.Assert;
 import org.junit.runners.Parameterized;
 
 import java.util.Arrays;
@@ -12,8 +13,8 @@ import java.util.List;
  * Created by chenjingshuai on 16-11-30.
  */
 public class MergeTwoSortedListsTest extends ParentTest<ListNode> {
-    ListNode listNode1;
-    ListNode listNode2;
+    private ListNode listNode1;
+    private ListNode listNode2;
     private static final MergeTwoSortedLists MERGE_TWO_SORTED_LISTS = new MergeTwoSortedLists();
 
     public MergeTwoSortedListsTest(int[] listNode1, int[] listNode2, int[] expectedObj) {
@@ -25,10 +26,12 @@ public class MergeTwoSortedListsTest extends ParentTest<ListNode> {
     @Parameterized.Parameters
     public static Collection<Object[]> generateParameters() {
         return Arrays.asList(new Object[][]{
-                new Object[]{new int[]{0, 1, 2, 3, 4}, new int[]{0, 1, 2, 3, 4}, new int[]{0, 0, 1, 1, 2, 2, 3, 3, 4, 4}},
-                new Object[]{new int[]{0}, new int[]{0}, new int[]{0, 0}},
-                new Object[]{new int[]{0}, new int[]{}, new int[]{0}},
-                new Object[]{new int[]{0}, null, new int[]{0}},
+            new Object[]{new int[]{0, 1, 2, 3, 4}, new int[]{0, 1, 2, 3, 4}, new int[]{0, 0, 1, 1, 2, 2, 3, 3, 4, 4}},
+            new Object[]{new int[]{0}, new int[]{0}, new int[]{0, 0}},
+            new Object[]{new int[]{1, 2, 3, 4, 5}, new int[]{1, 1, 1, 1, 2, 3, 45, 89, 100},
+                new int[]{1, 1, 1, 1, 1, 2, 2, 3, 3, 4, 5, 45, 89, 100}},
+            new Object[]{new int[]{0}, new int[]{}, new int[]{0}},
+            new Object[]{new int[]{0}, null, new int[]{0}},
 
         });
     }
@@ -36,5 +39,7 @@ public class MergeTwoSortedListsTest extends ParentTest<ListNode> {
     @Override
     protected void test() {
         generatedObj = MERGE_TWO_SORTED_LISTS.mergeTwoLists(listNode1, listNode2);
+        ListNode generatedObj1 = MERGE_TWO_SORTED_LISTS.mergeTwoListsRecursively(listNode1, listNode2);
+        Assert.assertEquals(generatedObj1, generatedObj);
     }
 }
