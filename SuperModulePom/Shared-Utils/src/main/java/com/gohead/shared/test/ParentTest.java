@@ -7,6 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -174,43 +175,47 @@ public abstract class ParentTest<T> {
     }
 
     protected void judgeBySys() {
-        if (expectedObj.getClass().isArray()) {
-            Class<?> componentClazz = expectedObj.getClass().getComponentType();
-            if (componentClazz == double.class) {
-                assertArrayEquals((double[]) expectedObj, (double[]) generatedObj, 0);
-            } else if (componentClazz == long.class) {
-                assertArrayEquals((long[]) expectedObj, (long[]) generatedObj);
-            } else if (componentClazz == byte.class) {
-                assertArrayEquals((byte[]) expectedObj, (byte[]) generatedObj);
-            } else if (componentClazz == int.class) {
-                assertArrayEquals((int[]) expectedObj, (int[]) generatedObj);
-            } else if (componentClazz == short.class) {
-                assertArrayEquals((short[]) expectedObj, (short[]) generatedObj);
-            } else if (componentClazz == boolean.class) {
-                assertArrayEquals((boolean[]) expectedObj, (boolean[]) generatedObj);
-            } else if (componentClazz == float.class) {
-                assertArrayEquals((float[]) expectedObj, (float[]) generatedObj, 0);
-            } else if (componentClazz == char.class) {
-                assertArrayEquals((char[]) expectedObj, (char[]) generatedObj);
-            } else {
-                assertArrayEquals((Object[]) expectedObj, (Object[]) generatedObj);
-            }
-            System.out.println("Correct(array)...");
+        if (expectedObj == null) {
+            Assert.assertNull(generatedObj);
         } else {
-            if (!expectedResult) {
-                if (null == expectedObj) { // 只需要判断生成的对象为空即可
-                    assertNull(generatedObj);
+            if (expectedObj.getClass().isArray()) {
+                Class<?> componentClazz = expectedObj.getClass().getComponentType();
+                if (componentClazz == double.class) {
+                    assertArrayEquals((double[]) expectedObj, (double[]) generatedObj, 0);
+                } else if (componentClazz == long.class) {
+                    assertArrayEquals((long[]) expectedObj, (long[]) generatedObj);
+                } else if (componentClazz == byte.class) {
+                    assertArrayEquals((byte[]) expectedObj, (byte[]) generatedObj);
+                } else if (componentClazz == int.class) {
+                    assertArrayEquals((int[]) expectedObj, (int[]) generatedObj);
+                } else if (componentClazz == short.class) {
+                    assertArrayEquals((short[]) expectedObj, (short[]) generatedObj);
+                } else if (componentClazz == boolean.class) {
+                    assertArrayEquals((boolean[]) expectedObj, (boolean[]) generatedObj);
+                } else if (componentClazz == float.class) {
+                    assertArrayEquals((float[]) expectedObj, (float[]) generatedObj, 0);
+                } else if (componentClazz == char.class) {
+                    assertArrayEquals((char[]) expectedObj, (char[]) generatedObj);
                 } else {
-                    assertNotEquals(expectedObj, generatedObj);
+                    assertArrayEquals((Object[]) expectedObj, (Object[]) generatedObj);
                 }
-                System.out.println("Expected result is false and result is false...");
+                System.out.println("Correct(array)...");
             } else {
-                if (OBJ == expectedObj) { // 只需要判断生成的对象不为空即可
-                    assertNotNull(generatedObj);
+                if (!expectedResult) {
+                    if (null == expectedObj) { // 只需要判断生成的对象为空即可
+                        assertNull(generatedObj);
+                    } else {
+                        assertNotEquals(expectedObj, generatedObj);
+                    }
+                    System.out.println("Expected result is false and result is false...");
                 } else {
-                    assertEquals(expectedObj, generatedObj);
+                    if (OBJ == expectedObj) { // 只需要判断生成的对象不为空即可
+                        assertNotNull(generatedObj);
+                    } else {
+                        assertEquals(expectedObj, generatedObj);
+                    }
+                    System.out.println("Expected result is true and result is true...");
                 }
-                System.out.println("Expected result is true and result is true...");
             }
         }
     }
