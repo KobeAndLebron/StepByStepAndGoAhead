@@ -3,6 +3,7 @@ package lettcode.easy;
 import java.util.Arrays;
 import java.util.Collection;
 
+import lettcode.recursive.ReverseString;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -28,7 +29,7 @@ public class ReverseStringTest extends ParentTest<String>{
 	@Test
 	public void test(){
 		if(!isIgnored()){
-			generatedObj = new ReverseString().reverseString1(inputArr);
+			generatedObj = ReverseString.reverse(inputArr);
 		}
 	}
 
