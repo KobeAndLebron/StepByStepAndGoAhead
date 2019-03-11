@@ -54,4 +54,29 @@ public class ReverseList {
         head.next = null;
         return rhead;
     }
+
+    /**
+     *  https://leetcode.com/problems/swap-nodes-in-pairs/
+     *
+     *  Example:
+
+        Given 1->2->3->4, you should return the list as 2->1->4->3.
+     * @param head
+     * @return
+     */
+    public ListNode reversePairsRecursively(ListNode head) {
+        if (head != null && head.next != null) { // 至少有两个节点.
+            ListNode secondNode = head.next; // 第二个节点.
+            ListNode thirdNode = secondNode.next; // 第三个节点.
+            secondNode.next = head; // 第二个节点指向第一个节点.
+
+            head = secondNode; // 现在的头结点变成之前的第二个节点.
+            secondNode = head.next; // 现在的第二个节点变成之前的头节点.
+
+            thirdNode = reversePairsRecursively(thirdNode);// 翻转后面的节点.
+            secondNode.next = thirdNode; // 第二个节点指向第三个节点.
+        }
+        return head;
+    }
+
 }
