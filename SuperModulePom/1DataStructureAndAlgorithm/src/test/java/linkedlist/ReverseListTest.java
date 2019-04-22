@@ -13,17 +13,14 @@ import java.util.Collection;
  */
 public class ReverseListTest extends ParentTest<ListNode> {
     private ListNode headNode;
-    private ListNode headNode1;
-    private ListNode headNode2;
-    // reversePairsRecursively函数的结果.
+    /**
+     * {@linkplain ReverseList#reversePairsRecursively(ListNode)} 的期望结果.
+     */
     private ListNode expectObj2;
 
-    public ReverseListTest(int caseId, ListNode expectedObj, ListNode headNode, ListNode headNode1, ListNode headNode2,
-                           ListNode expectedObj2) {
+    public ReverseListTest(int caseId, ListNode expectedObj, ListNode headNode, ListNode expectedObj2) {
         super(caseId, expectedObj);
         this.headNode = headNode;
-        this.headNode1 = headNode1;
-        this.headNode2 = headNode2;
         this.expectObj2 = expectedObj2;
     }
 
@@ -31,20 +28,22 @@ public class ReverseListTest extends ParentTest<ListNode> {
     public static Collection<Object[]> generateData() {
         return Arrays.asList(new Object[][]{
             new Object[]{1, ListNode.generateListNode(4, 3, 2, 1), ListNode.generateListNode(1, 2, 3, 4),
-                ListNode.generateListNode(1, 2, 3, 4), ListNode.generateListNode(1, 2, 3, 4),
                 ListNode.generateListNode(3, 4, 1, 2)},
-            new Object[]{1, ListNode.generateListNode(4, 3, 2), ListNode.generateListNode(2, 3, 4),
-                ListNode.generateListNode(2, 3, 4), ListNode.generateListNode(2, 3, 4),
+            new Object[]{2, ListNode.generateListNode(4, 3, 2), ListNode.generateListNode(2, 3, 4),
                 ListNode.generateListNode(3, 4, 2)},
-            new Object[]{2, null, null, null, null, null},
+            new Object[]{3, null, null, null},
+            new Object[]{4, ListNode.generateListNode(1), ListNode.generateListNode(1), ListNode.generateListNode(1)}
         });
     }
 
     @Override
     protected void test() {
+        ListNode headNodeCopy = ListNode.copyListNode(headNode);
+        ListNode headNodeCopy1 = ListNode.copyListNode(headNode);
+
         generatedObj = new ReverseList().reverseList(headNode);
-        ListNode generateObj1 = new ReverseList().reverseListRecursively(headNode1);
-        ListNode generateObj2 = new ReverseList().reverseListRecursively1(headNode2);
+        ListNode generateObj1 = new ReverseList().reverseListRecursively(headNodeCopy);
+        ListNode generateObj2 = new ReverseList().reverseListRecursively1(headNodeCopy1);
         Assert.assertEquals(generateObj1, generatedObj);
         Assert.assertEquals(generateObj2, generatedObj);
 
