@@ -71,7 +71,7 @@ echo "LICENSE" | grep -h "LICENSE" ${grepFile} -
 ##     by POSIX.)
 echo "LICENSE" | grep -l "LICENSE" ${grepFile} -  # result: greped.txt
                                                   #         (standard input)
-echo "LICENSE" | grep -lv "LICENSE" ${grepFile} -  # result: grep.txt
+echo "LICENSE" | grep -lv "LICENSE" ${grepFile} -  # result: greped.txt
 
 
 ## -c, --count
@@ -130,3 +130,11 @@ grep -E [^A-Z] ${grepFile} #小写字母
 ##   [:space:] 空格
 ## t或空格一共匹配两次, 即tt t空格 空格t 空格空格 都能匹配到.
 grep -E "[t[:space:]]{2}" ${grepFile}
+
+
+## -------------------------------------------------------------- ##
+
+##grep with find
+grep -oh "com.cjs" $(find  ./  -name "*.java" -type f )
+
+## -------------------------------------------------------------- ##
