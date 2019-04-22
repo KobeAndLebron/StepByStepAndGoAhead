@@ -5,7 +5,9 @@ package com.cjs.goHead.mysql;
  * as SELECT or WHERE clause. MySQL provides you with two forms of the CASE expressions.
  *
  *
- *   FORM1:
+ *   FORM1(each WHEN clause search_condition expression is evaluated until one is true, at which point
+ *   its corresponding THEN clause statement_list executes. If no search_condition is equal, the ELSE
+ *   clause statement_list executes, if there is one.):
          CASE
          WHEN condition_1 THEN result_1
          WHEN condition_2 THEN result_2
@@ -14,10 +16,15 @@ package com.cjs.goHead.mysql;
 
     e.g1: UPDATE table1 set column = (CASE WHEN column = 'xxx' THEN 1 WHEN column = 'yyy' THEN 2 ELSE 0 END)
     e.g2: SELECT SUM(CASE WHEN column = 'xxx' THEN 1 ELSE 0 END) as columnStatus FROM table1.
+    e.g3(没有ELSE): SELECT (CASE student = 'I' WHEN 0 THEN 1 END) FROM courses;
+
  *
  *
- *   FORM2:
-         CASE value
+ *   FORM2(case_value is an expression. This value is compared to the when_value expression
+ *   in each WHEN clause until one of them is equal. When an equal when_value is found, the
+ *   corresponding THEN clause statement_list executes. If no when_value is equal, the ELSE
+ *   clause statement_list executes, if there is one.):
+         CASE case_value
          WHEN compare_value_1 THEN result_1
          WHEN compare_value_2 THEN result_2
          …
@@ -39,6 +46,16 @@ package com.cjs.goHead.mysql;
          +-----------------------------------+
          |                                 1 |
          +-----------------------------------+
+
+         SELECT (CASE student WHEN 'I' THEN 1 END) FROM courses; (同上述例子3)
+
+
+     IFNULL function:  MySQL IFNULL function is one of the MySQL control flow functions that accepts two arguments and
+   returns the first argument if it is not NULL. Otherwise, the IFNULL function returns the second argument.
+
+     e.g1: SELECT IFNULL(1,0); -- returns 1
+     eg2:  SELECT IFNULL('',1); -- returns ''
+     eg3:  SELECT IFNULL(NULL,'IFNULL function'); -- returns IFNULL function
 
  *
  * Created by chenjingshuai on 19-4-4.
