@@ -1,7 +1,9 @@
 package lettcode;
 
 /**
- * Created by chenjingshuai on 16-11-30.
+ *
+ * @author chenjingshuai
+ * @date 16-11-30
  */
 public class ListNode {
     public int val;
@@ -28,6 +30,26 @@ public class ListNode {
             listNode = new ListNode(array);
         }
         return listNode;
+    }
+
+    /**
+     * 复制链表.
+     *
+     * @param listNode
+     * @return
+     */
+    public static ListNode copyListNode(ListNode listNode) {
+        ListNode pseudoNode = new ListNode();
+        ListNode head = pseudoNode;
+
+        while (listNode != null) {
+            pseudoNode.next = new ListNode(listNode.val);
+
+            pseudoNode = pseudoNode.next;
+            listNode = listNode.next;
+        }
+
+        return head.next;
     }
 
     @Override
