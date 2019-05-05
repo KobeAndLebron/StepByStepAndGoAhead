@@ -13,12 +13,12 @@ public class ThreadId {
 	private static final AtomicInteger nextId = new AtomicInteger();
 	
 	// Thread local variable containing each thread's ID
-	private static final ThreadLocal<Integer> threadId = new ThreadLocal<Integer>(){
-		public Integer initialValue(){
-			// return 0; // try it can understand that initialValue method of ThreadLocal
-			return nextId.getAndIncrement();
-		}
-	};
+	private static final ThreadLocal<Integer> threadId = new ThreadLocal<Integer>() {
+        public Integer initialValue() {
+            // return 0; // try it can understand that initialValue method of ThreadLocal
+            return nextId.getAndIncrement();
+        }
+    };
 	
 	// Return the current thread's unique ID , assigning it if necessary
 	public static Integer get(){
