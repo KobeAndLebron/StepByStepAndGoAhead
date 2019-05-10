@@ -80,6 +80,29 @@ public class RotateMatrix {
         }
     }
 
+    /**
+     * https://leetcode.com/explore/interview/card/top-interview-questions-easy/92/array/770/discuss/18879/AC-Java-in-place-solution-with-explanation-Easy-to-understand.
+     *
+     * @param matrix
+     */
+    public void rotate1(int[][] matrix) {
+        for (int i = 0; i < matrix.length - 1; i++) {
+            for(int j = i + 1; j < matrix.length; j++) {
+                int temp = matrix[i][j];
+                matrix[i][j] = matrix[j][i];
+                matrix[j][i] = temp;
+            }
+        }
+
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix.length / 2; j++) {
+                int temp = matrix[i][j];
+                matrix[i][j] = matrix[i][matrix.length - 1 - j];
+                matrix[i][matrix.length - 1 - j] = temp;
+            }
+        }
+    }
+
     public static void main(String[] args) {
         int[][] matrix = new int[][]{
             {5, 1, 9, 11},
@@ -97,7 +120,7 @@ public class RotateMatrix {
     }
 
     private static void test(int[][] matrix) {
-        new RotateMatrix().rotate(matrix);
+        new RotateMatrix().rotate1(matrix);
         for (int[] row : matrix) {
             System.out.println(Arrays.toString(row));
         }
