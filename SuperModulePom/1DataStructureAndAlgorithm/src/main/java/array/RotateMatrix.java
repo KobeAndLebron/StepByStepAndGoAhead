@@ -115,8 +115,12 @@ public class RotateMatrix {
             {2, 4, 8},
             {13, 3, 6},
         };
+        int[][] matrix2 = new int[][]{
+            {5},
+        };
         test(matrix);
         test(matrix1);
+        test(matrix2);
     }
 
     private static void test(int[][] matrix) {
