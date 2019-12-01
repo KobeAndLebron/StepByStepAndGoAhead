@@ -12,7 +12,7 @@ Keep your eyes on the stars and your feet on the ground!!!
 # 简要目录  
 
 ## 1. JVM  
-### 1.1 [YGC日志分析](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/fd1b5381626cadfd272658527723ff5c72ecad97/SuperModulePom/5JVM/src/main/java/com/cjs/gc/YGCLogAnalyze.java)
+### 1.1 [YGC日志分析](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/5JVM/src/main/java/com/cjs/gc/YGCLogAnalyze.java)
 
 ### 1.2 TenuringThreshold动态调整策略 [程序](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/5JVM/src/main/java/com/cjs/gc/TenuringThreshold.java) [程序对应日志分析](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/5JVM/src/main/java/com/cjs/gc/TenuringThreshold.log)
 
