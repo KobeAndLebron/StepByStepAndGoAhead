@@ -1,7 +1,6 @@
 package com.cjs.cas;
 
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.concurrent.atomic.AtomicStampedReference;
 
 /**
  * CAS Compare And Swap, 比较并交换, 是CPU的一个指令, 且是一个原子操作.
