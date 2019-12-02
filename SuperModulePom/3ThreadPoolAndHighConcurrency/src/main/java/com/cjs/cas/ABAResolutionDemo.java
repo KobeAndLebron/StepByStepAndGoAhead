@@ -8,8 +8,8 @@ import java.util.concurrent.atomic.AtomicStampedReference;
  *
  * -------
  *
- * 将100改为1000不对, 因为Integer.valueOf(100) != Integer.valueOf(1000), Integer初始化会有IntegerCache:
- *  {@link Integer#IntegerCache}, 默认会缓存-127到128的Integer对象.
+ * 补充: 将100改为1000结果就会不对, 因为Integer.valueOf(1000) != Integer.valueOf(1000);
+ * Integer初始化会有IntegerCache: {@link Integer#IntegerCache}, 默认会缓存-127到128的Integer对象, valueOf方法会先从缓存取, 没有则新建.
  */
 public class ABAResolutionDemo {
     static AtomicStampedReference<Integer> atomicStampedReference = new AtomicStampedReference<>(127, 1);
