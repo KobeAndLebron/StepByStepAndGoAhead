@@ -18,7 +18,7 @@ public class ABAProblemDemo {
             System.out.println(Thread.currentThread() + "修改结果:" + atomicInteger.compareAndSet(1000, 1001) + "\t" + atomicInteger.get());
             System.out.println(Thread.currentThread() + "修改结果:" + atomicInteger.compareAndSet(1001, 1000) + "\t" + atomicInteger.get());
             System.out.println(Thread.currentThread() + "ABA--end");
-        }, "AAA").start();
+        }, "ABA").start();
 
         new Thread(() -> {
 
@@ -30,8 +30,9 @@ public class ABAProblemDemo {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            // 线程B修改成功, 没有感知到ABA线程的ABA过程.
             System.out.println(Thread.currentThread() + "修改结果:" + atomicInteger.compareAndSet(i, 2009) + "\t" + atomicInteger.get());
-        }, "BBB").start();
+        }, "LowPriorityThread").start();
 
     }
 }
