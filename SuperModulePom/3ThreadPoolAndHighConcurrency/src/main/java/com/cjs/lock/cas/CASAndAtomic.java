@@ -1,20 +1,21 @@
-package com.cjs.cas;
+package com.cjs.lock.cas;
 
 import java.util.concurrent.atomic.AtomicReference;
 
 /**
- * CAS Compare And Swap, 比较并交换, 是CPU的一个指令, 且是一个原子操作.
- * 原理: 比较当前工作内存中的值和主内存中的值, 如果相同则执行操作. 否则返回False.
- * JAVA中通过 java.util.concurrent.atomic 包下面的原子类进行CAS操作(atomic包下的类调用Unsafe类中的JNI方法来调用)
+ * CAS, 全称Compare And Swap, 比较与交换, 是CPU的一个指令, 且是一个原子操作.
+ * 原理: 比较当前工作内存中的值和主内存中的值, 如果相同则执行更新操作. 否则返回False.
  *
  *  -----------
  *
- *  AtomicInteger为什么能保证原子性: Unsafe+CAS.
- *  Unsafe: 用于获取内存中volatile变量的值. 位于rt.jar包下的sun.misc包内; 用于调用操作系统的CAS原语.
- *  CAS: 如果当前工作内存的值与主内存的值不一样, 则证明值已经被其他线程修改, 此时将再次获取主内存的值[可能刚获取到主内存的值后线程又被挂起, 所以需要循环比较, 即自旋锁],
- *  然后再进行比较, 直到相等才将主内存的value加一.
+ *  Java.util.concurrent包中原子类就是通过CAS+自旋来实现了乐观锁: Unsafe+CAS+自旋.
+ *
+ *  Unsafe: 用于获取内存中volatile变量的值. 位于rt.jar包下的sun.misc包内; 用于调用操作系统的CAS指令.
+ *  CAS: 如果当前工作内存的值与主内存的值不一样, 则证明值已经被其他线程修改, 此时返回False. 一样则予以更新.
+ *  自旋: 如果CAS返回False, 然后更新自己工作内存的值, 直到工作内存和主内存的值相等才将主内存的value加一.[可能刚获取到主内存的值后线程又被挂起, 所以需要循环比较, 即自旋锁]
  *
  *  使用到的Unsafe核心方法:
+ *  // valueOffset, value在AtomicInteger中的偏移量.
  *   public final int getAndAddInt(Object atomicIntegerRef, long valueOffset, int increment) {
  *          int var5;
  *          do {
@@ -33,16 +34,19 @@ import java.util.concurrent.atomic.AtomicReference;
  *  ----------
  *
  *  Synchronized和CAS的区别:
- *      Synchronized: 加锁, 悲观锁, 线程会阻塞, 降低应用并发性; JMV级别的原子性.
- *      CAS: 不会加锁, 乐观锁, 线程不被阻塞; 硬件级别的原子性[操作系统的一个指令, 原语.].
+ *      Synchronized[悲观锁, 重量级锁]: 加锁, 线程会阻塞, 降低应用并发性; JMV级别的原子性.
+ *      CAS[乐观锁, 轻量级锁]: 不会加锁, 线程不被阻塞; 硬件级别的原子性[操作系统的一个指令, 原子操作].
  *
- *      悲观锁: 假定会发生冲突, 访问的时候都要先加锁. 保证同一时刻只有线程获得锁, 读读也会阻塞.
- *      乐观锁: 假定不会发生冲突, 只有在提交的时候才会检测冲突. 读读不会阻塞.
+ *      悲观锁: 对数据的修改持悲观态度, 认为自己在修改数据的时候一定有别的线程来修改数据, 因此访问的时候都要先加锁,
+ *      保证同一时刻只有一个线程获得锁, 读读也会阻塞.  [适用于写多读少的情况]
+ *      乐观锁: 对数据的修改持乐观态度, 认为自己在使用数据的时候不会有别的线程修改数据, 只有在更新数据的时候才会检测冲突.
+ *      读读不会阻塞.  [适用于读多写少的情况]
  *
  *      补充: Mysql中的乐观锁用MVCC实现. 悲观锁通过Select *** for update/lock in share mode(写锁/读锁).
  *
  *  -----------
  *
+ * CAS优点: 不用对同步资源加锁; 其余线程不用进入阻塞状态, 避免了线程状态的切换[挂起->恢复].
  *
  * CAS缺点:
  *  1. 如果CAS失败了[线程冲突严重], 则产生自旋时间过长, 会产生CPU使用率飙升的情况. 进而导致吞吐量下降.

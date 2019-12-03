@@ -1,4 +1,4 @@
-package com.cjs.cas;
+package com.cjs.lock.cas;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
