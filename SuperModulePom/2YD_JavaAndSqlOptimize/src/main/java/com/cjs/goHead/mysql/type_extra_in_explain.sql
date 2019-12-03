@@ -66,22 +66,31 @@ EXPLAIN SELECT multiple_index_1
         from test_index
         where multiple_index_2 = '2'
           and multiple_index_3 = '3';
+
+-- ICP（index condition pushdown): 表示索引失效后, 会在存储引擎层直接回表, 将整条记录返回给服务器层, 然后服务器层在进行过滤, 减少了服务器访问存储引擎的次数, 从而提高效率.
+-- ICP仅在使用索引存在且生效的情况下生效.
+set optimizer_switch = 'index_condition_pushdown=on';
 -- 索引失效，仅仅第一个索引列生效【ken_len为768】，type为ref，
 -- extra： Using index condition[等价于Using Where+Non-Using index]， 即没有使用覆盖索引且索引失效。
 EXPLAIN SELECT *
         from test_index
         where multiple_index_1 = '2'
           and multiple_index_3 = '3';
--- -- -- 跨列使用会使后边的所有索引都失效。
-
--- 将这个选项关闭后， 和以前一致。
-set optimizer_switch = 'index_condition_pushdown=off';
--- 仅仅第一个索引列生效【ken_len为768】， type为range， extra: Using where。
+-- 索引全部失效, ICP失效, Extra: Using where.
 EXPLAIN SELECT *
         from test_index
-        where multiple_index_1 > '2'
-          and multiple_index_2 = '3'
+          where multiple_index_3 = '3';
+
+-- 关闭ICP.
+set optimizer_switch = 'index_condition_pushdown=off';
+-- 仅仅第一个索引列生效【ken_len为768】，type为range，extra: Using where。
+EXPLAIN SELECT *
+        from test_index
+        where multiple_index_1 = '2'
           and multiple_index_3 = '3';
+
+-- -- -- 跨列使用会使后边的所有索引都失效。
+
 
 -- -- -- like查询使索引失效。
 -- 2. 索引失效。
