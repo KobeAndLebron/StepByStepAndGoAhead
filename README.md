@@ -17,5 +17,8 @@ Keep your eyes on the stars and your feet on the ground!!!
 #### 3.1.1 [CAS引起的ABA问题](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/cas/CASProblemDemo.java)  
 #### 3.1.2 [ABA解决方案](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/cas/CASProblemDemo.java)-by AtomicStampedReference  
 
+## 3. 数据库
+### 3.1 [Explain返回结果中的type和Extra解释及索引失效原则](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/2YD_JavaAndSqlOptimize/src/main/java/com/cjs/goHead/mysql/type_extra_in_explain.sql)
+
 # TODO
 - [ ] 包名较混乱。  
