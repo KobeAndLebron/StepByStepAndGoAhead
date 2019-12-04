@@ -7,6 +7,8 @@ package com.cjs.gc;
  *
  *    堆内存20M, 新生代10M, Eden区8M, S0和S1各1M.
  *
+ *    -Xloggc:gc.log 将GC日志写入到gc.log文件.
+ *
  *    使用Parallel Scavenge + ParOld收集器.
  *  -------
  *
