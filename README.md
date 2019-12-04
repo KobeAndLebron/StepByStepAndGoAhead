@@ -24,7 +24,7 @@ Keep your eyes on the stars and your feet on the ground!!!
 ### 3.2.2 Synchronized
 
 ### 3.2.3 ReentrantLock
-#### 3.2.3.1 [ReentrantLock的实现]()
+#### 3.2.3.1 [自己实现的ReentrantLock(公平+可重入版本锁版本)](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/StepByStepAndGoAhead/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/lock/rerntrant_lock/MyFairLock.java)
 #### 3.2.2.2 使用案例
 > 1. [生产者消费者模式]
 > 2. [三个线程交替打印字符串]
