@@ -30,6 +30,7 @@ class FooBarByLock {
             reentrantLock.lock();
 
             while (signal % 2 != 0) {
+                // Harvest: 同Synchronized一样, 没有使用lock直接使用await会报IllegalMonitorStateException.
                 condition.await();
             }
 
@@ -37,7 +38,6 @@ class FooBarByLock {
             printFoo.run();
             signal++;
             condition.signalAll();
-            // Harvest: 同Synchronized一样, 没有使用lock直接使用unlock会报IllegalMonitorStateException.
             reentrantLock.unlock();
         }
     }
