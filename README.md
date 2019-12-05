@@ -25,9 +25,10 @@ Keep your eyes on the stars and your feet on the ground!!!
 
 ### 3.2.3 ReentrantLock
 #### 3.2.3.1 [自己实现的ReentrantLock(公平+可重入版本锁版本)](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/lock/rerntrant_lock/MyFairLock.java)
-#### 3.2.2.2 使用案例
+#### 3.2.3.2 [ReentrantLock的Condtion原理实现](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/lock/rerntrant_lock/ConditionImpl.text)
+#### 3.2.2.3 使用案例
 > 1. [生产者消费者模式]
-> 2. [三个线程交替打印字符串]
+> 2. [三个线程交替打印字符串](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/lock/rerntrant_lock/example/PrintAlternately.java), Condition精准控制线程执行顺序。
 
 ## 3.3 阻塞队列
 
