@@ -20,7 +20,7 @@ Keep your eyes on the stars and your feet on the ground!!!
 
 ## 3.2 [锁的分类](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/lock/lockCategories.text) 
 对应图片: https://awps-assets.meituan.net/mit-x/blog-images-bundle-2018b/7f749fc8.png
-### 3.2.1 [Synchronized和Lock的区别]()
+### 3.2.1 [Synchronized和Lock的区别](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/synchronized_lock/)
 ### 3.2.2 Synchronized
 
 ### 3.2.3 ReentrantLock
