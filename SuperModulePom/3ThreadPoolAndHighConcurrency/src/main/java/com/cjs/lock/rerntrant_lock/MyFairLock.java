@@ -58,7 +58,9 @@ public class MyFairLock {
         Thread currentThread = Thread.currentThread();
         if (state == 0) {
             // 获取state, 成功则得到锁, 将当前锁的线程持有者设为当前线程.
-            if (acquire()) {
+            // 公平锁, 如果队列大小不为0, 则证明已经有线程在等待锁, 进入排队等锁状态.
+            // 如果实现非公平锁, 把!hasQueuedPredecessors()去掉即可, 即可以强插队, 在插队失败后再排队.
+            if (!hasQueuedPredecessors() && acquire()) {
                 exclusiveOwnerThread = currentThread;
             } else {
                 acquireFromQueue();
@@ -72,6 +74,9 @@ public class MyFairLock {
 
     }
 
+    public boolean hasQueuedPredecessors() {
+        return waiterThreadQueue.size() > 0;
+    }
 
     /**
      * 从队列中获取锁.
