@@ -1,0 +1,43 @@
+在MyFairLock的基础上, 实现Condition(两者加起来就和ReentrantLock差不多了):
+
+1. 回顾MyFairLock, 重要变量:
+state: 当前锁的状态, 0表示锁可获取, 大于0表示获得锁的次数[可重入锁].
+exclusiveOwnerThread: 当前锁的持有者.
+ConcurrentLinkedQueue(Node, status=SIGNAL=-1): 等待锁的线程队列; AQS中使用CLH, 是一个双向链表, 跟这个作用类似.
+
+2. Condition重要方法:
+2.1 lock.newCondition()
+    一个lock对应多个Condition; 每一个Condition对象对应一个条件队列(与AQS一样均使用CLH).
+    使用Condition可以精准控制线程组的执行顺序, 这个是Synchronized所办不到的.
+
+2.2 conditionObj.await()[释放放, 将当前线程放入条件队列]:
+    1. 将当前线程封装进WaiterNode(status=CONDITIONAL=-2)加入到ConditionObj对应的条件队列里.
+    2. 当前持有锁的线程释放锁.
+    3. 进入阻塞状态. 等待signAll方法将其放入到AQS队列中.
+
+2.3 conditionObj.signAll()[正常情况不会unpark线程, 而是将节点移入AQS队列]:
+    遍历conditionObj对应的条件队列:
+        1. 将每个WaiterNode的status改为-1, 移入到Lock的AQS队列中.
+        2. AQS队列中的Node将依次由Lock.unlock唤醒.
+
+--------
+假设在conditionObj.signAll调用前, AQS的队列如下(status均为-1):
+    NODE1 - NODE2 - NODE3 - NODE4
+conditionObj对应的条件队列为:
+    W_NODE1 - W_NODE2
+在conditionObj.signAll调用后, 并没有唤醒任何条件队列的线程(AQS类的第1686正常情况下不会被执行), 而是把这些节点全放入到AQS:
+    NODE1 - NODE2 - NODE3 - NODE4 - W_NODE1 - W_NODE2
+AQS队列中的节点将将依次等待节点对应的线程调用unlock方法, 直到没有节点为止.
+当前运行的线程执行完逻辑 -> unPark Node1 -> NODE1获得锁 -> NODE1执行完逻辑 -> NODE1.unlock() -> unPark NODE2 -> NODE2获得锁 ->
+NODE2执行完逻辑 -> NODE2.unlock() -> unPark NODE3 ...
+
+----
+AQS的第1686行:
+## 前一个节点
+Node p = enq(node);
+int ws = p.waitStatus;
+## 前一个节点的状态已经改变, 才将Node对应的线程唤醒.
+if (ws > 0 || !compareAndSetWaitStatus(p, ws, Node.SIGNAL))
+        LockSupport.unpark(node.thread); ## 1686
+
+
