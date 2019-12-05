@@ -14,7 +14,7 @@ import java.util.concurrent.locks.LockSupport;
  * 主要实现机制为AQS同步器, AQS的实现原理: CAS + 自旋 + LockSupport + CLH.
  * 这里因为只有一个锁机制, 所以未将AQS抽象出来.
  *
- * 待实现:
+ * TODO 待实现:
  * 1. 非公平锁.
  * 2. Condition条件下的await和notify方法.
  */
