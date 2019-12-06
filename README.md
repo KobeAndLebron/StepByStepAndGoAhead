@@ -40,7 +40,7 @@ Keep your eyes on the stars and your feet on the ground!!!
 
 ## 3.5 JUC工具类
 ### 3.5.1 [根据AQS实现CountDownLatch](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/example/MyCountDownLatch.java)
-> CountDownLatch, 在所有线程执行完毕后执行某些线程。 A synchronization aid that allows one or more threads to wait until
+> CountDownLatch, 在所有线程执行完毕后执行**某些线程而非一个**。 A synchronization aid that allows **one or more threads** to wait until
  a set of operations being performed in other threads completes.
 
 # 4. 数据库
