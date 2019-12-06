@@ -36,6 +36,10 @@ Keep your eyes on the stars and your feet on the ground!!!
 
 ## 3.4 线程安全类
 ### 3.4.1 CopyOnWriteList
+> 使用ReentrantLock让写写互斥；通常情况下效率比较低，但是当遍历操作远远大于写操作时，效率较高。  
+> 写操作实现：1.将原数组copy一份。2.创建新数组。 3.将值写入新数组。 4. 将新数组赋给原数组。  这样读的时候也可以写，最大限度减少同步的时间。  
+> Collections.synchronizedList, 效率低下。 读读也会互斥。
+
 ### 3.4.2 ConcurrentHashMap
 
 ## 3.5 JUC工具类
