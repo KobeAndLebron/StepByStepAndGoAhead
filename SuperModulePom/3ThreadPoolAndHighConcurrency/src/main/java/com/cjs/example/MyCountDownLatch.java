@@ -12,12 +12,17 @@ public class MyCountDownLatch extends AbstractQueuedSynchronizer {
         setState(state);
     }
 
+    /**
+     * JDK使用的是tryAcquireShared, 原因在于可以在getCount为0时, 可以唤醒多个线程, 而tryAcquire是排他模式, 只能唤醒一个线程.
+     *
+     * @param arg
+     * @return
+     */
     @Override
     protected boolean tryAcquire(int arg) {
         return getState() == 0;
     }
 
-    // TODO JDK使用的是tryAcquireShared.
     @Override
     protected boolean tryRelease(int arg) {
         // 自己写的代码, 相当于一个do while循环.
