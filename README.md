@@ -38,6 +38,11 @@ Keep your eyes on the stars and your feet on the ground!!!
 ### 3.4.1 CopyOnWriteList
 ### 3.4.2 ConcurrentHashMap
 
+## 3.5 JUC工具类
+### 3.5.1 [根据AQS实现CountDownLatch](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/example/MyCountDownLatch.java)
+> CountDownLatch, 在所有线程执行完毕后执行某些线程。 A synchronization aid that allows one or more threads to wait until
+ a set of operations being performed in other threads completes.
+
 # 4. 数据库
 ## 4.1 [Explain返回结果中的type和Extra解释及索引失效原则](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/2YD_JavaAndSqlOptimize/src/main/java/com/cjs/goHead/mysql/type_extra_in_explain.sql)
 
