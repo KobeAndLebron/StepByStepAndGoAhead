@@ -12,7 +12,7 @@ import com.cjs.synchronizedBlockVsMethod.PairManager2;
  * 
  * When to think:
  * Some of JVM's run time data areas are shared by all threads,others are private to individual threads.Beacause the heap
- *and method area are shared by all threads,java programs need to coordinate multi-threaded access to two kinds of data:
+ *and method area are shared by all threads,java programs need to coordinate multi_thread-threaded access to two kinds of data:
  * 	instance variables,which are stored on the heap 
  *  class variables,which are stored in the method area
  *  Programs never need to coordinate access to local variables,which reside on the java stacks,because data on the java 

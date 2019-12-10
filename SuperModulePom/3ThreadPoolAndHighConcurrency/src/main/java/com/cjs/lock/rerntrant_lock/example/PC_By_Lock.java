@@ -9,7 +9,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * 生产者消费者模式, 传统版: 使用Lock+await/signalAll来实现.
  */
 public class PC_By_Lock {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         ShareData shareData = new ShareData();
 
         for (int j = 0; j < 5; j++) { // 5个生产者.
@@ -27,6 +27,8 @@ public class PC_By_Lock {
                 }
             }, "Consumer" + j).start();
         }
+
+        Thread.sleep(1000000);
     }
 
 

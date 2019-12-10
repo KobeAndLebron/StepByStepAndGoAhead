@@ -1,45 +1,45 @@
 <!-- All of the elements is directly under the POM's element named project-->
-<project 
-	xmlns="http://maven.apache.org/POM/4.0.0" 
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<!--
-		What is the pom? 
-			Pom stands for "Project Object Model",it is an xml representation of Maven project held in a file 
+		What is the pom?
+			Pom stands for "Project Object Model",it is an xml representation of Maven project held in a file
 		named pom.xml .
 			When in the presence of Maven folks,speaking of a project is speaking in the philosophical sense,
-		beyond a mere collection of files containing code.	
+		beyond a mere collection of files containing code.
 			A project contains configuration files,as well as the developers involved and the roles they play,
 		the organization and licenses,the URL of where the project lives,the project's dependencies,and all
 		of the other little pieces that come into play to give code life.
 			In fact,in the Maven world,a project need not contain any code at all,merely a pom.xml.
 	-->
-	
-	<!-- 
+
+	<!--
 			The element named modelVersion is currently the only supported version for both Maven 2&3,and is always
 		required.
 	 -->
 	<modelVersion>4.0.0</modelVersion>
-	
+
 	<!-- The Basics -->
 	<!-- Maven Coordinates -->
 	<!-- The trinity(groupId:artifactId:version) act much like an address and timestamp in a project. -->
-	<!-- This is generally unique amongst an organization or a project. For example, all core Maven artifacts 
-		do (well, should) live under the groupId org.apache.maven. Group ID's do not necessarily use the dot 
+	<!-- This is generally unique amongst an organization or a project. For example, all core Maven artifacts
+		do (well, should) live under the groupId org.apache.maven. Group ID's do not necessarily use the dot
 		notation, for example, the junit project. Note that the dot-notated groupId does not have to correspond
 		to the package structure that the project contains. It is, however, a good practice to follow. When stored
-		within a repository, the group acts much like the Java packaging structure does in an operating system. 
+		within a repository, the group acts much like the Java packaging structure does in an operating system.
 		The dots are replaced by OS specific directory separators (such as '/' in Unix) which becomes a relative
-		directory structure from the base repository. In the example given, the org.codehaus.mojo group lives 
+		directory structure from the base repository. In the example given, the org.codehaus.mojo group lives
 		within the directory $M2_REPO/org/codehaus/mojo. -->
 	<groupId>com.cjs.gohead</groupId>
 	<artifactId>SuperModulePom</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	
+
 	<!-- It tends to stands for conversational names for the project-->
 	<name>SuperModulePom</name>
-	
+
 	<modules>
 		<module>1DataStructureAndAlgorithm</module>
 		<module>2YD_JavaAndSqlOptimize</module>
@@ -52,10 +52,10 @@
 		<module>9OpenSourceFramework</module>
 		<module>Shared-Utils</module>
 	</modules>
-	
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<spring.version>4.3.1.RELEASE</spring.version>
+		<spring.version>4.3.17.RELEASE</spring.version>
 		<jsoup.version>1.9.2</jsoup.version>
 		<slf4j.version>1.7.12</slf4j.version>
         <log4j.version>1.2.17</log4j.version>
@@ -64,19 +64,19 @@
         <skip.it>false</skip.it>
 	</properties>
 
-	<!-- 
+	<!--
 			POM Relationships(A powerful aspect of Maven is in its handling of project relationships):
-			
-			 It includes dependencies(and transitive dependencies),inheritance and aggregation(multi-module
+
+			 It includes dependencies(and transitive dependencies),inheritance and aggregation(multi_thread-module
 		    projects)
-		     
-			 The cornerstone of the POM is its dependency list.Most every project depends upon others to 
-		build and run correctly,and if Maven does for you is that manage this list for you,you have gained 
+
+			 The cornerstone of the POM is its dependency list.Most every project depends upon others to
+		build and run correctly,and if Maven does for you is that manage this list for you,you have gained
 		a lot.Maven downloads and links the dependencies for you on compilation and other goals that require
 		them.As an added bonus,Maven brings in the dependencies of the those dependencies(transitive dependencies),
-		allowing you list to focus solely on the dependencies you project requires. 
+		allowing you list to focus solely on the dependencies you project requires.
 	-->
-	<!--	 The element is used by POM to help manage dependency information **across all of its children** and 
+	<!--	 The element is used by POM to help manage dependency information **across all of its children** and
 		there will not have dependency in its children if the element is removed from pom.xml .
 	 -->
 	<dependencyManagement>
@@ -87,10 +87,10 @@
 				<artifactId>junit</artifactId>
 				<version>4.12</version>
 				<!-- 只在测试编译testCompile(testCompile不一定运行test)和测试运行test的时候添加此classPath，其余的时候都不添加，也不进行打包 -->
-				<!-- 
+				<!--
 						The element refers to the **classpath of the task** at hand(compiling,runtime and testing,etc.)as well as
 					how to limit the transitivity of dependency.There are five scopes available:
-						compile:this is the default scope,used if none is specified.Compile dependencies are available in all 
+						compile:this is the default scope,used if none is specified.Compile dependencies are available in all
 					classpaths.Futhermore,those dependencies are propagated to dependent projects.for example,spring-core.
 						provided:this is much like compile,but indicates that you expect the JDK or a container(eg:tomcat) to
 					provide it at runtime.it is only available on the compilation and test classpath,and is not transitive.
@@ -101,9 +101,9 @@
 						test:this scope indicates that the dependency is not required for normal use of the application,and is
 					only available for the test compilation and execution phases.
 						eg:junit
-						system:this scope is similar to provided expect that you have to provide the JAR which contains it 
+						system:this scope is similar to provided expect that you have to provide the JAR which contains it
 					explicitly.The artifact is always available and is not looked up in a repository.
-						some examples:project named a depend upon c and its scope is test,c depend upon d and its scope 
+						some examples:project named a depend upon c and its scope is test,c depend upon d and its scope
 					is compile,the result is a depend upon d and its scope is test.
 						因为test为小集合，compile为大集合，取交集为小集合
 				 -->
@@ -180,7 +180,16 @@
 	<!--End of the Basics -->
 	<description>自己学习JavaWeb的过程</description>
 	<inceptionYear>2016</inceptionYear>
-	
+
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.10</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
 	<build>
 		<pluginManagement>
             <!-- Maven默认绑定的plugin不需要在子pom显示声明, 未默认绑定的plugin需要在子pom中显示声明才能起作用. -->
@@ -241,9 +250,9 @@
 					<version>3.3</version>
 					<configuration>
 						<!-- 使用jdk1.7的编译功能，因为1.5不支持<>运算符 -->
-						<source>1.7</source>
+						<source>1.8</source>
 						<!-- 所使用的jre版本 -->
-						<target>1.7</target>
+						<target>1.8</target>
 					</configuration>
                     <executions>
                         <!-- Compile *Test.java and write class file to outputDirectory -->

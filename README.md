@@ -8,8 +8,12 @@ Keep your eyes on the stars and your feet on the ground!!!
 ## 1.2 [FULLGC日志分析](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/5JVM/src/main/java/com/cjs/gc/FullGCLogAnalyze.java)  
 ## 1.3 TenuringThreshold动态调整策略 [程序](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/5JVM/src/main/java/com/cjs/gc/TenuringThreshold.java) [程序对应日志分析](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/5JVM/src/main/java/com/cjs/gc/TenuringThreshold.log)
 ## 1.4 [JVM四大引用介绍见及示例演示-强软弱虚](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/5JVM/src/main/java/com/cjs/reference/FourTypesOfReference.java)
-## 1.5 CMS垃圾收集器的工作流程
-## 1.6 G1垃圾收集器的工作流程
+### 1.4.1 ThreadLocalMap中的Entry使用到弱引用.
+## 1.5 内存泄漏
+### 1.5.1 ThreadLocal使用不当造成内存泄漏.
+## 1.6 类加载机制
+## 1.7 CMS垃圾收集器的工作流程
+## 1.8 G1收集器
 
 # 2. 算法
 ## 2.1 [位图法, 用来解决大量数据的排序 去重 查找问题](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/1DataStructureAndAlgorithm/src/main/java/%E6%B5%B7%E9%87%8F%E6%95%B0%E6%8D%AE/%E4%BD%8D%E5%9B%BE%E6%B3%95.java)
@@ -24,6 +28,7 @@ Keep your eyes on the stars and your feet on the ground!!!
 对应图片: https://awps-assets.meituan.net/mit-x/blog-images-bundle-2018b/7f749fc8.png
 ### 3.2.1 [Synchronized和Lock的区别](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/synchronized_lock/)
 ### 3.2.2 Synchronized
+#### 3.2.2.1 Synchronized的原理[锁消除 锁粗化]
 
 ### 3.2.3 ReentrantLock
 #### 3.2.3.1 [自己实现的ReentrantLock(公平+可重入版本锁版本)](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/lock/rerntrant_lock/MyFairLock.java)
@@ -49,9 +54,18 @@ Keep your eyes on the stars and your feet on the ground!!!
 ## 3.5 JUC工具类
 ### 3.5.1 [根据AQS实现CountDownLatch](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/example/MyCountDownLatch.java)
 > CountDownLatch, 在所有线程执行完毕后执行**某些线程而非一个**。 A synchronization aid that allows **one or more threads** to wait until a set of operations being performed in other threads completes.
+### 3.5.2 CyclicBarrier
+### 3.5.3 Semaphore
+
+## 3.6 ThreadLocal
+
+
+## 3.7 Volatile及JMM模型
 
 # 4. 数据库
 ## 4.1 [Explain返回结果中的type和Extra解释及索引失效原则](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/2YD_JavaAndSqlOptimize/src/main/java/com/cjs/goHead/mysql/type_extra_in_explain.sql)
+## 4.2 MVCC的实现
+## 4.3 [MySql的锁](https://www.cnblogs.com/rjzheng/p/9950951.html)
 
 # TODO
 - [ ] 包名较混乱。  

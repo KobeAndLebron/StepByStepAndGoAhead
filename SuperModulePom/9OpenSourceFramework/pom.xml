@@ -1,54 +1,83 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	
-	<parent>
-		<groupId>com.cjs.gohead</groupId>
-		<artifactId>SuperModulePom</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-	</parent>
-	
-	<artifactId>9OpenSourceFramework</artifactId>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<packaging>jar</packaging>
+    <parent>
+        <groupId>com.cjs.gohead</groupId>
+        <artifactId>SuperModulePom</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
 
-	<name>9开源框架</name>
+    <modules>
+        <module>spring-eureka</module>
+        <module>spring-discovery</module>
+    </modules>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
+    <artifactId>9OpenSourceFramework</artifactId>
 
-	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-		    <artifactId>spring-beans</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-		    <artifactId>spring-context</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-		    <artifactId>spring-core</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-		    <artifactId>spring-test</artifactId>
-		</dependency>
-		<!-- Struts2 framework,added to study interceptor. -->
-		<dependency>
-			<groupId>org.apache.struts</groupId>
-		    <artifactId>struts2-core</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.cjs.gohead</groupId>
-			<artifactId>Shared-Utils</artifactId>
-			<version>${project.version}</version>
-		</dependency>
+    <packaging>jar</packaging>
+
+    <name>9开源框架</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Edgware.SR3</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>1.5.13.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.8.13</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+        </dependency>
+        <!-- Struts2 framework,added to study interceptor. -->
+        <dependency>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.cjs.gohead</groupId>
+            <artifactId>Shared-Utils</artifactId>
+            <version>${project.version}</version>
+        </dependency>
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
@@ -67,46 +96,65 @@
         <dependency>
             <groupId>org.apache.storm</groupId>
             <artifactId>storm-core</artifactId>
-            <version>1.2.2</version>
+            <version>2.1.0</version>
         </dependency>
         <dependency>
             <groupId>org.apache.storm</groupId>
             <artifactId>storm-kafka-client</artifactId>
-            <version>1.2.2</version>
+            <version>2.1.0</version>
         </dependency>
         <dependency>
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka-clients</artifactId>
-            <version>2.1.0</version>
+            <version>2.3.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.kafka/kafka -->
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka_2.12</artifactId>
+            <version>2.3.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.18</version>
+        </dependency>
+    </dependencies>
 
-	</dependencies>
-
-	<build>
-		<plugins>
-			<!-- 为此项目配置 多个sourceFolder -->
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>build-helper-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>add-other-sources</id>
-						<configuration>
-							<sources>
-								<!-- 我们可以通过在这里添加多个source节点，来添加任意多个源文件夹 -->
-								<source>过滤器的实现</source>
-								<source>拦截器的实现</source>
-								<source>Spring</source>
-                                <source>MyBatis</source>
-								<source>src/main/java</source>
-                                <source>Storm</source>
-							</sources>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <!-- 为此项目配置 多个sourceFolder -->
             <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>add-other-sources</id>
+                        <configuration>
+                            <sources>
+                                <!-- 我们可以通过在这里添加多个source节点，来添加任意多个源文件夹 -->
+                                <source>过滤器的实现</source>
+                                <source>拦截器的实现</source>
+                                <source>Spring</source>
+                                <source>MyBatis</source>
+                                <source>src/main/java</source>
+                                <source>Storm</source>
+                                <source>kafka</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!--<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>3.1.0</version>
@@ -124,7 +172,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-		</plugins>
-	</build>
+            </plugin>-->
+        </plugins>
+    </build>
 </project>

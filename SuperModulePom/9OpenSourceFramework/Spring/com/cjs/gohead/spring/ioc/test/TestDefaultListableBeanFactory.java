@@ -1,9 +1,11 @@
 package com.cjs.gohead.spring.ioc.test;
 
-import org.springframework.beans.factory.support.DefaultListableBeanFactory;
-import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
-import org.springframework.context.support.FileSystemXmlApplicationContext;
-import org.springframework.core.io.FileSystemResource;
+import com.cjs.gohead.spring.ioc.components_scan_and_auto_wired.example.config.ComponentScanConfig;
+import com.cjs.gohead.spring.ioc.components_scan_and_auto_wired.example.soundsystem.inter.Tire;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.util.Arrays;
 
 public class TestDefaultListableBeanFactory {
 	public static void main(String[] args) {
@@ -22,7 +24,14 @@ public class TestDefaultListableBeanFactory {
 		System.out.println(factory.getBean("test1"));*/
 		
 		@SuppressWarnings("resource")
-		FileSystemXmlApplicationContext fsac = new FileSystemXmlApplicationContext("Spring/com/cjs/gohead/spring/ioc/test/beans.xml");
+        ClassPathXmlApplicationContext fsac = new ClassPathXmlApplicationContext("com/cjs/gohead/spring/ioc/test/beans.xml");
 		System.out.println(fsac.getBean("test1"));
-	}
+
+        AnnotationConfigApplicationContext applicationContext =
+            new AnnotationConfigApplicationContext(ComponentScanConfig.class);
+        System.out.println(applicationContext.getBean(Tire.class));
+
+        String[] beanDefinitionNames = applicationContext.getBeanDefinitionNames();
+        System.out.println(Arrays.toString(beanDefinitionNames));
+    }
 }

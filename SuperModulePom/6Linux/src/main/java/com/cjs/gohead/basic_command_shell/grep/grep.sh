@@ -3,7 +3,7 @@
 ## SYNOPSIS: grep [options] [-e|--regexp=]pattern [FILE...]
 ##           grep [OPTIONS] [-e PATTERN | -f FILE] [FILE...]
 ## DESCRIPTION: grep  searches  the  named  input  FILEs(space separated)
-## (or standard input if no files are named, or if a single hyphen-minus (-) is given as file name(see EG1.))
+## (or standard input if no files are named, or if a single_thread hyphen-minus (-) is given as file name(see EG1.))
 ## for lines containing a match to the given PATTERN.  By default, grep prints the matching lines.
 
 ## OPTIONS:

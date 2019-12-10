@@ -20,7 +20,7 @@ package com.cjs.gohead.spring.ioc;
  * of bean definitions,each uniquely identified by a String name.
  * Depending on the Bean definition,the factory will return either
  * an independent instance of a contained object(The prototype de-
- * sign pattern),or a single shared instance(a superior alternative
+ * sign pattern),or a single_thread shared instance(a superior alternative
  * to the Singleton design pattern,in which the instance is a sinle-
  * ton in the scope of the factory).Since spring 2.0,further scopes
  * are available depending on the concrete application context(e.g.

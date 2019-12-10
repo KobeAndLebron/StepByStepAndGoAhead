@@ -12,8 +12,20 @@
     <artifactId>1DataStructureAndAlgorithm</artifactId>
 
 	<name>1数据结构和算法</name>
-	
-	<properties>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <properties>
 		<!-- javac -encoding指定的编码格式 -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
