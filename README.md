@@ -57,8 +57,8 @@ Keep your eyes on the stars and your feet on the ground!!!
 ### 3.5.2 CyclicBarrier
 ### 3.5.3 Semaphore
 
-## 3.6 ThreadLocal
-
+## 3.6 [ThreadLocal的原理](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/ThreadLocal/ThreadLocalPractice.java)   
+> 使用弱引用目的及使用不当会造成内存泄漏
 
 ## 3.7 Volatile及JMM模型
 
