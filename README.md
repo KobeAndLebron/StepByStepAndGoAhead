@@ -8,7 +8,7 @@ Keep your eyes on the stars and your feet on the ground!!!
 ## 1.2 [FULLGC日志分析](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/5JVM/src/main/java/com/cjs/gc/FullGCLogAnalyze.java)  
 ## 1.3 TenuringThreshold动态调整策略 [程序](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/5JVM/src/main/java/com/cjs/gc/TenuringThreshold.java) [程序对应日志分析](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/5JVM/src/main/java/com/cjs/gc/TenuringThreshold.log)
 ## 1.4 [JVM四大引用介绍见及示例演示-强软弱虚](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/5JVM/src/main/java/com/cjs/reference/FourTypesOfReference.java)
-### 1.4.1 ThreadLocalMap中的Entry使用到弱引用.
+### 1.4.1 ThreadLocalMap中的Entry使用到虚引用.
 ## 1.5 内存泄漏
 ### 1.5.1 ThreadLocal使用不当造成内存泄漏.
 ## 1.6 类加载机制
@@ -58,7 +58,7 @@ Keep your eyes on the stars and your feet on the ground!!!
 ### 3.5.3 Semaphore
 
 ## 3.6 [ThreadLocal的原理](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/ThreadLocal/ThreadLocalPractice.java)   
-> 使用弱引用目的及使用不当会造成内存泄漏
+> 使用虚引用目的及使用不当会造成内存泄漏
 
 ## 3.7 Volatile及JMM模型
 
