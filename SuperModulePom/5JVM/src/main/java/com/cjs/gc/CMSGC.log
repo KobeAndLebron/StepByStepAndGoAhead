@@ -1,0 +1,18 @@
+`初始化标记`
+[GC (CMS Initial Mark) [1 CMS-initial-mark: 8196K(10240K)] 12783K(19456K), 0.0002329 secs] [Times: user=0.00 sys=0.00, real=0.00 secs]
+[CMS-concurrent-mark-start]
+3
+`并发标记, 此阶段有引用发生变化的Card将会被标记为Dirty Card, 目的: 减少Remark的时间.`
+[CMS-concurrent-mark: 0.000/0.000 secs] [Times: user=0.00 sys=0.00, real=0.00 secs]
+`预清理和可中断的预清理都是为了减少Remark的时间.`
+[CMS-concurrent-preclean-start]
+[CMS-concurrent-preclean: 0.000/0.000 secs] [Times: user=0.00 sys=0.00, real=0.00 secs]
+[CMS-concurrent-abortable-preclean-start]
+`可中断的预清理过程, CMS提供CMSScavengeBeforeRemark参数，用来保证Remark前强制进行一次Minor GC。但是MinorGC也是STW[ParNew].`
+[CMS-concurrent-abortable-preclean: 0.000/0.000 secs] [Times: user=0.00 sys=0.00, real=0.00 secs]
+`最终标记(耗时最长的一个阶段), 因为并发标记和用户进程是一起运行的, 为了防止漏标可达对象, 所以需要这个阶段. 此过程STW, 同时需要扫描新生代.`
+[GC (CMS Final Remark) [YG occupancy: 7041 K (9216 K)][Rescan (parallel) , 0.0010934 secs][weak refs processing, 0.0000197 secs][class unloading, 0.0001618 secs][scrub symbol table, 0.0002800 secs][scrub string table, 0.0001345 secs][1 CMS-remark: 8196K(10240K)] 15237K(19456K), 0.0017259 secs] [Times: user=0.01 sys=0.00, real=0.00 secs]
+[CMS-concurrent-sweep-start]
+4[CMS-concurrent-sweep: 0.000/0.000 secs] [Times: user=0.00 sys=0.00, real=0.00 secs]
+
+[CMS-concurrent-reset-start]
