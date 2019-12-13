@@ -120,6 +120,12 @@
             <artifactId>lombok</artifactId>
             <version>1.16.18</version>
         </dependency>
+
+        <dependency>
+            <groupId>io.codis.jodis</groupId>
+            <artifactId>jodis</artifactId>
+            <version>0.5.1</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -149,6 +155,7 @@
                                 <source>src/main/java</source>
                                 <source>Storm</source>
                                 <source>kafka</source>
+                                <source>redis</source>
                             </sources>
                         </configuration>
                     </execution>
