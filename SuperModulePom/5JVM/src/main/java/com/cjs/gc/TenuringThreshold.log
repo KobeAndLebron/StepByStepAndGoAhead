@@ -5,21 +5,21 @@
 第1次Minor GC
 2019-12-01T11:19:17.617-0800: [GC (Allocation Failure) 2019-12-01T11:19:17.617-0800: [ParNew
 Desired survivor size 3145728 bytes, new threshold 3 (max 3)
-- age   1:    2513224 bytes,    2513224 total `age为1的对象大小小于Desired Survivor Size, 不会重新计算TenuringThreshold`
+- age   1:    2513224 bytes,    2513224 total `【2M】age为1的对象大小小于Desired Survivor Size, 不会重新计算TenuringThreshold`
 : 40141K->2489K(46080K), 0.0026953 secs] 40141K->2489K(199680K), 0.0027465 secs] [Times: user=0.01 sys=0.00, real=0.01 secs]
 
 第2次Minor GC
 2019-12-01T11:19:20.630-0800: [GC (Allocation Failure) 2019-12-01T11:19:20.630-0800: [ParNew
 Desired survivor size 3145728 bytes, new threshold 3 (max 3)
 - age   1:     344144 bytes,     344144 total `小于Desired Survivor Size, 不会重新计算TenuringThreshold`
-- age   2:    2501240 bytes,    2845384 total `小于Desired Survivor Size, 不会重新计算TenuringThreshold, age+1`
+- age   2:    2501240 bytes,    2845384 total `【2M】小于Desired Survivor Size, 不会重新计算TenuringThreshold, age+1`
 : 42618K->2954K(46080K), 0.0023008 secs] 42618K->2954K(199680K), 0.0023415 secs] [Times: user=0.02 sys=0.00, real=0.00 secs]
 
 第3次Minor GC
 2019-12-01T11:19:23.640-0800: [GC (Allocation Failure) 2019-12-01T11:19:23.640-0800: [ParNew
 Desired survivor size 3145728 bytes, new threshold 3 (max 3)
 - age   2:     343424 bytes,     343424 total `小于Desired Survivor Size, 不会重新计算TenuringThreshold`
-- age   3:    2500728 bytes,    2844152 total `小于Desired Survivor Size, 不会重新计算TenuringThreshold, age+1, 达到TenuringThreshold大小, 将在下一次GC晋升.`
+- age   3:    2500728 bytes,    2844152 total `【2M】小于Desired Survivor Size, 不会重新计算TenuringThreshold, age+1, 达到TenuringThreshold大小, 将在下一次GC晋升.`
 : 43460K->3091K(46080K), 0.0013170 secs] 43460K->3091K(199680K), 0.0013626 secs] [Times: user=0.01 sys=0.00, real=0.00 secs]
 
 `第4次GC会将age为3的对象挪入到OldGen, 晋升大小(43806-843)年轻代释放大小 - (43806 - 3330)总堆释放大小 = 2487k, 差不多正好2个字节大小.`
