@@ -15,7 +15,7 @@ package com.cjs.gc;
  * 但这也并非意味着一定达到15次才进入Old; 例如, 当Survivor不够的时候, 便会触发内存担保机制.
  *
  * -XX:TargetSurvivorRatio：计算期望S区存活大小(Desired survivor size)的参数。默认值为50，即50%。
- * 当一个S区中所有的age对象的大小如果大于等于Desired survivor size[按从小到大排序]，则会重新计算threshold，
+ * 当一个S区中某个age所有对象的总大小大于等于Desired survivor size[按从小到大排序]，会重新计算threshold，
  * 以age和MaxTenuringThreshold两者的最小值为准。
  *
  * -XX:+PrintTenuringDistribution 按age大小依次打印出Survivor每个age所占内存大小.
@@ -23,7 +23,7 @@ package com.cjs.gc;
  * ----------
  *
  *  动态计算TenuringThreshold:
- *      将Survivor的对象按age从小到大排列, 然后当age的累计大小超过Desired Survivor Size时, 就会重新计算Threshold.
+ *      将Survivor的对象按age从小到大排列, 当某个age所有对象的累计大小超过Desired Survivor Size时, 就会重新计算Threshold.
  *      Desired Survivor Size = Surivovor size * -XX+TargetSurvivorRatio.
  *
  *  TheuringThreshold不变的缺点:
