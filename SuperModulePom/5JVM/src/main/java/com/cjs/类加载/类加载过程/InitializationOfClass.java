@@ -1,4 +1,4 @@
-package com.cjs.classload;
+package com.cjs.类加载.类加载过程;
 
 /**
  * 类的初始化时机及顺序.
@@ -7,6 +7,13 @@ package com.cjs.classload;
  */
 public class InitializationOfClass extends Parent {
     public static void main(String[] args) {
+        staticFunction();
+
+
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println("被动引用:   ");
         // 三种被动引用的情况, 都不会触发类的初始化.
         // 通过数组定义来引用类
         PassivityReference[] passivityReferences = new PassivityReference[10];
@@ -16,11 +23,15 @@ public class InitializationOfClass extends Parent {
         System.out.println("访问父类的静态变量, 不会初始化子类: " + PassivityReference.amount);
 
 
-        staticFunction();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println("访问特殊的静态常量(由function计算得到), 也会触发类的初始化.");
+        System.out.println(PassivityReference.CONSTANT_BY_FUNCITON);
     }
 
     // 自顶向下执行.
-    // 2. 父类的<clinit>()方法会由于子类执行, 由JVM保证.
+    // 2. 父类的<clinit>()方法会优于子类执行, 由JVM保证.
     static InitializationOfClass book = new InitializationOfClass();
 
     static {
@@ -50,14 +61,20 @@ public class InitializationOfClass extends Parent {
         public static final int INT = 1;
 
         static {
-            System.out.println("PassivityReference");
+            System.out.println("PassivityReference被初始化");
+        }
+
+        static final String CONSTANT_BY_FUNCITON = "aaa" + getCCC();
+
+        private static String getCCC() {
+            return "ccc";
         }
     }
 }
 
 class Parent {
     static {
-        // 1. 父类的<clinit>()方法会由于子类执行, 由JVM保证.
-        System.out.println("1. 父类的<clinit>()方法会由于子类执行, 由JVM保证." + ": 爸爸的静态代码块");
+        // 1. 父类的<clinit>()方法会优于子类执行, 由JVM保证.
+        System.out.println("1. 父类的<clinit>()方法会优于子类执行, 由JVM保证." + ": 爸爸的静态代码块");
     }
 }
