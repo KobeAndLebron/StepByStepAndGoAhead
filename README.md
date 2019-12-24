@@ -12,7 +12,8 @@ Keep your eyes on the stars and your feet on the ground!!!
 ## 1.5 内存泄漏
 ### 1.5.1 ThreadLocal使用不当造成内存泄漏.
 ## 1.6 类加载机制
-## 1.7 CMS垃圾收集器的工作流程
+## 1.7 [CMS垃圾收集器的工作流程-简单描述](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/5JVM/src/main/java/com/cjs/gc/CMSGC.java) [程序对应日志分析](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/5JVM/src/main/java/com/cjs/gc/CMSGC.log)  
+> 详细流程及调优见有道云笔记。
 ## 1.8 G1收集器
 
 # 2. 算法
