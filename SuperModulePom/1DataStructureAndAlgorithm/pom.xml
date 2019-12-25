@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<parent>
-		<groupId>com.cjs.gohead</groupId>
-		<artifactId>SuperModulePom</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-	</parent>
-	<modelVersion>4.0.0</modelVersion>
-	
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.cjs.gohead</groupId>
+        <artifactId>SuperModulePom</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
     <artifactId>1DataStructureAndAlgorithm</artifactId>
 
-	<name>1数据结构和算法</name>
+    <name>1数据结构和算法</name>
     <build>
         <plugins>
             <plugin>
@@ -26,31 +26,37 @@
     </build>
 
     <properties>
-		<!-- javac -encoding指定的编码格式 -->
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
-	
-	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
+        <!-- javac -encoding指定的编码格式 -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
             <!-- 时间原因, 把测试先放到src/main/java下, 所以先将scope改为compile. -->
             <scope>compile</scope>
-	  	</dependency>
-		<dependency>
-			<groupId>org.codehaus.jackson</groupId>
-			<artifactId>jackson-mapper-asl</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.cjs.gohead</groupId>
-			<artifactId>Shared-Utils</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<!-- for test -->
-		<dependency>
-	   		<groupId>org.jsoup</groupId>
-	   		<artifactId>jsoup</artifactId>
-		</dependency>
-	</dependencies>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.cjs.gohead</groupId>
+            <artifactId>Shared-Utils</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <!-- for test -->
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>23.0</version>
+        </dependency>
+
+    </dependencies>
 </project>
 	
