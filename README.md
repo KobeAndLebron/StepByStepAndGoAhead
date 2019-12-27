@@ -12,7 +12,8 @@ Keep your eyes on the stars and your feet on the ground!!!
 ## 1.5 内存泄漏
 ### 1.5.1 ThreadLocal使用不当造成内存泄漏.
 ## 1.6 类加载机制
-> 见有道云笔记.
+### 1.6.1 [类的初始化时机及顺序](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/5JVM/src/main/java/com/cjs/类加载/类加载过程/InitializationOfClass.java)  
+> 其余(双亲委派等)见有道云笔记.  
 ## 1.7 [CMS垃圾收集器的工作流程-简单描述](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/5JVM/src/main/java/com/cjs/gc/CMSGC.java) [程序对应日志分析](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/5JVM/src/main/java/com/cjs/gc/CMSGC.log)  
 > 详细流程及调优见有道云笔记。
 ## 1.8 G1收集器 TODO
@@ -83,5 +84,47 @@ Keep your eyes on the stars and your feet on the ground!!!
 ## 4.2 MVCC的实现
 ## 4.3 [MySql的锁](https://www.cnblogs.com/rjzheng/p/9950951.html)
 
+# 5. JAVA IO
+## 5.1 JavaIO模型
 # TODO
 - [ ] 包名较混乱。  
+
+-----------
+
+G1 GC
+类加载机制[差自定义类加载器] xx  
+内存泄漏
+Redis布隆过滤器 穿透 雪崩 击穿 xx
+分布式事务+分布式锁
+TreeMap
+
+Hash算法: 相同输入相同输出, 不同输入均匀分布. 通过两个HashMap设计一个getRandom add remove方法 
+Hash分片算法(Redis)
+
+Hystrix生产配置
+Spring生命周期+扩展方式+AOP实现方式
+
+TCP三次握手四次挥手
+[volatile CPU Cache的理解](https://juejin.im/post/5c6b99e66fb9a049d51a1094#heading-38) 线程间通信.
+
+
+---------------Discard
+
+# 临时计划
+- [ ] 周三: G1 GC+线程池. 内存泄漏+类加载机制.                         一个都未完成... 加深了解了CMS.
+- [ ] 周四: NIO及Redis网络模型+TCP四次握手三次挥手+HTTPS HTTP.         还剩TCP握挥.
+- [ ] 周五: Redis集群复习. 这是简历的第一块大内容.
+- Codis集群的温故知新.
+
+- [ ] 周六: SpringCloud+分布式事务+分布式锁+丰富简历内容. 
+- [ ] 周日: 复习所有内容, 晚上投递简历. + [HashMap ConcurrentHashMap TreeMap-红黑树, 高频点, 一定要搞懂].
+
+- 周末两天完成了1. Hystrix基础的学习 2. 各种轮询算法 Hash分片算法. 3. 完成简历.
+
+------------
+- [ ] 周一: Hystrix的高阶用法. 线程池的实现原理. - 线程池的实现原理.
+- [ ] 周二: 1.白天KMX架构 2. 晚上分布式锁 分布式事务.
+- [ ] 周三: [HashMap ConcurrentHashMap TreeMap-红黑树, 高频点, 一定要搞懂] Synchronized的实现方式
+- [ ] 周四: 1.[volatile CPU Cache的理解](https://juejin.im/post/5c6b99e66fb9a049d51a1094#heading-38) 线程间通信. 
+- [ ] 周五: 1.G1 GC. 2. TCP挥握
+- [周六周日] Spring源码学习
