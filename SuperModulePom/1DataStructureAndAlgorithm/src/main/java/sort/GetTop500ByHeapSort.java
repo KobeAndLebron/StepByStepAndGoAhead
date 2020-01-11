@@ -4,7 +4,6 @@ import java.util.Arrays;
 
 /**
  * 有 20 个数组，每个数组有 500 个元素，并且有序排列。如何在这 20*500 个数中找出前 500 的数？
- *
  */
 public class GetTop500ByHeapSort {
 
@@ -19,15 +18,15 @@ public class GetTop500ByHeapSort {
         HeapNode.data = data;
 
         int[] maxValues = new int[7];
-        HeapNode[] heapNodes = new HeapNode[5];
-        // 1. 构建堆.
+        HeapNode[] heapNodes = new HeapNode[data.length];
+        // 1. 构建大顶堆.
         for (int i = 0; i < data.length; i++) {
             HeapNode heapNode = new HeapNode(i, 0);
 
             heapInsert(heapNodes, i, heapNode);
         }
 
-        // 2. 将堆顶元素弹出, 然后将删除元素所在数组的下一个元素插入, 重新生成大顶堆.
+        // 2. 将堆顶元素弹出, 然后将删除元素所在数组的下一个元素插入, 重新调整大顶堆.
         for (int i = 0; i < maxValues.length; i++) {
             HeapNode max = heapNodes[0];
             maxValues[i] = data[max.rowIndex][max.columnIndex++];
@@ -70,7 +69,7 @@ public class GetTop500ByHeapSort {
 
         } // 判断堆中是否还有节点.
     }
-    
+
     static class HeapNode implements Comparable<HeapNode> {
         int rowIndex;
         int columnIndex;
