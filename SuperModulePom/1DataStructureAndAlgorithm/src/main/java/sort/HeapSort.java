@@ -25,7 +25,12 @@ import java.util.Arrays;
  *
  *      > TIPS: 每个查询串最长为 255B，1000w 个串需要占用 约 2.55G 内存，因此，我们无法将所有字符串全部读入到内存中处理。
  *
- *      同2的解法.
+ *      解法一: 2中的解法-分治法, 方法可行, 效率较低.
+ *      解法二: 去重后不超过300w个, 300w个占用大小为: 300w * (255 + 4) = 777M, 4表示整数所占字节的大小; 小于1G, 可放入内存.
+ *          第一步: 遍历字符串, 若不存在直接map.put(word, 1), 否则map.put(word, map.get(word) + 1), 这一步的时间复杂度O(N).
+ *          第二步: 遍历map, 先构建一个大小为10的小顶堆(heapInsert), 然后当遍历到的字符串次数小于等于小顶堆的根节点时, 不做处理, 否则
+ *          将根节点设置为当前遍历字符串的次数, 重新调整小顶堆(heapify). 这一步的时间复杂度O(N*log10).
+ *          遍历结束后, 堆中的10个字符串就是出现次数最多的字符串.
  *
  *   2. 如何从大量数据中找出高频词?
  *      题目描述: 有一个1GB大小的文件, 文件里每一行是一个词, 每个词的大小不超过16B, 内存大小限制是1MB, 要求返回频数最高的100个词(TOP 100).
@@ -35,9 +40,9 @@ import java.util.Arrays;
  *
  *      第二步: 使用HashMap来统计每个小文件中词的出现频数: map.put(word, 1) or map.put(word, map.get(word) + 1). O(N)
  *
- *      第三步: 构建一个大小为100的小顶堆, 来表示Top100的词. 具体做法: 依次遍历每个小文件, 如果词的数量小于100, 则直接插入到小顶堆.
- *      大于100则判断当前遍历词出现的次数是否大于堆顶词出现的次数, 小于则不予处理, 继续遍历. 大于则将堆顶的节点替换, 将堆重新调整为最小堆.
- *      遍历结束后, 小顶堆的词就是出现频数最高的100个词.  O(N*log100)
+ *      第三步: 构建一个大小为100的小顶堆, 来表示Top100的词. 具体做法:
+ *      1. 依次遍历每个小文件, 先构造一个大小为100的小顶堆(heapInsert). 然后当遍历到的词的出现次数大于堆顶词的出现次数, 则用新词替换
+ *      堆顶的词, 重新调整小顶堆(heapify), 遍历结束后, 小顶堆的词就是出现频数最高的100个词. O(N*log100).
  *
  * ------------------------
  * {@linkplain java.util.PriorityQueue} Java里面的堆实现.
@@ -90,7 +95,7 @@ public class HeapSort {
         int left;
         while ((left = (2 * index + 1)) < heapSize) { // 判断堆中是否还有节点.
             int right = left + 1;
-            int largest = (right < heapSize && nums[left] < nums[right]) ? right : left;
+            int largest = (right < heapSize && nums[left] < nums[right]) ? right : left; // 有右节点且右比左大的时候, largest才为right.
             largest = nums[index] > nums[largest] ? index : largest;
             if (largest == index) {
                 break;
@@ -116,7 +121,7 @@ public class HeapSort {
                 swap(nums, parent, i);
                 i = parent;
             } else {
-                break;
+                break; // 很关键, 否则会导致死循环.
             }
         }
     }
