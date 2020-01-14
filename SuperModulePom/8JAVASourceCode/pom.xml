@@ -46,6 +46,7 @@
                                 <source>Enum</source>
                                 <source>Thread</source>
                                 <source>GenericAndIterator</source>
+                                <source>jdk1.8新特性</source>
                             </sources>
                         </configuration>
                     </execution>
