@@ -3,18 +3,22 @@ package com.cjs.lock.cas;
 import java.util.concurrent.atomic.AtomicReference;
 
 /**
- * CAS, 全称Compare And Swap, 比较与交换, 是CPU的一个指令, 且是一个原子操作.
- * 原理: 比较当前工作内存中的值和主内存中的值, 如果相同则执行更新操作. 否则返回False.
+ * CAS(无锁算法), 全称Compare And Swap, 比较与交换, 是CPU的一个指令(硬件原语), 且是一个原子操作.
+ * 原理, 通过以下三个值来实现:
+ *  1. 工作内存的值.
+ *  2. 主内存中的值.
+ *  3. 要更新的值.
+ * 比较当前工作内存中的值和主内存中的值, 如果相同则执行更新操作. 否则返回False. 返回False后可以报错也可以重试, 当重试的时候就是自旋锁.
  *
  *  -----------
  *
- *  Java.util.concurrent包中原子类就是通过CAS+自旋来实现了乐观锁: Unsafe+CAS+自旋.
+ *  Java.util.concurrent包中原子类就是通过 Unsafe+CAS+自旋 来实现.
  *
  *  Unsafe: 用于获取内存中volatile变量的值. 位于rt.jar包下的sun.misc包内; 用于调用操作系统的CAS指令.
  *  CAS: 如果当前工作内存的值与主内存的值不一样, 则证明值已经被其他线程修改, 此时返回False. 一样则予以更新.
- *  自旋: 如果CAS返回False, 然后更新自己工作内存的值, 直到工作内存和主内存的值相等才将主内存的value加一.[可能刚获取到主内存的值后线程又被挂起, 所以需要循环比较, 即自旋锁]
+ *  自旋: 如果CAS返回False, 则更新自己工作内存的值为主内存中的值, 再次进行CAS, 直到CAS返回true.[可能刚获取到主内存的值后线程又被挂起, 所以需要循环比较, 即自旋锁]
  *
- *  使用到的Unsafe核心方法:
+ *  三者在Unsafe的体现:
  *  // valueOffset, value在AtomicInteger中的偏移量.
  *   public final int getAndAddInt(Object atomicIntegerRef, long valueOffset, int increment) {
  *          int var5;
@@ -46,7 +50,7 @@ import java.util.concurrent.atomic.AtomicReference;
  *
  *  -----------
  *
- * CAS优点: 不用对同步资源加锁; 其余线程不用进入阻塞状态, 避免了线程状态的切换[挂起->恢复].
+ * CAS优点: 不用对同步资源加锁; 其余线程不用进入阻塞状态, 避免了线程状态的切换[挂起->恢复]. 适用于同步代码块执行时间很短的场景.
  *
  * CAS缺点:
  *  1. 如果CAS失败了[线程冲突严重], 则产生自旋时间过长, 会产生CPU使用率飙升的情况. 进而导致吞吐量下降.
@@ -56,7 +60,7 @@ import java.util.concurrent.atomic.AtomicReference;
  *   -------------
  *
  * ABA问题({@link ABAProblemDemo}:
- *    假设存在线程1和线程2共同操作共享变量var, 刚开始线程1和线程2都读到工作内存var的值为A(do while循环内),
+ *    假设存在线程1和线程2共同操作共享变量var, 刚开始线程1和线程2都读到主内存var的值为A(do while循环内),
  *  由于线程1的优先级高, CPU将先执行线程1, 将工作内存的值更新为B, 更新完B之后, 还是线程1获得CPU, 又将工作内存的值更新为A, 线程1结束.
  *  这时候线程2获得调度, 发现A==A, do while循环直接结束. 即线程2不知道这个变化过程.
  *
