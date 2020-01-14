@@ -11,6 +11,7 @@ Keep your eyes on the stars and your feet on the ground!!!
 ### 1.4.1 ThreadLocalMap中的Entry使用到虚引用.
 ## 1.5 内存泄漏
 ### 1.5.1 ThreadLocal使用不当造成内存泄漏.
+### 1.5.2 [内存泄漏原因及解决办法](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/5JVM/src/main/java/com/cjs/memory_link/MemoryLinkExample.java)
 ## 1.6 类加载机制
 ### 1.6.1 [类的初始化时机及顺序](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/5JVM/src/main/java/com/cjs/类加载/类加载过程/InitializationOfClass.java)  
 > 其余(双亲委派等)见有道云笔记.  
@@ -19,7 +20,7 @@ Keep your eyes on the stars and your feet on the ground!!!
 ## 1.8 G1收集器 TODO
 
 # 2. 算法
-## 2.1 [位图法, 用来解决大量数据的排序 去重 查找问题](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/1DataStructureAndAlgorithm/src/main/java/%E6%B5%B7%E9%87%8F%E6%95%B0%E6%8D%AE/%E4%BD%8D%E5%9B%BE%E6%B3%95.java)
+## 2.1 [位图法, 用来解决大量整数的排序 去重 查找问题](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/1DataStructureAndAlgorithm/src/main/java/%E6%B5%B7%E9%87%8F%E6%95%B0%E6%8D%AE/%E4%BD%8D%E5%9B%BE%E6%B3%95.java)
 ## 2.1.1 [布隆过滤器, 用来处理海量数据的查重问题](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/1DataStructureAndAlgorithm/src/main/java/海量数据/TestBloomFilter.java)
 
 ## 2.2 排序  
@@ -33,6 +34,9 @@ Keep your eyes on the stars and your feet on the ground!!!
 ## 2.3 [海量数据相关算法](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/1DataStructureAndAlgorithm/src/main/java/海量数据/README.MD)
 
 ## 2.4 [Hash算法](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/1DataStructureAndAlgorithm/src/main/java/海量数据/HashAlgorithm.java)
+
+## 2.5 搜索
+### 2.5.1 [搜索矩阵](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/1DataStructureAndAlgorithm/src/main/java/lettcode/medium/Search2DMatrix.java)
 
 # 3. 并发
 ![并发框架概述](https://github.com/KobeAndLebron/YoudaoNoteFileStorage/blob/master/concurrent/%E5%B9%B6%E5%8F%91%E9%9B%86%E5%90%88%E6%A6%82%E8%BF%B0.jpg)  
@@ -64,6 +68,7 @@ Keep your eyes on the stars and your feet on the ground!!!
 ### 3.4.1 CopyOnWriteList
 > 使用ReentrantLock让写写互斥；通常情况下效率比较低，但是当遍历操作远远大于写操作时，效率较高。  
 > 写操作实现：1.将原数组copy一份。2.创建新数组。 3.将值写入新数组。 4. 将新数组赋给原数组。  这样读的时候也可以写，最大限度减少同步的时间。  
+> 体现的思想: 1. 读写分离. 2. 保证最终一致性(当需要实时读的时候, 如果写操作完成, 但是此时引用尚未执行新数组, 这时候读的还是原数组的数据).
 > Collections.synchronizedList, 效率低下。 读读也会互斥。
 
 ### 3.4.2 ConcurrentHashMap
