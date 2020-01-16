@@ -104,7 +104,7 @@ Keep your eyes on the stars and your feet on the ground!!!
 > 包括JAVA本地线程和操作系统本地线程的对应关系.
 
 ### 3.9.2 [Join的实现原理](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/join_study/JoinImplementationNote.java)
-> [自己实现的Join](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/join_study/MyImplementationOfJoin.java)
+> [自己实现的Join](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/join_study/MyJoin.java)
 > [为什么尽量不要用Thread对象的wait/notify来进行线程间通信](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/join_study/notice.txt)
 > [Join相关的多线程运行题](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/join_study/Join相关多线程运行题.java)
 
