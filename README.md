@@ -25,11 +25,12 @@ Keep your eyes on the stars and your feet on the ground!!!
 
 ## 2.2 排序  
 ### 2.2.1 外部排序(out-place)  
-> [递归排序](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/1DataStructureAndAlgorithm/src/main/java/sort/MergeSort.java), 包括Master公式-求递归函数的时间复杂度.  
+> [归并排序](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/1DataStructureAndAlgorithm/src/main/java/sort/MergeSort.java), 包括Master公式-求递归函数的时间复杂度.  
 
 ### 2.2.2 内部排序(in-place)
 > [快速排序]()
-> [堆排序](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/1DataStructureAndAlgorithm/src/main/java/sort/HeapSort.java)
+> [堆排序](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/1DataStructureAndAlgorithm/src/main/java/sort/HeapSort.java)  
+> 冒泡 选择 插入排序的时间复杂度均为O(n*n), 空间复杂度均为O(1), 但是选择排序不稳定.
 
 ## 2.3 [海量数据相关算法](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/1DataStructureAndAlgorithm/src/main/java/海量数据/README.MD)
 
@@ -37,24 +38,27 @@ Keep your eyes on the stars and your feet on the ground!!!
 
 ## 2.5 搜索
 ### 2.5.1 [搜索矩阵](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/1DataStructureAndAlgorithm/src/main/java/lettcode/medium/Search2DMatrix.java)
+### 2.5.2 [搜索RotateArray]
 
 # 3. 并发
-![并发框架概述](https://github.com/KobeAndLebron/YoudaoNoteFileStorage/blob/master/concurrent/%E5%B9%B6%E5%8F%91%E9%9B%86%E5%90%88%E6%A6%82%E8%BF%B0.jpg)  
+![并发框架概述](https://github.com/KobeAndLebron/YoudaoNoteFileStorage/blob/master/concurrent/%E5%B9%B6%E5%8F%91%E9%9B%86%E5%90%88%E6%A6%82%E8%BF%B0.png)  
 ## 3.1 [CAS和Java中的CAS实现](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/lock/cas/CASAndAtomic.java)  
 ## 3.1.1 [CAS引起的ABA问题](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/lock/cas/ABAProblemDemo.java)  
 ## 3.1.2 [ABA解决方案](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/lock/cas/ABAResolutionDemo.java)-by AtomicStampedReference
 ## 3.1.3 [自旋锁简单实现](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/lock/cas/SpinLockImpl.java)
+> 总结: CAS是一种无锁并发算法(乐观锁), 在同步代码时间较短的时候(比上下文切换的时间小), 并发量比synchronized高, 因为CAS不会使获取锁失败的线程进入阻塞状态, 避免了上下文切换的开销.
 
 ## 3.2 [锁的分类](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/lock/lockCategories.text) 
 对应图片: https://awps-assets.meituan.net/mit-x/blog-images-bundle-2018b/7f749fc8.png
-### 3.2.1 [Synchronized和Lock的区别](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/synchronized_lock/)
+### 3.2.1 [Synchronized和Lock的区别](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/synchronized_lock/synchronized和lock的区别.text)
 ### 3.2.2 Synchronized
 #### 3.2.2.1 Synchronized的原理[锁消除 锁粗化] TODO
 
 ### 3.2.3 ReentrantLock
 #### 3.2.3.1 [自己实现的ReentrantLock(公平+可重入版本锁版本)](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/lock/rerntrant_lock/MyFairLock.java)
-#### 3.2.3.2 [ReentrantLock的Condtion原理实现](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/lock/rerntrant_lock/ConditionImpl.text)
-#### 3.2.2.3 使用案例
+#### 3.2.3.2 [ReentrantLock的Condition原理实现](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/lock/rerntrant_lock/ConditionImpl.text)
+#### 3.2.3.3 [ReentrantLock的可重入例子及非可重入锁引起的死锁问题](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/lock/RecursiveReentrantLock.java)
+#### 3.2.3.4 使用案例
 > 1. [生产者消费者模式](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/lock/rerntrant_lock/example/PC_By_Lock.java)
 > 2. [三个线程交替打印字符串](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/lock/rerntrant_lock/example/PrintAlternately.java), Condition精准控制线程执行顺序。
 
@@ -62,12 +66,13 @@ Keep your eyes on the stars and your feet on the ground!!!
 ### 3.3.2 手动实现一个阻塞队列 TODO
 
 ## 3.3 线程池
-### 3.3.1 线程池实现原理 TODO
+### 3.3.1 线程池实现原理 
+> 查看有道云笔记
 
 ## 3.4 线程安全类
 ### 3.4.1 CopyOnWriteList
 > 使用ReentrantLock让写写互斥；通常情况下效率比较低，但是当遍历操作远远大于写操作时，效率较高。  
-> 写操作实现：1.将原数组copy一份。2.创建新数组。 3.将值写入新数组。 4. 将新数组赋给原数组。  这样读的时候也可以写，最大限度减少同步的时间。  
+> 写操作实现：1.将原数组copy一份。 2.创建新数组。 3.将值写入新数组。 4. 将新数组赋给原数组。  这样读的时候也可以写，最大限度减少同步的时间。  
 > 体现的思想: 1. 读写分离. 2. 保证最终一致性(当需要实时读的时候, 如果写操作完成, 但是此时引用尚未执行新数组, 这时候读的还是原数组的数据).
 > Collections.synchronizedList, 效率低下。 读读也会互斥。
 
@@ -84,6 +89,16 @@ Keep your eyes on the stars and your feet on the ground!!!
 
 ## 3.7 Volatile及JMM模型
 
+## 3.8 线程间通信
+
+
+## 3.9 其余
+### 3.9.1 上下文切换
+> 详细查看有道云笔记, 简要: 主要要保存CPU寄存器和程序计数器的状态, 然后将 恢复线程的状态赋给CPU.
+
+### 3.9.2 [死锁代码示例及解决方案](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/dead_lock/DeadLockExample1.java)
+> 包括JAVA本地线程和操作系统本地线程的对应关系.
+
 # 4. 数据库
 ## 4.1 [Explain返回结果中的type和Extra解释及索引失效原则](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/2YD_JavaAndSqlOptimize/src/main/java/com/cjs/goHead/mysql/type_extra_in_explain.sql)
 ## 4.2 MVCC的实现
@@ -91,5 +106,9 @@ Keep your eyes on the stars and your feet on the ground!!!
 
 # 5. JAVA IO
 ## 5.1 JavaIO模型
+
+# 6. JDK1.8新特性
+## 6.1 函数式接口-Lambda表达式
+## 6.2 Stream表达式
 # TODO
 - [ ] 包名较混乱。  

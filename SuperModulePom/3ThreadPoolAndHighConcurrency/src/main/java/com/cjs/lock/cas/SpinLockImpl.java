@@ -33,7 +33,7 @@ public class SpinLockImpl {
     /**
      * 自己实现的自旋锁.
      */
-    static class MySpinLock {
+    public static class MySpinLock {
         private static AtomicReference<Thread> reference = new AtomicReference<>();
 
         public void lock() {
