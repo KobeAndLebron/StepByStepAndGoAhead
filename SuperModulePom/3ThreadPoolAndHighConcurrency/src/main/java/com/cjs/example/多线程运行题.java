@@ -1,4 +1,4 @@
-package com.cjs.gohead;
+package com.cjs.example;
 
 public class 多线程运行题 {
     private static int index;
@@ -16,6 +16,7 @@ public class 多线程运行题 {
 
         @Override
         public synchronized void start() {
+            // 父类里面的start方法会将当前线程启动, 使得当前线程进入就绪状态.
             super.start();
             System.out.println("start" + index);
         }
