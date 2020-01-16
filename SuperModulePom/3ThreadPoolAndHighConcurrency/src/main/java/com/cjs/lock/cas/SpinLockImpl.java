@@ -39,6 +39,7 @@ public class SpinLockImpl {
         public void lock() {
             // 只有第一个进来的线程会跳过此循环, 后来进来的线程由于AtomicReference的值被设为了第一个进来的线程, 都会返回False,
             // 一直在循环, 即自旋. 直到reference将值置为null.
+            // 如果循环的时间过长, 会导致CPU占用率过高.
             while (!reference.compareAndSet(null, Thread.currentThread())) {
 
             }
