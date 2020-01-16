@@ -38,7 +38,6 @@ Keep your eyes on the stars and your feet on the ground!!!
 
 ## 2.5 搜索
 ### 2.5.1 [搜索矩阵](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/1DataStructureAndAlgorithm/src/main/java/lettcode/medium/Search2DMatrix.java)
-### 2.5.2 [搜索RotateArray]
 
 # 3. 并发
 ![并发框架概述](https://github.com/KobeAndLebron/YoudaoNoteFileStorage/blob/master/concurrent/%E5%B9%B6%E5%8F%91%E9%9B%86%E5%90%88%E6%A6%82%E8%BF%B0.png)  
@@ -52,13 +51,15 @@ Keep your eyes on the stars and your feet on the ground!!!
 对应图片: https://awps-assets.meituan.net/mit-x/blog-images-bundle-2018b/7f749fc8.png
 ### 3.2.1 [Synchronized和Lock的区别](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/synchronized_lock/synchronized和lock的区别.text)
 ### 3.2.2 Synchronized
-#### 3.2.2.1 Synchronized的原理[锁消除 锁粗化] TODO
+#### 3.2.2.1 [Synchronized的原理及优化](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/synchronized_lock/SynchronizedTheory.java)
+> TODO 锁消除 锁粗化 
 
 ### 3.2.3 ReentrantLock
 #### 3.2.3.1 [自己实现的ReentrantLock(公平+可重入版本锁版本)](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/lock/rerntrant_lock/MyFairLock.java)
 #### 3.2.3.2 [ReentrantLock的Condition原理实现](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/lock/rerntrant_lock/ConditionImpl.text)
-#### 3.2.3.3 [ReentrantLock的可重入例子及非可重入锁引起的死锁问题](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/lock/RecursiveReentrantLock.java)
-#### 3.2.3.4 使用案例
+#### 3.2.3.3 [ReentrantLock的可重入例子](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/lock/RecursiveReentrantLock.java)
+#### 3.2.3.4 [NonReentrantLock的死锁例子](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/lock/NonRecursiveLock.java)
+#### 3.2.3.5 使用案例
 > 1. [生产者消费者模式](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/lock/rerntrant_lock/example/PC_By_Lock.java)
 > 2. [三个线程交替打印字符串](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/lock/rerntrant_lock/example/PrintAlternately.java), Condition精准控制线程执行顺序。
 
@@ -82,15 +83,18 @@ Keep your eyes on the stars and your feet on the ground!!!
 ### 3.5.1 [根据AQS实现CountDownLatch](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/example/MyCountDownLatch.java)
 > CountDownLatch, 在所有线程执行完毕后执行**某些线程而非一个**。 A synchronization aid that allows **one or more threads** to wait until a set of operations being performed in other threads completes.
 ### 3.5.2 CyclicBarrier
+> [士兵案例-CyclicBarrier的复用](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom//3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/example/CyclicBarrierExample.java)
+> CyclicBarrier, 所有线程之间相互等待, 直到到达一个同步点, 才一起继续往下执行. A synchronization aid that allows **a set of threads to all wait for each other** to reach a common barrier point.
 ### 3.5.3 Semaphore
+> TODO
 
 ## 3.6 [ThreadLocal的原理](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/ThreadLocal/ThreadLocalPractice.java)   
 > 使用虚引用目的及使用不当会造成内存泄漏
 
 ## 3.7 Volatile及JMM模型
+> TODO
 
-## 3.8 线程间通信
-
+## 3.8 [线程间通信](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/example/线程间通信.md)
 
 ## 3.9 其余
 ### 3.9.1 上下文切换
