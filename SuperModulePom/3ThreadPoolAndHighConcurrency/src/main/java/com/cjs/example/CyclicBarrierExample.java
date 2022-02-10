@@ -21,6 +21,8 @@ import java.util.concurrent.CyclicBarrier;
  * CountdownLatch和CyclicBarrier的区别:
  *  1. 实现方式不同, 前者直接使用AQS, 后者使用ReentrantLock+Condition.
  *  2. 前者不可复用, 后者可复用.
+ *  3. 调用CountDownLatch的countDown方法后，当前线程并不会阻塞，会继续往下执行；
+ *  而调用CyclicBarrier的await方法，会阻塞当前线程，直到CyclicBarrier指定的线程全部都到达了指定点的时候，才能继续往下执行；
  */
 public class CyclicBarrierExample {
     public static void main(String[] args) {
