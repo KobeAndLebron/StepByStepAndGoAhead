@@ -89,6 +89,31 @@ Keep your eyes on the stars and your feet on the ground!!!
 ### 3.5.3 Semaphore
 > TODO
 
+### 3.5.4 AQS[具体实现查看MyFairLock]
+
+>   AQS的核心思想: 如果请求(acquire)的共享资源(volatile state)空闲, 则将当前请求资源的线程设置为有效的工作线程(exclusiveOwnerThread), 并将资源设置为锁定状态.  如果共享资源被锁定, 则需要一套线程阻塞等待机制及唤醒时锁分配机制, 这个机制通过CLH队列(FIFO)实现, 即将暂时获取不到锁的线程加入到队列中。
+>   请求资源时, 用CAS(compareAndSetState方法)来原子设置state.
+>
+>   AQS定义了两种资源共享模式：
+>
+> 1. Exclusive（独占）：只有一个线程能运行，入ReentrantLock，又分为公平锁和非公平锁。
+> 2. Share（共享）：多个线程可同时执行，如Semaphore/CountDownLatch。Semaphore、CountDownLatch、 CyclicBarrier、ReadWriteLock。
+>
+>   AQS底层使用模版方法模式: 
+>
+> 1. 使用者继承AbstractQueuedSynchronizer并重写指定的方法。（这些重写方法很简单，无非是对于共享资源state的获取和释放）.
+>
+>    ```java
+>    isHeldExclusively()//该线程是否正在独占资源。只有用到condition才需要去实现它。
+>    tryAcquire(int)//独占方式。尝试获取资源，成功则返回true，失败则返回false。
+>    tryRelease(int)//独占方式。尝试释放资源，成功则返回true，失败则返回false。
+>    tryAcquireShared(int)//共享方式。尝试获取资源。负数表示失败；0表示成功，但没有剩余可用资源；正数表示成功，且有剩余资源。
+>    tryReleaseShared(int)//共享方式。尝试释放资源，成功则返回true，失败则返回false。
+>    ```
+>
+> 2. 将AQS组合在自定义同步组件的实现中，并调用其模板方法，而这些模板方法会调用使用者重写的方法。
+
+
 ## 3.6 [ThreadLocal的原理](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/ThreadLocal/ThreadLocalPractice.java)   
 > 使用虚引用目的及使用不当会造成内存泄漏
 
@@ -114,11 +139,19 @@ Keep your eyes on the stars and your feet on the ground!!!
 ## 4.2 MVCC的实现
 ## 4.3 [MySql的锁](https://www.cnblogs.com/rjzheng/p/9950951.html)
 
-# 5. JAVA IO
+# 5. JAVA IO及网络模型
 ## 5.1 JavaIO模型
 
 # 6. JDK1.8新特性
 ## 6.1 函数式接口-Lambda表达式
 ## 6.2 Stream表达式
 # TODO
+
+# 7. 分布式篇
+## 7.1 分布式事务
+## 7.2 分布式锁
+## 7.3 分布式缓存
+## 7.4 分布式ID
+## 7.3 微服务
+## 7.3 ELK
 - [ ] 包名较混乱。  
