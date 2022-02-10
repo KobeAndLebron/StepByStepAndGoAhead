@@ -11,7 +11,7 @@ import java.util.concurrent.locks.LockSupport;
 /**
  * 自己实现的ReentrantLock的公平+可重入版本锁.
  *
- * 主要实现机制为AQS同步器, AQS的实现原理: CAS + 自旋 + LockSupport + CLH.
+ * 主要实现机制为AQS同步器, AQS的实现原理: CAS + 自旋 + LockSupport + CLH. 【为什么用双向队列？ LockSupport？TODO】
  * 这里因为只有一个锁机制, 所以未将AQS抽象出来.
  *
  * TODO 待实现:

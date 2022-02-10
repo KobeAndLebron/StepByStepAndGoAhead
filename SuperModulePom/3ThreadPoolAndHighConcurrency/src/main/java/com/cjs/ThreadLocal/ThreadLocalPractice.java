@@ -2,7 +2,7 @@ package com.cjs.ThreadLocal;
 
 /**
  * 	线程局部变量，每个线程都为该线程局部变量保存相对应的值. 将变量的作用域变为线程内所有，不是多个线程共享.
- *  使用场景: 全局传参, 比如分页参数的传递, Struts2的ActionContext的设置.
+ *  使用场景: 全局传参, 比如分页参数的传递, Struts2的ActionContext的设置, 声明式事务保证同一个connection
  *
  * 	实现方式: Thread里面有一个ThreadLocalMap的引用, 每一个ThreadLocal变量对应的
  * 	值就会放在这个ThreadLocalMap({@linkplain ThreadLocal#ThreadLocalMap}里. 多线程运行下每个线程操作自己的TLM.
