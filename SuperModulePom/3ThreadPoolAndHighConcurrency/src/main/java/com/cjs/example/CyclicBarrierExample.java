@@ -5,6 +5,7 @@ import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
 /**
+ * 可以实现一组线程相互等待，当所有线程都到达某个屏障点后再进行后续的操作,即
  * 多个线程之间互相等待, 直到达到同一个同步点, 先执行BarrierAction, 再继续一起执行.
  *
  * Cyclic: 所有等待线程被释放后, 可以被复用.
