@@ -65,6 +65,7 @@ Keep your eyes on the stars and your feet on the ground!!!
 > 2. [三个线程交替打印字符串](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/lock/rerntrant_lock/example/PrintAlternately.java), Condition精准控制线程执行顺序。
 
 ## 3.3 阻塞队列
+### 3.3.1 [ArrayBlockingQueue的简单使用及原理](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/block_queue/BlockingQueueDemo.java) 
 ### 3.3.2 手动实现一个阻塞队列 TODO
 
 ## 3.3 线程池
