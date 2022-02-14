@@ -41,7 +41,7 @@ Keep your eyes on the stars and your feet on the ground!!!
 ### 2.5.1 [搜索矩阵](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/1DataStructureAndAlgorithm/src/main/java/lettcode/medium/Search2DMatrix.java)
 
 ## 2.6 面试常用
-### 2.6.1 [判断链表是否有环, 且返回环的位置](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/1DataStructureAndAlgorithm/src/main/java/linkedlist/CycleLinkedList.java) TODO
+### 2.6.1 [判断链表是否有环, 且返回环的位置](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/1DataStructureAndAlgorithm/src/main/java/linkedlist/CycleLinkedList.java)
 
 # 3. 并发
 ![并发框架概述](https://github.com/KobeAndLebron/YoudaoNoteFileStorage/blob/master/concurrent/%E5%B9%B6%E5%8F%91%E9%9B%86%E5%90%88%E6%A6%82%E8%BF%B0.png)  
