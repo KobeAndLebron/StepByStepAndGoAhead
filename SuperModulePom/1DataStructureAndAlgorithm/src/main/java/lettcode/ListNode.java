@@ -1,5 +1,10 @@
 package lettcode;
 
+import linkedlist.CycleLinkedList;
+
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  *
  * @author chenjingshuai
@@ -56,12 +61,20 @@ public class ListNode {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         ListNode listNode = this;
+        // 新增对环位置的处理
+        Set<ListNode> accessSet = new HashSet<>();
         while (listNode != null) {
             ListNode temp = listNode.next;
+            if (accessSet.contains(listNode)) {
+                sb.append(";  环的位置--->>>");
+                sb.append(listNode.val);
+                break;
+            }
             sb.append(listNode.val);
             if (temp != null) {
                 sb.append("->");
             }
+            accessSet.add(listNode);
             listNode = temp;
         }
         return sb.toString();
