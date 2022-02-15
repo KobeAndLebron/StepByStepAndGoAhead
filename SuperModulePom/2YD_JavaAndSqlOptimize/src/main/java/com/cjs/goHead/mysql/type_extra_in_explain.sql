@@ -5,7 +5,7 @@
 -- Extra：
 -- -- Using index：使用到覆盖索引， 没有回表， 不管索引有没有生效。 | 没有代表回表了。
 -- -- Using where：Where条件索引失效（部分或所有）或无索引，表示在经过存储引擎过滤后，仍要在服务器层进行过滤。 | 没有代表索引全部生效或无where条件, 即不在服务器层在进行过滤.
--- -- Using index condition: 索引部分失效后, 会直接在存储引擎层进行回表, 把记录返回给服务器层, 服务器层直接过滤, 无需在访问存储引擎层.
+-- -- Using index condition: 针对组合索引, 索引部分失效后, 会直接在存储引擎层过滤完数据，返回给服务层，不在服务层进行过滤【5.7之后才有】
 -- -- Using index + Using where：使用到覆盖索引，但是索引失效，仍要在服务器层进行过滤。
 -- -- Using filesort： MYSQL服务器无法利用索引完成的排序操作，称为文件排序。
 
@@ -35,7 +35,7 @@ CREATE INDEX multiple_index_on_alter_table ON `test_index` (multiple_index_1_on_
 -- 开始分析explain.
 
 -- -- -- 索引全部生效 -- -- -- 无Using where.
--- 索引生效；type: ref， extra: null【未能使用覆盖索引】，key_len：768【第一列被使用】。
+-- 索引生效；type: ref【索引树上的单值查询】， extra: null【未能使用覆盖索引】，key_len：768【第一列被使用】。
 EXPLAIN SELECT *
         from test_index
         where multiple_index_1 = '1';
