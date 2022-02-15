@@ -71,7 +71,12 @@ Keep your eyes on the stars and your feet on the ground!!!
 ### 3.3.1 [ArrayBlockingQueue的简单使用及原理](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/block_queue/BlockingQueueDemo.java)
 ### 3.3.2 [延时队列的简单使用及原理](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/block_queue/BlockingQueueDemo.java) 
 ### 3.3.3 手动实现一个阻塞队列 TODO
-### 3.3.4 延时队列 TODO
+### 3.3.4 [延时队列的使用场景](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/block_queue/TestDelayQueue.java)
+> 延时队列的其他实现: 
+> 1. Redis: 使用sortSet实现, score放失效的时间, member放元素, 取元素的时候使用srangebyscore,获取过期时间大于当前时间的即可.
+> 2. RabbitMQ的延时队列.
+> 3. 时间轮算法, 还不了解.
+
 
 ## 3.3 线程池
 ### 3.3.1 线程池实现原理 
@@ -162,7 +167,10 @@ Keep your eyes on the stars and your feet on the ground!!!
 ## 7.2 分布式锁
 ## 7.3 分布式缓存
 ## 7.4 分布式ID
-## 7.3 微服务
-## 7.3 ELK
-## 7.4 负载均衡算法 TODO LoadBalance
+## 7.5 微服务
+## 7.6 ELK
+## 7.7 负载均衡算法 TODO LoadBalance
+## 7.8 分布式分区算法
+## 7.9 分布式共识算法 RAFT TODO
+## 7.10 分布式一致性算法 paxo TODO
 - [ ] 包名较混乱。  
