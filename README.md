@@ -146,7 +146,7 @@ Keep your eyes on the stars and your feet on the ground!!!
 
 # 4. 数据库
 ## 4.1 [Explain返回结果中的type和Extra解释及索引失效原则](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/2YD_JavaAndSqlOptimize/src/main/java/com/cjs/goHead/mysql/type_extra_in_explain.sql)
-## 4.2 MVCC的实现
+## 4.2 MVCC的实现 TODO
 ## 4.3 [MySql的锁](https://www.cnblogs.com/rjzheng/p/9950951.html)
 
 # 5. JAVA IO及网络模型
