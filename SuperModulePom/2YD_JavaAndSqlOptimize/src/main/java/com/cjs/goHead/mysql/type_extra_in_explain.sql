@@ -6,7 +6,8 @@
 -- Extra：
 -- -- Using index：使用到覆盖索引， 没有回表， 不管索引有没有生效。 | 没有代表回表了。
 -- -- Using where：Where条件索引失效（部分或所有）或无索引，表示在经过存储引擎过滤后，仍要在服务器层进行过滤。 | 没有代表索引全部生效或无where条件, 即不在服务器层在进行过滤.
--- -- Using index condition: 针对组合索引, 索引部分失效后, 会直接在存储引擎层过滤完数据，返回给服务层，不在服务层进行过滤【5.7之后才有】
+-- -- Using index condition: 针对组合索引, 索引部分失效后, 会直接在存储引擎层使用失效的索引过滤完数据，返回给服务层，而不是通过生效索引删选完数据后, 直接返回给服务层.
+-- -- 减少了回表的次数.【5.7之后才有】
 -- -- Using index + Using where：使用到覆盖索引，但是索引失效，仍要在服务器层进行过滤。
 -- -- Using filesort： MYSQL服务器无法利用索引完成的排序操作，称为文件排序。
 
@@ -69,8 +70,9 @@ EXPLAIN SELECT multiple_index_1
         where multiple_index_2 = '2'
           and multiple_index_3 = '3';
 
--- ICP（index condition pushdown): 表示索引失效后, 会在存储引擎层直接回表, 将整条记录返回给服务器层, 然后服务器层在进行过滤, 减少了服务器访问存储引擎的次数, 从而提高效率.
--- ICP仅在使用索引存在且生效的情况下生效.
+-- ICP（index condition pushdown): 表示索引部分失效后, 会在存储引擎层直接使用失效的索引列继续过滤数据, 然后回表, 将整条记录返回给服务器层, 最后服务器层在进行过滤, 减少了回表的次数, 从而提高了效率.
+-- 没有索引下推的话, 那么通过生效的索引部分删选的数据, 将直接返回给服务层再做筛选, 此时可能回表的次数较多.
+-- ICP仅在使用组合索引存在且部分生效的情况下起作用, 不适于主键索引.
 set optimizer_switch = 'index_condition_pushdown=on';
 -- 索引失效，仅仅第一个索引列生效【ken_len为768】，type为ref，
 -- extra： Using index condition[等价于Using Where+Non-Using index]， 即没有使用覆盖索引且索引失效。
@@ -79,6 +81,7 @@ EXPLAIN SELECT *
         where multiple_index_1 = '2'
           and multiple_index_3 = '3';
 -- 索引全部失效, ICP失效, Extra: Using where.
+-- type为ALL, 将全表扫描.
 EXPLAIN SELECT *
         from test_index
           where multiple_index_3 = '3';

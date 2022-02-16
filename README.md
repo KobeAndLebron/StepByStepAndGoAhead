@@ -9,7 +9,7 @@ Keep your eyes on the stars and your feet on the ground!!!
 ## 1.2 [FULLGC日志分析](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/5JVM/src/main/java/com/cjs/gc/FullGCLogAnalyze.java)  
 ## 1.3 TenuringThreshold动态调整策略 [程序](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/5JVM/src/main/java/com/cjs/gc/TenuringThreshold.java) [程序对应日志分析](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/5JVM/src/main/java/com/cjs/gc/TenuringThreshold.log)
 ## 1.4 [JVM四大引用介绍见及示例演示-强软弱虚](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/5JVM/src/main/java/com/cjs/reference/FourTypesOfReference.java)
-### 1.4.1 ThreadLocalMap中的Entry使用到虚引用.
+### 1.4.1 ThreadLocalMap中的Entry的key使用到虚引用.
 ## 1.5 内存泄漏
 ### 1.5.1 ThreadLocal使用不当造成内存泄漏.
 ### 1.5.2 [内存泄漏原因及解决办法](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/5JVM/src/main/java/com/cjs/memory_link/MemoryLinkExample.java)
@@ -151,7 +151,8 @@ Keep your eyes on the stars and your feet on the ground!!!
 
 # 4. 数据库
 ## 4.1 [Explain返回结果中的type和Extra解释及索引失效原则](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/2YD_JavaAndSqlOptimize/src/main/java/com/cjs/goHead/mysql/type_extra_in_explain.sql)
-## 4.2 MVCC的实现 TODO
+## 4.2 乐观锁机制, 采用MVCC的实现
+> 涉及快照读, 原理在有道云笔记.
 ## 4.3 [MySql的锁](https://www.cnblogs.com/rjzheng/p/9950951.html)
 
 # 5. JAVA IO及网络模型
