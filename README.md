@@ -42,6 +42,7 @@ Keep your eyes on the stars and your feet on the ground!!!
 
 ## 2.6 面试常用
 ### 2.6.1 [判断链表是否有环, 且返回环的位置](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/1DataStructureAndAlgorithm/src/main/java/linkedlist/CycleLinkedList.java)
+### 2.6.2 [判断链表是否有环, 且返回环的位置](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/1DataStructureAndAlgorithm/src/main/java/linkedlist/CycleLinkedList.java)
 
 # 3. 并发
 ![并发框架概述](https://github.com/KobeAndLebron/YoudaoNoteFileStorage/blob/master/concurrent/%E5%B9%B6%E5%8F%91%E9%9B%86%E5%90%88%E6%A6%82%E8%BF%B0.png)  
@@ -122,7 +123,8 @@ Keep your eyes on the stars and your feet on the ground!!!
 >    tryReleaseShared(int)//共享方式。尝试释放资源，成功则返回true，失败则返回false。
 >    ```
 >
-> 2. 将AQS组合在自定义同步组件的实现中，并调用其模板方法，而这些模板方法会调用使用者重写的方法。
+> 2. 将AQS组合在自定义同步组件的实现中，子类来调用其acquire/release的方法来获取/释放资源，这俩方法会调用使用者重写的方法。
+> 查看案例[对AQS的简单实现](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom//3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/lock/rerntrant_lock/MyReentrantLock.java)
 
 
 ## 3.6 [ThreadLocal的原理](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/ThreadLocal/ThreadLocalPractice.java)   
