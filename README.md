@@ -104,7 +104,8 @@ Keep your eyes on the stars and your feet on the ground!!!
 
 ### 3.5.4 AQS[具体实现查看MyFairLock]
 
->   AQS的核心思想: 如果请求(acquire)的共享资源(volatile state)空闲, 则将当前请求资源的线程设置为有效的工作线程(exclusiveOwnerThread), 并将资源设置为锁定状态.  如果共享资源被锁定, 则需要一套线程阻塞等待机制及唤醒时锁分配机制, 这个机制通过CLH队列(FIFO)实现, 即将暂时获取不到锁的线程加入到队列中。
+>   AQS的核心思想: 如果请求(acquire)的共享资源(volatile state)空闲, 则将当前请求资源的线程设置为有效的工作线程(exclusiveOwnerThread), 并将资源设置为锁定状态. 
+    如果共享资源被锁定(获取锁失败), 则需要一套线程阻塞等待机制及唤醒时锁分配机制, 这个机制通过CLH队列(FIFO)实现, 即将暂时获取不到锁的线程加入到队列中。
 >   请求资源时, 用CAS(compareAndSetState方法)来原子设置state.
 >
 >   AQS定义了两种资源共享模式：
