@@ -42,7 +42,8 @@ Keep your eyes on the stars and your feet on the ground!!!
 
 ## 2.6 面试常用
 ### 2.6.1 [判断链表是否有环, 且返回环的位置](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/1DataStructureAndAlgorithm/src/main/java/linkedlist/CycleLinkedList.java)
-### 2.6.2 [判断链表是否有环, 且返回环的位置](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/1DataStructureAndAlgorithm/src/main/java/linkedlist/CycleLinkedList.java)
+### 2.6.2 [峰值类相关题目](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/1DataStructureAndAlgorithm/src/main/java/leetcode/medium/FindInMountainArray.java)
+> 数组先从小到大, 再从大大小. 求峰值, 或找出目标值的index.
 
 # 3. 并发
 ![并发框架概述](https://github.com/KobeAndLebron/YoudaoNoteFileStorage/blob/master/concurrent/%E5%B9%B6%E5%8F%91%E9%9B%86%E5%90%88%E6%A6%82%E8%BF%B0.png)  
