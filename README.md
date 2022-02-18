@@ -171,8 +171,8 @@ Keep your eyes on the stars and your feet on the ground!!!
 ## 7.1 分布式事务
 ## 7.2 分布式锁
 ### 7.2.1 Redis分布式锁基本原理
-> [RedisLock单机锁原理](https://github.com/KobeAndLebron/StepByStepAndGoAhead/SuperModulePom/9OpenSourceFramework/redis/com/cjs/gohead/source/redis/RedLock.java)    
-> [加锁的lua脚本](https://github.com/KobeAndLebron/StepByStepAndGoAhead/SuperModulePom/9OpenSourceFramework/redis/com/cjs/gohead/source/redis/redis_lock.lua)  
+> [RedisLock单机锁原理](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/9OpenSourceFramework/redis/com/cjs/gohead/source/redis/RedLock.java)    
+> [加锁的lua脚本](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/9OpenSourceFramework/redis/com/cjs/gohead/source/redis/redis_lock.lua)  
 ## 7.3 分布式缓存
 ## 7.4 分布式ID
 ## 7.5 微服务
