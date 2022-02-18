@@ -63,7 +63,7 @@ public class TestBloomFilter {
         int count = 0;
         for (int i = total; i < total + 10000; i++) {
             if (bf.mightContain(i)) {
-                // 返回true表明元素可能在集合中.
+                // 返回true表明元素可能在集合中. 即对于不存在的元素, 只有0.001的误判率误判它存在.
                 count++;
             }
         }
