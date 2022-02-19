@@ -10,8 +10,9 @@
 
 ```sql
 --sakila数据库中rental表在rental_date,inventory_id,customer_id上有rental_date的索引，且为asc的顺序。
+-- UNIQUE KEY `rental_date` (`rental_date`, `inventory_id`, `customer_id`);
 --使用rental_date索引为下面的查询做排序
-explain select rental_id,staff_id from rental where rental_date='2005-05-25' order by inventory_id,customer_id\G
+explain select rental_id,staff_id from rental where rental_date='2005-05-25' order by inventory_id,customer_id;
 *************************** 1. row ***************************
            id: 1
   select_type: SIMPLE
@@ -28,7 +29,7 @@ possible_keys: rental_date
 1 row in set, 1 warning (0.00 sec)
 
 --该查询为索引的第一列提供了常量条件，而使用第二列进行排序，将两个列组合在一起，就形成了索引的最左前缀
-explain select rental_id,staff_id from rental where rental_date='2005-05-25' order by inventory_id desc\G
+explain select rental_id,staff_id from rental where rental_date='2005-05-25' order by inventory_id desc;
 *************************** 1. row ***************************
            id: 1
   select_type: SIMPLE
@@ -41,11 +42,11 @@ possible_keys: rental_date
           ref: const
          rows: 1
      filtered: 100.00
-        Extra: Using where
+        Extra: Using where -- staff_id不在组合索引, 所以不是using index;
 1 row in set, 1 warning (0.00 sec)
 
 --下面的查询不会利用索引
-explain select rental_id,staff_id from rental where rental_date>'2005-05-25' order by rental_date,inventory_id\G
+explain select rental_id,staff_id from rental where rental_date>'2005-05-25' order by rental_date,inventory_id;
 *************************** 1. row ***************************
            id: 1
   select_type: SIMPLE
@@ -61,7 +62,7 @@ possible_keys: rental_date
         Extra: Using where; Using filesort
 
 --该查询使用了两种不同的排序方向，但是索引列都是正序排序的
-explain select rental_id,staff_id from rental where rental_date='2005-05-25' order by inventory_id desc,customer_id asc\G
+explain select rental_id,staff_id from rental where rental_date='2005-05-25' order by inventory_id desc,customer_id asc;
 *************************** 1. row ***************************
            id: 1
   select_type: SIMPLE
@@ -77,8 +78,8 @@ possible_keys: rental_date
         Extra: Using where; Using filesort
 1 row in set, 1 warning (0.00 sec)
 
---该查询中引用了一个不再索引中的列
-explain select rental_id,staff_id from rental where rental_date>'2005-05-25' order by inventory_id,staff_id\G
+--该查询中引用了一个不在索引中的列
+explain select rental_id,staff_id from rental where rental_date='2005-05-25' order by inventory_id,staff_id;
 *************************** 1. row ***************************
            id: 1
   select_type: SIMPLE

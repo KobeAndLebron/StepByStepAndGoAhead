@@ -4,7 +4,7 @@ JAVA中锁的分类
 线程是否要对同步资源加锁: 分为悲观锁和乐观锁, 前者加锁, 后者不加锁.
 锁定同步资源失败后, 线程是否要阻塞: 悲观锁阻塞, 乐观锁不阻塞.
 
-Java里面的悲观锁包括Synchronized和ReentrantLock, 乐观锁是通过CAS实现的[原子类中的递增操作就是通过CAS+自旋来实现的].
+Java里面的悲观锁包括Synchronized和ReentrantLock, 乐观锁是通过CAS实现的[原子类中的递增操作就是通过CAS+自旋来实现的], 在MySQL中是MVCC.
 悲观锁和乐观锁区别见: CasAndAtomic类.
 
 -------

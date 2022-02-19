@@ -9,7 +9,7 @@ Keep your eyes on the stars and your feet on the ground!!!
 ## 1.2 [FULLGC日志分析](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/5JVM/src/main/java/com/cjs/gc/FullGCLogAnalyze.java)  
 ## 1.3 TenuringThreshold动态调整策略 [程序](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/5JVM/src/main/java/com/cjs/gc/TenuringThreshold.java) [程序对应日志分析](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/5JVM/src/main/java/com/cjs/gc/TenuringThreshold.log)
 ## 1.4 [JVM四大引用介绍见及示例演示-强软弱虚](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/5JVM/src/main/java/com/cjs/reference/FourTypesOfReference.java)
-### 1.4.1 ThreadLocalMap中的Entry使用到虚引用.
+### 1.4.1 ThreadLocalMap中的Entry的key使用到虚引用.
 ## 1.5 内存泄漏
 ### 1.5.1 ThreadLocal使用不当造成内存泄漏.
 ### 1.5.2 [内存泄漏原因及解决办法](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/5JVM/src/main/java/com/cjs/memory_link/MemoryLinkExample.java)
@@ -42,6 +42,8 @@ Keep your eyes on the stars and your feet on the ground!!!
 
 ## 2.6 面试常用
 ### 2.6.1 [判断链表是否有环, 且返回环的位置](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/1DataStructureAndAlgorithm/src/main/java/linkedlist/CycleLinkedList.java)
+### 2.6.2 [峰值类相关题目](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/1DataStructureAndAlgorithm/src/main/java/leetcode/medium/FindInMountainArray.java)
+> 数组先从小到大, 再从大大小. 求峰值, 或找出目标值的index.
 
 # 3. 并发
 ![并发框架概述](https://github.com/KobeAndLebron/YoudaoNoteFileStorage/blob/master/concurrent/%E5%B9%B6%E5%8F%91%E9%9B%86%E5%90%88%E6%A6%82%E8%BF%B0.png)  
@@ -71,7 +73,12 @@ Keep your eyes on the stars and your feet on the ground!!!
 ### 3.3.1 [ArrayBlockingQueue的简单使用及原理](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/block_queue/BlockingQueueDemo.java)
 ### 3.3.2 [延时队列的简单使用及原理](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/block_queue/BlockingQueueDemo.java) 
 ### 3.3.3 手动实现一个阻塞队列 TODO
-### 3.3.4 延时队列 TODO
+### 3.3.4 [延时队列的使用场景](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/block_queue/TestDelayQueue.java)
+> 延时队列的其他实现: 
+> 1. Redis: 使用sortSet实现, score放失效的时间, member放元素, 取元素的时候使用srangebyscore,获取过期时间大于当前时间的即可.
+> 2. RabbitMQ的延时队列.
+> 3. 时间轮算法, 还不了解.
+
 
 ## 3.3 线程池
 ### 3.3.1 线程池实现原理 
@@ -97,7 +104,8 @@ Keep your eyes on the stars and your feet on the ground!!!
 
 ### 3.5.4 AQS[具体实现查看MyFairLock]
 
->   AQS的核心思想: 如果请求(acquire)的共享资源(volatile state)空闲, 则将当前请求资源的线程设置为有效的工作线程(exclusiveOwnerThread), 并将资源设置为锁定状态.  如果共享资源被锁定, 则需要一套线程阻塞等待机制及唤醒时锁分配机制, 这个机制通过CLH队列(FIFO)实现, 即将暂时获取不到锁的线程加入到队列中。
+>   AQS的核心思想: 如果请求(acquire)的共享资源(volatile state)空闲, 则将当前请求资源的线程设置为有效的工作线程(exclusiveOwnerThread), 并将资源设置为锁定状态. 
+    如果共享资源被锁定(获取锁失败), 则需要一套线程阻塞等待机制及唤醒时锁分配机制, 这个机制通过CLH队列(FIFO)实现, 即将暂时获取不到锁的线程加入到队列中。
 >   请求资源时, 用CAS(compareAndSetState方法)来原子设置state.
 >
 >   AQS定义了两种资源共享模式：
@@ -117,7 +125,8 @@ Keep your eyes on the stars and your feet on the ground!!!
 >    tryReleaseShared(int)//共享方式。尝试释放资源，成功则返回true，失败则返回false。
 >    ```
 >
-> 2. 将AQS组合在自定义同步组件的实现中，并调用其模板方法，而这些模板方法会调用使用者重写的方法。
+> 2. 将AQS组合在自定义同步组件的实现中，子类来调用其acquire/release的方法来获取/释放资源，这俩方法会调用使用者重写的方法。
+> 查看案例[对AQS的简单实现](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom//3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/lock/rerntrant_lock/MyReentrantLock.java)
 
 
 ## 3.6 [ThreadLocal的原理](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/3ThreadPoolAndHighConcurrency/src/main/java/com/cjs/ThreadLocal/ThreadLocalPractice.java)   
@@ -146,7 +155,8 @@ Keep your eyes on the stars and your feet on the ground!!!
 
 # 4. 数据库
 ## 4.1 [Explain返回结果中的type和Extra解释及索引失效原则](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/2YD_JavaAndSqlOptimize/src/main/java/com/cjs/goHead/mysql/type_extra_in_explain.sql)
-## 4.2 MVCC的实现
+## 4.2 乐观锁机制, 采用MVCC的实现
+> 涉及快照读, 原理在有道云笔记.
 ## 4.3 [MySql的锁](https://www.cnblogs.com/rjzheng/p/9950951.html)
 
 # 5. JAVA IO及网络模型
@@ -160,9 +170,15 @@ Keep your eyes on the stars and your feet on the ground!!!
 # 7. 分布式篇
 ## 7.1 分布式事务
 ## 7.2 分布式锁
+### 7.2.1 Redis分布式锁基本原理
+> [RedisLock单机锁原理](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/9OpenSourceFramework/redis/com/cjs/gohead/source/redis/RedLock.java)    
+> [加锁的lua脚本](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/9OpenSourceFramework/redis/com/cjs/gohead/source/redis/redis_lock.lua)  
 ## 7.3 分布式缓存
 ## 7.4 分布式ID
-## 7.3 微服务
-## 7.3 ELK
-## 7.4 负载均衡算法 TODO LoadBalance
+## 7.5 微服务
+## 7.6 ELK
+## 7.7 负载均衡算法 TODO LoadBalance
+## 7.8 分布式分区算法
+## 7.9 分布式共识算法 RAFT TODO
+## 7.10 分布式一致性算法 paxo TODO
 - [ ] 包名较混乱。  
