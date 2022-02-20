@@ -1,7 +1,6 @@
 package linkedlist;
 
 import lettcode.ListNode;
-import sun.jvm.hotspot.utilities.Assert;
 
 import java.util.HashSet;
 import java.util.Set;
