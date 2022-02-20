@@ -182,3 +182,7 @@ Keep your eyes on the stars and your feet on the ground!!!
 ## 7.9 分布式共识算法 RAFT TODO
 ## 7.10 分布式一致性算法 paxo TODO
 - [ ] 包名较混乱。  
+
+
+- [ ] 设计模式-消息订阅模式的应用。
+- [ ] 设计模式-责任链模式。
