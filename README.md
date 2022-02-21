@@ -183,20 +183,23 @@ Keep your eyes on the stars and your feet on the ground!!!
 ## 7.9 分布式共识算法 RAFT TODO
 ## 7.10 分布式一致性算法 paxo TODO
 - [ ] 包名较混乱。  
+## 7.11 限流
+### 7.11.1 [滑动窗口限流算法]((https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/1DataStructureAndAlgorithm/src/main/java/海量数据/SlideWindow.java)) 
 
 # 8. 设计模式
 ## 8.1 责任链模式
 > Servlet中责任链的实现, 造轮子. [FilterChain实现](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/9OpenSourceFramework/过滤器的实现/com/cjs/core/FilterChain.java)  
 > 与AOP中责任链模式的实现大同小异.
  
-- [ ] Sentinel的使用场景及解析.
-- [ ] 限流算法.
+- [x] Sentinel的使用场景及解析.
+- [x] 限流算法. 理解漏桶算法和滑动时间窗口算法的原理
 
-- [ ] 数据库间隙锁 undolog redolog
 - [ ] G1垃圾收集器以及线上定位内存泄漏的问题.
-- [ ] 动态代理的cglib实现.
+- [ ] 数据库间隙锁 undolog redolog
+- [ ] 动态代理的cglib实现及事务的实现原理.
 
-- [ ] 设计模式-消息订阅模式的应用。
+
+- [ ] 设计模式-消息订阅模式的应用.
 - [ ] completableFuture的使用场景.
 
 我们将商品模块作为开发的第一步，然后支付模块由于要对接第三方的接口，有人专门去负责处理，其他模块并行处理。
