@@ -177,12 +177,26 @@ Keep your eyes on the stars and your feet on the ground!!!
 ## 7.4 分布式ID
 ## 7.5 微服务
 ## 7.6 ELK
-## 7.7 负载均衡算法 TODO LoadBalance
+## 7.7 [负载均衡算法](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/1DataStructureAndAlgorithm/src/main/java/海量数据/LoadBalance.java)
+> 从各个角度描述了负载均衡的技术, 并实现了 随机 轮询 加权轮询三个简单的负载均衡算法.
 ## 7.8 分布式分区算法
 ## 7.9 分布式共识算法 RAFT TODO
 ## 7.10 分布式一致性算法 paxo TODO
 - [ ] 包名较混乱。  
 
+# 8. 设计模式
+## 8.1 责任链模式
+> Servlet中责任链的实现, 造轮子. [FilterChain实现](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/9OpenSourceFramework/过滤器的实现/com/cjs/core/FilterChain.java)  
+> 与AOP中责任链模式的实现大同小异.
+ 
+- [ ] Sentinel的使用场景及解析.
+- [ ] 限流算法.
+
+- [ ] 数据库间隙锁 undolog redolog
+- [ ] G1垃圾收集器以及线上定位内存泄漏的问题.
+- [ ] 动态代理的cglib实现.
 
 - [ ] 设计模式-消息订阅模式的应用。
-- [ ] 设计模式-责任链模式。
+- [ ] completableFuture的使用场景.
+
+我们将商品模块作为开发的第一步，然后支付模块由于要对接第三方的接口，有人专门去负责处理，其他模块并行处理。
