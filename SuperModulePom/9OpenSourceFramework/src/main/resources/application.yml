@@ -1,0 +1,21 @@
+spring:
+  redis:
+      host: r-wz95ias87w5tv0m6c7pd.redis.rds.aliyuncs.com # Redis服务器地址
+    database: 9 # Redis数据库索引（默认为0）
+    port: 6379 # Redis服务器连接端口
+    password: 'xxx' # Redis服务器连接密码（默认为空）
+    timeout: 300ms # 连接超时时间（毫秒)
+    # 集群模式配置
+    cluster:
+      nodes: 192.168.0.61:8001,192.168.0.62:8002,192.168.0.63:8003,192.168.0.61:8004,192.168.0.62:8005,192.168.0.63:8006
+    # sentinel模式配置
+    sentinel:
+      master: mymaster
+      nodes: 192.168.0.60:26379,192.168.0.60:26380,192.168.0.60:26381 # 哨兵节点
+    lettuce:
+      pool:
+        max-idle: 50
+        min-idle: 10
+        max-active: 100
+        max-wait: 1000
+

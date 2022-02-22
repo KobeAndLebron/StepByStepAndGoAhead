@@ -186,11 +186,16 @@ Keep your eyes on the stars and your feet on the ground!!!
 ## 7.11 限流
 ### 7.11.1 [滑动窗口限流算法]((https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/1DataStructureAndAlgorithm/src/main/java/海量数据/SlideWindow.java)) 
 
+## 7.12 Redis在JAVA代码中的使用
+### 7.12.1 [连接池线上怎么配置, 连接池预热优化](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom\9OpenSourceFramework\redis\com\cjs\gohead\source\redis\RedisPoolPractice.java)
+### 7.12.2 [RedisCluster连接方式](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom\9OpenSourceFramework\redis\com\cjs\gohead\source\redis\JedisClusterTest.java)
+### 7.12.2 [Codis连接方式](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom\9OpenSourceFramework\redis\com\cjs\gohead\source\redis\CodisClientHA.java)
+
 # 8. 设计模式
 ## 8.1 责任链模式
 > Servlet中责任链的实现, 造轮子. [FilterChain实现](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/9OpenSourceFramework/过滤器的实现/com/cjs/core/FilterChain.java)  
 > 与AOP中责任链模式的实现大同小异.
- 
+
 - [x] Sentinel的使用场景及解析.
 - [x] 限流算法. 理解漏桶算法和滑动时间窗口算法的原理
 
