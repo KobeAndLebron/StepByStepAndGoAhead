@@ -1,132 +1,178 @@
 package com.cjs.mq;
 
-import org.apache.kafka.clients.consumer.*;
-import org.apache.kafka.common.TopicPartition;
+import org.apache.kafka.clients.consumer.ConsumerConfig;
+import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.apache.kafka.clients.consumer.ConsumerRecords;
+import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.serialization.StringDeserializer;
 
 import java.time.Duration;
-import java.util.Collection;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.Properties;
 
 /**
  * 分区和消费者的关系: 多对一. 当分区数和消费者数量相同时, 就会变成一对一的关系.
  *
  * 分区的所有权发生变化时就是分区再均衡. 以下情况会发生分区再均衡:
- *  1. 消费者数量发生变化.[增加或减少-主动关闭/宕机]
- *  2. Partition数量发生变化.
+ * 1. 消费者数量发生变化.[增加或减少-主动关闭/宕机]
+ * 2. Partition数量发生变化.
  *
  * 1. Offset[之前版本的Offset信息存在ZK, 新版本存在__consumer_offsets里)
- *  消费者第一次消费: 此时Broker没有这个ConsumerGroup的offset信息, 具体行为由auto.offset.reset控制.
- *  消费者第二次消费: 之后的每次消费都会提交Offset, 涉及到Offset提交策略.
- *
- * 2. Consumer Offset提交策略[enable.auto.commit]:
- *   自动提交[enable.auto.commit=true]:
- *      Consumer会隔一段时间自动提交本地的Offset, 可能会发生消费重复和丢数据的情况.[auto.commit.interval.ms]
- *      消费重复[幂等性]: 数据消费并处理完, 但是Offset还未提交时.
- *          1. 这时候有新的Consumer加入进来, 会导致分区再平衡, 新的Consumer拿到旧的Offset, 再消费一遍[线上BUG, 当时搞青海接数时搞的].
- *          2. 重启了消费者, 重启后也会重复消费.
- *          出现幂等性问题不可怕, 重要的是解决方案:
- *              1. 写Redis, 天然幂等性.
- *              2. 在消息里面加一个全局ID, 消费者拿到这个id去Redis里面查一下, 看之前有吗, 有则消费过, 否则没有.
- *              3. 基于数据库的主键/唯一性约束.
- *      丢数据[可靠性]: Consumer拿到消息还没处理完, 但是offset却自动提交了.
- *          解决方案: 关闭自动提交功能, 手动提交Offset.
- *          手动提交也可能导致重复消费的问题, 因为有可能 处理完消息后手动提交前 机器挂了或者分区再均衡了.
- *   关闭自动提交:
- *      同步提交与异步提交.
- *   手动提交和自动提交都会引起重复消费的问题, 因为无论是手动提交还是自动提交, 在提交Offset前, 都有可能机器挂掉或者
- *   发送分区再均衡的情况, 后者可以通过代码实现来避免[ConsumerRebalanceListener], 前者只能通过保证幂等性的机制来避免.
- *
+ * 消费者第一次消费: 此时Broker没有这个ConsumerGroup的offset信息, 具体行为由auto.offset.reset控制.
+ * 消费者第二次消费: 之后的每次消费都会提交Offset, 涉及到Offset提交策略.
  */
 public class MyKafkaConsumer {
-    public static void main(String[] args) {
-        KafkaConsumer<String, String> consumer = getKafkaConsumer();
-
-        // ConsumerRebalanceListener, 用于因Consumer的数量发生变化而导致分区再平衡, 进而有可能导致
-        // Offset尚未提交而引起的重复消费问题.
-        consumer.subscribe(Collections.singletonList("topic1"), new ConsumerRebalanceListener() {
-            @Override
-            public void onPartitionsRevoked(Collection<TopicPartition> partitions) {
-                System.out.println("分区再平衡Start, 分区分配情况: ");
-                System.out.println(partitions.toString());
-
-                consumer.commitSync();
-
-                System.out.println("提交Offset成功, 避免了数据重复消费的情况.");
-                System.out.println(partitions.toString());
-            }
-
-            @Override
-            public void onPartitionsAssigned(Collection<TopicPartition> partitions) {
-                System.out.println("分区再平衡End, 分区分配情况: ");
-            }
-        });
-
-        while (true) {
-            ConsumerRecords<String, String> poll = consumer.poll(Duration.ofSeconds(10));
-            for (ConsumerRecord<String, String> record : poll) {
-                System.out.println("消息处理完毕, " + "消息所在分区:" + record.partition() +
-                    "; 消息ID: " + record.offset() + "; 消息内容:" + record.key() + ":" + record.value());
-
-                // 注释以模拟分区再平衡发生时offset没提交的情况.
-                consumer.commitAsync();
-            }
-        }
-
-        // 优雅关闭, 会直接触发分区再均衡;
-        // 不调用这个方法, 然后将进程强制杀死后, 则使用心跳机制来检测消费者是否活着.
-        //  consumer.close();
-    }
+    private final static String TOPIC_NAME = "my-replicated-topic";
+    // If all the consumer instances have the same consumer group,
+    // then the records will effectively be load balanced over the consumer instances.
+    // Otherwise each record will be broadcast to all the consumer processes.
+    private final static String CONSUMER_GROUP_NAME = "testGroup";
 
     public static KafkaConsumer<String, String> getKafkaConsumer() {
-        Properties properties = new Properties();
-        properties.setProperty("bootstrap.servers", "localhost:9092");
-        properties.setProperty("key.deserializer", StringDeserializer.class.getName());
-        properties.setProperty("value.deserializer", StringDeserializer.class.getName());
-        // ConsumerGroup的ID.
-        // If all the consumer instances have the same consumer group,
-        // then the records will effectively be load balanced over the consumer instances.
-        // Otherwise each record will be broadcast to all the consumer processes.
-        properties.setProperty(ConsumerConfig.GROUP_ID_CONFIG, "1123");
+        Properties props = new Properties();
+        // 建议把所有集群都写进去.
+        // 写一个集群也行, 从ZK里面会读取到所有集群的信息. 但是这个集群挂了, 就启动不了了.
+        props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "127.0.0.1:9092");
+        // 消费分组名
+        props.put(ConsumerConfig.GROUP_ID_CONFIG, CONSUMER_GROUP_NAME);
 
-        // 如果KafkaBroker在10s内感知不到这个Consumer的心跳, 就会认为这个Consumer挂了. 挂了之后就会Rebalance.
-        properties.put(ConsumerConfig.SESSION_TIMEOUT_MS_CONFIG, 10 * 1000);
-        // 每隔多久发送一次心跳, 一般比Session的TIMEOUT的1/3要小, 尽量小一点.
-        properties.put(ConsumerConfig.HEARTBEAT_INTERVAL_MS_CONFIG, 1000);
+        // 是否自动提交(enable.auto.commit)offset，默认就是true
+        props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "true");
+        /*
+         * 消费者offset提交机制:
+         *
+         * 消费者提交消息会把offset记录提交到__consumer_offsets, 提交过去的时候, key是 consumerGroupId + topic + 分区号 value是offset的值.
+         * topic的一个分区在同一个消费组只能被一个消费者消费, 所以在提交offset的时候, 没有并发冲突问题.
+         * 因为__consumer_offsets可能会接受很高的并发, kafka默认给其分配50个分区(offsets.topic.num.partitions), 这样可以通过加机器的方式抗大并发.
+         */
+        /**
+         * [zk: localhost:2181(CONNECTED) 5] ls /brokers/topics/__consumer_offsets/partitions
+         * [44, 45, 46, 47, 48, 49, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+         * 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43]
+         */
+        /**
+         * 自动提交Offset会丢消息 和 消息重复消费的问题:
+         *
+         * [消息可靠性保证- 消息消费端]
+         * 原因: 消息消费到一半, offset提交了, 假如此时consumer挂机了[或者Rebalance了], 未处理完的数据就丢了, 下次重启就会从最新提交的offset处开始消费.
+         * 解决办法: 关闭手动提交
+         *
+         * [消息重复消费- 消息消费端] 消费端幂等处理
+         * 原因: 消息处理到一半, 且这一半已经处理完了, 但还没来得及提交, 服务挂了, 下次重启又回拉取校共同的一批数据进行消费, 此时就会重复处理.
+         * 解决办法: 关闭手动提交, 且做好幂等性处理, 因为无论自动还是手动提交, 都会有重复消费的问题.
+         */
+        // 自动提交offset的间隔时间(auto.commit.interval.ms), 默认为1s.
+        props.put(ConsumerConfig.AUTO_COMMIT_INTERVAL_MS_CONFIG, "1000");
 
-        // 一次Fetch拉下来的最大字节数.
-        properties.put(ConsumerConfig.FETCH_MAX_BYTES_CONFIG, 10485760);
-        // 一次Poll返回消息的最大条数, 根据吞吐量来定.
-        properties.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, 500);
-
-        // 一次Fetch拉下来的最小字节数, 设置大点可能会引起延迟.
-        properties.put(ConsumerConfig.FETCH_MIN_BYTES_CONFIG, 1);
-        // 一次Fetch的最大等待时间, 如果服务器在这个时间内没有满足`fetch.min.bytes`的数据, Fetch也会被返回.
-        // 通常与上个配置项配合使用.
-        properties.put(ConsumerConfig.FETCH_MAX_WAIT_MS_CONFIG, 100);
-
-        // properties.put(ConsumerConfig.PARTITION_ASSIGNMENT_STRATEGY_CONFIG, "");
-
-        // 再执行上一次Poll后, 如果30s以后才执行下一次Poll的话, 这个消费者就会被考虑为挂了, 此时就会触发Rebalance.
-        // 可以理解为消费能力太弱, 被踢出消费者组了, 交给其他消费者来消费, 结合业务.
-        properties.put(ConsumerConfig.MAX_POLL_INTERVAL_MS_CONFIG, 30 * 1000);
-
-        // 当Server没有这个ConsumerGroup的offset信息时, 设置Offset信息的方式.
-        // 1. earliest, 自动将Offset设置为最小的offset.
-        // 2. latest, 自动将Offset设置为最大的offset.
-        // 3. none, 直接报错. NoOffsetForPartitionException.
-        // 日志: Resetting offset for partition xxx
-        properties.setProperty(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
-        // True表示 每隔段时间在后台提交一次offset.
-        properties.setProperty(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "false");
-        // 消费者自动提交Offset的时间间隔.
-        properties.setProperty(ConsumerConfig.AUTO_COMMIT_INTERVAL_MS_CONFIG, "10");
+        //props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "false");
+        /**
+         *当有新的ConsumerGroup加入后, 此时offset信息不存在, 此时有三种设置方式(auto.offset.reset):
+         *  1. earliest, 第一次从头开始消费，以后按照消费offset记录继续消费，这个需要区别于consumer.seekToBeginning(每次都从头开始消费).
+         *  2. latest(默认), 自动将Offset设置为最大的offset, 即只消费自己启动之后发送到topic的消息.
+         *  3. none, 直接报错. NoOffsetForPartitionException.
+         */
+        props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
 
 
-        KafkaConsumer<String, String> consumer = new KafkaConsumer<>(properties);
+        /*
+         * Broker会通过心跳确认consumer是否有故障, 如果一段时间没收到心跳, 就会通过心跳下发Rebalance的指令, 通知其他consumer进行rebalance操作.
+         *
+         * 一般比Session的TIMEOUT的1/3要小, 尽量小一点.
+         */
+        props.put(ConsumerConfig.HEARTBEAT_INTERVAL_MS_CONFIG, 1000);
+        /*
+         * 服务端broker多久感知不到一个consumer心跳就认为他故障了，会将其踢出消费组，进行Rebalance,
+         * 对应的Partition也会被重新分配给其他consumer，默认是10秒
+         */
+        props.put(ConsumerConfig.SESSION_TIMEOUT_MS_CONFIG, 10 * 1000);
+
+
+        //一次poll最大拉取消息的条数，如果消费者处理速度很快，可以设置大点，如果处理速度一般，可以设置小点
+        // 根据吞吐量来定.
+        props.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, 500);
+
+        /*
+        如果两次poll操作间隔超过了这个时间，broker就会认为这个consumer处理能力太弱，
+        会将其踢出消费组，将分区分配给别的consumer消费
+        */
+        props.put(ConsumerConfig.MAX_POLL_INTERVAL_MS_CONFIG, 30 * 1000);
+        props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
+        props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
+        KafkaConsumer<String, String> consumer = new KafkaConsumer<String, String>(props);
 
         return consumer;
     }
+    public static void main(String[] args) {
+        KafkaConsumer<String, String> consumer = getKafkaConsumer();
 
+        consumer.subscribe(Arrays.asList(TOPIC_NAME));
+        // 消费指定分区
+        // consumer.assign(Arrays.asList(new TopicPartition(TOPIC_NAME, 0)));
+
+        // 常用的消费消息方式: 回溯消费, 从尾部消费, 从指定offset消费.
+        //消息回溯消费, 默认从消息的最尾端开始消费.
+        /*consumer.assign(Arrays.asList(new TopicPartition(TOPIC_NAME, 0)));
+        consumer.seekToBeginning(Arrays.asList(new TopicPartition(TOPIC_NAME, 0)));*/
+        //指定offset消费
+        /*consumer.assign(Arrays.asList(new TopicPartition(TOPIC_NAME, 0)));
+        consumer.seek(new TopicPartition(TOPIC_NAME, 0), 10);*/
+
+        // 另一种消费方式: 从指定时间点开始消费.
+        // List<PartitionInfo> topicPartitions = consumer.partitionsFor(TOPIC_NAME);
+        // //从1小时前开始消费
+        // long fetchDataTime = new Date().getTime() - 1000 * 60 * 60;
+        // Map<TopicPartition, Long> map = new HashMap<>();
+        // for (PartitionInfo par : topicPartitions) {
+        //     map.put(new TopicPartition(TOPIC_NAME, par.partition()), fetchDataTime);
+        // }
+        // Map<TopicPartition, OffsetAndTimestamp> parMap = consumer.offsetsForTimes(map);
+        // for (Map.Entry<TopicPartition, OffsetAndTimestamp> entry : parMap.entrySet()) {
+        //     TopicPartition topicPartition = entry.getKey();
+        //     OffsetAndTimestamp value = entry.getValue();
+        //     if (topicPartition == null || value == null) continue;
+        //     Long offset = value.offset();
+        //     System.out.println("partition-" + topicPartition.partition() + "|offset-" + offset);
+        //     System.out.println();
+        //     //根据消费里的timestamp确定offset
+        //     consumer.assign(Arrays.asList(topicPartition));
+        //     consumer.seek(topicPartition, offset);
+        // }
+
+        while (true) {
+            /*
+             * poll() API 是拉取消息的长轮询
+             *
+             * 如果1s内拉到消息, 就返回. 如果到1s拉不到消息, 也返回. 实现原理 TODO
+             */
+            ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(1000));
+            for (ConsumerRecord<String, String> record : records) {
+                System.out.printf("收到消息：partition = %d,offset = %d, key = %s, value = %s%n", record.partition(),
+                    record.offset(), record.key(), record.value());
+
+                consumer.commitSync();
+            }
+
+
+
+            /*if (records.count() > 0) {
+                // 手动同步提交offset，当前线程会阻塞直到offset提交成功
+                // 一般使用同步提交，因为提交之后一般也没有什么逻辑代码了
+                consumer.commitSync();
+
+                // 手动异步提交offset，当前线程提交offset不会阻塞，可以继续处理后面的程序逻辑
+                consumer.commitAsync(new OffsetCommitCallback() {
+                    @Override
+                    public void onComplete(Map<TopicPartition, OffsetAndMetadata> offsets, Exception exception) {
+                        if (exception != null) {
+                            System.err.println("Commit failed for " + offsets);
+                            System.err.println("Commit failed exception: " + exception.getStackTrace());
+                        }
+                    }
+                });
+
+            }*/
+        }
+
+
+    }
 }
