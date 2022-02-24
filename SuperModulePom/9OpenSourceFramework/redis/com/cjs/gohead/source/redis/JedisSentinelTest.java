@@ -33,7 +33,7 @@ public class JedisSentinelTest {
         try {
             /**
              * 主节点挂了后, 哨兵重新选举新的Master节点, 客户端可以重新感知到, 但是在选举的过程中, 是不可用的.
-             * 1. 主节点下配了从, 这种情况, 主挂了, 到从切上来这段时间, 客户端的部分写入会失败. 主从之前没来得及同步的小部分数据会丢失
+             * 1. 主节点下配了从, 这种情况, 主挂了, 到从切上来这段时间, 客户端的部分写入会失败. 主从之前没来得及同步的小部分数据会丢失.
              */
             for (int i = 0; i < 100; i++) {
                 jedis = jedisSentinelPool.getResource();
@@ -44,7 +44,7 @@ public class JedisSentinelTest {
             }
 
         } catch (Exception e) {
-
+            // 将消息发送到kafka, 以供后续重新消费. TODO 重点
             e.printStackTrace();
         } finally {
 
