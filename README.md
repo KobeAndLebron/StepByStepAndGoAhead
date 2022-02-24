@@ -190,6 +190,7 @@ Keep your eyes on the stars and your feet on the ground!!!
 ### 7.12.1 [连接池线上怎么配置, 连接池预热优化](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom\9OpenSourceFramework\redis\com\cjs\gohead\source\redis\RedisPoolPractice.java)
 ### 7.12.2 [RedisCluster连接方式](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom\9OpenSourceFramework\redis\com\cjs\gohead\source\redis\JedisClusterTest.java)
 ### 7.12.2 [Codis连接方式](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom\9OpenSourceFramework\redis\com\cjs\gohead\source\redis\CodisClientHA.java)
+### 7.12.3 [Sentinel连接方式](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom\9OpenSourceFramework\redis\com\cjs\gohead\source\redis\JedisSentinelTest.java)
 
 # 8. 设计模式
 ## 8.1 责任链模式

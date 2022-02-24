@@ -1,5 +1,6 @@
 package com.cjs.gohead.source.redis;
 
+import lombok.extern.slf4j.Slf4j;
 import redis.clients.jedis.HostAndPort;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPoolConfig;
@@ -9,6 +10,7 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
+@Slf4j
 public class JedisSentinelTest {
 
     public static void main(String[] args) throws IOException {
@@ -45,7 +47,8 @@ public class JedisSentinelTest {
 
         } catch (Exception e) {
             // 将消息发送到kafka, 以供后续重新消费. TODO 重点
-            e.printStackTrace();
+            log.warn("主从切换中...");
+            System.out.println("将数据先写入到消息队列...");
         } finally {
 
             //注意这里不是关闭连接，在JedisPool模式下，Jedis会被归还给资源池。
