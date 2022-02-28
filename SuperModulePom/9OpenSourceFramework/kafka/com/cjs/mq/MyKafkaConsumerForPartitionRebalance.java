@@ -12,7 +12,7 @@ import java.util.Collections;
  */
 public class MyKafkaConsumerForPartitionRebalance {
     public static void main(String[] args) {
-        KafkaConsumer<String, String> consumer = MsgConsumer.getKafkaConsumer();
+        KafkaConsumer<String, String> consumer = MyKafkaConsumer.getKafkaConsumer();
 
         consumer.subscribe(Collections.singletonList("topic1"));
 
