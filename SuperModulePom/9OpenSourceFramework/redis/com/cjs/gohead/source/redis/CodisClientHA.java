@@ -10,10 +10,18 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPoolConfig;
+import redis.clients.jedis.exceptions.JedisException;
 
+import java.util.concurrent.TimeUnit;
+
+/**
+ * 常见错误:
+ * 1. ERR handle request, slot is not ready, may be offline
+ * 2. 主从切换中的数据丢失问题.
+ */
 @Configuration
 public class CodisClientHA {
-    private static final Logger logger = LoggerFactory.getLogger(CodisClientHA.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(CodisClientHA.class);
 
     @Value("${codis.zkAddr:localhost}")
     private String zkAddr;
@@ -50,7 +58,7 @@ public class CodisClientHA {
         poolConfig.setBlockWhenExhausted(false);
         JedisResourcePool pool = RoundRobinJedisPool.create().poolConfig(poolConfig)
             .curatorClient(zkAddr, timeout).zkProxyDir(zkProxyDir).build();
-        logger.info("------------------- Codis connection pool init succeed -------------------");
+        LOGGER.info("------------------- Codis connection pool init succeed -------------------");
         return pool;
     }
 
@@ -60,21 +68,28 @@ public class CodisClientHA {
         JedisResourcePool pool = applicationContext.getBean(JedisResourcePool.class);
         for (int i = 0; i < 20; i++) {
             new Thread(() -> {
-                try {
-                    int cur = 0;
-                    while (true) {
-                        try (Jedis jedis = pool.getResource()) {
-                            String value = jedis.getSet(cur++ + "", cur++ + "");
-                            logger.info("Thread: [{}]; JedisConn: [{}]; getSetValue:[{}]", Thread.currentThread(), jedis, value);
-                            logger.info("PoolStatus:[{}]", jedis.ping());
-                        }
+                int cur = 0;
+                while (true) {
+                    String key = cur++ +"";
+                    String value = cur++ +"";
+                    try (Jedis jedis = pool.getResource()) {
+                        value = jedis.getSet(key, value);
+                        LOGGER.info("Thread: [{}]; JedisConn: [{}]; getSetValue:[{}]", Thread.currentThread(), jedis, value);
+//                        LOGGER.info("PoolStatus:[{}]", jedis.ping());
+                    } catch (JedisException exception) {
+                        LOGGER.warn("主从切换中...");
+                        // 主从切换写入数据失败的处理措施. TODO 重要
+                        System.out.println("将数据先写入到消息队列, 类似死信队列...");
+                    } finally {
+
                     }
-                } catch (Exception e) { // 异常则跳出循环，结束线程
-                    System.err.println("can not get conn, loop out: ");
-                    e.printStackTrace();
-                } finally {
-                    System.out.println("runner count down");
+                    try {
+                        TimeUnit.SECONDS.sleep(2);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
+
             }).start();
         }
 
