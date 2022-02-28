@@ -1,8 +1,30 @@
 package com.cjs.gc;
 
 /**
+ *
+ * 垃圾收集流程:
+ * 1. 可达性分析, 使用从GC ROOTS遍历的方式, Root可以在包括方法区, native方法, 可达性分析包含一个三色标记算法 和 card Table算法.
+ * 白色: 还没被访问过
+ * 灰色 访问过但是没扫描完全
+ * 黑色: 安全存活的
+ * 2.
+ *
+ * JVM调优经验:
+ *
+ * 1. 在大访问的情况下, Minor GC 频繁, 容易引起Full GC.
+ * 动态年龄计算, 一般是由于Survivor区过小导致的, 动态年龄计算, 解法: 修改SurvivorRation 或者 增大堆, 然后在测试环境模拟生产环境进行压测.
+ * 增大Eden区, 可以减少Minor GC的频率.
+ *
+ * 大对象的创建, 直接进入Old区, 如果对象特别大, 1. 拆分对象. 2. 提高大对象的配置项.
+ *
+ * 不可控的, 内存泄漏导致FULL GC频繁, 最后导致 OOM.
+ *
+ * 写代码有问题, 不用Spring托管对象, 而是for循环一直new对象.
+ *
  * 配置JVM启动参数:
  *  -Xms20M -Xmx20M -Xmn10M -XX:SurvivorRatio=8 -XX:+PrintGCDetails
+ *
+ *  userConcMarkSweepGC
  *
  * -----------------------
  *
@@ -50,6 +72,12 @@ package com.cjs.gc;
  * 内存担保机制:
  *    1. 进行Minor GC的时候，把Survivor无法容纳的对象直接放入OldGen。
  *    2. 新对象大小大于Eden区的大小, 直接将对象放入到OldGen.[很少发生]
+ *
+ * -------------
+ *    Minor GC 对象进入老年代的时机:
+ *    1. 触发了内存担保机制.
+ *    2. 动态年龄计算, 达到指定的岁数, 进入老年代. {@linkplain TenuringThreshold}
+ *    3. 大对象, 通过参数XX:PretenureSizeThreshold来配置. 仅在SerialOld + ParNew生效.
  *
  * -------------
  *

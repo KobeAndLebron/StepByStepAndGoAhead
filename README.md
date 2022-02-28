@@ -5,7 +5,7 @@ Keep your eyes on the stars and your feet on the ground!!!
 
 # 1. JVM  
 ## 1.1 [YGC日志分析](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/5JVM/src/main/java/com/cjs/gc/YGCLogAnalyze.java)  
-> 包括内存担保机制的解释。
+> 包括内存担保机制 和 对象晋升到老年代的条件.
 ## 1.2 [FULLGC日志分析](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/5JVM/src/main/java/com/cjs/gc/FullGCLogAnalyze.java)  
 ## 1.3 TenuringThreshold动态调整策略 [程序](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/5JVM/src/main/java/com/cjs/gc/TenuringThreshold.java) [程序对应日志分析](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/5JVM/src/main/java/com/cjs/gc/TenuringThreshold.log)
 ## 1.4 [JVM四大引用介绍见及示例演示-强软弱虚](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/5JVM/src/main/java/com/cjs/reference/FourTypesOfReference.java)
@@ -19,6 +19,51 @@ Keep your eyes on the stars and your feet on the ground!!!
 ## 1.7 [CMS垃圾收集器的工作流程-简单描述](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/5JVM/src/main/java/com/cjs/gc/CMSGC.java) [程序对应日志分析](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/5JVM/src/main/java/com/cjs/gc/CMSGC.log)  
 > 详细流程及调优见有道云笔记。
 ## 1.8 G1收集器 TODO
+```bash
+总结:
+1. 对象晋升到老年代的原因[3个]
+# YGCLogAnalyze.java有答案.
+
+2. JVM调优实际经验
+2.1 MinorGC和FullGC都比较频繁
+# 首先表明出于什么原因用的什么垃圾收集器, [处于低延迟选择了CMS]
+# 然后表明现象, [Minor GC 100/4mins, Major GC 1/4mins]
+# 然后分析可能出现的原因[2个], [1. 内存担保机制, Survivor区太小, 导致放不下, 对象直接晋升到OldGen. 2. 动态年龄计算] 
+# 然后通过GC日志查看对象在堆中分布, 查看原因, [1. 动态年龄计算后, 年龄仅为2, 导致分代模型失去意义. 2. 一次MajorGC后, 老年代的对象释放了接近90%]
+# 最后给出解决方案, 在测试环境模拟线上环境进行测试. [解决方案: 扩大年轻代, -Xmn -XNewRation; 让对内存翻倍.]
+# 达到效果: YGC降到每分钟40次, FullGC降到每小时6次. 优化结束. 
+2.2 FULL GC比较频繁导致CPU飙升: a. CMS的有效空间设置的太小(CMSInitiatingOcupancyFraction这是成了60, 默认为92) b. 内存泄漏导致FULL GC频繁, 最终OOM
+2.3 CMS的final remark阶段时间过长[本身它也是4个阶段中最耗时的阶段]: a.在并发标记的过程中,  应用程序的老年代对象修改过快. 
+b. 由于final remark要扫描年轻代, 所以年轻代过大也会导致这个理由, 这个原因可以由GC日志看出来, 当final remark的时候, Young Gen占比比较大.
+# 通过日志分析发现Remark耗时大于500ms的时候, 新生代使用率都在75%以上, 通过参数CMSScavengeBeforeRemark来解决, 在remark阶段进行一次Minor GC.
+# 比如: 开启之前 Remark 0.7s;  开启之后 YGC 0.05s + Remark 0.4s
+
+
+3. CardTable的作用? 采用位图实现, 是一个point-out的结构, 作用是为了:
+a. 在MinorGC的时候扫描整个老年代. 
+b. 在并发标记过程中发生引用的table标记为Dirty, 这样final remark就可以以这些Dirty table做起点了.
+3.1 三色标记算法:
+
+4. 各个垃圾收集器的场景:
+场景:
+a. Serial 单线程+几十兆内存; -XX:+UseSerialGC = Serial New (DefNew) + Serial Old
+b. ParallelNew/ParallelScanvage 多线程+几个G;  -XX:+UseParallelGC, ParallScanvage + ParallelOld/标记-整理算法 (JDK1.8默认)
+c. CMS 20G + 多线程(CMS对CPU比较敏感); -XX:+UseConcMarkSweepGC = ParNew + CMS + Serial Old(碎片太多的时候开启)
+d. G1 上百G; -XX:+UseG1GC = G1
+e. ZGC 4T-16T (JDK13)
+
+5. CMS为什么低停顿[3个原因]及问题[2个问题]
+# 问题: 1. 内存碎片, 因采用的标记清楚算法, 当内存碎片过多导致不能再分配对象时, Serial Old登场. 
+# 2. 容易产生浮动垃圾（Floating garbage)，因为并发清除阶段和用户线程是同步进行的，所以CMS会预留一部分空间供YoungGen晋升上的对象使用【内存担保机制或大对象】，
+# 当预留空间不足以容纳晋升对象时，就会触发一次Full GC， 使用Serial Old收集器候补。 预留空间可由-XX:CMSInitiatingOccupancyFraction=80来配置， 
+# 配置过小导致频繁的MajorGC， 过大导致很容易导致大量的Concurrent mode failure失败，产生STW停顿。
+
+6. 如何排查内存泄漏的问题及注意事项?
+注意事项: 当堆内存比较大的时候, jmap会导致整个JVM 不对外提供服务, 此时对于集群环境, 应该先让服务下线, 然后在下线的服务器上进行jmap. 完后使用jhat jvisualvm分析.
+
+7. 线上JVM规划
+
+```
 
 # 2. 算法
 ## 2.1 [位图法, 用来解决大量整数的排序 去重 查找问题](https://github.com/KobeAndLebron/StepByStepAndGoAhead/blob/master/SuperModulePom/1DataStructureAndAlgorithm/src/main/java/%E6%B5%B7%E9%87%8F%E6%95%B0%E6%8D%AE/%E4%BD%8D%E5%9B%BE%E6%B3%95.java)
@@ -199,9 +244,9 @@ Keep your eyes on the stars and your feet on the ground!!!
 
 - [x] Sentinel的使用场景及解析.
 - [x] 限流算法. 理解漏桶算法和滑动时间窗口算法的原理
-
+- [ ] 数据库间隙锁, undolog redolog及本地事务怎么实现的
+> undo记录事务之前的操作, redo记录事务执行之后的操作, log文件大小比数据文件要大.
 - [ ] G1垃圾收集器以及线上定位内存泄漏的问题.
-- [ ] 数据库间隙锁 undolog redolog
 - [ ] 动态代理的cglib实现及事务的实现原理.
 
 
