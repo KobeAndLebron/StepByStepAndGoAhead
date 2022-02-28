@@ -30,14 +30,16 @@ public class RedisPoolPractice {
          * 业务期望的QPS是50000
          *
          * 那么理论上需要的资源池大小是50000 / 1000 = 50个。但事实上这是个理论值,还要考虑到要比理论值预留一些资源,通常来讲maxTotal可以比理论值大一些。
-         * maxIdle给50,maxIdle给100.
+         * maxIdle给50,maxTotal给100.
          * 总之,要根据实际系统的QPS和调用Redis客户端的整体规模来评估每个节点所使用连接池的大小。
          */
-        jedisPoolConfig.setMaxTotal(5);
-        jedisPoolConfig.setMaxIdle(2);
-        jedisPoolConfig.setTestOnBorrow(true);
-        JedisPool jedisPool = new JedisPool(jedisPoolConfig,"r-wz95ias87w5tv0m6c7pd.redis.rds.aliyuncs.com",6379,3000,
-            "xxx");
+        jedisPoolConfig.setMaxTotal(100);
+        jedisPoolConfig.setMaxIdle(50);
+        jedisPoolConfig.setMinIdle(5);
+        jedisPoolConfig.setTestOnBorrow(false);
+        jedisPoolConfig.setTestOnReturn(false);
+        JedisPool jedisPool = new JedisPool(jedisPoolConfig,"127.0.0.1",6379,3000);
+        warmUpJedisPool(jedisPoolConfig,jedisPool);
         try (Jedis jedis = jedisPool.getResource()) {
             //具体的命令
             jedis.set("k1","v1");
