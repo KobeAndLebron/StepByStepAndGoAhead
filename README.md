@@ -49,7 +49,7 @@ b. 在并发标记过程中发生引用的table标记为Dirty, 这样final remar
 a. Serial 单线程+几十兆内存; -XX:+UseSerialGC = Serial New (DefNew) + Serial Old
 b. ParallelNew/ParallelScanvage 多线程+几个G;  -XX:+UseParallelGC, ParallScanvage + ParallelOld/标记-整理算法 (JDK1.8默认)
 c. CMS 20G + 多线程(CMS对CPU比较敏感); -XX:+UseConcMarkSweepGC = ParNew + CMS + Serial Old(碎片太多的时候开启)
-d. G1 上百G; -XX:+UseG1GC = G1
+d. G1 上百G; -XX:+UseG1GC = G1 -XX:MaxGCPauseMillis=200
 e. ZGC 4T-16T (JDK13)
 
 5. CMS为什么低停顿[3个原因]及问题[2个问题]
@@ -62,6 +62,19 @@ e. ZGC 4T-16T (JDK13)
 注意事项: 当堆内存比较大的时候, jmap会导致整个JVM 不对外提供服务, 此时对于集群环境, 应该先让服务下线, 然后在下线的服务器上进行jmap. 完后使用jhat jvisualvm分析.
 
 7. 线上JVM规划
+> 1. 按每天1亿点击量算, 按日活用户500万来算, 则每个用户平均点击20 30次, 按付费转化率10%算的话, 将是日均50万单.
+> 2.1 按照订单生成的时间来算, 50万订单在3个小时生成, 将是50单.
+> 2.2 考虑大促的情况, 抢购会在几分钟产生, 假设为10分钟, 此时1秒将有将近1000单. [数据库配置8核16G, 可抗住1000-2000写请求, 加读写分离后4000请求.]
+> 2.2.1 拆分为3台机器, 每台每秒产生400单, 假设每个订单1KB, 再算上订单查询和其他操作, 扩大200倍, 每秒将产生80MB的垃圾.
+> 机器采取4核8G, 堆内存分配6个G内存. 其中老年代分2个G, 年轻代分4个G[Eden分配 3.2个G, 两个S区各0.4G]
+
+> 这个配置也不会引起动态年龄判断, 导致年龄太小, 比如在依次Young GC之后, 95%的对象都被回收, 将留下160MB的对象, 此时小于Survivor区的一半[TargetSurvivorRatio, 默认为50%]
+> 动态年龄计算机制见TenuringThreshold.java.
+
+8. GC的暂停时间为什么可预测?
+a. 将对内存分成了大小相同的n个片区, 年轻代和老年代分区逻辑上是连续的, 物理上是不连续的, 且每个片区的角色会在运行的时候发生变化.
+b. 采取复制算法, 解决了内存碎片的问题.
+c. 使用三色标记算法+SATB和Rset, 减少了垃圾回收时, 需要扫描的对象. 因为Rset即是一个point-in的结构, 也是一个point-out的结构, 这个Rset占用了1%的空间.
 
 ```
 
